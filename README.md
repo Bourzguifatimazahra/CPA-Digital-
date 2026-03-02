@@ -178,7 +178,7 @@
 
 ```bash
 # 1. Cloner le repository
-git clone <repository-url>
+git clone https://github.com/Bourzguifatimazahra/CPA-Digital-
 cd CPA-Digital-
 
 # 2. Installer les dépendances
