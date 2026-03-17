@@ -100,11 +100,6 @@ const Navbar = () => {
     {
       label: t("nav_expertise"), href: "/expertise",
     },
-    { 
-      label: t("nav_estimate"), 
-      href: "https://calculateurcpa.netlify.app/",
-      isExternal: true 
-    },
     { label: t("nav_contact"), href: "/contact" },
   ];
 

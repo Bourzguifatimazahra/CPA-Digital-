@@ -291,7 +291,7 @@ const QuoteCalculator = () => {
           className="text-center mb-8"
         >
           <motion.a 
-            href="https://calculateurcpa.netlify.app/" 
+            href="" 
             target="_blank" 
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -388,7 +388,7 @@ const QuoteCalculator = () => {
             </motion.div>
             
             <a 
-              href="https://calculateurcpa.netlify.app/" 
+              href="" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-bold text-base cpa-shadow hover:opacity-90 transition-opacity"
