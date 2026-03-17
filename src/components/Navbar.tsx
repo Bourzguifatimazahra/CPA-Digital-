@@ -16,6 +16,7 @@ interface NavItem {
   label: string;
   href: string;
   children?: NavChild[];
+  isExternal?: boolean;
 }
 
 const langLabels: Record<Lang, string> = { fr: "FR", en: "EN", ar: "AR", es: "ES" };
@@ -99,12 +100,20 @@ const Navbar = () => {
     {
       label: t("nav_expertise"), href: "/expertise",
     },
+    { 
+      label: t("nav_estimate"), 
+      href: "https://calculateurcpa.netlify.app/",
+      isExternal: true 
+    },
     { label: t("nav_contact"), href: "/contact" },
   ];
 
   const isHash = (href: string) => href.includes("#");
 
-  const NavLinkEl = ({ href, children, className, onClick }: { href: string; children: React.ReactNode; className?: string; onClick?: () => void }) => {
+  const NavLinkEl = ({ href, children, className, onClick, isExternal }: { href: string; children: React.ReactNode; className?: string; onClick?: () => void; isExternal?: boolean }) => {
+    if (isExternal) {
+      return <a href={href} target="_blank" rel="noopener noreferrer" className={className} onClick={onClick}>{children}</a>;
+    }
     if (isHash(href)) {
       if (location.pathname !== "/" && href.startsWith("/#")) {
         return <Link to={href} className={className} onClick={onClick}>{children}</Link>;
@@ -137,6 +146,7 @@ const Navbar = () => {
             >
               <NavLinkEl
                 href={item.href}
+                isExternal={item.isExternal}
                 className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-foreground hover:text-primary hover:bg-secondary transition-all"
               >
                 {item.label}
@@ -285,6 +295,7 @@ const Navbar = () => {
                   <div className="flex items-center justify-between">
                     <NavLinkEl
                       href={item.href}
+                      isExternal={item.isExternal}
                       onClick={() => !item.children && setIsOpen(false)}
                       className="flex-1 block px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-secondary rounded-lg transition-all"
                     >

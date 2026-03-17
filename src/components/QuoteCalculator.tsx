@@ -291,10 +291,11 @@ const QuoteCalculator = () => {
           className="text-center mb-8"
         >
           <motion.a 
-            href="https://cpa.computerassociates.ma/" 
+            href="https://calculateurcpa.netlify.app/" 
             target="_blank" 
             rel="noopener noreferrer"
-            variants={buttonHoverVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             initial="rest"
             whileHover="hover"
             whileTap="tap"
@@ -387,7 +388,7 @@ const QuoteCalculator = () => {
             </motion.div>
             
             <a 
-              href="https://cpa.computerassociates.ma/" 
+              href="https://calculateurcpa.netlify.app/" 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-bold text-base cpa-shadow hover:opacity-90 transition-opacity"

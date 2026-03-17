@@ -44,6 +44,7 @@ export const translations = {
   nav_audit: { fr: "Audit et Management des Risques", en: "Risk Audit & Management", ar: "تدقيق وإدارة المخاطر", es: "Auditoría de Riesgos" },
   nav_contact: { fr: "Contact", en: "Contact", ar: "اتصل بنا", es: "Contacto" },
   nav_quote: { fr: "Demander un Devis", en: "Request a Quote", ar: "طلب عرض أسعار", es: "Solicitar Presupuesto" },
+  nav_estimate: { fr: "Estimer le Prix", en: "Estimate Price", ar: "تقدير السعر", es: "Estimar Precio" },
   nav_expertise: { fr: "Notre Expertise", en: "Our Expertise", ar: "خبرتنا", es: "Nuestra Experiencia" },
   nav_expertise_solutions: { fr: "Solutions complètes", en: "Complete Solutions", ar: "حلول متكاملة", es: "Soluciones Completas" },
   nav_expertise_gestion: { fr: "Gestion des risques", en: "Risk Management", ar: "إدارة المخاطر", es: "Gestión de Riesgos" },
