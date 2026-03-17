@@ -1,7 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
-import QuoteCalculator from "@/components/QuoteCalculator";
 import Footer from "@/components/Footer";
 
 const ContactPage = () => {
@@ -10,7 +9,6 @@ const ContactPage = () => {
       <Navbar />
       <div className="pt-20">
         <ContactSection />
-        <QuoteCalculator />
       </div>
       <Footer />
     </div>

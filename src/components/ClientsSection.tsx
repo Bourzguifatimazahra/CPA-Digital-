@@ -48,6 +48,9 @@ import takadoLogo from "@/assets/clients/takado.png";
 import umelLogo from "@/assets/clients/umel.png";
 import usaembassyLogo from "@/assets/clients/usaembasst.png";
 import yellowrockLogo from "@/assets/clients/yellowrock.png";
+import jpsLogo from "@/assets/clients/jps.png";
+import pkflogo from "@/assets/clients/pkf.png";
+import olaLogo from "@/assets/clients/ola.png";
 
 const clients = [
   { name: "Americana Restaurants", logo: americanaLogo },
@@ -96,6 +99,9 @@ const clients = [
   { name: "SMTS", logo: smtsLogo },
   { name: "Sophiaco", logo: sophiacoLogo },
   { name: "Takado", logo: takadoLogo },
+  { name: "ola", logo: olaLogo },
+  { name: "pkf", logo: pkflogo },
+  { name: "jps", logo: jpsLogo },
 ];
 
 const ClientsSection = () => {
@@ -114,7 +120,7 @@ const ClientsSection = () => {
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mt-3 mb-4">{t("clients_title")}</h2>
         </motion.div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-3 max-w-7xl mx-auto">
           {clients.map((client, i) => (
             <motion.div
               key={client.name}
@@ -128,24 +134,44 @@ const ClientsSection = () => {
                 stiffness: 100
               }}
               whileHover={{ 
-                scale: 1.15, 
-                rotateY: [0, 180, 360],
-                rotateX: [0, 10, 0],
-                transition: { duration: 0.8, ease: "easeInOut" }
+                rotateY: 180,
+                transition: { duration: 0.6, ease: "easeInOut" }
               }}
-              className="bg-card rounded-xl border border-border p-4 flex items-center justify-center aspect-square cpa-shadow hover:cpa-shadow-lg hover:border-primary/50 transition-all cursor-pointer"
+              className="relative aspect-square cursor-pointer"
               style={{ 
                 transformStyle: "preserve-3d",
                 perspective: "1000px"
               }}
             >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="w-full h-full object-contain"
-                loading="lazy"
-                style={{ backfaceVisibility: "hidden" }}
-              />
+              {/* Front of card - Logo */}
+              <div 
+                className="absolute inset-0 bg-card rounded-lg border border-border p-3 flex items-center justify-center cpa-shadow hover:cpa-shadow-lg hover:border-primary/50 transition-all"
+                style={{ 
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden"
+                }}
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+              
+              {/* Back of card - Name */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/90 to-accent/90 rounded-lg border border-primary p-3 flex items-center justify-center cpa-shadow-lg"
+                style={{ 
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)"
+                }}
+              >
+                <p className="text-white text-center text-xs sm:text-sm font-semibold leading-tight">
+                  {client.name}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

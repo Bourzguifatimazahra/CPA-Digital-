@@ -76,8 +76,8 @@ const PartnersSection = () => {
               whileHover={{ scale: 1.08, y: -4 }}
               className="shrink-0"
             >
-              <div className="bg-card rounded-xl px-6 py-4 border border-border cpa-shadow flex items-center gap-4 min-w-[220px] h-[80px] hover:border-primary/30 transition-colors">
-                <div className="w-14 h-14 flex items-center justify-center shrink-0">
+              <div className="bg-card rounded-xl px-6 py-4 border border-border cpa-shadow flex items-center gap-4 min-w-[260px] h-[100px] hover:border-primary/30 transition-colors">
+                <div className="w-20 h-20 flex items-center justify-center shrink-0">
                   <img 
                     src={partner.logo} 
                     alt={`${partner.name} logo`}

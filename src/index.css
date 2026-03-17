@@ -89,11 +89,6 @@
 @layer base {
   * {
     @apply border-border;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  *::-webkit-scrollbar {
-    display: none;
   }
   body {
     @apply bg-background text-foreground;
@@ -102,6 +97,44 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+
+  /* Custom Scrollbar Styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(216 100% 24% / 0.3) hsl(220 20% 96%);
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: hsl(220 20% 96%);
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: hsl(216 100% 24% / 0.3);
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: hsl(216 100% 24% / 0.5);
+  }
+
+  .dark *::-webkit-scrollbar-track {
+    background: hsl(216 40% 14%);
+  }
+
+  .dark *::-webkit-scrollbar-thumb {
+    background: hsl(205 100% 48% / 0.3);
+  }
+
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background: hsl(205 100% 48% / 0.5);
   }
 }
 

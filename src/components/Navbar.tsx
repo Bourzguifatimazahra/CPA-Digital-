@@ -58,7 +58,7 @@ const Navbar = () => {
   }, []);
 
   const navItems: NavItem[] = [
-    { label: t("nav_home"), href: "/" },
+    { label: t("nav_home"), href: "/#hero" },
     {
       label: t("nav_about"), href: "/#apropos",
       children: [
@@ -122,9 +122,9 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <a href="/#hero" className="flex items-center gap-2">
           <img src={cpaLogo} alt="CPA - Conseil et Placement d'Assurances" className="h-10 w-auto" />
-        </Link>
+        </a>
 
         {/* Desktop menu */}
         <div className="hidden lg:flex items-center gap-0.5">
@@ -149,7 +149,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-1 bg-card rounded-xl shadow-lg border border-border p-2 min-w-[240px] max-h-[70vh] overflow-y-auto scrollbar-none z-50"
+                    className="absolute top-full left-0 mt-1 bg-card rounded-xl shadow-lg border border-border p-2 min-w-[240px] max-h-[70vh] overflow-y-auto z-50"
                     onMouseEnter={() => openDropdown(item.label)}
                     onMouseLeave={closeDropdown}
                   >
@@ -277,7 +277,7 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden bg-card border-t border-border max-h-[80vh] overflow-y-auto scrollbar-none"
+            className="lg:hidden overflow-hidden bg-card border-t border-border max-h-[80vh] overflow-y-auto"
           >
             <div className="container mx-auto px-4 py-4 space-y-1">
               {navItems.map((item) => (

@@ -9,6 +9,7 @@ import ValuesSection from "@/components/ValuesSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 // TeamSection removed - domains moved to ExpertiseSection marquee
 import KeyFiguresSection from "@/components/KeyFiguresSection";
+import ExpansionSection from "@/components/ExpansionSection";
 import NewInsuranceSection from "@/components/NewInsuranceSection";
 import PricingSection from "@/components/PricingSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -17,6 +18,7 @@ import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import PartnersSection from "@/components/PartnersSection";
 import ClientsSection from "@/components/ClientsSection";
+import AffiliationsSection from "@/components/AffiliationsSection";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 
@@ -43,12 +45,14 @@ const Index = () => {
           <ExpertiseSection />
           {/* TeamSection removed - domains in ExpertiseSection */}
           <KeyFiguresSection />
+          <ExpansionSection />
           <NewInsuranceSection />
           <PricingSection />
           <TestimonialsSection />
           <QuoteCalculator />
           <PartnersSection />
           <ClientsSection />
+          <AffiliationsSection />
           <CTASection />
           <ContactSection />
           <Footer />

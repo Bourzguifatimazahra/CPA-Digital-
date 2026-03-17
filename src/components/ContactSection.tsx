@@ -15,7 +15,7 @@ const ContactSection = () => {
 
   const infoItems = [
     { icon: Phone, title: t("contact_phone"), value: "+212 5 22 95 39 00", href: "tel:+212522953900" },
-    { icon: Mail, title: t("contact_email"), value: "info@cpas.ma", href: "mailto:info@cpas.ma" },
+    { icon: Mail, title: t("contact_email"), value: "info@cpa.ma", href: "mailto:info@cpa.ma" },
     { icon: MapPin, title: t("contact_address"), value: "Casablanca, Maroc" },
     { icon: Clock, title: t("contact_hours"), value: t("footer_hours_label") },
   ];

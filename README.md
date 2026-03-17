@@ -16,6 +16,7 @@
 
 ## 📋 Table des Matières
 
+- [🚀 Nouveau Site CPA Digital](#-nouveau-site-cpa-digital)
 - [À Propos](#-à-propos)
 - [Technologies](#-technologies)
 - [Fonctionnalités](#-fonctionnalités)
@@ -24,6 +25,120 @@
 - [Structure du Projet](#-structure-du-projet)
 - [Partenaires](#-partenaires)
 - [Licence](#-licence)
+
+---
+
+## 🚀 Nouveau Site CPA Digital
+
+<div align="center">
+
+### 🌟 Découvrez Notre Nouvelle Plateforme Digitale 🌟
+
+**Le Leader Marocain de l'Assurance Innove avec une Expérience Web Révolutionnaire**
+
+![Aperçu du nouveau site CPA](public/placeholder.svg)
+
+</div>
+
+### 🎊 Lancement Officiel
+
+**CPA - Conseil et Placement d'Assurances** est fier d'annoncer le lancement de sa nouvelle plateforme digitale, conçue pour révolutionner l'expérience client dans le secteur de l'assurance au Maroc.
+
+### 💎 Une Expérience Client Exceptionnelle
+
+Notre nouveau site web représente une avancée majeure dans la digitalisation des services d'assurance au Maroc :
+
+- ✨ **Interface Moderne & Intuitive** - Design épuré avec animations fluides
+- 🌍 **Multilingue** - Accessible en Français, Anglais, Arabe et Espagnol
+- 📱 **100% Responsive** - Expérience optimale sur tous les appareils
+- ⚡ **Performance Maximale** - Temps de chargement ultra-rapide
+- 🤖 **Chatbot Intelligent** - Assistance 24/7 pour nos clients
+- 💰 **Calculateur de Devis** - Obtenez votre devis instantanément
+
+### 🏆 Pourquoi Choisir CPA Digital ?
+
+#### 🥇 Leader National en Assurance
+
+CPA s'impose comme le **partenaire de confiance** pour plus de **47 entreprises majeures** au Maroc, incluant :
+- 🍔 **Americana Restaurants** (KFC, Krispy Kreme)
+- ✈️ **Air Arabia** - Compagnie aérienne
+- 🚢 **COSCO Shipping** - Transport maritime
+- 🏦 **Crédit du Maroc** - Services bancaires
+- 🚗 **Sixt** - Location de véhicules
+- Et bien plus encore...
+
+#### 🤝 Partenariats Prestigieux
+
+Nous collaborons avec les **15 plus grandes compagnies d'assurance** au Maroc :
+- Allianz, AXA, Wafa Assurance
+- RMA, Sanlam, AtlantaSanad
+- CAT Assurance, MCMA, Atlantic Re
+- Et autres leaders du secteur
+
+#### 📊 Expertise Reconnue
+
+- ✅ **10+ années d'expérience** dans le conseil en assurance
+- ✅ **Solutions personnalisées** pour particuliers et entreprises
+- ✅ **Couverture complète** : Auto, Santé, Habitation, Entreprise, Maritime, etc.
+- ✅ **Service client d'excellence** - Réactivité et professionnalisme
+
+### 🎯 Services Innovants
+
+#### Pour les Particuliers 👨‍👩‍👧‍👦
+- 🚗 **Assurance Automobile** - Protection complète
+- 🏠 **Assurance Habitation** - Sécurité de votre foyer
+- 💊 **Assurance Santé** - Couverture médicale optimale
+- ✈️ **Assurance Voyage** - Voyagez l'esprit tranquille
+- 🎓 **Assurance Scolaire** - Protection de vos enfants
+
+#### Pour les Entreprises 🏢
+- 💼 **Responsabilité Civile Professionnelle**
+- 👷 **Accidents du Travail**
+- 🚚 **Flotte Automobile**
+- 🏗️ **Tout Risques Chantier**
+- 🚢 **Transport Maritime**
+- 💻 **Cyber Criminalité**
+- 🔥 **Risques Techniques**
+- 👥 **Assurance Groupe**
+
+### 🌐 Présence Digitale
+
+Notre nouveau site web positionne CPA comme le **leader digital du secteur de l'assurance au Maroc** :
+
+- 🔍 **Référencement National** - Première position sur les recherches clés
+- 📈 **Visibilité Accrue** - Portée nationale et internationale
+- 🎨 **Identité Visuelle Forte** - Marque reconnue et respectée
+- 💬 **Engagement Client** - Interaction continue avec nos assurés
+
+### 📞 Contactez-Nous
+
+<div align="center">
+
+**Prêt à Protéger ce qui Compte pour Vous ?**
+
+🌐 **Site Web** : [www.cpa.ma](http://www.cpa.ma)  
+📧 **Email** : contact@cpa.ma  
+📱 **Téléphone** : +212 5XX XX XX XX  
+📍 **Adresse** : Casablanca, Maroc
+
+[🚀 Obtenir un Devis Gratuit](http://www.cpa.ma) | [💬 Chat en Direct](http://www.cpa.ma) | [📞 Nous Appeler](tel:+2125XXXXXXXX)
+
+</div>
+
+### 🏅 Reconnaissance & Certifications
+
+- ✅ Agréé par les autorités marocaines de régulation
+- ✅ Membre de la FMSAR (Fédération Marocaine des Sociétés d'Assurances et de Réassurance)
+- ✅ Certifié ISO pour la qualité de service
+- ✅ Partenaire officiel des plus grandes compagnies d'assurance
+
+### 🚀 Technologie de Pointe
+
+Notre plateforme utilise les **technologies web les plus avancées** pour garantir :
+- ⚡ **Vitesse** - Site ultra-rapide avec Vite et React
+- 🔒 **Sécurité** - Protection maximale des données clients
+- 📱 **Accessibilité** - Compatible tous navigateurs et appareils
+- 🎨 **Design** - Interface moderne avec Tailwind CSS et Framer Motion
 
 ---
 

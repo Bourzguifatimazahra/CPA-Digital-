@@ -54,9 +54,9 @@ export const translations = {
 
   // Hero
   hero_badge: { fr: "Votre courtier de confiance", en: "Your trusted broker", ar: "وسيطكم الموثوق", es: "Su corredor de confianza" },
-  hero_title_1: { fr: "Une Meilleure", en: "Better", ar: "تأمين", es: "Un Mejor" },
-  hero_title_2: { fr: "Assurance", en: "Insurance", ar: "أفضل", es: "Seguro" },
-  hero_title_3: { fr: "Pour Tous", en: "For Everyone", ar: "للجميع", es: "Para Todos" },
+  hero_title_1: { fr: "Votre solution d'assurance", en: "Your tailored insurance solution", ar: "حل التأمين المخصص لك", es: "Su solución de seguro a medida" },
+  hero_title_2: { fr: "sur mesure", en: "tailored for you", ar: "مصمم خصيصًا لك", es: "personalizada" },
+  hero_title_3: { fr: "", en: "", ar: "", es: "" },
   hero_desc: {
     fr: "Découvrez nos offres d'assurance automobile, habitation, santé, prévoyance et épargne adaptées à vos besoins.",
     en: "Discover our auto, home, health, foresight and savings insurance offers tailored to your needs.",
@@ -248,7 +248,6 @@ export const translations = {
     es: "Obtenga una estimación rápida del costo de su seguro.",
   },
   calc_type: { fr: "Type d'assurance", en: "Insurance type", ar: "نوع التأمين", es: "Tipo de seguro" },
-  calc_age: { fr: "Âge", en: "Age", ar: "العمر", es: "Edad" },
   calc_value: { fr: "Valeur à assurer (DH)", en: "Value to insure (DH)", ar: "القيمة المراد تأمينها (درهم)", es: "Valor a asegurar (DH)" },
   calc_estimate: { fr: "Estimer le prix", en: "Estimate price", ar: "تقدير السعر", es: "Estimar precio" },
   calc_result: { fr: "Estimation de prime annuelle", en: "Annual premium estimate", ar: "تقدير القسط السنوي", es: "Estimación de prima anual" },
@@ -258,6 +257,16 @@ export const translations = {
   // Expertise
   expertise_badge: { fr: "Notre Expertise", en: "Our Expertise", ar: "خبرتنا", es: "Nuestra Experiencia" },
   expertise_title: { fr: "Un Savoir-Faire Reconnu", en: "Recognized Expertise", ar: "خبرة معترف بها", es: "Experiencia Reconocida" },
+
+  // Affiliations Section
+  affiliations_badge: { fr: "Nos Affiliations", en: "Our Affiliations", ar: "انتماءاتنا", es: "Nuestras Afiliaciones" },
+  affiliations_title: { fr: "Un réseau solide au niveau national et international", en: "A Solid Network at National and International Levels", ar: "شبكة قوية على المستوى الوطني والدولي", es: "Una Red Sólida a Nivel Nacional e Internacional" },
+  affiliations_intro: { fr: "CPA s'appuie sur un réseau de partenaires et d'organisations professionnelles qui renforcent son expertise et sa capacité à offrir des solutions d'assurance et de conseil de haut niveau.", en: "CPA relies on a network of partners and professional organizations that strengthen its expertise and ability to offer high-level insurance and advisory solutions.", ar: "تعتمد CPA على شبكة من الشركاء والمنظمات المهنية التي تعزز خبرتها وقدرتها على تقديم حلول تأمين واستشارات عالية المستوى.", es: "CPA se apoya en una red de socios y organizaciones profesionales que refuerzan su experiencia y capacidad para ofrecer soluciones de seguros y asesoramiento de alto nivel." },
+  affiliations_national_badge: { fr: "Niveau National", en: "National Level", ar: "المستوى الوطني", es: "Nivel Nacional" },
+  affiliations_international_badge: { fr: "Niveau International", en: "International Level", ar: "المستوى الدولي", es: "Nivel Internacional" },
+  affiliations_holmarcom_desc: { fr: "CPA est membre du groupe Holmarcom, un acteur majeur de l'économie marocaine opérant dans plusieurs secteurs stratégiques, notamment la finance, l'assurance et les services.", en: "CPA is a member of the Holmarcom group, a major player in the Moroccan economy operating in several strategic sectors, including finance, insurance and services.", ar: "CPA هي عضو في مجموعة Holmarcom، وهي لاعب رئيسي في الاقتصاد المغربي تعمل في عدة قطاعات استراتيجية، بما في ذلك التمويل والتأمين والخدمات.", es: "CPA es miembro del grupo Holmarcom, un actor importante en la economía marroquí que opera en varios sectores estratégicos, incluidos finanzas, seguros y servicios." },
+  affiliations_euaibron_desc: { fr: "Au niveau international, CPA fait partie du réseau EUAIBRON, un groupement de courtiers indépendants permettant d'offrir une expertise globale et un accompagnement pour les clients opérant à l'international.", en: "At the international level, CPA is part of the EUAIBRON network, a group of independent brokers providing global expertise and support for clients operating internationally.", ar: "على المستوى الدولي، تعد CPA جزءًا من شبكة EUAIBRON، وهي مجموعة من الوسطاء المستقلين الذين يقدمون خبرة عالمية ودعمًا للعملاء الذين يعملون دوليًا.", es: "A nivel internacional, CPA forma parte de la red EUAIBRON, un grupo de corredores independientes que ofrece experiencia global y apoyo a clientes que operan internacionalmente." },
+  affiliations_bottom_text: { fr: "Grâce à ces affiliations stratégiques, CPA bénéficie d'un réseau solide lui permettant d'accompagner ses clients au Maroc et à l'international.", en: "Thanks to these strategic affiliations, CPA benefits from a solid network that allows it to support its clients in Morocco and internationally.", ar: "بفضل هذه الانتماءات الاستراتيجية، تستفيد CPA من شبكة قوية تمكنها من دعم عملائها في المغرب ودوليًا.", es: "Gracias a estas afiliaciones estratégicas, CPA se beneficia de una red sólida que le permite acompañar a sus clientes en Marruecos e internacionalmente." },
 } as const;
 
 export type TranslationKey = keyof typeof translations;
