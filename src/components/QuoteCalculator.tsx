@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Calculator, ArrowRight, Download, MessageCircle, Mail, ExternalLink, Home } from "lucide-react";
 import jsPDF from "jspdf";
@@ -193,7 +193,7 @@ const QuoteCalculator = () => {
   };
 
   // Animation variants for enhanced framer-motion effects
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -204,7 +204,7 @@ const QuoteCalculator = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -218,7 +218,7 @@ const QuoteCalculator = () => {
     },
   };
 
-  const buttonHoverVariants = {
+  const buttonHoverVariants: Variants = {
     rest: { scale: 1 },
     hover: {
       scale: 1.05,
@@ -232,7 +232,7 @@ const QuoteCalculator = () => {
     },
   };
 
-  const pulseVariants = {
+  const pulseVariants: Variants = {
     pulse: {
       scale: [1, 1.02, 1],
       transition: {
@@ -290,15 +290,12 @@ const QuoteCalculator = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="text-center mb-8"
         >
-          <motion.a 
-            href="" 
-            target="_blank" 
+          <motion.a
+            href=""
+            target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            initial="rest"
-            whileHover="hover"
-            whileTap="tap"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 border border-primary text-primary-foreground font-bold text-base shadow-lg hover:shadow-xl transition-all group"
           >
             <ExternalLink className="w-5 h-5" />
@@ -388,7 +385,7 @@ const QuoteCalculator = () => {
             </motion.div>
             
             <a 
-              href="" 
+              href=" " 
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-bold text-base cpa-shadow hover:opacity-90 transition-opacity"

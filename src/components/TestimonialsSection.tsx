@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: "Mohamed B.", role: { fr: "Directeur Général", en: "CEO", ar: "المدير العام", es: "Director General" },
     type: { fr: "Assurance Entreprise", en: "Business Insurance", ar: "تأمين الشركات", es: "Seguro Empresarial" },
-    text: { fr: "CPA nous accompagne depuis plus de 10 ans. Leur expertise et réactivité sont remarquables.", en: "CPA has been supporting us for over 10 years. Their expertise and responsiveness are remarkable.", ar: "CPA ترافقنا منذ أكثر من 10 سنوات. خبرتهم واستجابتهم رائعة.", es: "CPA nos acompaña desde hace más de 10 años." },
+    text: { fr: "CPA nous accompagne depuis plus de 60 ans. Leur expertise et réactivité sont remarquables.", en: "CPA has been supporting us for over 60 years. Their expertise and responsiveness are remarkable.", ar: "CPA ترافقنا منذ أكثر من 60 سنوات. خبرتهم واستجابتهم رائعة.", es: "CPA nos acompaña desde hace más de 60 años." },
     rating: 5,
     photo: ceoPhoto,
   },

@@ -228,12 +228,12 @@ const ExpansionSection = () => {
               transition={{ delay: 0.5 }}
             >
               {lang === "fr" ? 
-                "Cette ouverture marque une étape stratégique majeure dans le développement national de CPA. En étendant notre présence à Tanger, nous renforçons notre engagement à accompagner nos clients sur l'ensemble du territoire marocain avec le même niveau d'excellence et de proximité qui fait notre réputation depuis plus de 10 ans." :
+                "Cette ouverture marque une étape stratégique majeure dans le développement national de CPA. En étendant notre présence à Tanger, nous renforçons notre engagement à accompagner nos clients sur l'ensemble du territoire marocain avec le même niveau d'excellence et de proximité qui fait notre réputation depuis plus de 60 ans." :
                lang === "en" ? 
-                "This opening marks a major strategic milestone in CPA's national development. By extending our presence to Tangier, we strengthen our commitment to supporting our clients throughout Morocco with the same level of excellence and proximity that has built our reputation for over 10 years." :
+                "This opening marks a major strategic milestone in CPA's national development. By extending our presence to Tangier, we strengthen our commitment to supporting our clients throughout Morocco with the same level of excellence and proximity that has built our reputation for over 60 years." :
                lang === "ar" ? 
-                "يمثل هذا الافتتاح مرحلة استراتيجية رئيسية في التطور الوطني لـ CPA. من خلال توسيع تواجدنا في طنجة، نعزز التزامنا بمرافقة عملائنا في جميع أنحاء المغرب بنفس مستوى التميز والقرب الذي بنى سمعتنا لأكثر من 10 سنوات." :
-                "Esta apertura marca un hito estratégico importante en el desarrollo nacional de CPA. Al extender nuestra presencia a Tánger, reforzamos nuestro compromiso de acompañar a nuestros clientes en todo Marruecos con el mismo nivel de excelencia y proximidad que ha construido nuestra reputación durante más de 10 años."}
+                "يمثل هذا الافتتاح مرحلة استراتيجية رئيسية في التطور الوطني لـ CPA. من خلال توسيع تواجدنا في طنجة، نعزز التزامنا بمرافقة عملائنا في جميع أنحاء المغرب بنفس مستوى التميز والقرب الذي بنى سمعتنا لأكثر من 60 سنوات." :
+                "Esta apertura marca un hito estratégico importante en el desarrollo nacional de CPA. Al extender nuestra presencia a Tánger, reforzamos nuestro compromiso de acompañar a nuestros clientes en todo Marruecos con el mismo nivel de excelencia y proximidad que ha construido nuestra reputación durante más de 60 años."}
             </motion.p>
             
             <motion.div 

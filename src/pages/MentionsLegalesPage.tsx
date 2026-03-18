@@ -40,7 +40,7 @@ const MentionsLegalesPage = () => {
                     <strong>{lang === "fr" ? "Forme juridique" : lang === "en" ? "Legal form" : "الشكل القانوني"}:</strong> S.A.
                   </p>
                   <p>
-                    <strong>{lang === "fr" ? "Capital social" : lang === "en" ? "Share capital" : "رأس المال"}:</strong> 10 000 000 DH
+                    <strong>{lang === "fr" ? "Capital social" : lang === "en" ? "Share capital" : "رأس المال"}:</strong> 5 000 000 DH
                   </p>
                   <p>
                     <strong>{lang === "fr" ? "Siège social" : lang === "en" ? "Headquarters" : "المقر الاجتماعي"}:</strong> Angle Boulevard Moulay Youssef et Boulevard Ziraoui, Complexe Moulay Youssef Work Center, 2ème Étage, Casablanca, Maroc

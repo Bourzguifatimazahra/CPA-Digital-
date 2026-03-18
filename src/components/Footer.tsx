@@ -116,33 +116,21 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Minimized bottom section with affiliations at bottom right */}
+      {/* Minimized bottom section with affiliations at bottom left */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            {/* Copyright and Legal Links - Left side */}
-            <div className="flex items-center gap-2 order-2 md:order-1">
-              <img src={cpaLogo} alt="CPA" className="w-5 h-5 brightness-0 invert" />
-              <p className="text-primary-foreground/50 text-xs">
-                © {new Date().getFullYear()} CPA – {t("footer_rights")}
-              </p>
-              <div className="flex gap-3 text-primary-foreground/50 text-xs ml-2">
-                <Link to="/mentions-legales" className="hover:text-primary-foreground transition-colors">{t("footer_legal")}</Link>
-                <Link to="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">{t("footer_privacy")}</Link>
-              </div>
-            </div>
-
-            {/* Affiliation Logos - Positioned at bottom right */}
+            {/* Affiliation Logos - Positioned at bottom left and centered vertically */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 50, y: 10 }}
+              whileInView={{ opacity: 10, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-2 order-1 md:order-2"
+              className="flex items-center justify-center gap-2"
             >
               <div className="flex items-center gap-2">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.8 }}
                   className="bg-white rounded p-1 w-12 h-8 flex items-center justify-center"
                 >
                   <img src={holmarcomLogo} alt="Holmarcom" className="w-full h-full object-contain" />
@@ -156,6 +144,18 @@ const Footer = () => {
                 </motion.div>
               </div>
             </motion.div>
+
+            {/* Copyright and Legal Links - Right side */}
+            <div className="flex items-center gap-2">
+              <img src={cpaLogo} alt="CPA" className="w-5 h-5 brightness-0 invert" />
+              <p className="text-primary-foreground/50 text-xs">
+                © {new Date().getFullYear()} CPA – {t("footer_rights")}
+              </p>
+              <div className="flex gap-3 text-primary-foreground/50 text-xs ml-2">
+                <Link to="/mentions-legales" className="hover:text-primary-foreground transition-colors">{t("footer_legal")}</Link>
+                <Link to="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">{t("footer_privacy")}</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

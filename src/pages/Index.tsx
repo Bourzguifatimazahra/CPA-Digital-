@@ -12,7 +12,6 @@ import KeyFiguresSection from "@/components/KeyFiguresSection";
 import ExpansionSection from "@/components/ExpansionSection";
 import NewInsuranceSection from "@/components/NewInsuranceSection";
 import PricingSection from "@/components/PricingSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import QuoteCalculator from "@/components/QuoteCalculator";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
@@ -48,7 +47,6 @@ const Index = () => {
           <ExpansionSection />
           <NewInsuranceSection />
           <PricingSection />
-          <TestimonialsSection />
           <QuoteCalculator />
           <PartnersSection />
           <ClientsSection />
