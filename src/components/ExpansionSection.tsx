@@ -18,7 +18,7 @@ const ExpansionSection = () => {
         ar: "15 إقامة التجميل، شارع أبي درداء، الطابق الرابع، مكتب رقم 25، ساحة الأمم، طنجة",
         es: "15 Residencia Al TAJMIL, Avenida Abi Dardae, 4º piso, Oficina n°25, Plaza de las Naciones, Tánger"
       },
-      phone: "+212 5 22 95 39 00",
+      phone: "+212 5 39 94 25 84",
       email: "info@cpa.ma",
       image: tangerImage
     },
