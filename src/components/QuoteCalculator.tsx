@@ -68,6 +68,7 @@ const QuoteCalculator = () => {
   const [currency, setCurrency] = useState("DH");
   const [result, setResult] = useState<{ min: number; max: number } | null>(null);
   const [showResult, setShowResult] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const currencyObj = currencies.find((c) => c.code === currency) || currencies[0];
 
@@ -79,12 +80,13 @@ const QuoteCalculator = () => {
     const estimated = base;
     setResult({ min: Math.round(estimated * 0.8), max: Math.round(estimated * 1.3) });
     setShowResult(true);
+    setShowForm(false);
   };
 
   const handleBack = () => {
     setShowResult(false);
     setResult(null);
-    navigate("/");
+    setShowForm(true);
   };
 
   const getConvertedAmount = (amount: number) => Math.round(amount * currencyObj.rate);
@@ -325,75 +327,87 @@ const QuoteCalculator = () => {
             {lang === "fr" ? "Retour à l'accueil" : lang === "en" ? "Back to Home" : "العودة للرئيسية"}
           </motion.button>
 
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-5">
-            <motion.div variants={itemVariants}>
-              <label className="block text-sm font-medium text-foreground mb-2">
-                {lang === "fr" ? "Type d'assurance" : lang === "en" ? "Insurance Type" : lang === "ar" ? "نوع التأمين" : "Tipo de seguro"}
-              </label>
-              <motion.select 
-                value={selectedType} 
-                onChange={(e) => { setSelectedType(e.target.value); setResult(null); setShowResult(false); }}
-                whileFocus={{ scale: 1.02 }}
-                className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all"
+          <AnimatePresence mode="wait">
+            {showForm && (
+              <motion.div 
+                variants={containerVariants} 
+                initial="hidden" 
+                animate="visible"
+                exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-5"
               >
-                {types.map((type, index) => (
-                  <option key={type.value} value={type.value}>
-                    {index === 0 ? "★ " : ""}{type.label}
-                  </option>
-                ))}
-              </motion.select>
-            </motion.div>
-
-            {/* Currency selector with enhanced animations */}
-            <motion.div variants={itemVariants}>
-              <label className="block text-sm font-medium text-foreground mb-2">
-                {lang === "fr" ? "Devise" : lang === "ar" ? "العملة" : lang === "es" ? "Moneda" : "Currency"}
-              </label>
-              <div className="flex gap-2">
-                {currencies.map((c, index) => (
-                  <motion.button
-                    key={c.code}
-                    onClick={() => { setCurrency(c.code); }}
-                    type="button"
-                    variants={buttonHoverVariants}
-                    initial="rest"
-                    whileHover="hover"
-                    whileTap="tap"
-                    custom={index}
-                    className={`flex-1 py-3 rounded-xl text-sm font-bold border transition-all ${
-                      currency === c.code 
-                        ? "cpa-gradient-bg text-primary-foreground border-transparent shadow-md" 
-                        : "bg-background text-foreground border-border hover:border-primary/40 hover:shadow-md"
-                    }`}
+                <motion.div variants={itemVariants}>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    {lang === "fr" ? "Type d'assurance" : lang === "en" ? "Insurance Type" : lang === "ar" ? "نوع التأمين" : "Tipo de seguro"}
+                  </label>
+                  <motion.select 
+                    value={selectedType} 
+                    onChange={(e) => { setSelectedType(e.target.value); setResult(null); setShowResult(false); }}
+                    whileFocus={{ scale: 1.02 }}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all"
                   >
-                    {c.label}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+                    {types.map((type, index) => (
+                      <option key={type.value} value={type.value}>
+                        {index === 0 ? "★ " : ""}{type.label}
+                      </option>
+                    ))}
+                  </motion.select>
+                </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <label className="block text-sm font-medium text-foreground mb-2">{t("calc_value")}</label>
-              <motion.input 
-                type="number" 
-                value={value} 
-                onChange={(e) => { setValue(e.target.value); setResult(null); setShowResult(false); }} 
-                placeholder="100 000"
-                whileFocus={{ scale: 1.02, borderColor: "rgb(30, 58, 138)" }}
-                className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all" 
-              />
-            </motion.div>
-            
-            <a 
-              href=" " 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-bold text-base cpa-shadow hover:opacity-90 transition-opacity"
-            >
-              <Calculator className="w-5 h-5" />
-              {t("calc_estimate")}
-            </a>
-          </motion.div>
+                {/* Currency selector with enhanced animations */}
+                <motion.div variants={itemVariants}>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    {lang === "fr" ? "Devise" : lang === "ar" ? "العملة" : lang === "es" ? "Moneda" : "Currency"}
+                  </label>
+                  <div className="flex gap-2">
+                    {currencies.map((c, index) => (
+                      <motion.button
+                        key={c.code}
+                        onClick={() => { setCurrency(c.code); }}
+                        type="button"
+                        variants={buttonHoverVariants}
+                        initial="rest"
+                        whileHover="hover"
+                        whileTap="tap"
+                        custom={index}
+                        className={`flex-1 py-3 rounded-xl text-sm font-bold border transition-all ${
+                          currency === c.code 
+                            ? "cpa-gradient-bg text-primary-foreground border-transparent shadow-md" 
+                            : "bg-background text-foreground border-border hover:border-primary/40 hover:shadow-md"
+                        }`}
+                      >
+                        {c.label}
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+
+                <motion.div variants={itemVariants}>
+                  <label className="block text-sm font-medium text-foreground mb-2">{t("calc_value")}</label>
+                  <motion.input 
+                    type="number" 
+                    value={value} 
+                    onChange={(e) => { setValue(e.target.value); setResult(null); setShowResult(false); }} 
+                    placeholder="100 000"
+                    whileFocus={{ scale: 1.02, borderColor: "rgb(30, 58, 138)" }}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all" 
+                  />
+                </motion.div>
+                 
+                <motion.button 
+                  type="button"
+                  onClick={calculate}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-bold text-base cpa-shadow hover:opacity-90 transition-opacity"
+                >
+                  <Calculator className="w-5 h-5" />
+                  {t("calc_estimate")}
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Results with enhanced animations */}
           <AnimatePresence mode="wait">

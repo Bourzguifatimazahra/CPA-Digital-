@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Globe2, MapPin, Network } from "lucide-react";
 
@@ -10,7 +10,7 @@ import euaibronLogo from "@/assets/Affiliations/euribron.png";
 const AffiliationsSection = () => {
   const { t, lang } = useLanguage();
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +20,7 @@ const AffiliationsSection = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -32,14 +32,14 @@ const AffiliationsSection = () => {
     },
   };
 
-  const cardHoverVariants = {
+  const cardHoverVariants: Variants = {
     rest: { scale: 1, y: 0 },
     hover: {
       scale: 1.02,
       y: -8,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -130,7 +130,7 @@ const AffiliationsSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* International Card - EUAIBRON */}
+          {/* International Card - EURIBRON */}
           <motion.div variants={itemVariants}>
             <motion.div
               variants={cardHoverVariants}
@@ -151,12 +151,12 @@ const AffiliationsSection = () => {
                     {t("affiliations_international_badge")}
                   </span>
                   <h3 className="text-2xl font-heading font-bold text-foreground mt-1">
-                    EUAIBRON
+                    EURIBRON
                   </h3>
                 </div>
               </div>
 
-              {/* EUAIBRON Logo */}
+              {/* EURIBRON Logo */}
               <motion.div 
                 className="mb-6 bg-white rounded-xl p-6 flex items-center justify-center h-32 cpa-shadow-sm"
                 whileHover={{ scale: 1.05 }}
@@ -164,7 +164,7 @@ const AffiliationsSection = () => {
               >
                 <img 
                   src={euaibronLogo} 
-                  alt="EUAIBRON Logo" 
+                  alt="EURIBRON Logo" 
                   className="max-w-full max-h-full object-contain"
                 />
               </motion.div>
@@ -221,7 +221,7 @@ const AffiliationsSection = () => {
             {/* Connector Line */}
             <div className="hidden md:block flex-1 h-0.5 bg-gradient-to-r from-accent/30 to-primary/30" />
 
-            {/* EUAIBRON Logo */}
+            {/* EURIBRON Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
@@ -230,7 +230,7 @@ const AffiliationsSection = () => {
               <div className="w-24 h-24 bg-white rounded-xl p-3 cpa-shadow flex items-center justify-center">
                 <img 
                   src={euaibronLogo} 
-                  alt="EUAIBRON" 
+                  alt="EURIBRON" 
                   className="w-full h-full object-contain"
                 />
               </div>

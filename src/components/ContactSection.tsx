@@ -5,12 +5,41 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const ContactSection = () => {
   const { t, lang } = useLanguage();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", insuranceType: "", message: "" });
+
+  const insuranceOptions = [
+    { value: "", label: t("contact_insurance_select") },
+    { value: "auto", label: t("ins_auto") },
+    { value: "habitation", label: t("ins_habitation") },
+    { value: "voyage", label: t("ins_voyage") },
+    { value: "sante", label: t("ins_sante") },
+    { value: "entreprise", label: t("ins_entreprise") },
+    { value: "vehicules", label: t("ins_vehicules") },
+    { value: "auto_moto", label: t("ins_auto_moto") },
+    { value: "multirisques", label: t("ins_multirisques") },
+    { value: "retraite", label: t("ins_retraite") },
+    { value: "rc", label: t("ins_rc") },
+    { value: "assistance", label: t("ins_assistance") },
+    { value: "individuelle", label: t("ins_individuelle") },
+    { value: "biens", label: t("ins_biens") },
+    { value: "personnes", label: t("ins_personnes") },
+    { value: "rc_pro", label: t("ins_rc_pro") },
+    { value: "risques_tech", label: t("ins_risques_tech") },
+    { value: "flotte", label: t("ins_flotte") },
+    { value: "transport", label: t("ins_transport") },
+    { value: "dommage", label: t("ins_dommage") },
+    { value: "pertes", label: t("ins_pertes") },
+    { value: "chantier", label: t("ins_chantier") },
+    { value: "cyber", label: t("ins_cyber") },
+    { value: "terrorisme", label: t("ins_terrorisme") },
+    { value: "epargne", label: t("ins_epargne") },
+    { value: "audit", label: t("ins_audit") },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert(t("contact_success"));
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", insuranceType: "", message: "" });
   };
 
   const infoItems = [
@@ -92,6 +121,20 @@ const ContactSection = () => {
               <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                 placeholder={t("contact_phone_ph")} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_insurance_type")}</label>
+              <select
+                value={formData.insuranceType}
+                onChange={(e) => setFormData({ ...formData, insuranceType: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+              >
+                {insuranceOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-6">
               <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_message")}</label>
