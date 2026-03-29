@@ -48,10 +48,10 @@ export const particuliersPages: ServicePageData[] = [
       es: "Cobertura de salud completa para usted y su familia. Hospitalización, cuidados habituales, óptica y dental.",
     },
     features: {
-      fr: ["Hospitalisation chirurgicale et médicale", "Soins ambulatoires", "Pharmacie et analyses", "Optique et dentaire", "Maternité", "Médecines douces", "Tiers payant", "Réseau de soins partenaire"],
-      en: ["Surgical and medical hospitalization", "Outpatient care", "Pharmacy and lab tests", "Optical and dental", "Maternity", "Alternative medicine", "Third-party payment", "Partner care network"],
-      ar: ["الاستشفاء الجراحي والطبي", "الرعاية الخارجية", "الصيدلية والتحاليل", "البصريات وطب الأسنان", "الأمومة", "الطب البديل", "الدفع من طرف ثالث", "شبكة رعاية شريكة"],
-      es: ["Hospitalización quirúrgica y médica", "Cuidados ambulatorios", "Farmacia y análisis", "Óptica y dental", "Maternidad", "Medicinas alternativas", "Pago por terceros", "Red de atención asociada"],
+      fr: ["Assurances maladie","Hospitalisation chirurgicale et médicale (nationale et internationale)", "Soins ambulatoires", "Pharmacie et analyses", "Optique et dentaire", "Maternité", "Médecines douces (ostéopathie, Acupuncture,Chiropraxie...)", "Tiers payant", "Réseau de soins partenaire"],
+      en: ["Health insurance","Inpatient and outpatient surgical and medical care (national and international)", "Outpatient care", "Pharmacy and laboratory tests", "Optical and dental care", "Maternity", "Alternative medicine (osteopathy, acupuncture, chiropractic...)", "Third-party payment", "Partner healthcare network"],
+      ar: ["التأمين الصحي","الاستشفاء الجراحي والطبي (وطني ودولي)", "الرعاية الخارجية", "الصيدلة والتحاليل", "النظارات وطب الأسنان", "الولادة", "الطب البديل (تقويم العظام، الوخز بالإبر ...)", "الدفع من طرف الغير", "شبكة الرعاية الصحية الشريكة"],
+      es: ["Seguro de enfermedad","Hospitalización quirúrgica y médica (nacional e internacional)", "Atención ambulatoria", "Farmacia y análisis", "Óptica y dental", "Maternidad", "Medicinas alternativas (osteopatía, acupuntura, quiropraxia...)", "Pago directo o tercero pagador", "Red de atención médica asociada"],
     },
     details: {
       fr: "Avec notre assurance santé, bénéficiez d'une couverture optimale pour l'ensemble de vos frais médicaux. Nos formules s'adaptent à votre situation familiale et à votre budget, tout en vous garantissant un accès aux meilleurs soins. Profitez du tiers payant dans notre réseau de partenaires et d'un remboursement rapide de vos frais de santé.",
@@ -72,7 +72,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Proteja su hogar y sus bienes contra todos los riesgos cotidianos.",
     },
     features: {
-      fr: ["Incendie et explosion", "Dégâts des eaux", "Vol et vandalisme", "Bris de glaces", "Catastrophes naturelles", "Responsabilité civile vie privée", "Protection juridique", "Dommages électriques"],
+      fr: ["Incendie et explosion", "Dégâts des eaux", "Vol et vandalisme", "Bris de glaces", "Catastrophes naturelles", "Responsabilité civile vie privée", "Protection juridique", "Dommages électriques", "Accidents du travail (femme de ménage, chauffeur...)"],
       en: ["Fire and explosion", "Water damage", "Theft and vandalism", "Glass breakage", "Natural disasters", "Private liability", "Legal protection", "Electrical damage"],
       ar: ["حريق وانفجار", "أضرار المياه", "سرقة وتخريب", "كسر الزجاج", "كوارث طبيعية", "مسؤولية مدنية خاصة", "حماية قانونية", "أضرار كهربائية"],
       es: ["Incendio y explosión", "Daños por agua", "Robo y vandalismo", "Rotura de cristales", "Catástrofes naturales", "RC vida privada", "Protección jurídica", "Daños eléctricos"],

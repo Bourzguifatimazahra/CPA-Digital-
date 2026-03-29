@@ -206,6 +206,7 @@ export const translations = {
 
   // Chatbot
   chat_assistant_title: { fr: "Assistant CPA", en: "CPA Assistant", ar: "مساعد CPA", es: "Asistente CPA" },
+  chat_whatsapp: { fr: "Contacter via WhatsApp", en: "Contact via WhatsApp", ar: "تواصل عبر واتساب", es: "Contactar por WhatsApp" },
   chat_greeting: {
     fr: "Bonjour ! 👋 Je suis l'assistant CPA. Comment puis-je vous aider ?",
     en: "Hello! 👋 I'm the CPA assistant. How can I help you?",

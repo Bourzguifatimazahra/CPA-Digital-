@@ -1,19 +1,21 @@
 import { motion } from "framer-motion";
-import { Car, Home, HeartPulse, Shield, Briefcase, PiggyBank, HardHat, Zap } from "lucide-react";
+import { Anchor, Car, Home, HeartPulse, Shield, Briefcase, PiggyBank, HardHat, Zap } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const servicesData: Record<string, { icon: typeof Car; title: string; description: string }[]> = {
+const servicesData: Record<string, { icon: typeof Anchor; title: string; description: string }[]> = {
   fr: [
     { icon: Car, title: "Assurance Automobile", description: "Le meilleur rapport qualité/prix pour protéger votre véhicule avec des garanties complètes." },
+    { icon: Briefcase, title: "Accidents de Travail", description: "Assurance obligatoire pour les entreprises, protégez vos collaborateurs." },
     { icon: Home, title: "Multirisque Habitation", description: "Protection contre le vol, l'incendie, les dégâts des eaux et bien plus encore." },
+    { icon: Anchor, title: "Assurance Maritime", description: "Protection complète pour vos navires, cargaisons et activités maritimes avec des garanties adaptées." },
     { icon: HeartPulse, title: "Prévoyance & Santé", description: "Couverture complète en cas de maladie ou d'accident pour vous et votre famille." },
     { icon: Shield, title: "Assistance", description: "Des solutions qui vous permettent de protéger votre avenir et celui de votre famille." },
-    { icon: Briefcase, title: "Accidents de Travail", description: "Assurance obligatoire pour les entreprises, protégez vos collaborateurs." },
     { icon: PiggyBank, title: "Épargne", description: "Solutions d'épargne et de capitalisation pour protéger et faire fructifier votre avenir." },
     { icon: HardHat, title: "Construction", description: "Couverture complète des chantiers, responsabilité civile décennale et tous risques." },
     { icon: Zap, title: "Cyber Risques", description: "Protégez vos données numériques et votre entreprise contre les menaces cyber." },
   ],
   en: [
+    { icon: Anchor, title: "Maritime Insurance", description: "Complete protection for your vessels, cargo and maritime activities with tailored coverage." },
     { icon: Car, title: "Auto Insurance", description: "Best value to protect your vehicle with comprehensive coverage." },
     { icon: Home, title: "Home Multi-Risk", description: "Protection against theft, fire, water damage and more." },
     { icon: HeartPulse, title: "Health & Foresight", description: "Complete coverage for illness or accident for you and your family." },
@@ -24,9 +26,10 @@ const servicesData: Record<string, { icon: typeof Car; title: string; descriptio
     { icon: Zap, title: "Cyber Risks", description: "Protect your digital data and business against cyber threats." },
   ],
   ar: [
+    { icon: Anchor, title: "التأمين البحري", description: "حماية شاملة لسفنك وبضائعك وأنشطتك البحرية بتغطية مخصصة." },
     { icon: Car, title: "تأمين السيارات", description: "أفضل قيمة لحماية سيارتك بتغطية شاملة." },
-    { icon: Home, title: "تأمين المنزل", description: "الحماية ضد السرقة والحريق وأضرار المياه." },
-    { icon: HeartPulse, title: "الصحة والتأمين التكميلي", description: "تغطية شاملة في حالة المرض أو الحادث." },
+    { icon: Home, title: "تأمين المنزل متعدد المخاطر", description: "الحماية ضد السرقة والحريق وأضرار المياه." },
+    { icon: HeartPulse, title: "التأمين الصحي", description: "تغطية شاملة في حالة المرض أو الحادث." },
     { icon: Shield, title: "المساعدة", description: "حلول لحماية مستقبلك ومستقبل عائلتك." },
     { icon: Briefcase, title: "حوادث العمل", description: "تأمين إلزامي للشركات." },
     { icon: PiggyBank, title: "الادخار", description: "حلول ادخار لحماية وتنمية مستقبلك." },
@@ -34,6 +37,7 @@ const servicesData: Record<string, { icon: typeof Car; title: string; descriptio
     { icon: Zap, title: "المخاطر السيبرانية", description: "احمِ بياناتك الرقمية وشركتك." },
   ],
   es: [
+    { icon: Anchor, title: "Seguro Marítimo", description: "Protección completa para sus barcos, carga y actividades marítimas." },
     { icon: Car, title: "Seguro de Auto", description: "La mejor relación calidad/precio para proteger su vehículo." },
     { icon: Home, title: "Multirriesgo Hogar", description: "Protección contra robo, incendio, daños por agua y más." },
     { icon: HeartPulse, title: "Salud y Previsión", description: "Cobertura completa en caso de enfermedad o accidente." },
@@ -79,7 +83,7 @@ const ServicesSection = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
