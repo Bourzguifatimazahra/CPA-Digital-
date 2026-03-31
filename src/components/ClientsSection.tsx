@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 // Import all client logos
-import aeveaLogo from "@/assets/clients/aevea.png";
 import agrotecLogo from "@/assets/clients/agrotec.png";
 import airarabiaLogo from "@/assets/clients/airarabia.png";
 import americanaLogo from "@/assets/clients/americana.png";
@@ -51,6 +50,8 @@ import yellowrockLogo from "@/assets/clients/yellowrock.png";
 import jpsLogo from "@/assets/clients/jps.png";
 import pkflogo from "@/assets/clients/pkf.png";
 import olaLogo from "@/assets/clients/ola.png";
+import badeelLogo from "@/assets/clients/Badeel.png";
+import voeralLogo from "@/assets/clients/Voeral.jpeg";
 
 const clients = [
   { name: "Americana Restaurants", logo: americanaLogo },
@@ -83,7 +84,6 @@ const clients = [
   { name: "Fadesol", logo: fadesolLogo },
   { name: "Umel", logo: umelLogo },
   { name: "Coca-Cola", logo: cocacolaLogo },
-  { name: "AEVEA", logo: aeveaLogo },
   { name: "Aquamag", logo: aquamagLogo },
   { name: "B.C.M.A", logo: bcmaLogo },
   { name: "Chaabane", logo: chaabaneLogo },
@@ -102,13 +102,15 @@ const clients = [
   { name: "ola", logo: olaLogo },
   { name: "pkf", logo: pkflogo },
   { name: "jps", logo: jpsLogo },
+  { name: "Badeel", logo: badeelLogo },
+  { name: "Voeral", logo: voeralLogo },
 ];
 
 const ClientsSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section id="clients" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,7 +122,7 @@ const ClientsSection = () => {
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mt-3 mb-4">{t("clients_title")}</h2>
         </motion.div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-3 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-10 gap-2 max-w-7xl mx-auto">
           {clients.map((client, i) => (
             <motion.div
               key={client.name}
@@ -128,7 +130,7 @@ const ClientsSection = () => {
               whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ 
-                delay: (i % 18) * 0.05,
+                delay: (i % 10) * 0.02,
                 duration: 0.6,
                 type: "spring",
                 stiffness: 100
@@ -145,7 +147,7 @@ const ClientsSection = () => {
             >
               {/* Front of card - Logo */}
               <div 
-                className="absolute inset-0 bg-card rounded-lg border border-border p-3 flex items-center justify-center cpa-shadow hover:cpa-shadow-lg hover:border-primary/50 transition-all"
+                className="absolute inset-0 bg-card rounded border border-border p-1.5 flex items-center justify-center cpa-shadow hover:cpa-shadow-lg hover:border-primary/50 transition-all"
                 style={{ 
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden"
@@ -161,14 +163,14 @@ const ClientsSection = () => {
               
               {/* Back of card - Name */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-primary/90 to-accent/90 rounded-lg border border-primary p-3 flex items-center justify-center cpa-shadow-lg"
+                className="absolute inset-0 bg-gradient-to-br from-primary/90 to-accent/90 rounded border border-primary p-1 flex items-center justify-center cpa-shadow-lg"
                 style={{ 
                   backfaceVisibility: "hidden",
                   WebkitBackfaceVisibility: "hidden",
                   transform: "rotateY(180deg)"
                 }}
               >
-                <p className="text-white text-center text-xs sm:text-sm font-semibold leading-tight">
+                <p className="text-white text-center text-[8px] sm:text-[10px] font-semibold leading-tight">
                   {client.name}
                 </p>
               </div>

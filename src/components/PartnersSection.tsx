@@ -40,7 +40,7 @@ const PartnersSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 bg-muted/50 overflow-hidden">
+    <section id="partenaires" className="py-16 bg-muted/50 overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

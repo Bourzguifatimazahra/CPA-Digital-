@@ -63,8 +63,17 @@ const Navbar = () => {
     {
       label: t("nav_about"), href: "/#apropos",
       children: [
+        { label: t("nav_services"), href: "/#services" },
         { label: t("nav_who"), href: "/#apropos" },
         { label: t("nav_values"), href: "/#valeurs" },
+        { label: t("nav_expertise_item"), href: "/#expertise" },
+        { label: t("nav_keyfigures"), href: "/#chiffres-cles" },
+        { label: t("nav_expansion"), href: "/#expansion" },
+        { label: t("nav_news"), href: "/#nouveautes" },
+        { label: t("nav_insurances"), href: "/#services" },
+        { label: t("nav_partners"), href: "/#partenaires" },
+        { label: t("nav_clients"), href: "/#clients" },
+        { label: t("nav_affiliations"), href: "/#affiliations" },
       ],
     },
     {
@@ -99,6 +108,9 @@ const Navbar = () => {
     },
     {
       label: t("nav_expertise"), href: "/expertise",
+    },
+    {
+      label: t("nav_catalog"), href: "/catalog",
     },
     { label: t("nav_contact"), href: "/contact" },
   ];

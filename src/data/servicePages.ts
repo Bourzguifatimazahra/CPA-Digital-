@@ -24,10 +24,10 @@ export const particuliersPages: ServicePageData[] = [
       es: "Protección completa para su automóvil y moto. Responsabilidad civil, todo riesgo, asistencia y más.",
     },
     features: {
-      fr: ["Responsabilité civile obligatoire", "Garantie tous risques", "Assistance 24h/24 et 7j/7", "Protection du conducteur", "Vol et incendie", "Bris de glaces", "Véhicule de remplacement", "Protection juridique"],
-      en: ["Mandatory liability", "All-risk coverage", "24/7 assistance", "Driver protection", "Theft and fire", "Glass breakage", "Replacement vehicle", "Legal protection"],
-      ar: ["المسؤولية المدنية الإلزامية", "تغطية جميع المخاطر", "مساعدة على مدار الساعة", "حماية السائق", "سرقة وحريق", "كسر الزجاج", "سيارة بديلة", "حماية قانونية"],
-      es: ["Responsabilidad civil obligatoria", "Cobertura todo riesgo", "Asistencia 24/7", "Protección del conductor", "Robo e incendio", "Rotura de cristales", "Vehículo de sustitución", "Protección jurídica"],
+      fr: ["Responsabilité civile obligatoire", "Garantie tous risques", "Assistance 24h/24 et 7j/7", "Protection du conducteur", "Vol et incendie", "Bris de glaces", "Véhicule de remplacement", "Protection juridique", "Dommages collision"],
+      en: ["Mandatory liability", "All-risk coverage", "24/7 assistance", "Driver protection", "Theft and fire", "Glass breakage", "Replacement vehicle", "Legal protection" ,"Collision Damage"],
+      ar: ["المسؤولية المدنية الإلزامية", "تغطية جميع المخاطر", "مساعدة على مدار الساعة", "حماية السائق", "سرقة وحريق", "كسر الزجاج", "سيارة بديلة", "حماية قانونية" , "أضرار التصادم" ],
+      es: ["Responsabilidad civil obligatoria", "Cobertura todo riesgo", "Asistencia 24/7", "Protección del conductor", "Robo e incendio", "Rotura de cristales", "Vehículo de sustitución", "Protección jurídica" , "Daños por colisión"],
     },
     details: {
       fr: "Notre assurance véhicules couvre l'ensemble de vos besoins en matière de mobilité. Que vous conduisiez une voiture, une moto ou un utilitaire, nous vous proposons des formules adaptées avec les meilleures garanties du marché. Bénéficiez d'une assistance dépannage disponible 24h/24, d'une indemnisation rapide en cas de sinistre et d'un accompagnement personnalisé tout au long de la vie de votre contrat.",

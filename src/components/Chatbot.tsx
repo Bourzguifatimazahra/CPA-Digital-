@@ -3,9 +3,206 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
+import chatbotGif from "@/assets/chatbot.gif";
 
 const WHATSAPP_NUMBER = "212522953900";
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
+
+// Page context types for page-specific ads
+export type PageContext = 
+  | 'home' 
+  | 'particuliers' 
+  | 'entreprises' 
+  | 'expertise' 
+  | 'contact'
+  | 'auto' 
+  | 'habitation' 
+  | 'sante' 
+  | 'epargne' 
+  | 'prevoyance'
+  | 'travail' 
+  | 'construction' 
+  | 'transport' 
+  | 'cyber' 
+  | 'flotte'
+  | 'trottinette'
+  | 'animaux'
+  | 'mentions-legales'
+  | 'politique-confidentialite'
+  | 'catalog'
+  | 'service';
+
+// Page-specific ads configuration
+const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; text: string; titleEn: string; titleAr: string; titleEs: string; textEn: string; textAr: string; textEs: string }>> = {
+  home: [
+    { icon: "🏠", title: "Assurance Habitation", titleEn: "Home Insurance", titleAr: "تأمين المنزل", titleEs: "Seguro de Hogar", text: "Protégez votre foyer", textEn: "Protect your home", textAr: "احمِ منزلك", textEs: "Protege tu hogar" },
+    { icon: "🚗", title: "Assurance Auto", titleEn: "Auto Insurance", titleAr: "تأمين السيارات", titleEs: "Seguro de Auto", text: "Devis gratuit", textEn: "Free quote", textAr: "عرض سعر مجاني", textEs: "Presupuesto gratis" },
+    { icon: "❤️", title: "Assurance Santé", titleEn: "Health Insurance", titleAr: "التأمين الصحي", titleEs: "Seguro de Salud", text: "Meilleur coverage", textEn: "Best coverage", textAr: "أفضل تغطية", textEs: "Mejor cobertura" },
+    { icon: "🏢", title: "Assurance Entreprise", titleEn: "Business Insurance", titleAr: "تأمين الشركات", titleEs: "Seguro de Empresa", text: "Solutions pro", textEn: "Pro solutions", textAr: "حلول احترافية", textEs: "Soluciones pro" },
+    { icon: "🔒", title: "Bienvenue!", titleEn: "Welcome!", titleAr: "مرحباً!", titleEs: "¡Bienvenido!", text: "CPA à votre service", textEn: "CPA at your service", textAr: "CPA في خدمتك", textEs: "CPA a tu servicio" },
+    { icon: "✨", title: "Promotions", titleEn: "Promotions", titleAr: "عروض خاصة", titleEs: "Promociones", text: "-20% sur auto", textEn: "-20% on auto", textAr: "-20% على السيارات", textEs: "-20% en auto" },
+  ],
+  particuliers: [
+    { icon: "🚗", title: "Assurance Auto", titleEn: "Auto Insurance", titleAr: "تأمين السيارات", titleEs: "Seguro de Auto", text: "Devis gratuit", textEn: "Free quote", textAr: "عرض سعر مجاني", textEs: "Presupuesto gratis" },
+    { icon: "🏠", title: "Assurance Habitation", titleEn: "Home Insurance", titleAr: "تأمين المنزل", titleEs: "Seguro de Hogar", text: "Protégez votre foyer", textEn: "Protect your home", textAr: "احمِ منزلك", textEs: "Protege tu hogar" },
+    { icon: "❤️", title: "Assurance Santé", titleEn: "Health Insurance", titleAr: "التأمين الصحي", titleEs: "Seguro de Salud", text: "Meilleur coverage", textEn: "Best coverage", textAr: "أفضل تغطية", textEs: "Mejor cobertura" },
+    { icon: "🏥", title: "Assurance Vie", titleEn: "Life Insurance", titleAr: "تأمين الحياة", titleEs: "Seguro de Vida", text: "Épargnez demain", textEn: "Save for tomorrow", textAr: "ادخر للغد", textEs: "Ahorra para mañana" },
+    { icon: "🐾", title: "Assurance Animaux", titleEn: "Pet Insurance", titleAr: "تأمين الحيوانات", titleEs: "Seguro de Mascotas", text: "Protégez vos pets", textEn: "Protect your pets", textAr: "احمِ حيواناتك", textEs: "Protege tus mascotas" },
+    { icon: "🛴", title: "Trottinette Électrique", titleEn: "Electric Scooter", titleAr: "سكوتر كهربائي", titleEs: "Patinete Eléctrico", text: "Nouvelle protection", textEn: "New protection", textAr: "حماية جديدة", textEs: "Nueva protección" },
+  ],
+  entreprises: [
+    { icon: "🏢", title: "RC Professionnelle", titleEn: "Professional Liability", titleAr: "المسؤولية المهنية", titleEs: "RC Profesional", text: "Protection complète", textEn: "Complete protection", textAr: "حماية كاملة", textEs: "Protección completa" },
+    { icon: "⚙️", title: "Accidents de Travail", titleEn: "Work Accidents", titleAr: "حوادث العمل", titleEs: "Accidentes Laborales", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+    { icon: "🔒", title: "Cyber Risques", titleEn: "Cyber Risks", titleAr: "مخاطر الإنترنت", titleEs: "Riesgos Cibernéticos", text: "Protection digitale", textEn: "Digital protection", textAr: "حماية رقمية", textEs: "Protección digital" },
+    { icon: "🚗", title: "Flotte Auto", titleEn: "Auto Fleet", titleAr: "أسطول السيارات", titleEs: "Flota de Autos", text: "-15% pour 5+", textEn: "-15% for 5+", textAr: "-15% لـ 5+", textEs: "-15% para 5+" },
+    { icon: "🏗️", title: "Construction", titleEn: "Construction", titleAr: "البناء", titleEs: "Construcción", text: "Garantie décennale", textEn: "10-year warranty", textAr: "ضمان 10 سنوات", textEs: "Garantía 10 años" },
+    { icon: "🚢", title: "Transport Maritime", titleEn: "Marine Transport", titleAr: "النقل البحري", titleEs: "Transporte Marítimo", text: "Couverture globale", textEn: "Global coverage", textAr: "تغطية شاملة", textEs: "Cobertura global" },
+  ],
+  expertise: [
+    { icon: "🎯", title: "Courtier Expert", titleEn: "Expert Broker", titleAr: "وسيط خبير", titleEs: "Corredor Experto", text: "Depuis 1957", textEn: "Since 1957", textAr: "منذ 1957", textEs: "Desde 1957" },
+    { icon: "⭐", title: "Meilleur Service", titleEn: "Best Service", titleAr: "أفضل خدمة", titleEs: "Mejor Servicio", text: "Client au cœur", textEn: "Client at heart", textAr: "العميل أولاً", textEs: "Cliente primero" },
+    { icon: "🤝", title: "Partenaires", titleEn: "Partners", titleAr: "شركاء", titleEs: "Socios", text: "10+ compagnies", textEn: "10+ companies", textAr: "10+ شركات", textEs: "10+ compañías" },
+    { icon: "💼", title: "Conseil Gratuit", titleEn: "Free Advice", titleAr: "استشارة مجانية", titleEs: "Asesoría Gratis", text: "Sans engagement", textEn: "No obligation", textAr: "بدون التزام", textEs: "Sin compromiso" },
+    { icon: "🛡️", title: "Suivi Sinistres", titleEn: "Claims Follow-up", titleAr: "متابعة المطالبات", titleEs: "Seguimiento Siniestros", text: "À vos côtés", textEn: "By your side", textAr: "بجانبك", textEs: "A tu lado" },
+    { icon: "⚡", title: "Réactivité", titleEn: "Responsiveness", titleAr: "الاستجابة", titleEs: "Rapidez", text: "Réponse 24h", textEn: "24h response", textAr: "استجابة 24 ساعة", textEs: "Respuesta 24h" },
+  ],
+  contact: [
+    { icon: "📞", title: "Appelez-nous", titleEn: "Call us", titleAr: "اتصل بنا", titleEs: "Llámanos", text: "+212 5 22 95 39 00", textEn: "+212 5 22 95 39 00", textAr: "+212 5 22 95 39 00", textEs: "+212 5 22 95 39 00" },
+    { icon: "✉️", title: "Email", titleEn: "Email", titleAr: "البريد الإلكتروني", titleEs: "Correo", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+    { icon: "📍", title: "Casablanca", titleEn: "Casablanca", titleAr: "الدار البيضاء", titleEs: "Casablanca", text: "Siège CPA", textEn: "CPA Headquarters", textAr: "مقر CPA", textEs: "Sede CPA" },
+    { icon: "⏰", title: "Horaires", titleEn: "Hours", titleAr: "ساعات العمل", titleEs: "Horarios", text: "Lun-Ven 8h30-18h", textEn: "Mon-Fri 8:30-18h", textAr: "الإثنين-الجمعة 8:30-18", textEs: "Lun-Vie 8:30-18h" },
+    { icon: "💬", title: "WhatsApp", titleEn: "WhatsApp", titleAr: "واتساب", titleEs: "WhatsApp", text: "Contact rapide", textEn: "Quick contact", textAr: "اتصال سريع", textEs: "Contacto rápido" },
+    { icon: "📋", title: "Devis Gratuit", titleEn: "Free Quote", titleAr: "عرض سعر مجاني", titleEs: "Presupuesto Gratis", text: "Sans engagement", textEn: "No obligation", textAr: "بدون التزام", textEs: "Sin compromiso" },
+  ],
+  auto: [
+    { icon: "🚗", title: "RC Obligatoire", titleEn: "Mandatory Liability", titleAr: "المسؤولية المدنية الإلزامية", titleEs: "RC Obligatorio", text: "Au Maroc", textEn: "In Morocco", textAr: "في المغرب", textEs: "En Marruecos" },
+    { icon: "🛡️", title: "Tous Risques", titleEn: "Full Coverage", titleAr: "تغطية شاملة", titleEs: "Todo Riesgo", text: "Protection max", textEn: "Max protection", textAr: "أقصى حماية", textEs: "Protección máx" },
+    { icon: "🔥", title: "Incendie & Vol", titleEn: "Fire & Theft", titleAr: "حريق وسرقة", titleEs: "Incendio y Robo", text: "Sécurisez", textEn: "Secure it", textAr: "احمِ سيارتك", textEs: "Asegúralo" },
+    { icon: "👤", title: "Conducteur", titleEn: "Driver", titleAr: "السائق", titleEs: "Conductor", text: "Protection incluse", textEn: "Protection included", textAr: "حماية مشمولة", textEs: "Protección incluida" },
+    { icon: "🚗", title: "Flotte Auto", titleEn: "Auto Fleet", titleAr: "أسطول السيارات", titleEs: "Flota de Autos", text: "5+ véhicules -15%", textEn: "5+ vehicles -15%", textAr: "5+ مركبات -15%", textEs: "5+ vehículos -15%" },
+    { icon: "🛵", title: "Trottinette Électrique", titleEn: "Electric Scooter", titleAr: "سكوتر كهربائي", titleEs: "Patinete Eléctrico", text: "Nouvelle coverage", textEn: "New coverage", textAr: "تغطية جديدة", textEs: "Nueva cobertura" },
+  ],
+  habitation: [
+    { icon: "🏠", title: "Vol & Incendie", titleEn: "Theft & Fire", titleAr: "سرقة وحريق", titleEs: "Robo e Incendio", text: "Protégez", textEn: "Protect", textAr: "احمِ", textEs: "Protege" },
+    { icon: "💧", title: "Dégâts des Eaux", titleEn: "Water Damage", titleAr: "أضرار المياه", titleEs: "Daños por Agua", text: "Couvert", textEn: "Covered", textAr: "مشمول", textEs: "Cubierto" },
+    { icon: "🌊", title: "Catastrophes", titleEn: "Disasters", titleAr: "كوارث", titleEs: "Catástrofes", text: "Naturelles", textEn: "Natural", textAr: "طبيعية", textEs: "Naturales" },
+    { icon: "👥", title: "RC Vie Privée", titleEn: "Privacy Liability", titleAr: "مسؤولية خاصة", titleEs: "RC Vida Privada", text: "Familiale", textEn: "Family", textAr: "عائلي", textEs: "Familiar" },
+    { icon: "🔧", title: "Assistance", titleEn: "Assistance", titleAr: "مساعدة", titleEs: "Asistencia", text: "Dépannage 24h", textEn: "24h repair", textAr: "إصلاح 24 ساعة", textEs: "Reparación 24h" },
+    { icon: "💰", title: "Prix Compétitif", titleEn: "Competitive Price", titleAr: "سعر تنافسي", titleEs: "Precio Competitivo", text: "Devis gratuit", textEn: "Free quote", textAr: "عرض سعر مجاني", textEs: "Presupuesto gratis" },
+  ],
+  sante: [
+    { icon: "🏥", title: "Remboursement", titleEn: "Reimbursement", titleAr: "تعويض", titleEs: "Reembolso", text: "Frais médicaux", textEn: "Medical expenses", textAr: "نفقات طبية", textEs: "Gastos médicos" },
+    { icon: "🦷", title: "Dentaire & Optique", titleEn: "Dental & Optical", titleAr: "أسنان وبصريات", titleEs: "Dental y Óptica", text: "Inclus", textEn: "Included", textAr: "مشمول", textEs: "Incluido" },
+    { icon: "👨‍👩‍👧‍👦", title: "Famille", titleEn: "Family", titleAr: "عائلة", titleEs: "Familia", text: "Covers all", textEn: "Covers all", textAr: "تغطي الجميع", textEs: "Cubre a todos" },
+    { icon: "🏢", title: "Groupe Entreprise", titleEn: "Group Business", titleAr: "مجموعة شركات", titleEs: "Grupo Empresa", text: "Tarifs preferentiels", textEn: "Preferential rates", textAr: "أسعار تفضيلية", textEs: "Tarifas preferenciales" },
+    { icon: "💊", title: "Pharmacie", titleEn: "Pharmacy", titleAr: "صيدلية", titleEs: "Farmacia", text: "Remboursement med", textEn: "Reimbursement med", textAr: "تعويض طبي", textEs: "Reembolso médico" },
+    { icon: "🚑", title: "Hospitalisation", titleEn: "Hospitalization", titleAr: "مستشفى", titleEs: "Hospitalización", text: "Frais couverts", textEn: "Expenses covered", textAr: "نفقات مشمولة", textEs: "Gastos cubiertos" },
+  ],
+  epargne: [
+    { icon: "💰", title: "Épargne Vie", titleEn: "Life Savings", titleAr: "ادخار الحياة", titleEs: "Ahorro Vida", text: "Fiscalité avantageuse", textEn: "Tax advantages", textAr: "مزايا ضريبية", textEs: "Ventajas fiscales" },
+    { icon: "📈", title: "Rendement", titleEn: "Returns", titleAr: "عائد", titleEs: "Rendimiento", text: "Croissance", textEn: "Growth", textAr: "نمو", textEs: "Crecimiento" },
+    { icon: "🛡️", title: "Capital", titleEn: "Capital", titleAr: "رأس المال", titleEs: "Capital", text: "Garantie", textEn: "Guaranteed", textAr: "مضمون", textEs: "Garantizado" },
+    { icon: "📅", title: "Durée Flexible", titleEn: "Flexible Duration", titleAr: "مدة مرنة", titleEs: "Duración Flexible", text: "Selon vos besoins", textEn: "As needed", textAr: "حسب احتياجاتك", textEs: "Según tus necesidades" },
+    { icon: "🎁", title: "Avantages", titleEn: "Benefits", titleAr: "مزايا", titleEs: "Beneficios", text: "Multiples", textEn: "Multiple", textAr: "متعددة", textEs: "Múltiples" },
+    { icon: "💎", title: "Capital Différé", titleEn: "Deferred Capital", titleAr: "رأس المال المؤجل", titleEs: "Capital Diferido", text: "Option retraite", textEn: "Retirement option", textAr: "خيار التقاعد", textEs: "Opción jubilación" },
+  ],
+  prevoyance: [
+    { icon: "🛡️", title: "Prévoyance", titleEn: "Foresight", titleAr: "التأمين التكميلي", titleEs: "Previsión", text: "Protection famille", textEn: "Family protection", textAr: "حماية العائلة", textEs: "Protección familia" },
+    { icon: "👨‍👩‍👧‍👦", title: "Garantie Décès", titleEn: "Death Benefit", titleAr: "ضمان الوفاة", titleEs: "Garantía Deceso", text: "Securité", textEn: "Security", textAr: "أمان", textEs: "Seguridad" },
+    { icon: "💼", title: "PTIA", titleEn: "PTIA", titleAr: "عجز كلي", titleEs: "Invalidez Total", text: "Incapacité totale", textEn: "Total disability", textAr: "عجز كلي", textEs: "Invalidez total" },
+    { icon: "🏥", title: "Frais Funéraires", titleEn: "Funeral Expenses", titleAr: "نفقات الجنازة", titleEs: "Gastos Funerarios", text: "Prise en charge", textEn: "Coverage", textAr: "تغطية", textEs: "Cobertura" },
+    { icon: "💰", title: "Rente", titleEn: "Annuity", titleAr: "معاش", titleEs: "Renta", text: "Conjoint survivant", textEn: "Surviving spouse", textAr: "الزوج الباقي", textEs: "Cónyuge superviviente" },
+    { icon: "📋", title: "Personnalisable", titleEn: "Customizable", titleAr: "قابل للتخصيص", titleEs: "Personalizable", text: "Adapté à vous", textEn: "Adapted to you", textAr: "مناسب لك", textEs: "Adaptado a ti" },
+  ],
+  travail: [
+    { icon: "⚙️", title: "AT/MP", titleEn: "Work Accidents", titleAr: "حوادث العمل", titleEs: "Accidentes Laborales", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+    { icon: "🏢", title: "Entreprises", titleEn: "Businesses", titleAr: "شركات", titleEs: "Empresas", text: "Toutes tailles", textEn: "All sizes", textAr: "جميع الأحجام", textEs: "Todos los tamaños" },
+    { icon: "👷", title: "Salariés", titleEn: "Employees", titleAr: "موظفين", titleEs: "Empleados", text: "Protégés", textEn: "Protected", textAr: "محميون", textEs: "Protegidos" },
+    { icon: "🏥", title: "Soins", titleEn: "Care", titleAr: "رعاية", titleEs: "Cuidado", text: "Couverts", textEn: "Covered", textAr: "مشمولون", textEs: "Cubiertos" },
+    { icon: "💰", title: "Indemnités", titleEn: "Compensation", titleAr: "تعويضات", titleEs: "Indemnizaciones", text: "Journalières", textEn: "Daily", textAr: "يومية", textEs: "Diarias" },
+    { icon: "📋", title: "Conformité", titleEn: "Compliance", titleAr: "امتثال", titleEs: "Conformidad", text: "Légale", textEn: "Legal", textAr: "قانوني", textEs: "Legal" },
+  ],
+  construction: [
+    { icon: "🏗️", title: "Dommage Ouvrage", titleEn: "Damage to Work", titleAr: "أضرار العمل", titleEs: "Daño Obra", text: "Garantie 10 ans", textEn: "10-year warranty", textAr: "ضمان 10 سنوات", textEs: "Garantía 10 años" },
+    { icon: "👷", title: "RC Professionnelle", titleEn: "Professional Liability", titleAr: "المسؤولية المهنية", titleEs: "RC Profesional", text: "BTP & Architectes", textEn: "Construction & Architects", textAr: "بناء ومهندسون", textEs: "Construcción y Arquitectos" },
+    { icon: "🏭", title: "Matériel", titleEn: "Equipment", titleAr: "معدات", titleEs: "Material", text: "Couvert", textEn: "Covered", textAr: "مشمول", textEs: "Cubierto" },
+    { icon: "👥", title: "Tiers", titleEn: "Third Parties", titleAr: "أطراف ثالثة", titleEs: "Terceros", text: "Protection", textEn: "Protection", textAr: "حماية", textEs: "Protección" },
+    { icon: "📋", title: "Multirisque", titleEn: "Multi-risk", titleAr: "متعدد المخاطر", titleEs: "Multiriesgo", text: "Complet", textEn: "Complete", textAr: "كامل", textEs: "Completo" },
+    { icon: "⚡", title: "Garantie Prolongée", titleEn: "Extended Warranty", titleAr: "ضمان ممتد", titleEs: "Garantía Extendida", text: "Option", textEn: "Option", textAr: "خيار", textEs: "Opción" },
+  ],
+  transport: [
+    { icon: "🚢", title: "Maritime", titleEn: "Maritime", titleAr: "بحري", titleEs: "Marítimo", text: "Cargo & Marchandises", textEn: "Cargo & Goods", textAr: "شحن وبضائع", textEs: "Carga y Mercancías" },
+    { icon: "✈️", title: "Aérien", titleEn: "Air", titleAr: "جوي", titleEs: "Aéreo", text: "Transport Aerial", textEn: "Aerial Transport", textAr: "نقل جوي", textEs: "Transporte Aéreo" },
+    { icon: "🚛", title: "Terrestre", titleEn: "Land", titleAr: "بري", titleEs: "Terrestre", text: "Camions & Autos", textEn: "Trucks & Cars", textAr: "شاحنات وسيارات", textEs: "Camiones y Autos" },
+    { icon: "📦", title: "Entreposage", titleEn: "Warehousing", titleAr: "تخزين", titleEs: "Almacenamiento", text: "Stockage couvert", textEn: "Storage covered", textAr: "تخزين مشمول", textEs: "Almacenamiento cubierto" },
+    { icon: "🛡️", title: "RC Transport", titleEn: "Transport Liability", titleAr: "مسؤولية النقل", titleEs: "RC Transporte", text: "Responsabilité", textEn: "Liability", textAr: "مسؤولية", textEs: "Responsabilidad" },
+    { icon: "🌍", title: "International", titleEn: "International", titleAr: "دولي", titleEs: "Internacional", text: "Couverture mondiale", textEn: "Worldwide coverage", textAr: "تغطية عالمية", textEs: "Cobertura mundial" },
+  ],
+  cyber: [
+    { icon: "🔐", title: "Cyber Risques", titleEn: "Cyber Risks", titleAr: "مخاطر الإنترنت", titleEs: "Riesgos Cibernéticos", text: "Protection digitale", textEn: "Digital protection", textAr: "حماية رقمية", textEs: "Protección digital" },
+    { icon: "🦠", title: "Ransomware", titleEn: "Ransomware", titleAr: "برامج الفدية", titleEs: "Ransomware", text: "Couvert", textEn: "Covered", textAr: "مشمول", textEs: "Cubierto" },
+    { icon: "💻", title: "Perte de Données", titleEn: "Data Loss", titleAr: "فقدان البيانات", titleEs: "Pérdida de Datos", text: "Récupération", textEn: "Recovery", textAr: "استرداد", textEs: "Recuperación" },
+    { icon: "⚖️", title: "RC Numérique", titleEn: "Digital Liability", titleAr: "المسؤولية الرقمية", titleEs: "RC Digital", text: "Couverture", textEn: "Coverage", textAr: "تغطية", textEs: "Cobertura" },
+    { icon: "🔧", title: "Assistance IT", titleEn: "IT Assistance", titleAr: "مساعدة تقنية", titleEs: "Asistencia IT", text: "24/7 Support", textEn: "24/7 Support", textAr: "دعم 24/7", textEs: "Soporte 24/7" },
+    { icon: "📱", title: "Cybermobbing", titleEn: "Cybermobbing", titleAr: "تنمر إلكتروني", titleEs: "Ciberacoso", text: "Protection", textEn: "Protection", textAr: "حماية", textEs: "Protección" },
+  ],
+  flotte: [
+    { icon: "🚗", title: "Flotte Auto", titleEn: "Auto Fleet", titleAr: "أسطول السيارات", titleEs: "Flota de Autos", text: "5+ véhicules", textEn: "5+ vehicles", textAr: "5+ مركبات", textEs: "5+ vehículos" },
+    { icon: "💰", title: "Tarifs Groupés", titleEn: "Group Rates", titleAr: "أسعار جماعية", titleEs: "Tarifas Grupales", text: "-15% réduit", textEn: "-15% discount", textAr: "-15% خصم", textEs: "-15% descuento" },
+    { icon: "📋", title: "Gestion Simplifiée", titleEn: "Simplified Management", titleAr: "إدارة مبسطة", titleEs: "Gestión Simplificada", text: "Un seul contrat", textEn: "One contract", textAr: "عقد واحد", textEs: "Un contrato" },
+    { icon: "🛡️", title: "Couvertures Multiples", titleEn: "Multiple Coverages", titleAr: "تغطيات متعددة", titleEs: "Coberturas Múltiples", text: "Flexibles", textEn: "Flexible", textAr: "مرنة", textEs: "Flexible" },
+    { icon: "📊", title: "Reporting", titleEn: "Reporting", titleAr: "تقارير", titleEs: "Informes", text: "Suivi détaillé", textEn: "Detailed tracking", textAr: "تتبع مفصل", textEs: "Seguimiento detallado" },
+    { icon: "⚡", title: "Sinistres Rapides", titleEn: "Fast Claims", titleAr: "مطالبات سريعة", titleEs: "Siniestros Rápidos", text: "Traitement prioritaire", textEn: "Priority processing", textAr: "أولوية المعالجة", textEs: "Procesamiento prioritario" },
+  ],
+  trottinette: [
+    { icon: "🛵", title: "Trottinette Électrique", titleEn: "Electric Scooter", titleAr: "سكوتر كهربائي", titleEs: "Patinete Eléctrico", text: "Nouvelle protection", textEn: "New protection", textAr: "حماية جديدة", textEs: "Nueva protección" },
+    { icon: "👤", title: "RC Obligatoire", titleEn: "Mandatory Liability", titleAr: "المسؤولية المدنية الإلزامية", titleEs: "RC Obligatorio", text: "Légal", textEn: "Legal", textAr: "قانوني", textEs: "Legal" },
+    { icon: "🔒", title: "Vol & Vandalisme", titleEn: "Theft & Vandalism", titleAr: "سرقة وتخريب", titleEs: "Robo y Vandalismo", text: "Sécurisé", textEn: "Secure", textAr: "مؤمن", textEs: "Asegurado" },
+    { icon: "🩹", title: "Blessures", titleEn: "Injuries", titleAr: "إصابات", titleEs: "Lesiones", text: "Couvertes", textEn: "Covered", textAr: "مشمولة", textEs: "Cubiertas" },
+    { icon: "💶", title: "Pas Cher", titleEn: "Not Expensive", titleAr: "غير مكلف", titleEs: "No Caro", text: "À partir de X DH", textEn: "From X DH", textAr: "ابتداءً من X درهم", textEs: "Desde X DH" },
+    { icon: "⚡", title: "EDPM", titleEn: "EDPM", titleAr: "مركبات كهربائية", titleEs: "EDPM", text: "Tous types", textEn: "All types", textAr: "جميع الأنواع", textEs: "Todos los tipos" },
+  ],
+  animaux: [
+    { icon: "🐾", title: "Animaux Compagnie", titleEn: "Pet Insurance", titleAr: "تأمين الحيوانات الأليفة", titleEs: "Seguro de Mascotas", text: "Chien & Chat", textEn: "Dog & Cat", textAr: "كلب وقطة", textEs: "Perro y Gato" },
+    { icon: "🏥", title: "Frais Vétérinaires", titleEn: "Veterinary Expenses", titleAr: "نفقات بيطرية", titleEs: "Gastos Veterinarios", text: "Consultations", textEn: "Consultations", textAr: "استشارات", textEs: "Consultas" },
+    { icon: "💊", title: "Médicaments", titleEn: "Medications", titleAr: "أدوية", titleEs: "Medicamentos", text: "Couverts", textEn: "Covered", textAr: "مشمولة", textEs: "Cubiertos" },
+    { icon: "🏨", title: "Hospitalisation", titleEn: "Hospitalization", titleAr: "مستشفى", titleEs: "Hospitalización", text: "Frais couverts", textEn: "Expenses covered", textAr: "نفقات مشمولة", textEs: "Gastos cubiertos" },
+    { icon: "💰", title: "Budget Maîtrisé", titleEn: "Controlled Budget", titleAr: "ميزانية متحكم فيها", titleEs: "Presupuesto Controlado", text: "Pas de surprises", textEn: "No surprises", textAr: "بدون مفاجآت", textEs: "Sin sorpresas" },
+    { icon: "❤️", title: "Tranquillité", titleEn: "Peace of Mind", titleAr: "راحة البال", titleEs: "Tranquilidad", text: "Pour votre companion", textEn: "For your companion", textAr: "لرفيقك", textEs: "Para tu compañero" },
+  ],
+  'mentions-legales': [
+    { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
+    { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
+    { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
+    { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
+    { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+    { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+  ],
+  'politique-confidentialite': [
+    { icon: "🔒", title: "Confidentialité", titleEn: "Privacy", titleAr: "الخصوصية", titleEs: "Confidencialidad", text: "Protection données", textEn: "Data protection", textAr: "حماية البيانات", textEs: "Protección de datos" },
+    { icon: "📧", title: "Contact RGPD", titleEn: "GDPR Contact", titleAr: "اتصال RGPD", titleEs: "Contacto RGPD", text: "Pour vos droits", textEn: "For your rights", textAr: "لحقوقك", textEs: "Para tus derechos" },
+    { icon: "🍪", title: "Cookies", titleEn: "Cookies", titleAr: "ملفات تعريفية", titleEs: "Cookies", text: "Gestion", textEn: "Management", textAr: "إدارة", textEs: "Gestión" },
+    { icon: "📝", title: "Consentement", titleEn: "Consent", titleAr: "موافقة", titleEs: "Consentimiento", text: "Transparent", textEn: "Transparent", textAr: "شفاف", textEs: "Transparente" },
+    { icon: "🛡️", title: "Sécurité", titleEn: "Security", titleAr: "الأمان", titleEs: "Seguridad", text: "Données protégées", textEn: "Protected data", textAr: "بيانات محمية", textEs: "Datos protegidos" },
+    { icon: "⚙️", title: "Paramètres", titleEn: "Settings", titleAr: "الإعدادات", titleEs: "Configuración", text: "Personnalisation", textEn: "Customization", textAr: "تخصيص", textEs: "Personalización" },
+  ],
+  'catalog': [
+    { icon: "📚", title: "Catalogue", titleEn: "Catalog", titleAr: "الكتالوج", titleEs: "Catálogo", text: "PDF téléchargeable", textEn: "Downloadable PDF", textAr: "PDF قابل للتحميل", textEs: "PDF descargable" },
+    { icon: "👥", title: "Particuliers", titleEn: "Individuals", titleAr: "الأفراد", titleEs: "Particulares", text: "Toutes assurances", textEn: "All insurances", textAr: "جميع التأمينات", textEs: "Todos los seguros" },
+    { icon: "🏢", title: "Entreprises", titleEn: "Business", titleAr: "الشركات", titleEs: "Empresas", text: "Risques pros", textEn: "Business risks", textAr: "المخاطر المهنية", textEs: "Riesgos profesionales" },
+    { icon: "📥", title: "Télécharger", titleEn: "Download", titleAr: "تحميل", titleEs: "Descargar", text: "Gratuit", textEn: "Free", textAr: "مجاني", textEs: "Gratis" },
+    { icon: "🚗", title: "Auto", titleEn: "Auto", titleAr: "السيارات", titleEs: "Auto", text: "Particuliers", textEn: "Individuals", textAr: "الأفراد", textEs: "Particulares" },
+    { icon: "🏠", title: "Habitation", titleEn: "Home", titleAr: "السكن", titleEs: "Hogar", text: "Particuliers", textEn: "Individuals", textAr: "الأفراد", textEs: "Particulares" },
+  ],
+  service: [
+    { icon: "⭐", title: "Service Premium", titleEn: "Premium Service", titleAr: "خدمة مميزة", titleEs: "Servicio Premium", text: "Devis personnalisé", textEn: "Personalized quote", textAr: "عرض سعر مخصص", textEs: "Presupuesto personalizado" },
+    { icon: "💬", title: "Assistance", titleEn: "Assistance", titleAr: "مساعدة", titleEs: "Asistencia", text: "24/7 disponible", textEn: "24/7 available", textAr: "متاح 24/7", textEs: "Disponible 24/7" },
+    { icon: "🔄", title: "Suivi", titleEn: "Tracking", titleAr: "تتبع", titleEs: "Seguimiento", text: "En temps réel", textEn: "Real-time", textAr: "في الوقت الفعلي", textEs: "En tiempo real" },
+    { icon: "📋", title: "Documents", titleEn: "Documents", titleAr: "مستندات", titleEs: "Documentos", text: "Upload sécurisé", textEn: "Secure upload", textAr: "تحميل آمن", textEs: "Carga segura" },
+    { icon: "💰", title: "Économies", titleEn: "Savings", titleAr: "توفير", titleEs: "Ahorros", text: "Meilleur tarif", textEn: "Best rate", textAr: "أفضل سعر", textEs: "Mejor tarifa" },
+    { icon: "🎯", title: "Expertise", titleEn: "Expertise", titleAr: "خبرة", titleEs: "Experiencia", text: "Depuis 1957", textEn: "Since 1957", textAr: "منذ 1957", textEs: "Desde 1957" },
+  ],
+};
 
 const openWhatsApp = () => {
   const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
@@ -205,11 +402,16 @@ const getContextualSuggestions = (lastMessage: string, lang: string): string[] =
   ];
 };
 
-const Chatbot = () => {
+interface ChatbotProps {
+  pageContext?: PageContext;
+}
+
+const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", text: t("chat_greeting") },
+    { role: "bot", text: t("chat_enterprise_protection") },
   ]);
   const [input, setInput] = useState("");
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([
@@ -218,11 +420,31 @@ const Chatbot = () => {
     t("chat_suggestion_3"),
     t("chat_suggestion_4")
   ]);
+  const [currentAdIndex, setCurrentAdIndex] = useState(0);
+  const [showAds, setShowAds] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  // Get page-specific ads or fallback to home ads
+  const ads = pageSpecificAds[pageContext] || pageSpecificAds.home;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Rotate through page-specific ads - ONE ad at a time, 20 seconds duration, cycle every 22 seconds
+  useEffect(() => {
+    // Start with showing the first ad
+    setShowAds(true);
+    
+    // Change to next ad every 20 seconds (each ad displays for 20 seconds)
+    const rotateTimer = setInterval(() => {
+      setCurrentAdIndex((prev) => (prev + 1) % ads.length);
+    }, 20000); // 20 seconds per ad
+    
+    return () => {
+      clearInterval(rotateTimer);
+    };
+  }, [ads.length]);
 
   // Update suggestions when language changes
   useEffect(() => {
@@ -275,6 +497,73 @@ const Chatbot = () => {
 
   return (
     <>
+      {/* Chatbot GIF with Messages ABOVE - LEFT BOTTOM */}
+      <motion.div
+        className="fixed bottom-6 left-6 z-50 flex flex-col items-center"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+      >
+        {/* Messages Above GIF - ONE ad at a time, 20s duration */}
+        <AnimatePresence mode="wait">
+          {showAds && (
+            <motion.div 
+              className="flex flex-col gap-1.5 mb-2"
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="bg-gradient-to-r from-[#1a365d] to-[#2d4a7c] text-white px-4 py-2 rounded-xl shadow-lg text-xs min-w-[180px] max-w-[220px]">
+                <div className="flex items-center gap-2 mb-1">
+                  <span>{ads[currentAdIndex].icon}</span>
+                  <span className="font-semibold text-[10px]">
+                    {lang === "fr" ? ads[currentAdIndex].title : 
+                     lang === "en" ? ads[currentAdIndex].titleEn :
+                     lang === "ar" ? ads[currentAdIndex].titleAr :
+                     ads[currentAdIndex].titleEs}
+                  </span>
+                </div>
+                <div className="text-[9px] opacity-80">
+                  {lang === "fr" ? ads[currentAdIndex].text :
+                   lang === "en" ? ads[currentAdIndex].textEn :
+                   lang === "ar" ? ads[currentAdIndex].textAr :
+                   ads[currentAdIndex].textEs}
+                </div>
+                {/* Progress bar showing 20s duration */}
+                <div className="mt-2 h-1 bg-white/20 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-white rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 20, ease: "linear" }}
+                    key={currentAdIndex}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* GIF Container */}
+        <motion.div
+          className="relative"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+        >
+          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl cpa-shadow-lg">
+            <img 
+              src={chatbotGif} 
+              alt="CPA Assistant" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 rounded-full border-4 border-[#1a365d]/20 animate-ping"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-[#1a365d]/30 animate-pulse"></div>
+        </motion.div>
+      </motion.div>
+
       <motion.button
         onClick={openWhatsApp}
         className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"

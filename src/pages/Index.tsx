@@ -18,7 +18,6 @@ import PartnersSection from "@/components/PartnersSection";
 import ClientsSection from "@/components/ClientsSection";
 import AffiliationsSection from "@/components/AffiliationsSection";
 import Footer from "@/components/Footer";
-import Chatbot from "@/components/Chatbot";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -52,7 +51,6 @@ const Index = () => {
           <CTASection />
           <ContactSection />
           <Footer />
-          <Chatbot />
         </motion.div>
       )}
     </>

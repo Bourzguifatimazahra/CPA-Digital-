@@ -55,7 +55,7 @@ const KeyFiguresSection = () => {
   const { t, lang } = useLanguage();
 
   return (
-    <section className="py-20 md:py-28 bg-muted/50">
+    <section id="chiffres-cles" className="py-20 md:py-28 bg-muted/50">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -45,7 +45,7 @@ const AffiliationsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
+    <section id="affiliations" className="py-20 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
