@@ -66,12 +66,12 @@ const MentionsLegalesPage = () => {
                 </h2>
                 <p className="text-muted-foreground">
                   {lang === "fr" 
-                    ? "Le directeur de la publication est M. Imad BERRADA, Directeur Général de CPA."
+                    ? "Le directeur de la publication est M. Jalal Ennouni, Directeur Général de CPA."
                     : lang === "en" 
-                    ? "The publication director is Mr. Imad BERRADA, General Manager of CPA."
+                    ? "The publication director is Mr. Jalal Ennouni, General Manager of CPA."
                     : lang === "es"
-                    ? "El director de publicación es el Sr. Imad BERRADA, Director General de CPA."
-                    : "مدير النشر هو السيد عماد بريدا، المدير العام لشركة سي بي إيه."
+                    ? "El director de publicación es el Sr. Jalal Ennouni, Director General de CPA."
+                    : "مدير النشر هو السيد جلّال النّائحي، المدير العام لشركة سي بي إيه."
                   }
                 </p>
               </div>
@@ -82,12 +82,12 @@ const MentionsLegalesPage = () => {
                 </h2>
                 <p className="text-muted-foreground">
                   {lang === "fr"
-                    ? "Ce site est hébergé par [Nom de l'hébergeur], [Adresse], [Code postal, Ville], [Pays]."
+                    ? "Ce site est hébergé par Netlify, Front Street, San Francisco, CA, 94111, États-Unis."
                     : lang === "en"
-                    ? "This website is hosted by [Hosting provider name], [Address], [Postal code, City], [Country]."
+                    ? "This website is hosted by Netlify, Front Street, San Francisco, CA, 94111, United States."
                     : lang === "es"
-                    ? "Este sitio web está alojado por [Nombre del proveedor de alojamiento], [Dirección], [Código postal, Ciudad], [País]."
-                    : "هذا الموقع مستضاف بواسطة [اسم المستضيف]، [العنوان]، [الرمز البريدي، المدينة]، [البلد]."
+                    ? "Este sitio web está alojado por Netlify, Front Street, San Francisco, CA, 94111, Estados Unidos."
+                    : "هذا الموقع مستضاف بواسطة Netlify، شارع فرونت، سان فرانسيسكو، كاليفورنيا، 94111، الولايات المتحدة الأمريكية."
                   }
                 </p>
               </div>

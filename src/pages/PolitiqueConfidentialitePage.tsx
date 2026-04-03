@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { Shield, Lock, FileText, AlertCircle, Globe, UserCheck, Database, Scale } from "lucide-react";
 
 const PolitiqueConfidentialitePage = () => {
   const { lang } = useLanguage();
@@ -11,22 +12,76 @@ const PolitiqueConfidentialitePage = () => {
   const content = {
     // Page Title
     title: {
-      fr: "Politique de Confidentialité",
-      en: "Privacy Policy",
-      ar: "سياسة الخصوصية",
-      es: "Política de Privacidad",
+      fr: "Politique de Protection des Données",
+      en: "Data Protection Policy",
+      ar: "سياسة حماية البيانات",
+      es: "Política de Protección de Datos",
     },
     subtitle: {
-      fr: "Protection de vos données personnelles",
-      en: "Protecting Your Personal Data",
-      ar: "حماية بياناتك الشخصية",
-      es: "Protección de Sus Datos Personales",
+      fr: "Protection de vos données personnelles - Conformité RGPD & International",
+      en: "Protecting Your Personal Data - GDPR & International Compliance",
+      ar: "حماية بياناتك الشخصية - الامتثال لـ GDPR والدولي",
+      es: "Protección de Sus Datos Personales - Cumplimiento GDPR e Internacional",
     },
     lastUpdate: {
       fr: "Dernière mise à jour",
       en: "Last updated",
       ar: "آخر تحديث",
       es: "Última actualización",
+    },
+    
+    // Regulatory Framework
+    regulatory: {
+      title: {
+        fr: "Cadre Réglementaire",
+        en: "Regulatory Framework",
+        ar: "الإطار التنظيمي",
+        es: "Marco Regulatorio",
+      },
+      content: {
+        fr: "Cette politique de confidentialité est conçue pour assurer la conformité avec les principales réglementations internationales en matière de protection des données, notamment :",
+        en: "This privacy policy is designed to ensure compliance with major international data protection regulations, including:",
+        ar: "تم تصميم سياسة الخصوصية هذه لضمان الامتثال للوائح حماية البيانات الدولية الرئيسية، بما في ذلك:",
+        es: "Esta política de privacidad está diseñada para garantizar el cumplimiento con las principales regulaciones internacionales de protección de datos, incluyendo:",
+      },
+      regulations: {
+        fr: [
+          "Règlement Général sur la Protection des Données (RGPD) - Union Européenne",
+          "Loi n° 09-08 relative à la protection des personnes physiques - Maroc",
+          "California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA) - États-Unis",
+          "Personal Information Protection Law (PIPL) - Chine",
+          "Lei Geral de Proteção de Dados (LGPD) - Brésil",
+          "Data Protection Act 2018 - Royaume-Uni",
+          "Protection of Personal Information Act (POPIA) - Afrique du Sud",
+        ],
+        en: [
+          "General Data Protection Regulation (GDPR) - European Union",
+          "Law No. 09-08 on the protection of individuals - Morocco",
+          "California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA) - United States",
+          "Personal Information Protection Law (PIPL) - China",
+          "Lei Geral de Proteção de Dados (LGPD) - Brazil",
+          "Data Protection Act 2018 - United Kingdom",
+          "Protection of Personal Information Act (POPIA) - South Africa",
+        ],
+        ar: [
+          "اللائحة العامة لحماية البيانات (GDPR) - الاتحاد الأوروبي",
+          "القانون رقم 09-08 المتعلق بحماية الأشخاص الطبيعيين - المغرب",
+          "قانون خصوصية المستهلك في كاليفورنيا (CCPA) / قانون حقوق الخصوصية في كاليفورنيا (CPRA) - الولايات المتحدة",
+          "قانون حماية المعلومات الشخصية (PIPL) - الصين",
+          "قانون الحماية العامة للبيانات (LGPD) - البرازيل",
+          "قانون حماية البيانات 2018 - المملكة المتحدة",
+          "قانون حماية المعلومات الشخصية (POPIA) - جنوب أفريقيا",
+        ],
+        es: [
+          "Reglamento General de Protección de Datos (RGPD) - Unión Europea",
+          "Ley N° 09-08 relativa a la protección de personas físicas - Marruecos",
+          "Ley de Privacidad del Consumidor de California (CCPA) / Ley de Derechos de Privacidad de California (CPRA) - Estados Unidos",
+          "Ley de Protección de Información Personal (PIPL) - China",
+          "Lei Geral de Proteção de Dados (LGPD) - Brasil",
+          "Ley de Protección de Datos 2018 - Reino Unido",
+          "Ley de Protección de Información Personal (POPIA) - Sudáfrica",
+        ],
+      },
     },
     
     // Sections
@@ -53,10 +108,44 @@ const PolitiqueConfidentialitePage = () => {
         es: "2. Responsable del Tratamiento",
       },
       content: {
-        fr: "Le responsable du traitement de vos données personnelles est :\n\nCPA - Conseil et Placement d'Assurances\nS.A. au capital de 5 000 000 DH\nAngle Boulevard Moulay Youssef et Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2ème Étage\nCasablanca, Maroc\n\nTéléphone : +212 5 22 95 39 00\nEmail : info@cpa.ma",
-        en: "The data controller for your personal data is:\n\nCPA - Conseil et Placement d'Assurances\nS.A. with capital of 5,000,000 DH\nAngle Boulevard Moulay Youssef and Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2nd Floor\nCasablanca, Morocco\n\nPhone: +212 5 22 95 39 00\nEmail: info@cpa.ma",
-        ar: "مسؤول معالجة بياناتك الشخصية هو:\n\nCPA - Conseil et Placement d'Assurances\nشركة مجهولة الاسم برأس مال 5,000,000 درهم\nزاوية شارع الملك يوسف وشارع زراوي\nمجمع العمل مركز الملك يوسف، الطابق الثاني\nالدار البيضاء، المغرب\n\nالهاتف: 212 5 22 95 39 00+\nالبريد الإلكتروني: info@cpa.ma",
-        es: "El responsable del tratamiento de sus datos personales es:\n\nCPA - Conseil et Placement d'Assurances\nS.A. con capital de 5.000.000 DH\nEsquina Boulevard Moulay Youssef y Boulevard Ziraoui\nComplejo Moulay Youssef Work Center, 2º Planta\nCasablanca, Marruecos\n\nTeléfono: +212 5 22 95 39 00\nEmail: info@cpa.ma",
+        fr: "Le responsable du traitement de vos données personnelles est :",
+        en: "The data controller for your personal data is:",
+        ar: "مسؤول معالجة بياناتك الشخصية هو:",
+        es: "El responsable del tratamiento de sus datos personales es:",
+      },
+      details: {
+        fr: "CPA - Conseil et Placement d'Assurances\nS.A. au capital de 5 000 000 DH\nAngle Boulevard Moulay Youssef et Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2ème Étage\nCasablanca, Maroc\n\nTéléphone : +212 5 22 95 39 00\nEmail : info@cpa.ma",
+        en: "CPA - Conseil et Placement d'Assurances\nS.A. with capital of 5,000,000 DH\nAngle Boulevard Moulay Youssef and Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2nd Floor\nCasablanca, Morocco\n\nPhone: +212 5 22 95 39 00\nEmail: info@cpa.ma",
+        ar: "CPA - Conseil et Placement d'Assurances\nشركة مجهولة الاسم برأس مال 5,000,000 درهم\nزاوية شارع الملك يوسف وشارع زراوي\nمجمع العمل مركز الملك يوسف، الطابق الثاني\nالدار البيضاء، المغرب\n\nالهاتف: 212 5 22 95 39 00+\nالبريد الإلكتروني: info@cpa.ma",
+        es: "CPA - Conseil et Placement d'Assurances\nS.A. con capital de 5.000.000 DH\nEsquina Boulevard Moulay Youssef y Boulevard Ziraoui\nComplejo Moulay Youssef Work Center, 2º Planta\nCasablanca, Marruecos\n\nTeléfono: +212 5 22 95 39 00\nEmail: info@cpa.ma",
+      },
+    },
+    
+    dataProtectionOfficer: {
+      title: {
+        fr: "2.1 Délégué à la Protection des Données (DPO)",
+        en: "2.1 Data Protection Officer (DPO)",
+        ar: "2.1 مسؤول حماية البيانات (DPO)",
+        es: "2.1 Delegado de Protección de Datos (DPO)",
+      },
+      content: {
+        fr: "Nous avons désigné un Délégué à la Protection des Données (DPO) pour superviser la conformité de notre organisation aux réglementations en matière de protection des données. Le DPO est votre point de contact principal pour toutes les questions relatives à vos droits en matière de protection des données.",
+        en: "We have appointed a Data Protection Officer (DPO) to oversee our organization's compliance with data protection regulations. The DPO is your primary contact for all matters relating to your data protection rights.",
+        ar: "لقد عينا مسؤول حماية البيانات (DPO) للإشراف على امتثال منظمتنا للوائح حماية البيانات. DPO هو جهة الاتصال الرئيسية الخاصة بك لجميع الأمور المتعلقة بحقوقك في حماية البيانات.",
+        es: "Hemos designado un Oficial de Protección de Datos (DPO) para supervisar el cumplimiento de nuestra organización con las regulaciones de protección de datos. El DPO es su contacto principal para todos los asuntos relacionados con sus derechos de protección de datos.",
+      },
+      contact: {
+        fr: "Coordonnées du DPO :",
+        en: "DPO Contact Information:",
+        ar: "معلومات الاتصال بـ DPO:",
+        es: "Información de contacto del DPO:",
+      },
+       
+      note: {
+        fr: "Le DPO peut être contacté pour toute question concernant le traitement de vos données ou l'exercice de vos droits.",
+        en: "The DPO can be contacted for any questions regarding the processing of your data or the exercise of your rights.",
+        ar: "يمكن الاتصال بـ DPO لأي سؤال يتعلق بمعالجة بياناتك أو ممارسة حقوقك.",
+        es: "El DPO puede ser contactado para cualquier pregunta sobre el procesamiento de sus datos o el ejercicio de sus derechos.",
       },
     },
 
@@ -548,16 +637,74 @@ const PolitiqueConfidentialitePage = () => {
 
     international: {
       title: {
-        fr: "11. Transferts Internationaux",
-        en: "11. International Transfers",
-        ar: "11. التحويلات الدولية",
-        es: "11. Transferencias Internacionales",
+        fr: "15. Transferts Internationaux de Données",
+        en: "15. International Data Transfers",
+        ar: "15. التحويلات الدولية للبيانات",
+        es: "15. Transferencias Internacionales de Datos",
       },
       content: {
-        fr: "Si nous transférons vos données personnelles en dehors du Maroc, nous nous assurons que des mesures de protection appropriées sont en place, conformément à la réglementation applicable.",
-        en: "If we transfer your personal data outside Morocco, we ensure that appropriate protection measures are in place, in accordance with applicable regulations.",
-        ar: "إذا نقلنا بياناتك الشخصية خارج المغرب، فإننا نضمن وجود تدابير حماية مناسبة، وفقًا للوائح المعمول بها.",
-        es: "Si transferimos sus datos personales fuera de Marruecos, nos aseguramos de que existan medidas de protección apropiadas, de acuerdo con las regulaciones aplicables.",
+        fr: "Nous pouvons être amenés à transférer vos données personnelles vers des pays tiers (en dehors de l'Union Européenne, du Maroc ou de votre pays de résidence). Dans ce cas, nous garantissons que :",
+        en: "We may transfer your personal data to third countries (outside the European Union, Morocco, or your country of residence). In this case, we guarantee that:",
+        ar: "قد نقوم بنقل بياناتك الشخصية إلى دول terceiros (خارج الاتحاد الأوروبي أو المغرب أو بلد إقامتك). في هذه الحالة، نضمن أن:",
+        es: "Podemos transferir sus datos personales a países terceros (fuera de la Unión Europea, Marruecos o su país de residencia). En este caso, garantizamos que:",
+      },
+      measures: {
+        fr: [
+          "Les transferts sont effectués conformément aux mécanismes de transfert autorisés (clauses contractuelles types, règles d'entreprise contraignantes, etc.)",
+          "Un niveau de protection adéquat est assuré dans le pays de destination",
+          "Vous êtes informé de manière claire et transparente de tout transfert international",
+          "Des accords de traitement des données sont en place avec tous les sous-traitants",
+        ],
+        en: [
+          "Transfers are carried out in accordance with authorized transfer mechanisms (standard contractual clauses, binding corporate rules, etc.)",
+          "An adequate level of protection is ensured in the destination country",
+          "You are informed clearly and transparently of any international transfer",
+          "Data processing agreements are in place with all sub-processors",
+        ],
+        ar: [
+          "يتم إجراء التحويلات وفقًا لآليات التحويل المصرح بها (البنود التعاقدية القياسية وقواعد الشركة الملزمة وما إلى ذلك)",
+          "يتم ضمان مستوى مناسب من الحماية في بلد الوجهة",
+          "يتم إبلاغك بشكل واضح وشفاف بأي نقل دولي",
+          "توجد اتفاقيات معالجة البيانات مع جميع المعالجين الفرعيين",
+        ],
+        es: [
+          "Las transferencias se realizan de acuerdo con los mecanismos de transferencia autorizados (cláusulas contractuales estándar, normas corporativas vinculantes, etc.)",
+          "Se asegura un nivel adecuado de protección en el país de destino",
+          "Se le informa de manera clara y transparente sobre cualquier transferencia internacional",
+          "Los acuerdos de procesamiento de datos están en vigor con todos los subprocesadores",
+        ],
+      },
+      safeguards: {
+        fr: "Mécanismes de protection en place :",
+        en: "Protection mechanisms in place:",
+        ar: "آليات الحماية المطبقة:",
+        es: "Mecanismos de protección implementados:",
+      },
+      mechanisms: {
+        fr: [
+          "Clauses contractuelles types approuvées par la Commission Européenne",
+          "Règles d'entreprise contraignantes (BCR) pour les transferts intra-groupe",
+          "Décisions d'adéquation de la Commission pour certains pays",
+          "Certifications et codes de conduite approuvés",
+        ],
+        en: [
+          "Standard Contractual Clauses approved by the European Commission",
+          "Binding Corporate Rules (BCR) for intra-group transfers",
+          "Commission adequacy decisions for certain countries",
+          "Approved certifications and codes of conduct",
+        ],
+        ar: [
+          "البنود التعاقدية القياسية المعتمدة من المفوضية الأوروبية",
+          "قواعد الشركة الملزمة (BCR) للتحويلات داخل المجموعة",
+          "قرارات الملاءمة للمفوضية لبعض الدول",
+          "الشهادات وأخلاقيات السلوك المعتمدة",
+        ],
+        es: [
+          "Cláusulas Contractuales Estándar aprobadas por la Comisión Europea",
+          "Normas Corporativas Vinculantes (BCR) para transferencias внутри группы",
+          "Decisiones de adecuación de la Comisión para ciertos países",
+          "Certificaciones y códigos de conducta aprobados",
+        ],
       },
     },
 
@@ -590,19 +737,150 @@ const PolitiqueConfidentialitePage = () => {
         es: "Podemos modificar esta política de privacidad periódicamente. Cualquier cambio sustancial se publicará en esta página y, si es necesario, se le notificará por correo electrónico. Le recomendamos que revise esta página regularmente para mantenerse informado sobre las actualizaciones.",
       },
     },
+    
+    dataBreach: {
+      title: {
+        fr: "13. Notification de Violation de Données",
+        en: "13. Data Breach Notification",
+        ar: "13. إشعار اختراق البيانات",
+        es: "13. Notificación de Violación de Datos",
+      },
+      content: {
+        fr: "En cas de violation de données à caractère personnel susceptible d'engendrer un risque pour les droits et libertés des personnes concernées, nous nous engageons à :",
+        en: "In the event of a personal data breach likely to result in a risk to the rights and freedoms of data subjects, we commit to:",
+        ar: "في حالة حدوث اختراق للبيانات الشخصية من المرجح أن يؤدي إلى خطر على حقوق وحريات أصحاب البيانات، نتعهد بـ:",
+        es: "En caso de una violación de datos personales que pueda generar un riesgo para los derechos y libertades de los interesados, nos comprometemos a:",
+      },
+      obligations: {
+        fr: [
+          "Notifier l'autorité de contrôle compétente (CNDP au Maroc, CNIL en France, etc.) dans un délai de 72 heures",
+          "Communiquer la violation à la personne concernée lorsque le risque est élevé",
+          "Documenter toute violation de données avérée",
+          "Mettre en œuvre immédiatement les mesures correctives appropriées",
+        ],
+        en: [
+          "Notify the competent supervisory authority (CNDP in Morocco, CNIL in France, etc.) within 72 hours",
+          "Communicate the breach to the data subject when the risk is high",
+          "Document all proven data breaches",
+          "Immediately implement appropriate corrective measures",
+        ],
+        ar: [
+          "إخطار سلطة الإشراف المختصة (CNDP في المغرب، CNIL في فرنسا، وما إلى ذلك) في غضون 72 ساعة",
+          "إخطار الشخص المعني عندما يكون الخطر مرتفعا",
+          "توثيق جميع انتهاكات البيانات الثابتة",
+          "تنفيذ تدابير التصحيح المناسبة على الفور",
+        ],
+        es: [
+          "Notificar a la autoridad de control competente (CNDP en Marruecos, CNIL en Francia, etc.) en un plazo de 72 horas",
+          "Comunicar la violación a la persona afectada cuando el riesgo sea alto",
+          "Documentar todas las violaciones de datos probadas",
+          "Implementar inmediatamente las medidas correctivas apropiadas",
+        ],
+      },
+      contact: {
+        fr: "Pour signaler une violation de données :",
+        en: "To report a data breach:",
+        ar: "للإبلاغ عن اختراق البيانات:",
+        es: "Para reportar una violación de datos:",
+      },
+      email: "security@cpa.ma",
+    },
+    
+    supervisoryAuthority: {
+      title: {
+        fr: "14. Autorités de Contrôle",
+        en: "14. Supervisory Authorities",
+        ar: "14. سلطات الإشراف",
+        es: "14. Autoridades de Supervisión",
+      },
+      content: {
+        fr: "Vous avez le droit de déposer une plainte auprès d'une autorité de contrôle si vous estimez que le traitement de vos données personnelles constitue une violation du RGPD ou de toute autre réglementation applicable. Les autorités de contrôle compétentes sont :",
+        en: "You have the right to lodge a complaint with a supervisory authority if you believe that the processing of your personal data constitutes a violation of the GDPR or any other applicable regulation. The competent supervisory authorities are:",
+        ar: "لديك الحق في تقديم شكوى إلى سلطة إشراف إذا كنت تعتقد أن معالجة بياناتك الشخصية تشكل انتهاكًا لـ GDPR أو أي لائحة أخرى قابلة للتطبيق. سلطات الإشراف المختصة هي:",
+        es: "Tiene derecho a presentar una queja ante una autoridad de supervisión si cree que el procesamiento de sus datos personales constituye una violación del GDPR o cualquier otra regulación aplicable. Las autoridades de supervisión competentes son:",
+      },
+      morocco: {
+        fr: "Commission Nationale de Contrôle de la Protection des Données à Caractère Personnel (CNDP)",
+        en: "National Commission for the Control of Personal Data Protection (CNDP)",
+        ar: "اللجنة الوطنية لمراقبة حماية البيانات ذات الطابع الشخصي (CNDP)",
+        es: "Comisión Nacional de Control de la Protección de Datos de Carácter Personal (CNDP)",
+      },
+      moroccoAddress: {
+        fr: "Angle Avenue Annakhil, Hay Riad, Rabat, Maroc\nSite web: www.cndp.ma",
+        en: "Angle Annakhil Avenue, Hay Riad, Rabat, Morocco\nWebsite: www.cndp.ma",
+        ar: "زاوية شارع العناقيل، حي الرياض، الرباط، المغرب\nالموقع الإلكتروني: www.cndp.ma",
+        es: "Esquina Avenida Annakhil, Hay Riad, Rabat, Marruecos\nSitio web: www.cndp.ma",
+      },
+      eu: {
+        fr: "Pour les résidents de l'UE, vous pouvez également contacter l'autorité de protection des données de votre pays de résidence. Pour plus d'informations :",
+        en: "For EU residents, you can also contact the data protection authority in your country of residence. For more information:",
+        ar: "بالنسبة للمقيمين في الاتحاد الأوروبي، يمكنك أيضًا الاتصال بسلطة حماية البيانات في بلد إقامتك. لمزيد من المعلومات:",
+        es: "Para los residentes de la UE, también puede comunicarse con la autoridad de protección de datos de su país de residencia. Para más información:",
+      },
+      euLink: "https://edpb.europa.eu/about-edpb/about-edpb/members_en",
+    },
+    
+    privacyByDesign: {
+      title: {
+        fr: "15. Protection par Conception et par Défaut",
+        en: "15. Privacy by Design and Default",
+        ar: "15. الحماية حسب التصميم والحسب الافتراضي",
+        es: "15. Protección desde el Diseño y por Defecto",
+      },
+      content: {
+        fr: "Conformément aux principes de protection des données par conception et par défaut, nous mettons en œuvre les mesures techniques et organisationnelles appropriées pour :",
+        en: "In accordance with the principles of privacy by design and by default, we implement appropriate technical and organizational measures to:",
+        ar: "وفقًا لمبادئ حماية البيانات حسب التصميم والحسب الافتراضي، ننفذ التدابير التقنية والتنظيمية المناسبة لـ:",
+        es: "De acuerdo con los principios de protección de datos desde el diseño y por defecto, implementamos medidas técnicas y organizativas apropiadas para:",
+      },
+      principles: {
+        fr: [
+          "Minimiser la collecte de données : ne collecter que les données strictement nécessaires",
+          "Limiter le traitement aux finalités définies : ne pas utiliser les données à des fins non déclarées",
+          "Garantir la confidentialité : intégrer la protection des données dès la conception des systèmes",
+          "Assurer l'exactitude : maintenir la qualité et l'actualité des données",
+          "Permettre la portabilité : faciliter l'exercice des droits des personnes concernées",
+          "Définir des durées de conservation appropriées : effacer les données obsolètes",
+        ],
+        en: [
+          "Minimize data collection: only collect data that is strictly necessary",
+          "Limit processing to stated purposes: not use data for undeclared purposes",
+          "Guarantee confidentiality: integrate data protection from system design",
+          "Ensure accuracy: maintain data quality and currency",
+          "Enable portability: facilitate the exercise of data subject rights",
+          "Define appropriate retention periods: delete obsolete data",
+        ],
+        ar: [
+          "تقليل جمع البيانات: جمع البيانات الضرورية فقط",
+          "تقييد المعالجة للأغراض المعلنة: عدم استخدام البيانات لأغراض غير معلنة",
+          "ضمان السرية: دمج حماية البيانات من تصميم الأنظمة",
+          "ضمان الدقة: الحفاظ على جودة البيانات وتحديثها",
+          "تفعيل إمكانية النقل: تسهيل ممارسة حقوق أصحاب البيانات",
+          "تحديد فترات الاحتفاظ المناسبة: حذف البيانات القديمة",
+        ],
+        es: [
+          "Minimizar la recolección de datos: solo recolectar datos estrictamente necesarios",
+          "Limitar el procesamiento a los propósitos declarados: no usar datos para propósitos no declarados",
+          "Garantizar la confidencialidad: integrar la protección de datos desde el diseño del sistema",
+          "Asegurar la precisión: mantener la calidad y actualización de los datos",
+          "Habilitar la portabilidad: facilitar el ejercicio de los derechos de los interesados",
+          "Definir períodos de retención apropiados: eliminar datos obsoletos",
+        ],
+      },
+    },
 
     contact: {
       title: {
-        fr: "14. Nous Contacter",
-        en: "14. Contact Us",
-        ar: "14. تواصل معنا",
-        es: "14. Contáctenos",
+        fr: "20. Nous Contacter",
+        en: "20. Contact Us",
+        ar: "20. تواصل معنا",
+        es: "20. Contáctenos",
       },
       content: {
-        fr: "Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, contactez-nous :",
-        en: "For any questions regarding this privacy policy or to exercise your rights, contact us:",
-        ar: "لأي سؤال بخصوص سياسة الخصوصية هذه أو لممارسة حقوقك، تواصل معنا:",
-        es: "Para cualquier pregunta sobre esta política de privacidad o para ejercer sus derechos, contáctenos:",
+        fr: "Pour toute question concernant cette politique de protection des données ou pour exercer vos droits, contactez-nous :",
+        en: "For any questions regarding this data protection policy or to exercise your rights, contact us:",
+        ar: "لأي سؤال بخصوص سياسة حماية البيانات هذه أو لممارسة حقوقك، تواصل معنا:",
+        es: "Para cualquier pregunta sobre esta política de protección de datos o para ejercer sus derechos, contáctenos:",
       },
       address: {
         fr: "CPA - Conseil et Placement d'Assurances\nAngle Boulevard Moulay Youssef et Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2ème Étage\nCasablanca, Maroc",
@@ -610,6 +888,93 @@ const PolitiqueConfidentialitePage = () => {
         ar: "CPA - Conseil et Placement d'Assurances\nزاوية شارع الملك يوسف وشارع زراوي\nمجمع العمل مركز الملك يوسف، الطابق الثاني\nالدار البيضاء، المغرب",
         es: "CPA - Conseil et Placement d'Assurances\nEsquina Boulevard Moulay Youssef y Boulevard Ziraoui\nComplejo Moulay Youssef Work Center, 2º Planta\nCasablanca, Marruecos",
       },
+      contactPoints: {
+        title: {
+          fr: "Points de contact selon votre demande :",
+          en: "Contact points according to your request:",
+          ar: "نقاط الاتصال حسب طلبك:",
+          es: "Puntos de contacto según su solicitud:",
+        },
+        general: {
+          label: "Questions générales",
+          email: "info@cpa.ma",
+        },
+        dpo: {
+          label: "Questions relatives au DPO",
+          email: "dpo@cpa.ma",
+        },
+        security: {
+          label: "Signaler une violation de données",
+          email: "security@cpa.ma",
+        },
+      },
+    },
+    
+    recordOfProcessing: {
+      title: {
+        fr: "Registre des Traitements",
+        en: "Record of Processing Activities",
+        ar: "سجل المعالجات",
+        es: "Registro de Actividades de Tratamiento",
+      },
+      content: {
+        fr: "Nous tenons un registre de toutes les activités de traitement de données à caractère personnel conforme aux exigences de l'article 30 du RGPD. Ce registre contient :",
+        en: "We maintain a record of all personal data processing activities in compliance with GDPR Article 30 requirements. This record contains:",
+        ar: "نحتفظ بسجل لجميع أنشطة معالجة البيانات الشخصية امتثالاً لمتطلبات المادة 30 من اللائحة العامة لحماية البيانات. يحتوي هذا السجل على:",
+        es: "Mantenemos un registro de todas las actividades de procesamiento de datos personales de acuerdo con los requisitos del Artículo 30 del RGPD. Este registro contiene:",
+      },
+      items: {
+        fr: [
+          "Les finalités du traitement",
+          "Les catégories de données à caractère personnel concernées",
+          "Les catégories de destinataires auxquels les données ont été communiquées",
+          "Les durées de conservation prévues",
+          "Une description générale des mesures de sécurité techniques et organisationnelles",
+        ],
+        en: [
+          "The purposes of the processing",
+          "The categories of personal data concerned",
+          "The categories of recipients to whom the data has been disclosed",
+          "The planned retention periods",
+          "A general description of technical and organizational security measures",
+        ],
+        ar: [
+          "أغراض المعالجة",
+          "فئات البيانات الشخصية المعنية",
+          "فئات المستلمين الذين تم الإفصاح عن البيانات لهم",
+          "فترات الاحتفاظ المخططة",
+          "وصف عام للتدابير الأمنية التقنية والتنظيمية",
+        ],
+        es: [
+          "Los propósitos del procesamiento",
+          "Las categorías de datos personales concerned",
+          "Las categorías de destinatarios a quienes se han comunicado los datos",
+          "Los períodos de retención planificados",
+          "Una descripción general de las medidas de seguridad técnicas y organizativas",
+        ],
+      },
+    },
+    
+    automatedDecision: {
+      title: {
+        fr: "Décisions Automatisées et Profilage",
+        en: "Automated Decision-Making and Profiling",
+        ar: "القرارات الآلية والتمييز",
+        es: "Decisiones Automatizadas y Perfilado",
+      },
+      content: {
+        fr: "Nous vous informons de la possibilité de faire l'objet d'une décision fondée exclusivement sur un traitement automatisé, y compris le profilage, produisant des effets juridiques vous concernant. Vous avez le droit de ne pas être soumis à une telle décision si elle produit un effet juridique ou vous affecte significativement, sauf si la décision est nécessaire à la conclusion ou à l'exécution d'un contrat.",
+        en: "We inform you of the possibility of being subject to automated decision-making, including profiling, producing legal effects concerning you. You have the right not to be subject to such decisions if they produce legal effects or significantly affect you, unless the decision is necessary for the conclusion or performance of a contract.",
+        ar: "نخبرك بإمكانية خضوعك لقرار يعتمد حصريًا على المعالجة الآلية، بما في ذلك التمييز، مما ينتج عنه آثار قانونية تخصك. يحق لك عدم خضوع هذا القرار إذا كان ينتج أثرًا قانونيًا أو يؤثر عليك بشكل كبير، ما لم يكن القرار ضروريًا للعقد.",
+        es: "Le informamos de la posibilidad de ser objeto de decisiones automatizadas, incluido el perfilado, que produzcan efectos legales que le conciernan. Tiene derecho a no ser objeto de tales decisiones si producen efectos legales o le afectan significativamente, a menos que la decisión sea necesaria para la celebración o ejecución de un contrato.",
+      },
+      contact: {
+        fr: "Pour exercer ce droit ou obtenir des informations complémentaires :",
+        en: "To exercise this right or obtain additional information:",
+        ar: "لممارسة هذا الحق أو الحصول على معلومات إضافية:",
+        es: "Para ejercer este derecho u obtener información adicional:",
+      },
+      email: "dpo@cpa.ma",
     },
   };
 
@@ -646,6 +1011,9 @@ const PolitiqueConfidentialitePage = () => {
           >
             {/* Header */}
             <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-full mb-4">
+                <Shield className="w-12 h-12 text-primary" />
+              </div>
               <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground mb-4">
                 {getText(content.title)}
               </h1>
@@ -653,11 +1021,37 @@ const PolitiqueConfidentialitePage = () => {
                 {getText(content.subtitle)}
               </p>
               <p className="text-sm text-muted-foreground">
-                {content.lastUpdate[lang]} : Mars 2024
+                {content.lastUpdate[lang]} : Mars 2026
               </p>
             </div>
 
             <div className="space-y-8">
+              {/* Regulatory Framework */}
+              <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 border border-primary/20 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/20 rounded-lg">
+                    <Scale className="w-6 h-6 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.regulatory.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.regulatory.content)}
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {(lang === "fr" ? content.regulatory.regulations.fr : 
+                    lang === "en" ? content.regulatory.regulations.en : 
+                    lang === "ar" ? content.regulatory.regulations.ar : 
+                    content.regulatory.regulations.es).map((item, index) => (
+                    <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               {/* Introduction */}
               <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
                 <h2 className="text-2xl font-heading font-bold text-primary mb-4">
@@ -673,9 +1067,43 @@ const PolitiqueConfidentialitePage = () => {
                 <h2 className="text-2xl font-heading font-bold text-primary mb-4">
                   {getText(content.dataController.title)}
                 </h2>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line mb-4">
                   {getText(content.dataController.content)}
                 </p>
+                <div className="bg-muted/50 rounded-lg p-4 whitespace-pre-line">
+                  <p className="text-foreground whitespace-pre-line">
+                    {lang === "fr" ? content.dataController.details.fr : 
+                     lang === "en" ? content.dataController.details.en : 
+                     lang === "ar" ? content.dataController.details.ar : 
+                     content.dataController.details.es}
+                  </p>
+                </div>
+              </div>
+
+              {/* Data Protection Officer */}
+              <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 border border-primary/20 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/20 rounded-lg">
+                    <UserCheck className="w-6 h-6 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.dataProtectionOfficer.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.dataProtectionOfficer.content)}
+                </p>
+                <div className="bg-muted/50 rounded-lg p-4">
+                  <p className="text-foreground font-semibold mb-2">
+                    {getText(content.dataProtectionOfficer.contact)}
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong>Email:</strong> <a href="mailto:dpo@cpa.ma" className="text-primary hover:underline">dpo@cpa.ma</a>
+                  </p>
+                  <p className="text-muted-foreground text-sm mt-2">
+                    {getText(content.dataProtectionOfficer.note)}
+                  </p>
+                </div>
               </div>
 
               {/* Data Collection */}
@@ -887,12 +1315,179 @@ const PolitiqueConfidentialitePage = () => {
 
               {/* International Transfers */}
               <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                <h2 className="text-2xl font-heading font-bold text-primary mb-4">
-                  {getText(content.international.title)}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Globe className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.international.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   {getText(content.international.content)}
                 </p>
+                <div className="space-y-3">
+                  <p className="text-foreground font-semibold">
+                    {getText(content.international.safeguards)}
+                  </p>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {(lang === "fr" ? content.international.mechanisms.fr : 
+                      lang === "en" ? content.international.mechanisms.en : 
+                      lang === "ar" ? content.international.mechanisms.ar : 
+                      content.international.mechanisms.es).map((item, index) => (
+                      <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                        <span className="text-primary mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Data Breach Notification */}
+              <div className="bg-gradient-to-r from-red-50 to-transparent rounded-2xl p-8 border border-red-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-red-100 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-red-700">
+                    {getText(content.dataBreach.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.dataBreach.content)}
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4">
+                  {(lang === "fr" ? content.dataBreach.obligations.fr : 
+                    lang === "en" ? content.dataBreach.obligations.en : 
+                    lang === "ar" ? content.dataBreach.obligations.ar : 
+                    content.dataBreach.obligations.es).map((item, index) => (
+                    <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                      <span className="text-red-600 mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="bg-muted/50 rounded-lg p-4">
+                  <p className="text-foreground font-semibold mb-1">
+                    {getText(content.dataBreach.contact)}
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong>Email:</strong> <a href="mailto:security@cpa.ma" className="text-primary hover:underline">security@cpa.ma</a>
+                  </p>
+                </div>
+              </div>
+
+              {/* Supervisory Authority */}
+              <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Shield className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.supervisoryAuthority.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.supervisoryAuthority.content)}
+                </p>
+                <div className="bg-muted/50 rounded-lg p-4 mb-4">
+                  <p className="text-foreground font-semibold mb-2">
+                    {lang === "fr" ? "Maroc - CNDP" : 
+                     lang === "en" ? "Morocco - CNDP" : 
+                     lang === "ar" ? "المغرب - CNDP" : 
+                     "Marruecos - CNDP"}
+                  </p>
+                  <p className="text-muted-foreground text-sm whitespace-pre-line">
+                    {lang === "fr" ? content.supervisoryAuthority.moroccoAddress.fr : 
+                     lang === "en" ? content.supervisoryAuthority.moroccoAddress.en : 
+                     lang === "ar" ? content.supervisoryAuthority.moroccoAddress.ar : 
+                     content.supervisoryAuthority.moroccoAddress.es}
+                  </p>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {getText(content.supervisoryAuthority.eu)}
+                </p>
+                <p className="text-primary hover:underline text-sm mt-1">
+                  <a href={content.supervisoryAuthority.euLink} target="_blank" rel="noopener noreferrer">
+                    edpb.europa.eu
+                  </a>
+                </p>
+              </div>
+
+              {/* Privacy by Design */}
+              <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Database className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.privacyByDesign.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.privacyByDesign.content)}
+                </p>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {(lang === "fr" ? content.privacyByDesign.principles.fr : 
+                    lang === "en" ? content.privacyByDesign.principles.en : 
+                    lang === "ar" ? content.privacyByDesign.principles.ar : 
+                    content.privacyByDesign.principles.es).map((item, index) => (
+                    <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Record of Processing */}
+              <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <FileText className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.recordOfProcessing.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.recordOfProcessing.content)}
+                </p>
+                <ul className="grid grid-cols-1 gap-2">
+                  {(lang === "fr" ? content.recordOfProcessing.items.fr : 
+                    lang === "en" ? content.recordOfProcessing.items.en : 
+                    lang === "ar" ? content.recordOfProcessing.items.ar : 
+                    content.recordOfProcessing.items.es).map((item, index) => (
+                    <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                      <span className="text-primary mt-0.5">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Automated Decision Making */}
+              <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Lock className="w-5 h-5 text-primary" />
+                  </div>
+                  <h2 className="text-2xl font-heading font-bold text-primary">
+                    {getText(content.automatedDecision.title)}
+                  </h2>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {getText(content.automatedDecision.content)}
+                </p>
+                <div className="bg-muted/50 rounded-lg p-4">
+                  <p className="text-foreground font-semibold mb-1">
+                    {getText(content.automatedDecision.contact)}
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong>Email:</strong> <a href="mailto:dpo@cpa.ma" className="text-primary hover:underline">dpo@cpa.ma</a>
+                  </p>
+                </div>
               </div>
 
               {/* Children Protection */}

@@ -44,9 +44,7 @@
 ### 🌟 Découvrez Notre Plateforme Digitale Révolutionnaire 🌟
 
 **Le Leader Marocain de l'Assurance Continue d'Innover**
-
-![Aperçu du site CPA](public/placeholder.svg)
-
+ 
 </div>
 
 ### 🎊 Version 2.0 - Avril 2026
