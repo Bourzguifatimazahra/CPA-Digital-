@@ -575,6 +575,131 @@ export const translations = {
 
   // Chatbot suggestions
   chat_suggestion_1: { fr: "Qu'est-ce que l'assurance ?", en: "What is insurance?", ar: "ما هو التأمين؟", es: "¿Qué es el seguro?" },
+
+  // Blog Content - Modal
+  blog_expert_advice: { fr: "Nos conseils d'experts", en: "Our Expert Advice", ar: "نصائح خبرائنا", es: "Nuestros Consejos de Expertos" },
+  blog_subscribe_now: { fr: "Souscrire maintenant", en: "Subscribe Now", ar: "اشترك الآن", es: "Suscribirse Ahora" },
+  blog_contact_us: { fr: "Nous contacter", en: "Contact Us", ar: "تواصل معنا", es: "Contáctenos" },
+  blog_auto_title: { fr: "Guide complet de l'Assurance Auto au Maroc", en: "Complete Guide to Auto Insurance in Morocco", ar: "دليل شامل للتأمين على السيارات في المغرب", es: "Guía Completa del Seguro de Auto en Marruecos" },
+  blog_auto_content_1: { fr: "L'assurance automobile est obligatoire au Maroc pour tous les propriétaires de véhicules à moteur. Elle couvre la responsabilité civile envers les tiers.", en: "Auto insurance is mandatory in Morocco for all motor vehicle owners. It covers civil liability towards third parties.", ar: "التأمين على السيارات إلزامي في المغرب لجميع مالكي المركبات ذات المحركات. يغطي المسؤولية المدنية تجاه الغير.", es: "El seguro de auto es obligatorio en Marruecos para todos los propietarios de vehículos de motor. Cubre la responsabilidad civil hacia terceros." },
+  blog_auto_content_2: { fr: "Les garanties principales incluent la RC (responsabilité civile), la garantie tous risques, le vol, l'incendie, et l'assistance dépannage.", en: "The main guarantees include RC (civil liability), all-risk coverage, theft, fire, and breakdown assistance.", ar: "تشمل الضمانات الرئيسية RC (المسؤولية المدنية)، وضمان جميع المخاطر، والسرقة، والحريق، ومساعدة الإصلاح.", es: "Las garantías principales incluyen RC (responsabilidad civil), cobertura todo riesgo, robo, incendio y asistencia en caso de avería." },
+  blog_auto_content_3: { fr: "Le prix varie selon le type de véhicule, l'âge du conducteur, et l'historique de sinistres. Comparez toujours plusieurs devis.", en: "The price varies according to the type of vehicle, the driver's age, and the claims history. Always compare several quotes.", ar: "يختلف السعر حسب نوع المركبة وعمر السائق وتاريخ المطالبات. قارن دائمًا عدة عروض أسعار.", es: "El precio varía según el tipo de vehículo, la edad del conductor y el historial de siniestros. Siempre compare varias cotizaciones." },
+  blog_auto_advice_1: { fr: "Vérifiez toujours les exclusions de votre contrat", en: "Always check the exclusions in your contract", ar: "تحقق دائمًا من استثناءات عقدك", es: "Siempre verifique las exclusiones de su contrato" },
+  blog_auto_advice_2: { fr: "Conservez un historique de conduite sans sinistres pour bénéficier de réduction", en: "Keep a claim-free driving record to benefit from discounts", ar: "احتفظ بسجل قيادة بدون مطالبات للاستفادة من الخصومات", es: "Mantenga un historial de conducción sin siniestros para beneficiarse de descuentos" },
+  blog_auto_advice_3: { fr: "Ajoutez une garantie conducteur pour une protection complète", en: "Add driver coverage for complete protection", ar: "أضف ضمان السائق للحصول على حماية كاملة", es: "Añada cobertura para conductor para una protección completa" },
+
+  blog_sante_title: { fr: "Comprendre l'Assurance Santé au Maroc", en: "Understanding Health Insurance in Morocco", ar: "فهم التأمين الصحي في المغرب", es: "Entendiendo el Seguro de Salud en Marruecos" },
+  blog_sante_content_1: { fr: "L'assurance santé au Maroc peut être obligatoire pour les salariés du secteur privé via la CNSS, ou volontaire pour les indépendants.", en: "Health insurance in Morocco can be mandatory for private sector employees via CNSS, or voluntary for self-employed.", ar: "يمكن أن يكون التأمين الصحي في المغرب إلزاميًا للموظفين في القطاع الخاص عبر CNSS، أو طوعيًا للأشخاص الذاتيين.", es: "El seguro de salud en Marruecos puede ser obligatorio para empleados del sector privado a través de CNSS, o voluntario para trabajadores autónomos." },
+  blog_sante_content_2: { fr: "Les mutuelles d'entreprise couvrent généralement l'hospitalisation, les consultations, et parfois l'optique et le dentaire.", en: "Company health insurance generally covers hospitalization, consultations, and sometimes optics and dental.", ar: "تغطي صناديق التأمين الصحي للشركات عادةً الإقامة في المستشفى والاستشارات وأحيانًا البصريات وطب الأسنان.", es: "Los seguros de empresa generalmente cubren hospitalización, consultas y a veces óptica y dental." },
+  blog_sante_content_3: { fr: "Choisissez entre une assurance complémentaire et une assurance principale selon vos besoins et votre budget.", en: "Choose between complementary insurance and main insurance based on your needs and budget.", ar: "اختر بين التأمين التكميلي والتأمين الرئيسي حسب احتياجاتك وميزانيتك.", es: "Elija entre seguro complementario y seguro principal según sus necesidades y presupuesto." },
+  blog_sante_advice_1: { fr: "Vérifiez le plafond de remboursement annuel", en: "Check the annual reimbursement limit", ar: "تحقق من سقف السداد السنوي", es: "Verifique el límite de reembolso anual" },
+  blog_sante_advice_2: { fr: "Préférez les réseaux de soins conventionnés pour de meilleurs tarifs", en: "Prefer affiliated care networks for better rates", ar: "فضل شبكات الرعاية المتعاقد معها للحصول على أسعار أفضل", es: "Prefiera redes de atención afiliadas para mejores tarifas" },
+  blog_sante_advice_3: { fr: "Souscrivez avant d'avoir des problèmes de santé pour éviter les exclusions", en: "Subscribe before having health problems to avoid exclusions", ar: "اشترك قبل ظهور مشاكل صحية لتجنب الاستثناءات", es: "Suscríbase antes de tener problemas de salud para evitar exclusiones" },
+
+  blog_habitation_title: { fr: "Multirisques Habitation : Protégez votre foyer", en: "Multi-Risk Home Insurance: Protect Your Home", ar: "تأمين السكن متعدد المخاطر: احمِ منزلك", es: "Multirriesgo Hogar: Proteja su Hogar" },
+  blog_habitation_content_1: { fr: "La multirisques habitation couvre votre logement et vos biens contre les dommages causés par le feu, le vol, les dégâts des eaux, et plus encore.", en: "Multi-risk home insurance covers your home and belongings against damage caused by fire, theft, water damage, and more.", ar: "يغطي تأمين السكن متعدد المخاطر منزلك وممتلكاتك ضد الأضرار الناجمة عن الحريق والسرقة وتلف المياه والمزيد.", es: "El seguro multirriesgo del hogar cubre su vivienda y pertenencias contra daños causados por incendio, robo, daños por agua y más." },
+  blog_habitation_content_2: { fr: "Elle inclut généralement la responsabilité civile villégiature qui vous protège lors de vos vacances.", en: "It generally includes civil liability for vacation stays that protects you during your holidays.", ar: "يتضمن عادةً المسؤولية المدنية للإقامة التي تحميك خلال عطلاتك.", es: "Generalmente incluye responsabilidad civil vacacional que lo protege durante sus vacaciones." },
+  blog_habitation_content_3: { fr: "Certains contrats couvrent également les frais de relogement temporaire si votre domicile devient inhabitable.", en: "Some contracts also cover temporary relocation costs if your home becomes uninhabitable.", ar: "تغطي بعض العقود أيضًا تكاليف إعادة السكن المؤقت إذا أصبح منزلك غير صالح للسكن.", es: "Algunos contratos también cubren los costos de reubicación temporal si su hogar se vuelve inhabitable." },
+  blog_habitation_advice_1: { fr: "Faites un inventaire précis de vos biens avec photos", en: "Make a precise inventory of your belongings with photos", ar: "قم بعمل جرد دقيق لممتلكاتك مع الصور", es: "Haga un inventario preciso de sus bienes con fotos" },
+  blog_habitation_advice_2: { fr: "Mettez à jour la valeur de vos biens chaque année", en: "Update the value of your belongings each year", ar: "حدّث قيمة ممتلكاتك كل عام", es: "Actualice el valor de sus bienes cada año" },
+  blog_habitation_advice_3: { fr: "Vérifiez les franchises et les plafonds de garantie", en: "Check deductibles and coverage limits", ar: "تحقق من الخصومات وسقوف الضمان", es: "Verifique los deducibles y los límites de cobertura" },
+
+  blog_default_title: { fr: "Tout savoir sur l'assurance", en: "Everything about insurance", ar: "كل ما تحتاج معرفته عن التأمين", es: "Todo sobre el seguro" },
+  blog_default_content_1: { fr: "Cette assurance est conçue pour vous protéger contre les risques spécifiques liés à votre situation.", en: "This insurance is designed to protect you against specific risks related to your situation.", ar: "تم تصميم هذا التأمين لحمايتك من المخاطر المحددة المرتبطة بحالتك.", es: "Este seguro está diseñado para protegerlo contra riesgos específicos relacionados con su situación." },
+  blog_default_content_2: { fr: "Nos experts CPA sont là pour vous conseiller et vous proposer la couverture la plus adaptée à vos besoins.", en: "Our CPA experts are here to advise you and offer the most suitable coverage for your needs.", ar: "خبراؤنا في CPA هنا لتقديم المشورة لك وتقديم التغطية الأنسب لاحتياجاتك.", es: "Nuestros expertos de CPA están aquí para asesorarle y ofrecerle la cobertura más adecuada a sus necesidades." },
+  blog_default_content_3: { fr: "Contactez-nous pour un devis personnalisé et une analyse approfondie de vos besoins.", en: "Contact us for a personalized quote and in-depth analysis of your needs.", ar: "تواصل معنا للحصول على عرض أسعار مخصص وتحليل معمق لاحتياجاتك.", es: "Contáctenos para una cotización personalizada y un análisis detallado de sus necesidades." },
+  blog_default_advice_1: { fr: "Évaluez vos besoins réels avant de choisir votre couverture", en: "Assess your real needs before choosing your coverage", ar: "قيّم احتياجاتك الحقيقية قبل اختيار تغطيتك", es: "Evalúe sus necesidades reales antes de elegir su cobertura" },
+  blog_default_advice_2: { fr: "Comparez les garanties et les tarifs entre différents assureurs", en: "Compare guarantees and rates between different insurers", ar: "قارن الضمانات والتعريفات بين شركات التأمين المختلفة", es: "Compare garantías y tarifas entre diferentes aseguradoras" },
+  blog_default_advice_3: { fr: "N'hésitez pas à demander conseil à nos experts", en: "Don't hesitate to ask our experts for advice", ar: "لا تتردد في طلب المشورة من خبرائنا", es: "No dude en pedir consejo a nuestros expertos" },
+
+  // Catalog Download Card Labels
+  catalog_pdf_year: { fr: "PDF 2024", en: "PDF 2024", ar: "PDF 2024", es: "PDF 2024" },
+  catalog_obligatoire_badge: { fr: "OBLIGATOIRE", en: "MANDATORY", ar: "إلزامي", es: "OBLIGATORIO" },
+
+  // Insurance Card Data - Particuliers
+  ins_vehicules_title: { fr: "Assurance Véhicules", en: "Vehicle Insurance", ar: "تأمين المركبات", es: "Seguro de Vehículos" },
+  ins_vehicules_desc: { fr: "Protection complète pour automobile et moto. RC, tous risques, assistance.", en: "Complete protection for car and motorcycle. RC, all-risk, assistance.", ar: "حماية كاملة للسيارة والدراجة النارية. المسؤولية، جميع المخاطر، المساعدة.", es: "Protección completa para automóviles y motos. RC, todo riesgo, asistencia." },
+  ins_vehicules_category: { fr: "RC Auto", en: "Auto Liability", ar: "مسؤولية السيارات", es: "RC Auto" },
+
+  ins_sante_card_title: { fr: "Assurance Santé", en: "Health Insurance", ar: "تأمين الصحة", es: "Seguro de Salud" },
+  ins_sante_card_desc: { fr: "Couverture santé complète. Hospitalisation, soins, optique, dentaire.", en: "Complete health coverage. Hospitalization, care, optics, dental.", ar: "تغطية صحية كاملة. الإقامة الطبية، الرعاية، البصريات، طب الأسنان.", es: "Cobertura de salud completa. Hospitalización, cuidados, óptica, dental." },
+  ins_sante_category: { fr: "Santé", en: "Health", ar: "الصحة", es: "Salud" },
+
+  ins_habitation_title: { fr: "Multirisques Habitation", en: "Home Multi-Risk", ar: "تأمين السكن متعدد المخاطر", es: "Multirriesgo Hogar" },
+  ins_habitation_desc: { fr: "Protégez votre logement et biens contre tous les risques.", en: "Protect your home and belongings against all risks.", ar: "احمِ منزلك وممتلكاتك من جميع المخاطر.", es: "Proteja su vivienda y bienes contra todos los riesgos." },
+  ins_habitation_category: { fr: "Logement", en: "Home", ar: "السكن", es: "Vivienda" },
+
+  ins_retraite_title: { fr: "Retraite & Capitalisation", en: "Retirement & Capitalization", ar: "التقاعد والرأسمالة", es: "Jubilación y Capitalización" },
+  ins_retraite_desc: { fr: "Préparez votre avenir avec nos solutions d'épargne retraite.", en: "Prepare your future with our retirement savings solutions.", ar: "جهّز مستقبلك مع حلولنا الادخار للتقاعد.", es: "Prepare su futuro con nuestras soluciones de ahorro para la jubilación." },
+  ins_retraite_category: { fr: "Épargne", en: "Savings", ar: "الادخار", es: "Ahorro" },
+
+  ins_rc_vie_card_title: { fr: "Responsabilité Civile", en: "Civil Liability", ar: "المسؤولية المدنية", es: "Responsabilidad Civil" },
+  ins_rc_vie_card_desc: { fr: "Protection contre les dommages causés à des tiers.", en: "Protection against damages caused to third parties.", ar: "الحماية من الأضرار التي تلحق بالأطراف الثالثة.", es: "Protección contra daños causados a terceros." },
+  ins_rc_vie_category: { fr: "RC Vie privée", en: "Personal Liability", ar: "المسؤولية الشخصية", es: "RC Vida Privada" },
+
+  ins_voyage_card_title: { fr: "Assistance & Voyage", en: "Assistance & Travel", ar: "المساعدة والسفر", es: "Asistencia y Viaje" },
+  ins_voyage_card_desc: { fr: "Voyagez l'esprit tranquille avec couverture internationale.", en: "Travel with peace of mind with international coverage.", ar: "سافر بأذهان مرتاحة مع تغطية دولية.", es: "Viaje con tranquilidad con cobertura internacional." },
+  ins_voyage_category: { fr: "Voyage", en: "Travel", ar: "السفر", es: "Viaje" },
+
+  ins_accident_card_title: { fr: "Individuelle Accident", en: "Individual Accident", ar: "حادث فردي", es: "Accidente Individual" },
+  ins_accident_card_desc: { fr: "Protection en cas d'accident. Décès, maladie, pack santé monde.", en: "Protection in case of accident. Death, illness, world health pack.", ar: "الحماية في حالة الحادث. الوفاة، المرض، باقة الصحة العالمية.", es: "Protección en caso de accidente. Muerte, enfermedad, pack salud mundial." },
+  ins_accident_category: { fr: "Accident", en: "Accident", ar: "حادث", es: "Accidente" },
+
+  ins_accident_travail_card_title: { fr: "Accident de Travail", en: "Work Accident", ar: "حادث العمل", es: "Accidente Laboral" },
+  ins_accident_travail_card_desc: { fr: "Protection et indemnisation en cas d'accident professionnel.", en: "Protection and compensation in case of work accident.", ar: "الحماية والتعويض في حالة الحادث المهني.", es: "Protección e indemnización en caso de accidente laboral." },
+  ins_accident_travail_category: { fr: "Accident", en: "Accident", ar: "حادث", es: "Accidente" },
+
+  ins_peche_category: { fr: "Pêche", en: "Fishing", ar: "الصيد", es: "Pesca" },
+  ins_forestier_category: { fr: "Forestier", en: "Forestry", ar: "الغابات", es: "Forestal" },
+
+  // Insurance Card Data - Entreprises
+  ins_multi_risque_card_title: { fr: "Multi Risque", en: "Multi-Risk", ar: "متعدد المخاطر", es: "Multirriesgo" },
+  ins_multi_risque_card_desc: { fr: "Protection complète de votre entreprise contre tous les risques.", en: "Complete protection of your business against all risks.", ar: "حماية كاملة لشركتك من جميع المخاطر.", es: "Protección completa de su empresa contra todos los riesgos." },
+  ins_biens_category: { fr: "Biens", en: "Property", ar: "الممتلكات", es: "Bienes" },
+
+  ins_personnes_card_title: { fr: "Accident de Travail", en: "Work Accident", ar: "حادث العمل", es: "Accidente Laboral" },
+  ins_personnes_card_desc: { fr: "Protection des collaborateurs contre les accidents du travail.", en: "Protection of employees against work accidents.", ar: "حماية الموظفين من حوادث العمل.", es: "Protección de los colaboradores contra los accidentes de trabajo." },
+  ins_personnes_category: { fr: "Personnes", en: "People", ar: "الأشخاص", es: "Personas" },
+
+  ins_rc_pro_card_title: { fr: "Responsabilité Civile Professionnelle", en: "Professional Liability", ar: "المسؤولية المهنية", es: "Responsabilidad Civil Profesional" },
+  ins_rc_pro_card_desc: { fr: "Obligatoire pour médecins, cliniques, experts comptables, avocats, architectes et intermédiaires d'assurances.", en: "Mandatory for doctors, clinics, accountants, lawyers, architects and insurance intermediaries.", ar: "إلزامي للأطباء والعيادات والمحاسبين والمحامين والمهندسين المعماريين ووكلاء التأمين.", es: "Obligatorio para médicos, clínicas, contables, abogados, arquitectos e intermediarios de seguros." },
+  ins_rc_category: { fr: "RC", en: "Liability", ar: "المسؤولية", es: "RC" },
+
+  ins_risques_tech_card_title: { fr: "Risques Techniques", en: "Technical Risks", ar: "المخاطر التقنية", es: "Riesgos Técnicos" },
+  ins_risques_tech_card_desc: { fr: "Couverture des risques liés aux équipements techniques et industriels.", en: "Coverage of risks related to technical and industrial equipment.", ar: "تغطية المخاطر المرتبطة بالمعدات التقنية والصناعية.", es: "Cobertura de riesgos relacionados con equipos técnicos e industriales." },
+  ins_techniques_category: { fr: "Techniques", en: "Technical", ar: "تقنية", es: "Técnicos" },
+
+  ins_flotte_card_title: { fr: "Responsabilité Civile Automobile", en: "Motor Liability", ar: "المسؤولية المدنية للسيارات", es: "Responsabilidad Civil Automóvil" },
+  ins_flotte_card_desc: { fr: "Gérez et protégez l'ensemble de votre parc automobile.", en: "Manage and protect your entire vehicle fleet.", ar: "إدارة وحماية أسطول مركباتك بالكامل.", es: "Gestione y proteja la totalidad de su flota de vehículos." },
+  ins_flotte_category: { fr: "Flotte", en: "Fleet", ar: "الأسطول", es: "Flota" },
+
+  ins_transport_card_title: { fr: "Transport & Maritime", en: "Transport & Maritime", ar: "النقل والبحري", es: "Transporte y Marítimo" },
+  ins_transport_card_desc: { fr: "Assurance des marchandises transportées et des corps de navires.", en: "Insurance of transported goods and ship hulls.", ar: "تأمين البضائع المنقولة وأجسام السفن.", es: "Seguro de mercancías transportadas y cascos de buques." },
+  ins_transport_category: { fr: "Transport", en: "Transport", ar: "النقل", es: "Transporte" },
+
+  ins_pertes_card_title: { fr: "Pertes d'Exploitation", en: "Business Interruption", ar: "خسائر الاستغلال", es: "Pérdidas de Explotación" },
+  ins_pertes_card_desc: { fr: "Garantissez la continuité financière en cas de sinistre.", en: "Guarantee financial continuity in case of claim.", ar: "ضمان الاستمرارية المالية في حالة المطالبة.", es: "Garantice la continuidad financiera en caso de siniestro." },
+  ins_pertes_category: { fr: "Pertes", en: "Losses", ar: "الخسائر", es: "Pérdidas" },
+
+  ins_chantier_card_title: { fr: "Tout Risques Chantier", en: "All-Risk Construction", ar: "جميع مخاطر الورش", es: "Todo Riesgo Obra" },
+  ins_chantier_card_desc: { fr: "Assurance obligatoire pour vos chantiers de construction.", en: "Mandatory insurance for your construction sites.", ar: "تأمين إلزامي لورش البناء الخاصة بك.", es: "Seguro obligatorio para sus obras de construcción." },
+  ins_chantier_category: { fr: "Chantier", en: "Construction", ar: "الورش", es: "Obra" },
+
+  ins_cyber_card_title: { fr: "Cyber Criminalité", en: "Cyber Crime", ar: "الجريمة السيبرانية", es: "Cibercrimen" },
+  ins_cyber_card_desc: { fr: "Protégez votre entreprise contre les menaces numériques.", en: "Protect your business against digital threats.", ar: "احمِ شركتك من التهديدات الرقمية.", es: "Proteja su empresa contra amenazas digitales." },
+  ins_cyber_category: { fr: "Cyber", en: "Cyber", ar: "السيبر", es: "Ciberseguridad" },
+
+  ins_terrorisme_card_title: { fr: "Terrorisme & Sabotage", en: "Terrorism & Sabotage", ar: "الإرهاب والتخريب", es: "Terrorismo y Sabotaje" },
+  ins_terrorisme_card_desc: { fr: "Couverture spécifique contre les actes de terreur.", en: "Specific coverage against acts of terror.", ar: "تغطية محددة ضد أفعال terror.", es: "Cobertura específica contra actos de terrorismo." },
+  ins_risques_speciaux_category: { fr: "Risques Spéciaux", en: "Special Risks", ar: "مخاطر خاصة", es: "Riesgos Especiales" },
+
+  ins_epargne_entreprise_card_title: { fr: "Épargne & Vie Capitalisation", en: "Savings & Life Capitalization", ar: "الادخار ورأس المال", es: "Ahorro y Capitalización" },
+  ins_epargne_entreprise_card_desc: { fr: "Solutions d'épargne pour collaborateurs et dirigeants.", en: "Savings solutions for employees and executives.", ar: "حلول ادخار للموظفين والمديرين.", es: "Soluciones de ahorro para empleados y ejecutivos." },
+  ins_epargne_category: { fr: "Épargne", en: "Savings", ar: "الادخار", es: "Ahorro" },
+
+  ins_conseil_card_title: { fr: "Audit et Management des Risques", en: "Risk Audit & Management", ar: "تدقيق وإدارة المخاطر", es: "Auditoría y Gestión de Riesgos" },
+  ins_conseil_card_desc: { fr: "Analyse approfondie et gestion proactive de vos risques.", en: "In-depth analysis and proactive management of your risks.", ar: "تحليل معمق وإدارة استباقية لمخاطرك.", es: "Análisis profundo y gestión proactiva de sus riesgos." },
+  ins_conseil_category: { fr: "Conseil", en: "Consulting", ar: "الاستشارات", es: "Consultoría" },
   chat_suggestion_2: { fr: "Vos services ?", en: "Your services?", ar: "خدماتهم؟", es: "¿Sus servicios?" },
   chat_suggestion_3: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" },
   chat_suggestion_4: { fr: "Qui êtes-vous ?", en: "Who are you?", ar: "من أنتم؟", es: "¿Quiénes son?" },
