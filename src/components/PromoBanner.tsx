@@ -104,7 +104,7 @@ const PromoBanner = ({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.3 }}
-        className="relative w-full bg-gradient-to-r from-[#1e3a8a] via-[#2563eb] to-[#1e3a8a] text-white px-4 py-2.5 shadow-md"
+        className="relative w-full bg-gradient-to-r from-blue-900 via-blue-700 to-blue-800 text-white px-4 py-2.5"
       >
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 flex-1 min-w-0">

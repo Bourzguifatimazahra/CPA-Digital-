@@ -35,11 +35,11 @@ const scaleVariants: Variants = {
 };
 
 const statusConfig = {
-  obligatoire: { color: "bg-red-500", text: "text-red-500", label: "Obligatoire", borderColor: "border-red-500/30", bgLight: "bg-red-500/10", iconBg: "from-red-500/20 to-red-500/5" },
-  recommandee: { color: "bg-green-600", text: "text-green-600", label: "Recommandée", borderColor: "border-green-500/30", bgLight: "bg-green-500/10", iconBg: "from-green-500/20 to-green-500/5" },
-  parfois: { color: "bg-orange-500", text: "text-orange-600", label: "Parfois obligatoire", borderColor: "border-orange-500/30", bgLight: "bg-orange-500/10", iconBg: "from-orange-500/20 to-orange-500/5" },
-  optionnelle: { color: "bg-green-500", text: "text-green-600", label: "Optionnelle", borderColor: "border-green-500/30", bgLight: "bg-green-500/10", iconBg: "from-green-500/20 to-green-500/5" },
-  quasi: { color: "bg-orange-400", text: "text-orange-500", label: "Quasi obligatoire", borderColor: "border-orange-400/30", bgLight: "bg-orange-400/10", iconBg: "from-orange-400/20 to-orange-400/5" },
+  obligatoire: { color: "bg-red-500", text: "text-red-500", label: "badge_obligatoire", borderColor: "border-red-500/30", bgLight: "bg-red-500/10", iconBg: "from-red-500/20 to-red-500/5" },
+  recommandee: { color: "bg-green-600", text: "text-green-600", label: "badge_recommande", borderColor: "border-green-500/30", bgLight: "bg-green-500/10", iconBg: "from-green-500/20 to-green-500/5" },
+  parfois: { color: "bg-orange-500", text: "text-orange-600", label: "badge_parfois", borderColor: "border-orange-500/30", bgLight: "bg-orange-500/10", iconBg: "from-orange-500/20 to-orange-500/5" },
+  optionnelle: { color: "bg-green-500", text: "text-green-600", label: "badge_optionnelle", borderColor: "border-green-500/30", bgLight: "bg-green-500/10", iconBg: "from-green-500/20 to-green-500/5" },
+  quasi: { color: "bg-orange-400", text: "text-orange-500", label: "badge_quasi", borderColor: "border-orange-400/30", bgLight: "bg-orange-400/10", iconBg: "from-orange-400/20 to-orange-400/5" },
 };
 
 interface InsuranceCardProps {
@@ -55,6 +55,7 @@ interface InsuranceCardProps {
 }
 
 const InsuranceCard = ({ title, description, icon, category, href, status, onClick }: InsuranceCardProps) => {
+  const { t } = useLanguage();
   const config = statusConfig[status];
   
   return (
@@ -72,7 +73,7 @@ const InsuranceCard = ({ title, description, icon, category, href, status, onCli
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 mb-1 flex-wrap">
             <span className={`inline-flex items-center gap-1 px-2 py-0.5 ${config.color} text-white text-xs font-bold rounded-full shadow-sm`}>
-              {config.label}
+              {t(config.label as any)}
             </span>
             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
               {category}
@@ -85,7 +86,7 @@ const InsuranceCard = ({ title, description, icon, category, href, status, onCli
             {description}
           </p>
           <div className="mt-2 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-            <span>Lire plus</span>
+            <span>{t("ins_auto_lire_plus")}</span>
             <ArrowRight className="w-3 h-3" />
           </div>
         </div>
@@ -357,7 +358,7 @@ const CatalogPage = () => {
               transition={{ delay: 0.1 }}
             >
               <FileText className="w-4 h-4 text-primary" />
-              <span className="text-primary font-semibold text-sm">Nos Catalogues</span>
+              <span className="text-primary font-semibold text-sm">{t("nav_catalog_our_catalogs")}</span>
             </motion.div>
             <motion.h1
               className="text-3xl md:text-4xl font-bold mb-3"
@@ -373,7 +374,7 @@ const CatalogPage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Téléchargez nos catalogues PDF et découvrez nos solutions d'assurance pour particuliers et entreprises.
+              {t("nav_catalog_download_desc")}
             </motion.p>
           </motion.div>
 
@@ -397,7 +398,7 @@ const CatalogPage = () => {
                 </div>
                 <div className="flex gap-2">
                   <a href={catalogUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-all hover:shadow-lg">
-                    <Download className="w-4 h-4" /> Télécharger
+                    <Download className="w-4 h-4" /> {t("nav_download")}
                   </a>
                   <a href={catalogViewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-border hover:bg-secondary text-sm transition-colors">
                     <FileText className="w-4 h-4" />
@@ -423,7 +424,7 @@ const CatalogPage = () => {
                 </div>
                 <div className="flex gap-2">
                   <a href={catalogUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white text-red-600 font-bold text-sm transition-all hover:shadow-lg">
-                    <Download className="w-4 h-4" /> Télécharger
+                    <Download className="w-4 h-4" /> {t("nav_download")}
                   </a>
                   <a href={catalogViewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-sm transition-colors">
                     <FileText className="w-4 h-4 text-white" />
@@ -443,9 +444,9 @@ const CatalogPage = () => {
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 rounded-full mb-2">
                 <Users className="w-4 h-4 text-blue-600" />
-                <span className="text-blue-600 font-bold text-sm">Particuliers</span>
+                <span className="text-blue-600 font-bold text-sm">{t("catalog_particuliers_badge")}</span>
               </div>
-              <h2 className="text-xl font-bold">Nos Solutions pour les Particuliers</h2>
+              <h2 className="text-xl font-bold">{t("catalog_particuliers_title")}</h2>
             </div>
             <motion.div
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -471,7 +472,7 @@ const CatalogPage = () => {
                   onClick={() => setShowParticuliersAll(true)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 font-semibold text-sm transition-all hover:shadow-md"
                 >
-                  Voir plus ({particuliersInsurances.length - initialParticuliersCount} autres)
+                  {t("catalog_particuliers_voir_plus")} ({particuliersInsurances.length - initialParticuliersCount} {t("catalog_particuliers_autres")})
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </motion.div>
@@ -486,7 +487,7 @@ const CatalogPage = () => {
                   onClick={() => setShowParticuliersAll(false)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-muted hover:bg-muted/80 text-muted-foreground font-medium text-sm transition-all"
                 >
-                  Réduire
+                  {t("catalog_particuliers_reduire")}
                   <ChevronRight className="w-4 h-4 rotate-90" />
                 </button>
               </motion.div>
@@ -503,10 +504,10 @@ const CatalogPage = () => {
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-500/10 rounded-full mb-2">
                 <Shield className="w-4 h-4 text-red-500" />
-                <span className="text-red-500 font-bold text-sm">Entreprises</span>
+                <span className="text-red-500 font-bold text-sm">{t("catalog_entreprises_badge")}</span>
               </div>
-              <h2 className="text-xl font-bold">Assurances pour les Entreprises</h2>
-              <p className="text-sm text-muted-foreground">Protégez votre activité avec nos solutions professionnelles</p>
+              <h2 className="text-xl font-bold">{t("catalog_entreprises_title")}</h2>
+              <p className="text-sm text-muted-foreground">{t("catalog_entreprises_desc")}</p>
             </div>
             <motion.div
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -532,7 +533,7 @@ const CatalogPage = () => {
                   onClick={() => setShowEntreprisesAll(true)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-600 font-semibold text-sm transition-all hover:shadow-md"
                 >
-                  Voir plus ({entreprisesInsurances.length - initialEntreprisesCount} autres)
+                  {t("catalog_entreprises_voir_plus")} ({entreprisesInsurances.length - initialEntreprisesCount} {t("catalog_entreprises_autres")})
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </motion.div>
@@ -547,7 +548,7 @@ const CatalogPage = () => {
                   onClick={() => setShowEntreprisesAll(false)}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-muted hover:bg-muted/80 text-muted-foreground font-medium text-sm transition-all"
                 >
-                  Réduire
+                  {t("catalog_entreprises_reduire")}
                   <ChevronRight className="w-4 h-4 rotate-90" />
                 </button>
               </motion.div>
@@ -565,9 +566,9 @@ const CatalogPage = () => {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <CheckCircle2 className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-bold mb-2">Besoin d'un conseil personnalisé ?</h3>
+              <h3 className="font-bold mb-2">{t("catalog_cta_title")}</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Nos experts CPA vous accompagnent dans le choix de vos assurances.
+                {t("catalog_cta_desc")}
               </p>
               <a
                 href="/contact"

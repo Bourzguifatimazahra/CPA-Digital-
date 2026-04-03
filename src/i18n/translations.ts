@@ -24,6 +24,9 @@ export const translations = {
   nav_catalog_particuliers_desc: { fr: "Notre catalogue pour particuliers comprend toutes nos offres d'assurance automobile, santé, habitation, voyage et épargne", en: "Our catalog for individuals includes all our auto, health, home, travel and savings insurance offers", ar: "يتضمن الكتالوج الخاص بالأفراد جميع عروض التأمين على السيارات والصحة والسكن والسفر والادخار", es: "Nuestro catálogo para particulares incluye todas nuestras ofertas de seguro de auto, salud, hogar, viaje y ahorro" },
   nav_catalog_entreprises_desc: { fr: "Notre catalogue pour entreprises couvre tous les risques professionnels : biens, personnes, RC, risques techniques et plus", en: "Our catalog for businesses covers all professional risks: property, people, liability, technical risks and more", ar: "يغطي الكتالوج الخاص بالشركات جميع المخاطر المهنية: الممتلكات والأشخاص والمسؤولية والمخاطر التقنية والمزيد", es: "Nuestro catálogo para empresas cubre todos los riesgos profesionales: bienes, personas, RC, riesgos técnicos y más" },
   nav_catalog_contact: { fr: "Vous avez des questions ? N'hésitez pas à nous contacter", en: "Have questions? Don't hesitate to contact us", ar: "هل لديك أسئلة؟ لا تتردد في الاتصال بنا", es: "¿Tiene preguntas? No dude en contactarnos" },
+  nav_catalog_our_catalogs: { fr: "Nos Catalogues", en: "Our Catalogs", ar: "كتالوجاتنا", es: "Nuestros Catálogos" },
+  nav_catalog_download_desc: { fr: "Téléchargez nos catalogues PDF et découvrez nos solutions d'assurance pour particuliers et entreprises.", en: "Download our PDF catalogs and discover our insurance solutions for individuals and businesses.", ar: "قم بتنزيل كتالوجات PDF واكتشف حلول التأمين الخاصة بنا للأفراد والشركات.", es: "Descargue nuestros catálogos en PDF y descubra nuestras soluciones de seguros para particulares y empresas." },
+  nav_download: { fr: "Télécharger", en: "Download", ar: "تحميل", es: "Descargar" },
   nav_individuals: { fr: "Particuliers", en: "Individuals", ar: "الأفراد", es: "Particulares" },
   nav_auto: { fr: "Assurance Automobile", en: "Auto Insurance", ar: "تأمين السيارات", es: "Seguro de Auto" },
   nav_moto: { fr: "Assurance Moto", en: "Motorcycle Insurance", ar: "تأمين الدراجات", es: "Seguro de Moto" },
@@ -452,6 +455,123 @@ export const translations = {
   faq_q33: { fr: "Avec quelles compagnies travaillez-vous ?", en: "Which companies do you work with?", ar: "مع أي شركات تعملون؟", es: "¿Con qué compañías trabajan?" },
   faq_a33: { fr: "Nous travaillons avec les meilleures compagnies du marché : Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, et bien d'autres.", en: "We work with the best companies in the market: Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, and many more.", ar: "نعمل مع أفضل الشركات في السوق: أليانز، AXA، وفاء للتأمين، RMA، سانلام، أتلانتا صد، الشركة المغربية للحياة، وغيرها الكثير.", es: "Trabajamos con las mejores compañías del mercado: Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, y muchas más." },
   faq_kw33: { fr: "compagnies, partenaires, allianz, axa, wafa", en: "companies, partners, allianz, axa, wafa", ar: "شركات, شركاء, أليانز, axa, وفاء", es: "compañías, socios, allianz, axa, wafa" },
+
+  // Catalog Page - Particuliers (Individuals)
+  catalog_particuliers_badge: { fr: "Particuliers", en: "Individuals", ar: "الأفراد", es: "Particulares" },
+  catalog_particuliers_title: { fr: "Nos Solutions pour les Particuliers", en: "Our Solutions for Individuals", ar: "حلولنا للأفراد", es: "Nuestras Soluciones para Particulares" },
+  catalog_particuliers_desc: { fr: "Protégez ce qui compte avec nos assurances adaptées à vos besoins", en: "Protect what matters with our insurance tailored to your needs", ar: "احموا ما يهمكم مع تأميناتنا المصممة حسب احتياجاتكم", es: "Proteja lo que importa con nuestros seguros adaptados a sus necesidades" },
+  catalog_particuliers_voir_plus: { fr: "Voir plus", en: "Show more", ar: "عرض المزيد", es: "Ver más" },
+  catalog_particuliers_autres: { fr: "autres", en: "others", ar: "أخرى", es: "otros" },
+  catalog_particuliers_reduire: { fr: "Réduire", en: "Show less", ar: "تقليص", es: "Reducir" },
+
+  // Catalog Page - Entreprises (Business)
+  catalog_entreprises_badge: { fr: "Entreprises", en: "Business", ar: "الشركات", es: "Empresas" },
+  catalog_entreprises_title: { fr: "Assurances pour les Entreprises", en: "Business Insurance", ar: "التأمينات للشركات", es: "Seguros para Empresas" },
+  catalog_entreprises_desc: { fr: "Protégez votre activité avec nos solutions professionnelles", en: "Protect your business with our professional solutions", ar: "احموا نشاطكم مع حلولنا المهنية", es: "Proteja su actividad con nuestras soluciones profesionales" },
+  catalog_entreprises_voir_plus: { fr: "Voir plus", en: "Show more", ar: "عرض المزيد", es: "Ver más" },
+  catalog_entreprises_autres: { fr: "autres", en: "others", ar: "أخرى", es: "otros" },
+  catalog_entreprises_reduire: { fr: "Réduire", en: "Show less", ar: "تقليص", es: "Reducir" },
+
+  // Catalog Page - CTA
+  catalog_cta_title: { fr: "Besoin d'un conseil personnalisé ?", en: "Need personalized advice?", ar: "هل تحتاج إلى نصيحة مخصصة؟", es: "¿Necesita un consejo personalizado?" },
+  catalog_cta_desc: { fr: "Nos experts CPA vous accompagnent dans le choix de vos assurances.", en: "Our CPA experts guide you in choosing your insurance.", ar: "خبراء CPA يرافقونكم في اختيار تأميناتكم.", es: "Nuestros expertos de CPA le acompañan en la elección de sus seguros." },
+
+  // Insurance Types - Particuliers
+  ins_auto_title: { fr: "RC Auto", en: "Auto Liability", ar: "مسؤولية السيارات الآلية", es: "RC Auto" },
+  ins_auto_desc: { fr: "Assurance Véhicules", en: "Vehicle Insurance", ar: "تأمين المركبات", es: "Seguro de Vehículos" },
+  ins_auto_details: { fr: "Protection complète pour automobile et moto. RC, tous risques, assistance.", en: "Complete protection for car and motorcycle. Liability, all-risk, assistance.", ar: "حماية كاملة للسيارة والدراجة النارية. المسؤولية، جميع المخاطر، المساعدة.", es: "Protección completa para automóviles y motos. RC, todo riesgo, asistencia." },
+  ins_auto_lire_plus: { fr: "Lire plus", en: "Read more", ar: "اقرأ أكثر", es: "Leer más" },
+
+  ins_sante_title: { fr: "Santé", en: "Health", ar: "الصحة", es: "Salud" },
+  ins_sante_desc: { fr: "Assurance Santé", en: "Health Insurance", ar: "تأمين الصحة", es: "Seguro de Salud" },
+  ins_sante_details: { fr: "Couverture santé complète. Hospitalisation, soins, optique, dentaire.", en: "Complete health coverage. Hospitalization, care, optics, dental.", ar: "تغطية صحية كاملة. الإقامة الطبية، الرعاية، البصريات، طب الأسنان.", es: "Cobertura de salud completa. Hospitalización, cuidados, óptica, dental." },
+
+  ins_logement_title: { fr: "Logement", en: "Home", ar: "السكن", es: "Vivienda" },
+  ins_logement_desc: { fr: "Multirisques Habitation", en: "Home Multi-Risk", ar: "تأمين السكن متعددة المخاطر", es: "Multirriesgo Hogar" },
+  ins_logement_details: { fr: "Protégez votre logement et biens contre tous les risques.", en: "Protect your home and property against all risks.", ar: "حميا السكن والممتلكات ضد جميع المخاطر.", es: "Proteja su vivienda y bienes contra todos los riesgos." },
+
+  ins_epargne_title: { fr: "Épargne", en: "Savings", ar: "الادخار", es: "Ahorro" },
+  ins_epargne_desc: { fr: "Retraite & Capitalisation", en: "Retirement & Capitalization", ar: "التقاعد والرأسمالة", es: "Jubilación y Capitalización" },
+  ins_epargne_details: { fr: "Préparez votre avenir avec nos solutions d'épargne retraite.", en: "Prepare your future with our retirement savings solutions.", ar: "جهزوا مستقبلكم مع حلولنا الادخار للتقاعد.", es: "Prepare su futuro con nuestras soluciones de ahorro para la jubilación." },
+
+  ins_rc_vie_title: { fr: "RC Vie privée", en: "Personal Liability", ar: "المسؤولية المدنية", es: "RC Vida Privada" },
+  ins_rc_vie_desc: { fr: "Responsabilité Civile", en: "Civil Liability", ar: "المسؤولية المدنية", es: "Responsabilidad Civil" },
+  ins_rc_vie_details: { fr: "Protection contre les dommages causés à des tiers.", en: "Protection against damages caused to third parties.", ar: "الحماية من الأضرار المسسبة للأطراف الثالثة.", es: "Protección contra daños causados a terceros." },
+
+  ins_voyage_title: { fr: "Voyage", en: "Travel", ar: "السفر", es: "Viaje" },
+  ins_voyage_desc: { fr: "Assistance & Voyage", en: "Assistance & Travel", ar: "المساعدة والسفر", es: "Asistencia y Viaje" },
+  ins_voyage_details: { fr: "Voyagez l'esprit tranquille avec couverture internationale.", en: "Travel with peace of mind with international coverage.", ar: "سافروا واسترخوا مع تغطية دولية.", es: "Viaje con tranquilidad con cobertura internacional." },
+
+  ins_accident_title: { fr: "Accident", en: "Accident", ar: "حادث", es: "Accidente" },
+  ins_accident_desc: { fr: "Individuelle Accident", en: "Individual Accident", ar: "حادث فردي", es: "Accidente Individual" },
+  ins_accident_details: { fr: "Protection en cas d'accident. Décès, maladie, pack santé monde.", en: "Protection in case of accident. Death, illness, world health pack.", ar: "الحماية في حالة الحادث. الوفاة، المرض، باقة الصحة العالمية.", es: "Protección en caso de accidente. Muerte, enfermedad, pack salud mundial." },
+
+  ins_at_travail_title: { fr: "Accident de Travail", en: "Work Accident", ar: "حادث العمل", es: "Accidente Laboral" },
+  ins_at_travail_desc: { fr: "Protection et indemnisation en cas d'accident professionnel.", en: "Protection and compensation in case of work accident.", ar: "الحماية والتعويض في حالة الحادث المهني.", es: "Protección e indemnización en caso de accidente laboral." },
+
+  ins_peche_title: { fr: "Pêche", en: "Fishing", ar: "الصيد", es: "Pesca" },
+  ins_peche_desc: { fr: "Pêche Artisanale", en: "Artisanal Fishing", ar: "صيد حرفي", es: "Pesca Artesanal" },
+  ins_peche_details: { fr: "Assurance spécifique pour les activités de pêche artisanale.", en: "Specific insurance for artisanal fishing activities.", ar: "تأمين خاص لأنشطة الصيد الحرفي.", es: "Seguro específico para las actividades de pesca artesanal." },
+
+  ins_forestier_title: { fr: "Forestier", en: "Forestry", ar: "الغابات", es: "Forestal" },
+  ins_forestier_desc: { fr: "Accident de Travail Forestière", en: "Forestry Work Accident", ar: "حادث عمل غابي", es: "Accidente de Trabajo Forestal" },
+  ins_forestier_details: { fr: "Couverture pour les travailleurs forestiers contre les accidents.", en: "Coverage for forestry workers against accidents.", ar: "تغطية للعمال الغابيين من حوادث العمل.", es: "Cobertura para los trabajadores forestales contra accidentes." },
+
+  // Insurance Types - Entreprises (Business)
+  ins_biens_title: { fr: "Biens", en: "Property", ar: "الممتلكات", es: "Bienes" },
+  ins_biens_desc: { fr: "Multi Risque", en: "Multi-Risk", ar: "تععدد المخاطر", es: "Multirriesgo" },
+  ins_biens_details: { fr: "Protection complète de votre entreprise contre tous les risques.", en: "Complete protection of your business against all risks.", ar: "حماية كاملة لشركتكم ضد جميع المخاطر.", es: "Protección completa de su empresa contra todos los riesgos." },
+
+  ins_personnes_title: { fr: "Personnes", en: "People", ar: "الأشخاص", es: "Personas" },
+  ins_personnes_desc: { fr: "Accident de Travail", en: "Work Accident", ar: "حادث العمل", es: "Accidentes Laborales" },
+  ins_personnes_details: { fr: "Protection des collaborateurs contre les accidents du travail.", en: "Protection of employees against work accidents.", ar: "حماية الموظفين من حوادث العمل.", es: "Protección de los colaboradores contra los accidentes de trabajo." },
+
+  ins_rc_pro_title: { fr: "RC", en: "Liability", ar: "المسؤولية", es: "RC" },
+  ins_rc_pro_desc: { fr: "Responsabilité Civile Professionnelle", en: "Professional Liability", ar: "المسؤولية المهنية", es: "Responsabilidad Civil Profesional" },
+  ins_rc_pro_details: { fr: "Obligatoire pour médecins, cliniques, experts comptables, avocats, architectes et intermédiaires d'assurances.", en: "Mandatory for doctors, clinics, accountants, lawyers, architects and insurance intermediaries.", ar: "إلزامي للأطباء، العيادات، المحاسبين، المحامين، المهندسين المعماريين ووسيط التأمين.", es: "Obligatorio para médicos, clínicas, contables, abogados, arquitectos e intermediarios de seguros." },
+
+  ins_risques_tech_title: { fr: "Techniques", en: "Technical", ar: "تقنية", es: "Técnicos" },
+  ins_risques_tech_desc: { fr: "Risques Techniques", en: "Technical Risks", ar: "المخاطر التقنية", es: "Riesgos Técnicos" },
+  ins_risques_tech_details: { fr: "Couverture des risques liés aux équipements techniques et industriels.", en: "Coverage of risks related to technical and industrial equipment.", ar: "تغطية المخاطر المتعلقة بالمعدات التقنية والصناعية.", es: "Cobertura de riesgos relacionados con equipos técnicos e industriales." },
+
+  ins_flotte_title: { fr: "Flotte", en: "Fleet", ar: "الأسطول", es: "Flota" },
+  ins_flotte_desc: { fr: "Responsabilité Civile Automobile", en: "Motor Liability", ar: "مسؤولية السيارات الآلية", es: "Responsabilidad Civil Automóvil" },
+  ins_flotte_details: { fr: "Gérez et protégez l'ensemble de votre parc automobile.", en: "Manage and protect your entire vehicle fleet.", ar: "إدارة وحماية مجموع أسطولكم السياري.", es: "Gestione y proteja el conjunto de su parque automóvil." },
+
+  ins_transport_title: { fr: "Transport", en: "Transport", ar: "النقل", es: "Transporte" },
+  ins_transport_desc: { fr: "Transport & Maritime", en: "Transport & Maritime", ar: "النقل والبحري", es: "Transporte y Marítimo" },
+  ins_transport_details: { fr: "Assurance des marchandises transportées et des corps de navires.", en: "Insurance of transported goods and ship hulls.", ar: "تأمين البضائع المنقولة وأجسام السفن.", es: "Seguro de mercaderías transportadas y cascos de buques." },
+
+  ins_pertes_title: { fr: "Pertes", en: "Losses", ar: "الخسارات", es: "Pérdidas" },
+  ins_pertes_desc: { fr: "Pertes d'Exploitation", en: "Business Interruption", ar: "خسارات التشغيل", es: "Pérdidas de Explotación" },
+  ins_pertes_details: { fr: "Garantissez la continuité financière en cas de sinistre.", en: "Guarantee financial continuity in case of claim.", ar: "تكفلوا الاستمرارية المالية في حالة الحادث.", es: "Garanticen la continuidad financiera en caso de siniestro." },
+
+  ins_chantier_title: { fr: "Chantier", en: "Construction", ar: "الموثق", es: "Obra" },
+  ins_chantier_desc: { fr: "Tout Risques Chantier", en: "All-Risk Construction", ar: "جميع مخاطر الموثق", es: "Todo Riesgo Obra" },
+  ins_chantier_details: { fr: "Assurance obligatoire pour vos chantiers de construction.", en: "Mandatory insurance for your construction sites.", ar: "تأمين إلزامي لمواثق البناء الخاصة بكم.", es: "Seguro obligatorio para sus obras de construcción." },
+
+  ins_cyber_title: { fr: "Cyber", en: "Cyber", ar: "السيبر", es: "Ciber" },
+  ins_cyber_desc: { fr: "Cyber Criminalité", en: "Cyber Crime", ar: "الجريمة الإلكترونية", es: "Cibercrimen" },
+  ins_cyber_details: { fr: "Protégez votre entreprise contre les menaces numériques.", en: "Protect your business against digital threats.", ar: "حميا شركتكم من التهديدات الرقمية.", es: "Proteja su empresa contra las amenazas digitales." },
+
+  ins_terrorisme_title: { fr: "Risques Spéciaux", en: "Special Risks", ar: "مخاطر خاصة", es: "Riesgos Especiales" },
+  ins_terrorisme_desc: { fr: "Terrorisme & Sabotage", en: "Terrorism & Sabotage", ar: "الإرهاب والتخريب", es: "Terrorismo y Sabotaje" },
+  ins_terrorisme_details: { fr: "Couverture spécifique contre les actes de terreur.", en: "Specific coverage against acts of terror.", ar: "تغطية خاصة للأفعال الإرهبية.", es: "Cobertura específica contra los actos de terrorismo." },
+
+  ins_epargne_entreprise_title: { fr: "Épargne", en: "Savings", ar: "الادخار", es: "Ahorro" },
+  ins_epargne_entreprise_desc: { fr: "Épargne & Vie Capitalisation", en: "Savings & Life Capitalization", ar: "الادخار والحياة", es: "Ahorro y Capitalización" },
+  ins_epargne_entreprise_details: { fr: "Solutions d'épargne pour collaborateurs et dirigeants.", en: "Savings solutions for employees and executives.", ar: "حلول ادخار للموظفين والمديرين.", es: "Soluciones de ahorro para colaboradores y directivos." },
+
+  ins_conseil_title: { fr: "Conseil", en: "Consulting", ar: "استشارة", es: "Consejo" },
+  ins_conseil_desc: { fr: "Audit et Management des Risques", en: "Risk Audit & Management", ar: "تدقيق وإدارة المخاطر", es: "Auditoría y Gestión de Riesgos" },
+  ins_conseil_details: { fr: "Analyse approfondie et gestion proactive de vos risques.", en: "In-depth analysis and proactive management of your risks.", ar: "تحليل معمق وإدارة المخاطر الاستباقية.", es: "Análisis profundo y gestión proactiva de sus riesgos." },
+
+  // Badges
+  badge_obligatoire: { fr: "Obligatoire", en: "Mandatory", ar: "إلزامي", es: "Obligatorio" },
+  badge_recommande: { fr: "Recommandée", en: "Recommended", ar: "موصى به", es: "Recomendado" },
+  badge_parfois: { fr: "Parfois obligatoire", en: "Sometimes mandatory", ar: "أحيانا إلزامي", es: "A veces obligatorio" },
+  badge_optionnelle: { fr: "Optionnelle", en: "Optional", ar: "اختياري", es: "Opcional" },
+  badge_quasi: { fr: "Quasi obligatoire", en: "Nearly mandatory", ar: "شبه إلزامي", es: "Casi obligatorio" },
 
   // Chatbot suggestions
   chat_suggestion_1: { fr: "Qu'est-ce que l'assurance ?", en: "What is insurance?", ar: "ما هو التأمين؟", es: "¿Qué es el seguro?" },

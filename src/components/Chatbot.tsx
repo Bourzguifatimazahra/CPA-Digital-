@@ -514,33 +514,58 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
               exit={{ opacity: 0, y: -10, scale: 0.8 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-gradient-to-r from-[#1a365d] to-[#2d4a7c] text-white px-4 py-2 rounded-xl shadow-lg text-xs min-w-[180px] max-w-[220px]">
+              <motion.div 
+                className="bg-white/20 backdrop-blur-md border-2 border-blue-500/50 text-blue-600 px-4 py-2 rounded-2xl text-xs min-w-[180px] max-w-[220px] shadow-lg"
+                animate={{ 
+                  boxShadow: [
+                    "0 4px 15px rgba(59, 130, 246, 0.2)",
+                    "0 8px 25px rgba(59, 130, 246, 0.4)",
+                    "0 4px 15px rgba(59, 130, 246, 0.2)"
+                  ],
+                  borderColor: [
+                    "rgba(59, 130, 246, 0.4)",
+                    "rgba(59, 130, 246, 0.8)",
+                    "rgba(59, 130, 246, 0.4)"
+                  ],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <div className="flex items-center gap-2 mb-1">
-                  <span>{ads[currentAdIndex].icon}</span>
-                  <span className="font-semibold text-[10px]">
+                  <motion.span 
+                    className="text-lg"
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      rotate: [0, 5, -5, 0]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    {ads[currentAdIndex].icon}
+                  </motion.span>
+                  <span className="font-bold text-[11px] text-blue-600 drop-shadow-sm">
                     {lang === "fr" ? ads[currentAdIndex].title : 
                      lang === "en" ? ads[currentAdIndex].titleEn :
                      lang === "ar" ? ads[currentAdIndex].titleAr :
                      ads[currentAdIndex].titleEs}
                   </span>
                 </div>
-                <div className="text-[9px] opacity-80">
+                <div className="text-[10px] text-blue-500/90 font-medium">
                   {lang === "fr" ? ads[currentAdIndex].text :
                    lang === "en" ? ads[currentAdIndex].textEn :
                    lang === "ar" ? ads[currentAdIndex].textAr :
                    ads[currentAdIndex].textEs}
                 </div>
-                {/* Progress bar showing 20s duration */}
-                <div className="mt-2 h-1 bg-white/20 rounded-full overflow-hidden">
+                {/* Progress bar showing 20s duration with gradient */}
+                <div className="mt-2 h-1.5 bg-blue-500/30 rounded-full overflow-hidden">
                   <motion.div 
-                    className="h-full bg-white rounded-full"
+                    className="h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 20, ease: "linear" }}
                     key={currentAdIndex}
                   />
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -556,7 +581,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
             <img 
               src={chatbotGif} 
               alt="CPA Assistant" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover bg-transparent transition-transform duration-300 hover:scale-110"
             />
           </div>
           <div className="absolute inset-0 rounded-full border-4 border-[#1a365d]/20 animate-ping"></div>
