@@ -422,6 +422,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   ]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
+  const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Get page-specific ads or fallback to home ads
@@ -431,20 +432,37 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Rotate through page-specific ads - ONE ad at a time, 20 seconds duration, cycle every 22 seconds
+  // Rotate through page-specific ads - ONE ad at a time, 5 seconds display, 20 seconds pause
   useEffect(() => {
     // Start with showing the first ad
     setShowAds(true);
     
-    // Change to next ad every 20 seconds (each ad displays for 20 seconds)
+    // Change to next ad every 25 seconds (5s display + 20s pause)
     const rotateTimer = setInterval(() => {
       setCurrentAdIndex((prev) => (prev + 1) % ads.length);
-    }, 20000); // 20 seconds per ad
+    }, 25000); // 25 seconds total cycle (5s display + 20s wait)
     
     return () => {
       clearInterval(rotateTimer);
     };
   }, [ads.length]);
+
+  // Toggle GIF visibility: 5 seconds display, 20 seconds hidden
+  useEffect(() => {
+    // First toggle after 5 seconds to start the hidden phase
+    const hideTimer = setTimeout(() => {
+      setShowGif(false);
+      
+      // Then toggle every 25 seconds (20s hidden + 5s display)
+      const gifTimer = setInterval(() => {
+        setShowGif((prev) => !prev);
+      }, 25000);
+      
+      return () => clearInterval(gifTimer);
+    }, 5000);
+    
+    return () => clearTimeout(hideTimer);
+  }, []);
 
   // Update suggestions when language changes
   useEffect(() => {
@@ -555,13 +573,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                    lang === "ar" ? ads[currentAdIndex].textAr :
                    ads[currentAdIndex].textEs}
                 </div>
-                {/* Progress bar showing 20s duration with gradient */}
+                {/* Progress bar showing 5s duration with gradient */}
                 <div className="mt-2 h-1.5 bg-blue-500/30 rounded-full overflow-hidden">
                   <motion.div 
                     className="h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
-                    transition={{ duration: 20, ease: "linear" }}
+                    transition={{ duration: 5, ease: "linear" }}
                     key={currentAdIndex}
                   />
                 </div>
@@ -570,23 +588,28 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
           )}
         </AnimatePresence>
 
-        {/* GIF Container */}
-        <motion.div
-          className="relative"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
-        >
-          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl cpa-shadow-lg">
-            <img 
-              src={chatbotGif} 
-              alt="CPA Assistant" 
-              className="w-full h-full object-cover bg-transparent transition-transform duration-300 hover:scale-110"
-            />
-          </div>
-          <div className="absolute inset-0 rounded-full border-4 border-[#1a365d]/20 animate-ping"></div>
-          <div className="absolute inset-0 rounded-full border-2 border-[#1a365d]/30 animate-pulse"></div>
-        </motion.div>
+        {/* GIF Container - Show for 5 seconds, hide for 20 seconds */}
+        <AnimatePresence mode="wait">
+          {showGif && (
+            <motion.div
+              className="relative"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl cpa-shadow-lg">
+                <img 
+                  src={chatbotGif} 
+                  alt="CPA Assistant" 
+                  className="w-full h-full object-cover bg-transparent transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <div className="absolute inset-0 rounded-full border-4 border-[#1a365d]/20 animate-ping"></div>
+              <div className="absolute inset-0 rounded-full border-2 border-[#1a365d]/30 animate-pulse"></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       <motion.button

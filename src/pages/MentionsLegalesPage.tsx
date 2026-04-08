@@ -46,10 +46,10 @@ const MentionsLegalesPage = () => {
                     <strong>{lang === "fr" ? "Siège social" : lang === "en" ? "Headquarters" : lang === "es" ? "Sede social" : "المقر الاجتماعي"}:</strong> Angle Boulevard Moulay Youssef et Boulevard Ziraoui, Complexe Moulay Youssef Work Center, 2ème Étage, Casablanca, Maroc
                   </p>
                   <p>
-                    <strong>{lang === "fr" ? "Numéro RC" : lang === "en" ? "RC Number" : lang === "es" ? "Número RC" : "رقم السجل التجاري"}:</strong> 123456
+                    <strong>{lang === "fr" ? "Numéro RC" : lang === "en" ? "RC Number" : lang === "es" ? "Número RC" : "رقم السجل التجاري"}:</strong> 25601
                   </p>
                   <p>
-                    <strong>{lang === "fr" ? "ICE" : lang === "en" ? "ICE" : lang === "es" ? "ICE" : "الرقم التعريفي"}:</strong> 000123456789
+                    <strong>{lang === "fr" ? "ICE" : lang === "en" ? "ICE" : lang === "es" ? "ICE" : "الرقم التعريفي"}:</strong> 001518917000065
                   </p>
                   <p>
                     <strong>{lang === "fr" ? "Téléphone" : lang === "en" ? "Phone" : lang === "es" ? "Teléfono" : "الهاتف"}:</strong> +212 5 22 95 39 00
