@@ -7,12 +7,29 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
+        "xl": "1000px",
+        "lg": "800px",
+        "md": "600px",
+        "sm": "500px",
       },
     },
     extend: {
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1rem" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem" }],
+        base: ["0.9375rem", { lineHeight: "1.5rem" }],
+        lg: ["1.0625rem", { lineHeight: "1.75rem" }],
+        xl: ["1.125rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.25rem", { lineHeight: "1.75rem" }],
+        "3xl": ["1.375rem", { lineHeight: "1.875rem" }],
+        "4xl": ["1.5rem", { lineHeight: "2rem" }],
+        "5xl": ["1.625rem", { lineHeight: "2.125rem" }],
+        "6xl": ["1.75rem", { lineHeight: "2.125rem" }],
+        "7xl": ["1.875rem", { lineHeight: "2.25rem" }],
+      },
       fontFamily: {
         heading: ['Plus Jakarta Sans', 'sans-serif'],
         body: ['Inter', 'sans-serif'],

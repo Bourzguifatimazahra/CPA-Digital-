@@ -4,20 +4,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
-import { useEffect } from "react";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import ParticuliersPage from "./pages/ParticuliersPage";
-import EntreprisesPage from "./pages/EntreprisesPage";
-import ExpertisePage from "./pages/ExpertisePage";
-import ContactPage from "./pages/ContactPage";
-import CatalogPage from "./pages/CatalogPage";
-import ServiceDetail from "./pages/ServiceDetail";
-import MentionsLegalesPage from "./pages/MentionsLegalesPage";
-import PolitiqueConfidentialitePage from "./pages/PolitiqueConfidentialitePage";
+import { useEffect, lazy, Suspense } from "react";
 import Chatbot, { PageContext } from "./components/Chatbot";
 import { useLanguage } from "./i18n/LanguageContext";
 import { allServicePages } from "./data/servicePages";
+
+// Lazy load all pages for code splitting
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const ParticuliersPage = lazy(() => import("./pages/ParticuliersPage"));
+const EntreprisesPage = lazy(() => import("./pages/EntreprisesPage"));
+const ExpertisePage = lazy(() => import("./pages/ExpertisePage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const CatalogPage = lazy(() => import("./pages/CatalogPage"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
+const MentionsLegalesPage = lazy(() => import("./pages/MentionsLegalesPage"));
+const PolitiqueConfidentialitePage = lazy(() => import("./pages/PolitiqueConfidentialitePage"));
 
 const queryClient = new QueryClient();
 
@@ -84,18 +86,20 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/particuliers" element={<ParticuliersPage />} />
-            <Route path="/entreprises" element={<EntreprisesPage />} />
-            <Route path="/expertise" element={<ExpertisePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
-            <Route path="/:category/:slug" element={<ServiceDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/particuliers" element={<ParticuliersPage />} />
+              <Route path="/entreprises" element={<EntreprisesPage />} />
+              <Route path="/expertise" element={<ExpertisePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/catalog" element={<CatalogPage />} />
+              <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+              <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+              <Route path="/:category/:slug" element={<ServiceDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
           <ChatbotWrapper />
         </BrowserRouter>
       </TooltipProvider>

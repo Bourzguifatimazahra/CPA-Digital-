@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useEffect } from "react";
+import catalogParticuliers from "@/assets/Catalogue/CATALOGUEGÉNÉRAL Particuliers.pdf";
+import catalogEntreprises from "@/assets/Catalogue/CATALOGUEGÉNÉRAL Entreprises.pdf";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -277,10 +279,13 @@ const CatalogPage = () => {
   const [showParticuliersAll, setShowParticuliersAll] = useState(false);
   const [showEntreprisesAll, setShowEntreprisesAll] = useState(false);
 
-  const catalogUrl = "https://doc-0s-84-apps-viewer.googleusercontent.com/viewer/secure/pdf/8qln4b07u9goigcnj01g637k7lcjg2o4/rc23jd69m3bm16f0hqq1ifuob1qoco2u/1776158850000/drive/17039872156430259435/ACFrOgBWJJ01KMBgWzKxo4C6y909bakFHj6Z2F66uZwkUesDDzSWcLRTeK0f9O4oqiyVAbEfJToLHETpf8N9nHvxrIMpjHrmufA8KhUoaZa-VAMunh3m4QS-Ktl5WUaqDqeiWko1lcQxVT4HdEWFHhN7s6tDHQMNuj0qiRovn8egmmYzYCVTEnTExPLb9CsVp5VlHqpr-LimJClsf1HPuA-VQhExPB3elLSGaRbBBc0gpeVAv0Vw_LB2fuv-TEA=?print=true&nonce=vbjb2ua6vli2o&user=17039872156430259435&hash=qqota91pc4mtg4fsmr0ihhd0accjhbo5";
+  const catalogUrlParticuliers = catalogParticuliers;
   
-  const catalogViewUrl = "https://drive.google.com/file/d/1iJCuDIIZe0bJxSDauMtaHKbHnCeNKbkL/view?usp=sharing";
-
+  const catalogViewUrlParticuliers = catalogParticuliers;
+  
+  // Entreprises catalog URL (2026)
+  const catalogUrlEntreprises = catalogEntreprises;
+  const catalogViewUrlEntreprises = catalogEntreprises;
   const particuliersInsurances: InsuranceCardProps[] = [
     { titleKey: "ins_vehicules_title", descKey: "ins_vehicules_desc", categoryKey: "ins_vehicules_category", icon: "🚗", href: "/particuliers/vehicules", status: "obligatoire" as const },
     { titleKey: "ins_sante_card_title", descKey: "ins_sante_card_desc", categoryKey: "ins_sante_category", icon: "🏥", href: "/particuliers/sante", status: "recommandee" as const },
@@ -384,10 +389,10 @@ const CatalogPage = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <a href={catalogUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-all hover:shadow-lg">
+                  <a href={catalogUrlParticuliers} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm transition-all hover:shadow-lg">
                     <Download className="w-4 h-4" /> {t("nav_download")}
                   </a>
-                  <a href={catalogViewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-border hover:bg-secondary text-sm transition-colors">
+                  <a href={catalogViewUrlParticuliers} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-border hover:bg-secondary text-sm transition-colors">
                     <FileText className="w-4 h-4" />
                   </a>
                 </div>
@@ -410,10 +415,10 @@ const CatalogPage = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <a href={catalogUrl} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white text-red-600 font-bold text-sm transition-all hover:shadow-lg">
+                  <a href={catalogUrlEntreprises} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white text-red-600 font-bold text-sm transition-all hover:shadow-lg">
                     <Download className="w-4 h-4" /> {t("nav_download")}
                   </a>
-                  <a href={catalogViewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-sm transition-colors">
+                  <a href={catalogViewUrlEntreprises} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-white/20 hover:bg-white/30 text-sm transition-colors">
                     <FileText className="w-4 h-4 text-white" />
                   </a>
                 </div>
