@@ -277,8 +277,9 @@ const CatalogPage = () => {
   const [showParticuliersAll, setShowParticuliersAll] = useState(false);
   const [showEntreprisesAll, setShowEntreprisesAll] = useState(false);
 
-  const catalogUrl = "https://drive.google.com/uc?export=download&id=1888tZBVYKyLlBpuiOD2osjF34b1y_q3J";
-  const catalogViewUrl = "https://drive.google.com/file/d/1888tZBVYKyLlBpuiOD2osjF34b1y_q3J/view";
+  const catalogUrl = "https://doc-0s-84-apps-viewer.googleusercontent.com/viewer/secure/pdf/8qln4b07u9goigcnj01g637k7lcjg2o4/rc23jd69m3bm16f0hqq1ifuob1qoco2u/1776158850000/drive/17039872156430259435/ACFrOgBWJJ01KMBgWzKxo4C6y909bakFHj6Z2F66uZwkUesDDzSWcLRTeK0f9O4oqiyVAbEfJToLHETpf8N9nHvxrIMpjHrmufA8KhUoaZa-VAMunh3m4QS-Ktl5WUaqDqeiWko1lcQxVT4HdEWFHhN7s6tDHQMNuj0qiRovn8egmmYzYCVTEnTExPLb9CsVp5VlHqpr-LimJClsf1HPuA-VQhExPB3elLSGaRbBBc0gpeVAv0Vw_LB2fuv-TEA=?print=true&nonce=vbjb2ua6vli2o&user=17039872156430259435&hash=qqota91pc4mtg4fsmr0ihhd0accjhbo5";
+  
+  const catalogViewUrl = "https://drive.google.com/file/d/1iJCuDIIZe0bJxSDauMtaHKbHnCeNKbkL/view?usp=sharing";
 
   const particuliersInsurances: InsuranceCardProps[] = [
     { titleKey: "ins_vehicules_title", descKey: "ins_vehicules_desc", categoryKey: "ins_vehicules_category", icon: "🚗", href: "/particuliers/vehicules", status: "obligatoire" as const },
