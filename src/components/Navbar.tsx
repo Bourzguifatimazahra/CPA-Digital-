@@ -63,7 +63,6 @@ const Navbar = () => {
     {
       label: t("nav_about"), href: "/#apropos",
       children: [
-        { label: t("nav_services"), href: "/#services" },
         { label: t("nav_who"), href: "/#apropos" },
         { label: t("nav_values"), href: "/#valeurs" },
         { label: t("nav_expertise_item"), href: "/#expertise" },

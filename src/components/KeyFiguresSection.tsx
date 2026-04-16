@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import { TrendingUp, HeartPulse, Car, Anchor, HardHat, Home, AlertTriangle, Users } from "lucide-react";
 
 const figures = [
-  { icon: TrendingUp, value: 410000, suffix: "", label: { fr: "Kdh de primes émises", en: "Kdh in premiums", ar: "ألف درهم أقساط", es: "Kdh en primas" } },
-  { icon: Users, value: 345000, suffix: "", label: { fr: "Adhérents assurance maladie", en: "Health insurance members", ar: "منخرط في التأمين الصحي", es: "Afiliados de salud" } },
-  { icon: HeartPulse, value: 230000, suffix: "", label: { fr: "Sinistres maladies", en: "Health claims", ar: "مطالبات صحية", es: "Siniestros de salud" } },
-  { icon: AlertTriangle, value: 900, suffix: "", label: { fr: "Prises en charge majeures", en: "Major care cases", ar: "حالات رعاية كبرى", es: "Casos de atención mayor" } },
-  { icon: Car, value: 4000, suffix: "", label: { fr: "Véhicules et camions assurés", en: "Insured vehicles & trucks", ar: "مركبة مؤمنة", es: "Vehículos asegurados" } },
-  { icon: Car, value: 720, suffix: "/an", label: { fr: "Sinistres auto matériels", en: "Auto material claims", ar: "مطالبات سيارات/سنة", es: "Siniestros auto/año" } },
-  { icon: Anchor, value: 815, suffix: "/an", label: { fr: "Contrats maritimes", en: "Maritime contracts", ar: "عقود بحرية/سنة", es: "Contratos marítimos/año" } },
-  { icon: HardHat, value: 220, suffix: "/an", label: { fr: "Sinistres AT", en: "Work accident claims", ar: "حوادث عمل/سنة", es: "Siniestros laborales/año" } },
-  { icon: Home, value: 110, suffix: "", label: { fr: "Sinistres dommages", en: "Damage claims", ar: "مطالبات أضرار", es: "Siniestros de daños" } },
+  { icon: TrendingUp, value: 410, suffix: " MDH", label: { fr: "de primes émises", en: "in premiums issued", ar: "ألف درهم أقساط", es: "en primas emitidas" } },
+  { icon: Users, value: 345000, suffix: "", label: { fr: "adhérents santé", en: "health members", ar: "منخرط صحي", es: "afiliados salud" } },
+  { icon: HeartPulse, value: 230000, suffix: "", label: { fr: "dossiers maladie traités", en: "health claims processed", ar: "مطالبات صحية", es: "siniestros salud" } },
+  { icon: AlertTriangle, value: 900, suffix: "", label: { fr: "prises en charge majeures", en: "major care cases", ar: "حالات رعاية كبرى", es: "casos atención mayor" } },
+  { icon: Car, value: 4000, suffix: "", label: { fr: "véhicules et camions assurés", en: "insured vehicles & trucks", ar: "مركبة مؤمنة", es: "vehículos asegurados" } },
+  { icon: Car, value: 720, suffix: "", label: { fr: "sinistres auto", en: "auto claims", ar: "مطالبات سيارات", es: "siniestros auto" } },
+  { icon: Anchor, value: 815, suffix: "", label: { fr: "contrats maritimes", en: "maritime contracts", ar: "عقود بحرية", es: "contratos marítimos" } },
+  { icon: HardHat, value: 220, suffix: "/an", label: { fr: "sinistres AT", en: "work accident claims", ar: "حوادث عمل/سنة", es: "siniestros laborales/año" } },
+  { icon: Home, value: 110, suffix: "", label: { fr: "sinistres dommages gérés", en: "damage claims managed", ar: "مطالبات أضرار", es: "siniestros daños" } },
 ];
 
 const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -65,6 +65,7 @@ const KeyFiguresSection = () => {
         >
           <span className="text-accent font-semibold text-sm tracking-wide uppercase">{t("figures_badge")}</span>
           <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mt-3">{t("figures_title")}</h2>
+          <p className="text-muted-foreground text-base mt-4 max-w-2xl mx-auto">{t("figures_subtitle")}</p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-14 max-w-5xl mx-auto">

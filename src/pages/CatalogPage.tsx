@@ -293,15 +293,14 @@ const CatalogPage = () => {
     { titleKey: "ins_retraite_title", descKey: "ins_retraite_desc", categoryKey: "ins_retraite_category", icon: "💰", href: "/particuliers/retraite-capitalisation", status: "recommandee" as const },
     { titleKey: "ins_rc_vie_card_title", descKey: "ins_rc_vie_card_desc", categoryKey: "ins_rc_vie_category", icon: "🛡️", href: "/particuliers/responsabilite", status: "recommandee" as const },
     { titleKey: "ins_voyage_card_title", descKey: "ins_voyage_card_desc", categoryKey: "ins_voyage_category", icon: "✈️", href: "/particuliers/assistance-voyage", status: "recommandee" as const },
-    { titleKey: "ins_accident_card_title", descKey: "ins_accident_card_desc", categoryKey: "ins_accident_category", icon: "❤️", href: "/particuliers/individuelle-accident", status: "recommandee" as const },
-    { titleKey: "ins_accident_travail_card_title", descKey: "ins_accident_travail_card_desc", categoryKey: "ins_accident_travail_category", icon: "⚠️", href: "/particuliers/accident-travail", status: "recommandee" as const },
+
     { titleKey: "ins_peche_title", descKey: "ins_peche_desc", categoryKey: "ins_peche_category", icon: "🐟", href: "/particuliers/peche-artisanale", status: "recommandee" as const },
     { titleKey: "ins_forestier_title", descKey: "ins_forestier_desc", categoryKey: "ins_forestier_category", icon: "🌲", href: "/particuliers/accident-travail-forestiere", status: "recommandee" as const },
   ];
 
   const entreprisesInsurances: InsuranceCardProps[] = [
     { titleKey: "ins_multi_risque_card_title", descKey: "ins_multi_risque_card_desc", categoryKey: "ins_biens_category", icon: "🏢", href: "/entreprises/multi-risque", status: "recommandee" as const },
-    { titleKey: "ins_personnes_card_title", descKey: "ins_personnes_card_desc", categoryKey: "ins_personnes_category", icon: "👥", href: "/entreprises/accident-travail", status: "recommandee" as const },
+    { titleKey: "ins_personnes_card_title", descKey: "ins_personnes_card_desc", categoryKey: "ins_personnes_category", icon: "👥", href: "/entreprises/accident-travail", status: "obligatoire" as const },
     { titleKey: "ins_rc_pro_card_title", descKey: "ins_rc_pro_card_desc", categoryKey: "ins_rc_category", icon: "⚖️", href: "/entreprises/responsabilite-civile", status: "obligatoire" as const },
     { titleKey: "ins_risques_tech_card_title", descKey: "ins_risques_tech_card_desc", categoryKey: "ins_techniques_category", icon: "⚙️", href: "/entreprises/risques-techniques", status: "recommandee" as const },
     { titleKey: "ins_flotte_card_title", descKey: "ins_flotte_card_desc", categoryKey: "ins_flotte_category", icon: "🚙", href: "/entreprises/responsabilite-civile-automobile", status: "obligatoire" as const },

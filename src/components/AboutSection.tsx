@@ -3,32 +3,32 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const aboutTexts: Record<string, string[]> = {
   fr: [
-    "Depuis sa création en 1957, CPA est devenue une marque nationale reconnue. Une aventure rendue possible grâce à l'implication de nos collaborateurs qui partagent une même ambition : rendre votre vie meilleure en vous protégeant le mieux possible face aux aléas et aux incertitudes qui la jalonnent. Protéger vos biens naturellement, puisque c'est notre cœur de métier, mais aussi votre santé et vos actifs financiers. Pour cela, nous proposons des offres de produits et de services variés en prenant toujours pour point de départ : le client, ses attentes et ses besoins.",
-    "Dans un monde en constante évolution, nous avons à cœur de réinventer sans cesse notre métier pour simplifier toujours et encore l'assurance. Nous nous engageons ainsi résolument dans la transformation digitale pour rendre nos produits, nos conseils et notre assistance accessibles depuis n'importe quel canal. Au-delà des défis techniques, il s'agit pour CPA de devenir non plus un organisme payeur qu'on sollicite dans l'urgence, mais un véritable partenaire présent à tous les moments-clés de la vie de ses assurés… en les rendant confiants, tout simplement.",
-    "Œuvrant dans un secteur actif, diversifié et en perpétuelle expansion depuis des décennies, CPA, cabinet de conseil et de courtage en assurance, réassurance, a su instaurer une politique d'accompagnement de ses clients à même de trouver la meilleure offre d'assurance du marché, correspondant à leurs profils et à leurs besoins.",
+    "Depuis 1957, CPA accompagne particuliers et entreprises avec des solutions d'assurance sur mesure. Grâce à notre expertise, notre proximité et notre réseau de partenaires, nous aidons nos clients à protéger leurs biens, leur santé, leurs activités et leur avenir.",
+    "Notre mission est simple : offrir les meilleures solutions du marché, avec un accompagnement humain, réactif et personnalisé.",
+    "Aujourd'hui, CPA poursuit sa transformation digitale afin de rendre ses services, ses conseils et son assistance accessibles partout et à tout moment.",
   ],
   en: [
-    "Since its creation in 1957, CPA has become a recognized national brand. An adventure made possible by the commitment of our employees who share the same ambition: to make your life better by protecting you as best as possible against life's uncertainties. Protecting your assets naturally, since it's our core business, but also your health and financial assets. For this, we offer a variety of products and services, always starting from the client, their expectations and needs.",
-    "In a constantly evolving world, we are committed to continuously reinventing our profession to simplify insurance. We are resolutely committed to digital transformation to make our products, advice, and assistance accessible from any channel. Beyond technical challenges, CPA aims to become not just an organization you call in emergencies, but a true partner present at all key moments in the lives of its policyholders… simply by giving them confidence.",
-    "Operating in an active, diversified and ever-expanding sector for decades, CPA, an insurance and reinsurance consulting and brokerage firm, has established a client support policy to find the best insurance offer on the market, matching their profiles and needs.",
+    "Since 1957, CPA has been accompanying individuals and businesses with tailored insurance solutions. Thanks to our expertise, proximity and network of partners, we help our clients protect their assets, health, activities and future.",
+    "Our mission is simple: offer the best solutions on the market, with human, responsive and personalized support.",
+    "Today, CPA continues its digital transformation to make its services, advice and assistance accessible everywhere and at any time.",
   ],
   ar: [
-    "منذ تأسيسها في عام 1957، أصبحت CPA علامة وطنية معترف بها. مغامرة أصبحت ممكنة بفضل التزام موظفينا الذين يتشاركون نفس الطموح: جعل حياتكم أفضل من خلال حمايتكم بأفضل طريقة ممكنة ضد تقلبات الحياة. حماية ممتلكاتكم بشكل طبيعي، لأن ذلك هو صميم عملنا، وأيضاً صحتكم وأصولكم المالية.",
-    "في عالم يتطور باستمرار، نحرص على إعادة اختراع مهنتنا لتبسيط التأمين دائماً. نلتزم بالتحول الرقمي لجعل منتجاتنا ونصائحنا ومساعدتنا متاحة من أي قناة.",
-    "تعمل CPA في قطاع نشط ومتنوع ومتوسع باستمرار منذ عقود، وقد نجحت في وضع سياسة مرافقة عملائها للعثور على أفضل عرض تأمين في السوق يتوافق مع احتياجاتهم.",
+    "منذ عام 1957، ترافق CPA الأفراد والشركات بحلول تأمينية مخصصة. بفضل خبرتنا وقربنا وشبكة شركائنا، نساعد عملائنا على حماية ممتلكاتهم وصحتهم وأنشطتهم ومستقبلهم.",
+    "مهمتنا بسيطة: تقديم أفضل الحلول في السوق مع دعم إنساني سريع وشخصي.",
+    "اليوم، تواصل CPA تحولها الرقمي لجعل خدماتها ونصائحها ومساعدتها متاحة في كل مكان وفي أي وقت.",
   ],
   es: [
-    "Desde su creación en 1957, CPA se ha convertido en una marca nacional reconocida. Una aventura posible gracias al compromiso de nuestros colaboradores que comparten la misma ambición: mejorar su vida protegiéndole lo mejor posible frente a las incertidumbres de la vida. Proteger sus bienes naturalmente, ya que es nuestro negocio principal, pero también su salud y sus activos financieros.",
-    "En un mundo en constante evolución, nos comprometemos a reinventar nuestra profesión para simplificar los seguros. Apostamos por la transformación digital para hacer accesibles nuestros productos, consejos y asistencia desde cualquier canal.",
-    "Operando en un sector activo, diversificado y en expansión desde hace décadas, CPA ha establecido una política de acompañamiento a sus clientes para encontrar la mejor oferta de seguros del mercado, adaptada a sus perfiles y necesidades.",
+    "Desde 1957, CPA acompaña a particulares y empresas con soluciones de seguros a medida. Gracias a nuestra experiencia, proximidad y red de socios, ayudamos a nuestros clientes a proteger sus bienes, salud, actividades y futuro.",
+    "Nuestra misión es simple: ofrecer las mejores soluciones del mercado, con un acompañamiento humano, reactivo y personalizado.",
+    "Hoy, CPA continúa su transformación digital para hacer sus servicios, consejos y asistencia accesibles en cualquier lugar y en cualquier momento.",
   ],
 };
 
 const captionTexts: Record<string, string> = {
-  fr: "Fondé en 1957, « CPA » Conseil et Placement d'Assurances est un cabinet spécialisé dans le courtage en assurance et réassurance.",
-  en: "Founded in 1957, \"CPA\" Insurance Consulting and Placement is a firm specializing in insurance and reinsurance brokerage.",
-  ar: "تأسست عام 1957، CPA هي شركة متخصصة في وساطة التأمين وإعادة التأمين.",
-  es: "Fundada en 1957, CPA es una firma especializada en correduría de seguros y reaseguros.",
+  fr: "CPA, votre partenaire de confiance en assurance depuis 1957.",
+  en: "CPA, your trusted insurance partner since 1957.",
+  ar: "CPA، شريككم الموثوق في التأمين منذ 1957.",
+  es: "CPA, su socio de confianza en seguros desde 1957.",
 };
 
 const AboutSection = () => {

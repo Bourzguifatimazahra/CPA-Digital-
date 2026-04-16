@@ -4,13 +4,13 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Users, Briefcase, Building2 } from "lucide-react";
 
 const domainsData: Record<string, string[]> = {
-  fr: ["Finance", "Industrie", "Agroalimentaire", "Santé", "Énergies", "Eaux", "Traitement des Eaux", "Transport", "Aérien", "Formation", "Agriculture", "BTP", "Logistique", "Audiovisuel", "Artisanat"],
-  en: ["Finance", "Industry", "Agri-Food", "Healthcare", "Energy", "Water", "Water Treatment", "Transport", "Aviation", "Training", "Agriculture", "Construction", "Logistics", "Audiovisual", "Craftsmanship"],
-  ar: ["المالية", "الصناعة", "الصناعات الغذائية", "الصحة", "الطاقة", "المياه", "معالجة المياه", "النقل", "الطيران", "التكوين", "الفلاحة", "البناء", "اللوجستيك", "السمعي البصري", "الحرف"],
-  es: ["Finanzas", "Industria", "Agroalimentario", "Salud", "Energía", "Agua", "Tratamiento de Aguas", "Transporte", "Aviación", "Formación", "Agricultura", "Construcción", "Logística", "Audiovisual", "Artesanía"],
+  fr: ["Finance", "Industrie", "Agroalimentaire", "Santé", "Énergies", "Eaux", "Transport", "Aérien", "Formation", "Agriculture", "BTP", "Logistique", "Audiovisuel", "Artisanat"],
+  en: ["Finance", "Industry", "Agri-Food", "Healthcare", "Energy", "Water", "Transport", "Aviation", "Training", "Agriculture", "Construction", "Logistics", "Audiovisual", "Craftsmanship"],
+  ar: ["المالية", "الصناعة", "الصناعات الغذائية", "الصحة", "الطاقة", "المياه", "النقل", "الطيران", "التكوين", "الفلاحة", "البناء", "اللوجستيك", "السمعي البصري", "الحرف"],
+  es: ["Finanzas", "Industria", "Agroalimentario", "Salud", "Energía", "Agua", "Transporte", "Aviación", "Formación", "Agricultura", "Construcción", "Logística", "Audiovisual", "Artesanía"],
 };
 
-const domainIcons = ["💰", "🏭", "🌾", "🏥", "⚡", "💧", "🔧", "🚛", "✈️", "📚", "🌱", "🏗️", "📦", "🎬", "🎨"];
+const domainIcons = ["💰", "🏭", "🌾", "🏥", "⚡", "💧", "🚛", "✈️", "📚", "🌱", "🏗️", "📦", "🎬", "🎨"];
 
 const FlipDomainCard = ({ domain, icon, index }: { domain: string; icon: string; index: number }) => {
   const [flipped, setFlipped] = useState(false);

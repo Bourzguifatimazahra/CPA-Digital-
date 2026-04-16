@@ -105,17 +105,18 @@ export const translations = {
 
   // Partners
   partners_badge: { fr: "Nos Partenaires", en: "Our Partners", ar: "شركاؤنا", es: "Nuestros Socios" },
-  partners_title: { fr: "Ils Nous Font Confiance", en: "They Trust Us", ar: "يثقون بنا", es: "Confían en Nosotros" },
+  partners_title: { fr: "Confiance Et Partenariats Stratégiques", en: "Trust And Strategic Partnerships", ar: "الشراكة والثقة الاستراتيجية", es: "Confianza y Alianzas Estratégicas" },
   partners_desc: {
-    fr: "Nous collaborons avec les leaders du secteur pour vous offrir les meilleures solutions d'assurance.",
-    en: "We collaborate with industry leaders to offer you the best insurance solutions.",
-    ar: "نتعاون مع رواد القطاع لتقديم أفضل حلول التأمين.",
-    es: "Colaboramos con líderes del sector para ofrecerle las mejores soluciones de seguros.",
+    fr: "Nous collaborons avec des compagnies d'assurance reconnues pour garantir à nos clients une protection fiable, performante et durable.",
+    en: "We collaborate with recognized insurance companies to guarantee our clients reliable, high-performing, and lasting protection.",
+    ar: "نتعاون مع شركات التأمين المعروفة لضمان حماية موثوقة وفعالة وطويلة المدى لعملائنا.",
+    es: "Colaboramos con compañías de seguros reconocidas para garantizar a nuestros clientes una protección fiable, de alto rendimiento y duradera.",
   },
 
   // Clients
   clients_badge: { fr: "Nos Clients", en: "Our Clients", ar: "عملاؤنا", es: "Nuestros Clientes" },
-  clients_title: { fr: "Ils Nous Font Confiance", en: "They Trust Us", ar: "يثقون بنا", es: "Confían en Nosotros" },
+  clients_title: { fr: "Nos Clients, Notre Fierté", en: "Our Clients, Our Pride", ar: "عملاؤنا، فخرنا", es: "Nuestros Clientes, Nuestro Orgullo" },
+  clients_desc: { fr: "Des références solides qui témoignent de notre engagement et de notre performance.", en: "Solid references that testify to our commitment and performance.", ar: "مراجع قوية تشهد على التزامنا وأدائنا.", es: "Referencias sólidas que testifican nuestro compromiso y rendimiento." },
 
   // Team
   team_badge: { fr: "Nos Équipes", en: "Our Teams", ar: "فريقنا", es: "Nuestro Equipo" },
@@ -131,10 +132,11 @@ export const translations = {
   // Key Figures
   figures_badge: { fr: "Nos Chiffres Clés", en: "Key Figures", ar: "أرقامنا الرئيسية", es: "Cifras Clave" },
   figures_title: { fr: "CPA en Chiffres", en: "CPA in Numbers", ar: "CPA بالأرقام", es: "CPA en Cifras" },
+  figures_subtitle: { fr: "Des résultats qui témoignent de notre expertise et de la confiance de nos clients", en: "Results that reflect our expertise and our clients' trust", ar: "نتائج تعكس خبرتنا وثقة عملائنا", es: "Resultados que reflejan nuestra experiencia y la confianza de nuestros clientes" },
 
   // Values
   values_badge: { fr: "Nos Valeurs", en: "Our Values", ar: "قيمنا", es: "Nuestros Valores" },
-  values_title: { fr: "Ce Qui Nous Anime", en: "What Drives Us", ar: "ما يحركنا", es: "Lo Que Nos Motiva" },
+  values_title: { fr: "Les Valeurs Qui Nous Guident", en: "The Values That Guide Us", ar: "القيم التي ترشدنا", es: "Los Valores Que Nos Guían" },
 
   // CTA
   cta_title: {
@@ -311,7 +313,7 @@ export const translations = {
 
   // Expertise
   expertise_badge: { fr: "Notre Expertise", en: "Our Expertise", ar: "خبرتنا", es: "Nuestra Experiencia" },
-  expertise_title: { fr: "Un Savoir-Faire Reconnu", en: "Recognized Expertise", ar: "خبرة معترف بها", es: "Experiencia Reconocida" },
+  expertise_title: { fr: "Des Solutions Pensées Pour Vous", en: "Solutions Tailored For You", ar: "حلول مصممة من أجلك", es: "Soluciones Pensadas Para Ti" },
 
   // Affiliations Section
   affiliations_badge: { fr: "Nos Affiliations", en: "Our Affiliations", ar: "انتماءاتنا", es: "Nuestras Afiliaciones" },
@@ -653,7 +655,7 @@ export const translations = {
   ins_forestier_category: { fr: "Forestier", en: "Forestry", ar: "الغابات", es: "Forestal" },
 
   // Insurance Card Data - Entreprises
-  ins_multi_risque_card_title: { fr: "Multi Risque", en: "Multi-Risk", ar: "متعدد المخاطر", es: "Multirriesgo" },
+  ins_multi_risque_card_title: { fr: "Multirisque", en: "Multi-Risk", ar: "متعدد المخاطر", es: "Multirriesgo" },
   ins_multi_risque_card_desc: { fr: "Protection complète de votre entreprise contre tous les risques.", en: "Complete protection of your business against all risks.", ar: "حماية كاملة لشركتك من جميع المخاطر.", es: "Protección completa de su empresa contra todos los riesgos." },
   ins_biens_category: { fr: "Biens", en: "Property", ar: "الممتلكات", es: "Bienes" },
 

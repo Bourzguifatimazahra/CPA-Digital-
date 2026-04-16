@@ -3,12 +3,12 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Lightbulb, ShieldCheck, Handshake, RefreshCw, FileCheck, HeadphonesIcon, Briefcase, Building2, Truck, Zap, Wrench, Users, HardHat, Plane, Heart, Landmark, Factory, Wheat, Droplets, GraduationCap } from "lucide-react";
 
 const expertiseItems = [
-  { icon: Lightbulb, title: { fr: "Solutions complètes", en: "Complete solutions", ar: "حلول متكاملة", es: "Soluciones completas" } },
-  { icon: ShieldCheck, title: { fr: "Gestion des risques", en: "Risk management", ar: "إدارة المخاطر", es: "Gestión de riesgos" } },
-  { icon: Handshake, title: { fr: "Accompagnement qualité", en: "Quality support", ar: "دعم عالي الجودة", es: "Acompañamiento de calidad" } },
-  { icon: RefreshCw, title: { fr: "Révision sur mesure", en: "Tailored review", ar: "مراجعة مخصصة", es: "Revisión a medida" } },
-  { icon: FileCheck, title: { fr: "Renouvellements", en: "Renewals", ar: "التجديدات", es: "Renovaciones" } },
-  { icon: HeadphonesIcon, title: { fr: "Assistance administrative", en: "Admin assistance", ar: "المساعدة الإدارية", es: "Asistencia administrativa" } },
+  { icon: Lightbulb, title: { fr: "Solutions adaptées", en: "Tailored solutions", ar: "حلول مخصصة", es: "Soluciones adaptadas" } },
+  { icon: ShieldCheck, title: { fr: "Analyse des risques", en: "Risk analysis", ar: "تحليل المخاطر", es: "Análisis de riesgos" } },
+  { icon: Handshake, title: { fr: "Suivi personnalisé", en: "Personalized follow-up", ar: "متابعة شخصية", es: "Seguimiento personalizado" } },
+  { icon: RefreshCw, title: { fr: "Révision continue", en: "Continuous review", ar: "مراجعة مستمرة", es: "Revisión continua" } },
+  { icon: FileCheck, title: { fr: "Renouvellement facilité", en: "Facilitated renewal", ar: "تجديد ميسر", es: "Renovación facilitada" } },
+  { icon: HeadphonesIcon, title: { fr: "Support administratif", en: "Administrative support", ar: "دعم إداري", es: "Soporte administrativo" } },
 ];
 
 const domainsData = [
@@ -18,7 +18,6 @@ const domainsData = [
   { icon: Heart, label: { fr: "Santé", en: "Healthcare", ar: "الصحة", es: "Salud" } },
   { icon: Zap, label: { fr: "Énergies", en: "Energy", ar: "الطاقة", es: "Energía" } },
   { icon: Droplets, label: { fr: "Eaux", en: "Water", ar: "المياه", es: "Agua" } },
-  { icon: Wrench, label: { fr: "Traitement des Eaux", en: "Water Treatment", ar: "معالجة المياه", es: "Tratamiento de Aguas" } },
   { icon: Truck, label: { fr: "Transport", en: "Transport", ar: "النقل", es: "Transporte" } },
   { icon: Plane, label: { fr: "Aérien", en: "Aviation", ar: "الطيران", es: "Aviación" } },
   { icon: GraduationCap, label: { fr: "Formation", en: "Training", ar: "التكوين", es: "Formación" } },

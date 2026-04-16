@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { MapPin, Sparkles, Building2 } from "lucide-react";
+import { MapPin, Sparkles, Building2, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import tangerImage from "@/assets/site/tanger.jpg";
 import casaImage from "@/assets/site/casa.jpg";
@@ -11,7 +11,7 @@ const ExpansionSection = () => {
   const offices = [
     {
       city: { fr: "Tanger", en: "Tangier", ar: "طنجة", es: "Tánger" },
-      isNew: true,
+      isNew: false,
       address: {
         fr: "15 Résidence Al TAJMIL, Avenue Abi Dardae, 4ème étage, Bureau n°25, Place des Nations, Tanger",
         en: "15 Al TAJMIL Residence, Abi Dardae Avenue, 4th floor, Office n°25, Place des Nations, Tangier",
@@ -20,7 +20,8 @@ const ExpansionSection = () => {
       },
       phone: "+212 5 39 94 25 84",
       email: "info@cpa.ma",
-      image: tangerImage
+      image: tangerImage,
+      mapsUrl: "https://www.google.com/maps/search/CPA+Assurance+Tanger"
     },
     {
       city: { fr: "Casablanca", en: "Casablanca", ar: "الدار البيضاء", es: "Casablanca" },
@@ -33,7 +34,8 @@ const ExpansionSection = () => {
       },
       phone: "+212 5 22 95 39 00",
       email: "info@cpa.ma",
-      image: casaImage
+      image: casaImage,
+      mapsUrl: "https://www.google.com/maps/search/CPA+Assurance+Casablanca"
     }
   ];
 
@@ -70,9 +72,9 @@ const ExpansionSection = () => {
           </h2>
           
           <p className="text-lg text-muted-foreground font-medium">
-            {lang === "fr" ? "Ouverture officielle de notre nouveau bureau à Tanger" : 
-             lang === "en" ? "Official opening of our new office in Tangier" : 
-             lang === "ar" ? "الافتتاح الرسمي لمكتبنا الجديد في طنجة" : "Apertura oficial de nuestra nueva oficina en Tánger"}
+            {lang === "fr" ? "Deux implantations stratégiques pour mieux accompagner nos clients partout au Maroc" : 
+             lang === "en" ? "Two strategic locations to better serve our clients across Morocco" : 
+             lang === "ar" ? "موقعان استراتيجيان لمرافقة عملائنا بشكل أفضل في جميع أنحاء المغرب" : "Dos ubicaciones estratégicas para servir mejor a nuestros clientes en Marruecos"}
           </p>
         </motion.div>
 
@@ -194,6 +196,25 @@ const ExpansionSection = () => {
                       {office.email}
                     </a>
                   </motion.div>
+
+                  {/* Google Maps Link */}
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    whileHover={{ x: 3 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ExternalLink className="w-5 h-5 text-accent" />
+                    <a 
+                      href={office.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-accent hover:text-primary transition-colors"
+                    >
+                      {lang === "fr" ? "Voir sur Google Maps" : 
+                       lang === "en" ? "View on Google Maps" : 
+                       lang === "ar" ? "عرض على خرائط Google" : "Ver en Google Maps"}
+                    </a>
+                  </motion.div>
                 </div>
               </div>
 
@@ -228,13 +249,58 @@ const ExpansionSection = () => {
               transition={{ delay: 0.5 }}
             >
               {lang === "fr" ? 
-                "Cette ouverture marque une étape stratégique majeure dans le développement national de CPA. En étendant notre présence à Tanger, nous renforçons notre engagement à accompagner nos clients sur l'ensemble du territoire marocain avec le même niveau d'excellence et de proximité qui fait notre réputation depuis plus de 60 ans." :
+                "Deux implantations stratégiques pour mieux accompagner nos clients partout au Maroc" :
                lang === "en" ? 
-                "This opening marks a major strategic milestone in CPA's national development. By extending our presence to Tangier, we strengthen our commitment to supporting our clients throughout Morocco with the same level of excellence and proximity that has built our reputation for over 60 years." :
+                "Two strategic locations to better serve our clients across Morocco" :
                lang === "ar" ? 
-                "يمثل هذا الافتتاح مرحلة استراتيجية رئيسية في التطور الوطني لـ CPA. من خلال توسيع تواجدنا في طنجة، نعزز التزامنا بمرافقة عملائنا في جميع أنحاء المغرب بنفس مستوى التميز والقرب الذي بنى سمعتنا لأكثر من 60 سنوات." :
-                "Esta apertura marca un hito estratégico importante en el desarrollo nacional de CPA. Al extender nuestra presencia a Tánger, reforzamos nuestro compromiso de acompañar a nuestros clientes en todo Marruecos con el mismo nivel de excelencia y proximidad que ha construido nuestra reputación durante más de 60 años."}
+                "موقعان استراتيجيان لمرافقة عملائنا بشكل أفضل في جميع أنحاء المغرب" :
+                "Dos ubicaciones estratégicas para servir mejor a nuestros clientes en Marruecos"}
             </motion.p>
+            
+            {/* Google Maps Embed */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7 }}
+              className="mt-8 rounded-xl overflow-hidden border border-border"
+            >
+              <iframe
+                width="100%"
+                height="350"
+                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d824.4535708962046!2d-7.631569504945565!3d33.597242186775766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d28e2cc4ed3b%3A0x102e311369542c18!2sConseil%20Et%20Placement%20D'Assurances%20Et%20De%20R%C3%A9assurances%20(C.P.A.)!5e0!3m2!1sfr!2sma!4v1776333925006!5m2!1sfr!2sma"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="CPA - Casablanca"
+              />
+              <div className="bg-muted p-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a 
+                  href="https://www.google.com/maps/search/CPA+Assurance+Casablanca"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors"
+                >
+                  <MapPin className="w-4 h-4" />
+                  {lang === "fr" ? "Bureau Casablanca" : 
+                   lang === "en" ? "Casablanca Office" : 
+                   lang === "ar" ? "مكتب الدار البيضاء" : "Oficina Casablanca"}
+                </a>
+                <span className="hidden sm:inline text-muted-foreground">|</span>
+                <a 
+                  href="https://www.google.com/maps/search/CPA+Tanger"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors"
+                >
+                  <MapPin className="w-4 h-4" />
+                  {lang === "fr" ? "Bureau Tanger" : 
+                   lang === "en" ? "Tangier Office" : 
+                   lang === "ar" ? "مكتب طنجة" : "Oficina Tánger"}
+                </a>
+              </div>
+            </motion.div>
             
             <motion.div 
               className="mt-6 flex flex-wrap justify-center gap-4"

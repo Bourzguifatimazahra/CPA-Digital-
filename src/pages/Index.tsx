@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import ValuesSection from "@/components/ValuesSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
@@ -11,9 +10,7 @@ import ExpertiseSection from "@/components/ExpertiseSection";
 import KeyFiguresSection from "@/components/KeyFiguresSection";
 import ExpansionSection from "@/components/ExpansionSection";
 import NewInsuranceSection from "@/components/NewInsuranceSection";
-import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
-import ContactSection from "@/components/ContactSection";
 import PartnersSection from "@/components/PartnersSection";
 import ClientsSection from "@/components/ClientsSection";
 import AffiliationsSection from "@/components/AffiliationsSection";
@@ -36,7 +33,6 @@ const Index = () => {
         >
           <Navbar />
           <HeroSection />
-          <ServicesSection />
           <AboutSection />
           <ValuesSection />
           <ExpertiseSection />
@@ -44,12 +40,10 @@ const Index = () => {
           <KeyFiguresSection />
           <ExpansionSection />
           <NewInsuranceSection />
-          <PricingSection />
           <PartnersSection />
           <ClientsSection />
           <AffiliationsSection />
           <CTASection />
-          <ContactSection />
           <Footer />
         </motion.div>
       )}
