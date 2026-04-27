@@ -4,7 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState, useEffect } from "react";
-import catalogE from "@/assets/Catalogue/catalogue_E.pdf";
+import catalogEntreprises from "@/assets/Catalogue/catalogue_CPA_Entreprises.pdf";
+import catalogParticuliers from "@/assets/Catalogue/Catalogue_CPA_Particuliers.pdf";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -278,13 +279,13 @@ const CatalogPage = () => {
   const [showParticuliersAll, setShowParticuliersAll] = useState(false);
   const [showEntreprisesAll, setShowEntreprisesAll] = useState(false);
 
-  const catalogUrlParticuliers = catalogE;
+  const catalogUrlParticuliers = catalogParticuliers;
   
-  const catalogViewUrlParticuliers = catalogE;
+  const catalogViewUrlParticuliers = catalogParticuliers;
   
   // Entreprises catalog URL (2026)
-  const catalogUrlEntreprises = catalogE;
-  const catalogViewUrlEntreprises = catalogE;
+  const catalogUrlEntreprises = catalogEntreprises;
+  const catalogViewUrlEntreprises = catalogEntreprises;
   const particuliersInsurances: InsuranceCardProps[] = [
     { titleKey: "ins_vehicules_title", descKey: "ins_vehicules_desc", categoryKey: "ins_vehicules_category", icon: "🚗", href: "/particuliers/vehicules", status: "obligatoire" as const },
     { titleKey: "ins_sante_card_title", descKey: "ins_sante_card_desc", categoryKey: "ins_sante_category", icon: "🏥", href: "/particuliers/sante", status: "recommandee" as const },

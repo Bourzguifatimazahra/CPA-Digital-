@@ -615,7 +615,7 @@ export const translations = {
   blog_default_advice_3: { fr: "N'hésitez pas à demander conseil à nos experts", en: "Don't hesitate to ask our experts for advice", ar: "لا تتردد في طلب المشورة من خبرائنا", es: "No dude en pedir consejo a nuestros expertos" },
 
   // Catalog Download Card Labels
-  catalog_pdf_year: { fr: "PDF 2024", en: "PDF 2024", ar: "PDF 2024", es: "PDF 2024" },
+  catalog_pdf_year: { fr: "PDF 2026", en: "PDF 2026", ar: "PDF 2026", es: "PDF 2026" },
   catalog_obligatoire_badge: { fr: "OBLIGATOIRE", en: "MANDATORY", ar: "إلزامي", es: "OBLIGATORIO" },
 
   // Insurance Card Data - Particuliers
