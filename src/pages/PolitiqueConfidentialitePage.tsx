@@ -113,12 +113,12 @@ const PolitiqueConfidentialitePage = () => {
         ar: "مسؤول معالجة بياناتك الشخصية هو:",
         es: "El responsable del tratamiento de sus datos personales es:",
       },
-      details: {
-        fr: "CPA - Conseil et Placement d'Assurances\nS.A. au capital de 5 000 000 DH\nAngle Boulevard Moulay Youssef et Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2ème Étage\nCasablanca, Maroc\n\nTéléphone : +212 5 22 95 39 00\nEmail : info@cpa.ma",
-        en: "CPA - Conseil et Placement d'Assurances\nS.A. with capital of 5,000,000 DH\nAngle Boulevard Moulay Youssef and Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2nd Floor\nCasablanca, Morocco\n\nPhone: +212 5 22 95 39 00\nEmail: info@cpa.ma",
-        ar: "CPA - Conseil et Placement d'Assurances\nشركة مجهولة الاسم برأس مال 5,000,000 درهم\nزاوية شارع الملك يوسف وشارع زراوي\nمجمع العمل مركز الملك يوسف، الطابق الثاني\nالدار البيضاء، المغرب\n\nالهاتف: 212 5 22 95 39 00+\nالبريد الإلكتروني: info@cpa.ma",
-        es: "CPA - Conseil et Placement d'Assurances\nS.A. con capital de 5.000.000 DH\nEsquina Boulevard Moulay Youssef y Boulevard Ziraoui\nComplejo Moulay Youssef Work Center, 2º Planta\nCasablanca, Marruecos\n\nTeléfono: +212 5 22 95 39 00\nEmail: info@cpa.ma",
-      },
+       details: {
+         fr: "CPA - Conseil et Placement d'Assurances\nS.A. au capital de 5 000 000 DH\nAngle Boulevard Moulay Youssef et Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2ème Étage\nCasablanca, Maroc\n\nTéléphone : +212 5 22 95 39 00 \nEmail : info@cpa.ma",
+         en: "CPA - Conseil et Placement d'Assurances\nS.A. with capital of 5,000,000 DH\nAngle Boulevard Moulay Youssef and Boulevard Ziraoui\nComplexe Moulay Youssef Work Center, 2nd Floor\nCasablanca, Morocco\n\nPhone: +212 5 22 95 39 00\nEmail: info@cpa.ma",
+         ar: "CPA - Conseil et Placement d'Assurances\nشركة مجهولة الاسم برأس مال 5,000,000 درهم\nزاوية شارع الملك يوسف وشارع زراوي\nمجمع العمل مركز الملك يوسف، الطابق الثاني\nالدار البيضاء، المغرب\n\nالهاتف: 0+212 5 22 95 39 00\nالبريد الإلكتروني: info@cpa.ma",
+         es: "CPA - Conseil et Placement d'Assurances\nS.A. con capital de 5.000.000 DH\nEsquina Boulevard Moulay Youssef y Boulevard Ziraoui\nComplejo Moulay Youssef Work Center, 2º Planta\nCasablanca, Marruecos\n\nTeléfono: +212 5 22 95 39 00\nEmail: info@cpa.ma",
+       },
     },
     
     dataProtectionOfficer: {
@@ -571,7 +571,7 @@ const PolitiqueConfidentialitePage = () => {
         es: "Para ejercer estos derechos, contáctenos en:",
       },
       email: "info@cpa.ma",
-      phone: "+212 5 22 95 39 00",
+      phone: " +212 5 22 95 39 00 ",
       response: {
         fr: "Nous répondons à toute demande dans un délai d'un mois.",
         en: "We respond to any request within one month.",
@@ -901,11 +901,11 @@ const PolitiqueConfidentialitePage = () => {
         },
         dpo: {
           label: "Questions relatives au DPO",
-          email: "dpo@cpa.ma",
+          email: "info@cpa.ma",
         },
         security: {
           label: "Signaler une violation de données",
-          email: "security@cpa.ma",
+          email: "info@cpa.ma",
         },
       },
     },
@@ -1526,7 +1526,7 @@ const PolitiqueConfidentialitePage = () => {
                     <strong>Email:</strong> <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a>
                   </p>
                   <p>
-                    <strong>{lang === "fr" ? "Téléphone" : lang === "en" ? "Phone" : lang === "ar" ? "الهاتف" : "Teléfono"}:</strong> <a href="tel:+212522953900" className="text-primary hover:underline">+212 5 22 95 39 00</a>
+                    <strong>{lang === "fr" ? "Téléphone" : lang === "en" ? "Phone" : lang === "ar" ? "الهاتف" : "Teléfono"}:</strong> <a href="tel:+212 5 22 95 39 00" className="text-primary hover:underline">+212 5 22 95 39 00</a>
                   </p>
                 </div>
               </div>

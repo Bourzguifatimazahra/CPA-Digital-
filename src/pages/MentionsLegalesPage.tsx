@@ -297,7 +297,7 @@ const MentionsLegalesPage = () => {
                         : lang === "es"
                         ? "Para cualquier pregunta sobre nuestra política de privacidad, puede contactarnos en la siguiente dirección de correo electrónico:"
                         : "لأي سؤال بخصوص سياسة الخصوصية الخاصة بنا، يمكنك الاتصال بنا على عنوان البريد الإلكتروني التالي:"
-                      } <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a> {lang === "fr" ? "ou par téléphone au" : lang === "en" ? "or by phone at" : lang === "es" ? "o por teléfono al" : "أو عبر الهاتف على"} <a href="tel:+212522953900" className="text-primary hover:underline">+212 5 22 95 39 00</a>.
+                      } <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a> {lang === "fr" ? "ou par téléphone au" : lang === "en" ? "or by phone at" : lang === "es" ? "o por teléfono al" : "أو عبر الهاتف على"} <a href="tel: +212 5 22 95 39 00" className="text-primary hover:underline"> +212 5 22 95 39 00 </a>.
                     </p>
                   </div>
 

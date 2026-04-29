@@ -10,6 +10,7 @@ export interface ServicePageData {
   details: { fr: string; en: string; ar: string; es: string };
   whyInsure?: { fr: string[]; en: string[]; ar: string[]; es: string[] };
   category: "particuliers" | "entreprises" | "expertise";
+  badge?: { fr: string; en: string; ar: string; es: string };
 }
 
 export const particuliersPages: ServicePageData[] = [
@@ -36,6 +37,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Nuestro seguro de vehículos cubre todas sus necesidades de movilidad. Ya conduzca un coche, moto o furgoneta, le ofrecemos fórmulas adaptadas con las mejores garantías del mercado.",
     },
     category: "particuliers",
+    badge: { fr: "Obligatoire", en: "Required", ar: "إلزامي", es: "Obligatorio" },
   },
   {
     slug: "sante",
@@ -60,6 +62,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Con nuestro seguro de salud, benefíciese de una cobertura óptima para todos sus gastos médicos. Nuestras fórmulas se adaptan a su situación familiar y presupuesto.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "multirisques-habitation",
@@ -84,6 +87,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Nuestro seguro multirriesgo hogar le ofrece una protección global para su residencia principal o secundaria.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "retraite-capitalisation",
@@ -108,6 +112,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Anticipe su jubilación gracias a nuestras soluciones de ahorro a medida. Constituya un capital a lo largo de su vida activa.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "responsabilite",
@@ -132,6 +137,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "La responsabilidad civil le protege cuando causa involuntariamente daños a terceros.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "assistance-voyage",
@@ -156,6 +162,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Ya sea para un viaje de negocios o de ocio, nuestro seguro de asistencia de viaje le acompaña en todo el mundo.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "individuelle-accident",
@@ -180,6 +187,7 @@ export const particuliersPages: ServicePageData[] = [
       es: "Nuestro seguro individual de accidentes le ofrece protección financiera en caso de accidente corporal.",
     },
     category: "particuliers",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
 ];
 
@@ -207,6 +215,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestro seguro de bienes empresariales ofrece una cobertura amplia para proteger todos sus activos materiales.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "assurances-personnes",
@@ -231,6 +240,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "El seguro de personas en la empresa es esencial para proteger a sus colaboradores.",
     },
     category: "entreprises",
+    badge: { fr: "Obligatoire", en: "Required", ar: "إلزامي", es: "Obligatorio" },
   },
   {
     slug: "responsabilite-civile",
@@ -255,6 +265,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "La responsabilidad civil empresarial le protege contra las consecuencias financieras de los daños causados a terceros.",
     },
     category: "entreprises",
+    badge: { fr: "Obligatoire", en: "Required", ar: "إلزامي", es: "Obligatorio" },
   },
   {
     slug: "risques-techniques",
@@ -279,6 +290,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestro seguro de riesgos técnicos protege sus equipos industriales y tecnológicos contra averías y roturas.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "automobile-flotte",
@@ -303,6 +315,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestra solución auto y flota está diseñada para empresas con una flota de vehículos.",
     },
     category: "entreprises",
+    badge: { fr: "Obligatoire", en: "Required", ar: "إلزامي", es: "Obligatorio" },
   },
   {
     slug: "transport-maritime",
@@ -327,6 +340,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestro seguro de transporte y marítimo cubre mercancías en tránsito (terrestre, marítimo, aéreo) así como buques y responsabilidad.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "dommage-biens",
@@ -351,6 +365,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestro seguro de daños a bienes protege sus locales, equipos y stocks contra siniestros importantes.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "pertes-exploitation",
@@ -375,6 +390,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "El seguro de pérdidas de explotación compensa la pérdida de margen bruto y los gastos adicionales para mantener su actividad tras un siniestro.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "tout-risques-chantier",
@@ -399,6 +415,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "El seguro todo riesgo obra cubre todos los daños que pueden producirse durante la fase de construcción.",
     },
     category: "entreprises",
+    badge: { fr: "Obligatoire", en: "Required", ar: "إلزامي", es: "Obligatorio" },
   },
   {
     slug: "cyber-criminalite",
@@ -423,6 +440,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "En un mundo cada vez más conectado, los riesgos cibernéticos están en constante aumento. Nuestro seguro de cibercrimen protege su empresa.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "terrorisme-sabotage",
@@ -471,6 +489,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestras soluciones de ahorro y capitalización empresarial permiten fidelizar a sus colaboradores optimizando la fiscalidad.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
   {
     slug: "audit-management",
@@ -495,6 +514,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Nuestro servicio de auditoría y gestión de riesgos le permite identificar, evaluar y tratar todos los riesgos a los que está expuesta su empresa.",
     },
     category: "entreprises",
+    badge: { fr: "Recommandée", en: "Recommended", ar: "موصى بها", es: "Recomendado" },
   },
 ];
 

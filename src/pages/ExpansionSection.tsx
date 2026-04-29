@@ -30,12 +30,12 @@ const ExpansionSection = () => {
         en: "Corner bd Moulay Youssef and bd Ziraoui, Moulay Youssef Work Center Complex, 2nd floor, Casablanca",
         ar: "زاوية شارع مولاي يوسف وشارع زيراوي، مجمع مولاي يوسف وورك سنتر، الطابق الثاني، الدار البيضاء",
         es: "Esquina bd Moulay Youssef y bd Ziraoui, Complejo Moulay Youssef Work Center, 2º piso, Casablanca"
-      },
-      phone: "+212 5 22 95 39 00",
-      email: "info@cpa.ma",
-      image: casaImage
-    }
-  ];
+       },
+       phone: "+212 5 22 95 39 00",
+       email: "info@cpa.ma",
+       image: casaImage
+     }
+   ];
 
   return (
     <section className="py-20 md:py-28 bg-gradient-to-b from-background to-muted/30">

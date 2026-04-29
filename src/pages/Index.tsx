@@ -14,6 +14,7 @@ import CTASection from "@/components/CTASection";
 import PartnersSection from "@/components/PartnersSection";
 import ClientsSection from "@/components/ClientsSection";
 import AffiliationsSection from "@/components/AffiliationsSection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -25,28 +26,29 @@ const Index = () => {
         {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
-      {!loading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Navbar />
-          <HeroSection />
-          <AboutSection />
-          <ValuesSection />
-          <ExpertiseSection />
-          {/* TeamSection removed - domains in ExpertiseSection */}
-          <KeyFiguresSection />
-          <ExpansionSection />
-          <NewInsuranceSection />
-          <PartnersSection />
-          <ClientsSection />
-          <AffiliationsSection />
-          <CTASection />
-          <Footer />
-        </motion.div>
-      )}
+       {!loading && (
+         <motion.div
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ duration: 0.5 }}
+         >
+           <Navbar />
+           <HeroSection />
+           <AboutSection />
+           <ValuesSection />
+           <ExpertiseSection />
+           {/* TeamSection removed - domains in ExpertiseSection */}
+           <KeyFiguresSection />
+           <ExpansionSection />
+           <NewInsuranceSection />
+           <PartnersSection />
+           <ClientsSection />
+           <AffiliationsSection />
+           <FAQSection />
+           <CTASection />
+           <Footer />
+         </motion.div>
+       )}
     </>
   );
 };

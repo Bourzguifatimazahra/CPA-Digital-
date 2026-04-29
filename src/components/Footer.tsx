@@ -9,11 +9,11 @@ import { useLanguage } from "@/i18n/LanguageContext";
 const contactItems = [
   { icon: Phone, text: "+212 5 22 95 39 00", ltr: true },
   { icon: Mail, text: "info@cpa.ma" },
-  { icon: MapPin, text: "Casablanca, Maroc" },
+  { icon: MapPin, text: "Casablanca, Maroc", href: "https://maps.app.goo.gl/ZL7oQLPCXskUGTUz5" },
   { icon: Clock, text: "Lun - Ven : 8h30 - 18h00" },
   { icon: Phone, text: "+212 5 22 95 39 00", ltr: true },
   { icon: Mail, text: "info@cpa.ma" },
-  { icon: MapPin, text: "Tanger, Maroc" },
+  { icon: MapPin, text: "Tanger, Maroc", href: "https://maps.app.goo.gl/haMwPhLXUVd39k1eA" },
   { icon: Clock, text: "Lun - Ven : 8h30 - 18h00" },
 ];
 
@@ -64,7 +64,11 @@ const Footer = () => {
           {marqueeItems.map((item, i) => (
             <div key={i} className="flex items-center gap-2 shrink-0 text-primary-foreground/70 text-xs">
               <item.icon className="w-3 h-3 text-accent" />
-              <span dir={(item as any).ltr ? "ltr" : undefined}>{item.text}</span>
+              {item.href ? (
+                <a href={item.href} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{item.text}</a>
+              ) : (
+                <span dir={(item as any).ltr ? "ltr" : undefined}>{item.text}</span>
+              )}
             </div>
           ))}
         </motion.div>

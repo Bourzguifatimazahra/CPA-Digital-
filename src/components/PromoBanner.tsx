@@ -44,8 +44,8 @@ const promoMessages: PromoMessage[] = [
   {
     fr: "📞 Contactez-nous : +212 5 22 95 39 00 | info@cpa.ma - Service client disponible !",
     en: "📞 Contact us: +212 5 22 95 39 00 | info@cpa.ma - Customer service available!",
-    ar: "📞 اتصل بنا: +212 5 22 95 39 00 | info@cpa.ma - خدمة العملاء متاحة!",
-    es: "📞 Contáctenos: +212 5 22 95 39 00 | info@cpa.ma - ¡Servicio al cliente disponible!"
+    ar: "📞 اتصل بنا:+212 5 22 95 39 00 | info@cpa.ma - خدمة العملاء متاحة!",
+    es: "📞 Contáctenos: +212 5 22 95 39 00| info@cpa.ma - ¡Servicio al cliente disponible!"
   },
   {
     fr: "💰 Économisez jusqu'à 30% sur vos assurances - Comparez et choisissez avec CPA !",

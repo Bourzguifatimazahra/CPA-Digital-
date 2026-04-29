@@ -135,10 +135,10 @@ const ServicePageTemplate = ({ page, relatedPages }: Props) => {
                   {lang === "fr" ? "Obtenir un Devis" : lang === "ar" ? "احصل على عرض" : lang === "es" ? "Obtener Presupuesto" : "Get a Quote"}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a href="tel:+212522953900"
+                <a href="tel:+212 5 22 95 39 00"
                   className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl border border-border text-foreground font-medium text-sm hover:bg-secondary transition-colors">
                   <Phone className="w-4 h-4" />
-                  <span dir="ltr">+212 5 22 95 39 00</span>
+                  <span dir="ltr"> +212 5 22 95 39 00 </span>
                 </a>
               </motion.div>
 

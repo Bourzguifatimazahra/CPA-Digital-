@@ -8,6 +8,9 @@ import { useEffect, lazy, Suspense } from "react";
 import Chatbot, { PageContext } from "./components/Chatbot";
 import { useLanguage } from "./i18n/LanguageContext";
 import { allServicePages } from "./data/servicePages";
+import { initializeAnalytics, trackPageView } from "@/lib/analytics";
+import { useCookieConsent } from "@/hooks/useCookieConsent";
+import CookieConsent from "@/components/CookieConsent";
 
 // Lazy load all pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -20,12 +23,35 @@ const CatalogPage = lazy(() => import("./pages/CatalogPage"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const MentionsLegalesPage = lazy(() => import("./pages/MentionsLegalesPage"));
 const PolitiqueConfidentialitePage = lazy(() => import("./pages/PolitiqueConfidentialitePage"));
+const FAQPage = lazy(() => import("./pages/FAQPage"));
 
 const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
+
+// Google Analytics tracking component (only active when consent given)
+const GoogleAnalyticsTracker = () => {
+  const { pathname, search } = useLocation();
+  const { consent } = useCookieConsent();
+
+  useEffect(() => {
+    // Initialize Google Analytics only if consent was given
+    if (consent === "accepted") {
+      initializeAnalytics();
+    }
+  }, [consent]);
+
+  useEffect(() => {
+    // Track page view on route change only if consent was given
+    if (consent === "accepted") {
+      trackPageView(pathname + search);
+    }
+  }, [pathname, search, consent]);
+
   return null;
 };
 
@@ -86,6 +112,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <GoogleAnalyticsTracker />
           <Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -94,6 +121,7 @@ const App = () => (
               <Route path="/expertise" element={<ExpertisePage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/catalog" element={<CatalogPage />} />
+              <Route path="/faq" element={<FAQPage />} />
               <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
               <Route path="/:category/:slug" element={<ServiceDetail />} />
@@ -101,6 +129,7 @@ const App = () => (
             </Routes>
           </Suspense>
           <ChatbotWrapper />
+          <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>

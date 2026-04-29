@@ -64,7 +64,7 @@ const HeroSection = () => {
               {t("hero_cta")}
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="tel:+212522953900"
+            <a href="tel:+212 5 22 95 39 00"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-gray-200/30 text-white font-heading font-semibold text-base hover:bg-white/10 transition-all">
               <Phone className="w-5 h-5" />
               <span dir="ltr">+212 5 22 95 39 00</span>

@@ -109,7 +109,7 @@ const QuoteCalculator = () => {
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
     doc.text("Courtier d'Assurances depuis 1957", 20, 30);
-    doc.text("www.cpa.ma | info@cpa.ma | +212 5 22 95 39 00", 20, 37);
+    doc.text("www.cpa.ma | info@cpa.ma |+212 5 22 95 39 00", 20, 37);
 
     // Title
     doc.setTextColor(30, 58, 138);
@@ -168,7 +168,7 @@ const QuoteCalculator = () => {
     doc.setFontSize(9);
     doc.setFont("helvetica", "normal");
     doc.text("CPA Assurance - Angle Boulevard Moulay Youssef et Boulevard Ziraoui, Complexe Moulay Youssef Work Center, 2ème Étage, Casablanca, Maroc", 20, 285);
-    doc.text("Tél: +212 5 22 95 39 00 | Email: info@cpa.ma", 20, 291);
+    doc.text("Tél: +212 5 22 95 39 00| Email: info@cpa.ma", 20, 291);
 
     doc.save(`Devis_CPA_${selectedTypeLabel.replace(/\s/g, "_")}_${new Date().toISOString().slice(0, 10)}.pdf`);
   };
@@ -180,7 +180,7 @@ const QuoteCalculator = () => {
     const msg = encodeURIComponent(
       `Bonjour CPA Assurance,\n\nJe souhaite demander un devis pour :\n- Type : ${selectedTypeLabel}\n- Valeur : ${parseFloat(value).toLocaleString("fr-FR")} DH\n- Estimation : ${minC.toLocaleString("fr-FR")} - ${maxC.toLocaleString("fr-FR")} ${currency}\n\nMerci de me recontacter.`
     );
-    window.open(`https://wa.me/212522953900?text=${msg}`, "_blank");
+    window.open(`https://wa.me/0667558436?text=${msg}`, "_blank");
   };
 
   const sendEmail = () => {

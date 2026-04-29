@@ -21,7 +21,7 @@ const ExpansionSection = () => {
       phone: "+212 5 39 94 25 84",
       email: "info@cpa.ma",
       image: tangerImage,
-      mapsUrl: "https://www.google.com/maps/search/CPA+Assurance+Tanger"
+      mapsUrl: "https://maps.app.goo.gl/haMwPhLXUVd39k1eA"
     },
     {
       city: { fr: "Casablanca", en: "Casablanca", ar: "الدار البيضاء", es: "Casablanca" },
@@ -289,7 +289,7 @@ const ExpansionSection = () => {
                 </a>
                 <span className="hidden sm:inline text-muted-foreground">|</span>
                 <a 
-                  href="https://www.google.com/maps/search/CPA+Tanger"
+                  href="https://maps.app.goo.gl/haMwPhLXUVd39k1eA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors"

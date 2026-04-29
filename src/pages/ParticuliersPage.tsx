@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarCheck } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { particuliersPages } from "@/data/servicePages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactSection from "@/components/ContactSection";
 
 const ParticuliersPage = () => {
   const { lang } = useLanguage();
@@ -32,23 +33,37 @@ const ParticuliersPage = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {particuliersPages.map((page, i) => (
               <motion.div key={page.slug} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link to={`/particuliers/${page.slug}`}
-                  className="group block bg-card rounded-2xl p-6 border border-border hover:border-primary/30 cpa-shadow hover:cpa-shadow-lg transition-all h-full">
+                <div className="group block bg-card rounded-2xl p-6 border border-border hover:border-primary/30 cpa-shadow hover:cpa-shadow-lg transition-all h-full flex flex-col">
                   <div className="w-14 h-14 rounded-xl cpa-gradient-bg flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                     <page.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
+                  {page.badge && (
+                    <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent/10 text-accent mb-2">
+                      {t(page.badge)}
+                    </span>
+                  )}
                   <h3 className="font-heading font-bold text-foreground text-lg mb-2">{t(page.title)}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t(page.description)}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                    {lang === "fr" ? "En savoir plus" : lang === "ar" ? "اعرف المزيد" : lang === "es" ? "Saber más" : "Learn more"}
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </Link>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-grow">{t(page.description)}</p>
+                  <div className="space-y-3 mt-auto">
+                    <Link to={`/particuliers/${page.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                      {lang === "fr" ? "En savoir plus" : lang === "ar" ? "اعرف المزيد" : lang === "es" ? "Saber más" : "Learn more"}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    <Link to="/contact#contact"
+                      className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl cpa-gradient-bg text-primary-foreground font-heading font-bold text-sm hover:opacity-90 transition-opacity cpa-shadow">
+                      <CalendarCheck className="w-4 h-4" />
+                      {lang === "fr" ? "Souscrire maintenant" : lang === "ar" ? "اشترك الآن" : lang === "es" ? "Suscribirse Ahora" : "Subscribe Now"}
+                    </Link>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+        <ContactSection />
       <Footer />
     </div>
   );

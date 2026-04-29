@@ -109,7 +109,12 @@ const Navbar = () => {
       label: t("nav_expertise"), href: "/expertise",
     },
     {
-      label: t("nav_catalog"), href: "/catalog",
+      label: t("nav_catalog"),
+      href: "/catalog",
+      children: [
+        { label: t("nav_catalog_view"), href: "/catalog" },
+        { label: t("nav_faq"), href: "/faq" },
+      ],
     },
     { label: t("nav_contact"), href: "/contact" },
   ];

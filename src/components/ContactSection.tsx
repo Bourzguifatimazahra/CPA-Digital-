@@ -45,7 +45,8 @@ const ContactSection = () => {
   const infoItems = [
     { icon: Phone, title: t("contact_phone"), value: "+212 5 22 95 39 00", href: "tel:+212522953900" },
     { icon: Mail, title: t("contact_email"), value: "info@cpa.ma", href: "mailto:info@cpa.ma" },
-    { icon: MapPin, title: t("contact_address"), value: "Casablanca, Maroc" },
+    { icon: MapPin, title: t("contact_address_casa"), value: "Casablanca, Maroc", href: "https://maps.app.goo.gl/ZL7oQLPCXskUGTUz5" },
+    { icon: MapPin, title: t("contact_address_tanger"), value: "Tanger, Maroc", href: "https://maps.app.goo.gl/haMwPhLXUVd39k1eA" },
     { icon: Clock, title: t("contact_hours"), value: t("footer_hours_label") },
   ];
 
