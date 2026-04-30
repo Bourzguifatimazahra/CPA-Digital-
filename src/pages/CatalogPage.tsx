@@ -294,23 +294,23 @@ const CatalogPage = () => {
     { titleKey: "ins_rc_vie_card_title", descKey: "ins_rc_vie_card_desc", categoryKey: "ins_rc_vie_category", icon: "🛡️", href: "/particuliers/responsabilite", status: "recommandee" as const },
     { titleKey: "ins_voyage_card_title", descKey: "ins_voyage_card_desc", categoryKey: "ins_voyage_category", icon: "✈️", href: "/particuliers/assistance-voyage", status: "recommandee" as const },
 
-    { titleKey: "ins_peche_title", descKey: "ins_peche_desc", categoryKey: "ins_peche_category", icon: "🐟", href: "/particuliers/peche-artisanale", status: "recommandee" as const },
-    { titleKey: "ins_forestier_title", descKey: "ins_forestier_desc", categoryKey: "ins_forestier_category", icon: "🌲", href: "/particuliers/accident-travail-forestiere", status: "recommandee" as const },
+    { titleKey: "ins_peche_title", descKey: "ins_peche_desc", categoryKey: "ins_peche_category", icon: "🐟", href: "/particuliers", status: "recommandee" as const },
+    { titleKey: "ins_forestier_title", descKey: "ins_forestier_desc", categoryKey: "ins_forestier_category", icon: "🌲", href: "/particuliers", status: "recommandee" as const },
   ];
 
   const entreprisesInsurances: InsuranceCardProps[] = [
-    { titleKey: "ins_multi_risque_card_title", descKey: "ins_multi_risque_card_desc", categoryKey: "ins_biens_category", icon: "🏢", href: "/entreprises/multi-risque", status: "recommandee" as const },
-    { titleKey: "ins_personnes_card_title", descKey: "ins_personnes_card_desc", categoryKey: "ins_personnes_category", icon: "👥", href: "/entreprises/accident-travail", status: "obligatoire" as const },
-    { titleKey: "ins_rc_pro_card_title", descKey: "ins_rc_pro_card_desc", categoryKey: "ins_rc_category", icon: "⚖️", href: "/entreprises/responsabilite-civile", status: "obligatoire" as const },
-    { titleKey: "ins_risques_tech_card_title", descKey: "ins_risques_tech_card_desc", categoryKey: "ins_techniques_category", icon: "⚙️", href: "/entreprises/risques-techniques", status: "recommandee" as const },
-    { titleKey: "ins_flotte_card_title", descKey: "ins_flotte_card_desc", categoryKey: "ins_flotte_category", icon: "🚙", href: "/entreprises/responsabilite-civile-automobile", status: "obligatoire" as const },
-    { titleKey: "ins_transport_card_title", descKey: "ins_transport_card_desc", categoryKey: "ins_transport_category", icon: "🚢", href: "/entreprises/transport-maritime", status: "recommandee" as const },
-    { titleKey: "ins_pertes_card_title", descKey: "ins_pertes_card_desc", categoryKey: "ins_pertes_category", icon: "📊", href: "/entreprises/pertes-exploitation", status: "recommandee" as const },
-    { titleKey: "ins_chantier_card_title", descKey: "ins_chantier_card_desc", categoryKey: "ins_chantier_category", icon: "🏗️", href: "/entreprises/tout-risques-chantier", status: "obligatoire" as const },
-    { titleKey: "ins_cyber_card_title", descKey: "ins_cyber_card_desc", categoryKey: "ins_cyber_category", icon: "💻", href: "/entreprises/cyber-criminalite", status: "recommandee" as const },
-    { titleKey: "ins_terrorisme_card_title", descKey: "ins_terrorisme_card_desc", categoryKey: "ins_risques_speciaux_category", icon: "🛡️", href: "/entreprises/terrorisme-sabotage", status: "recommandee" as const },
-    { titleKey: "ins_epargne_entreprise_card_title", descKey: "ins_epargne_entreprise_card_desc", categoryKey: "ins_epargne_category", icon: "💎", href: "/entreprises/epargne-vie", status: "recommandee" as const },
-    { titleKey: "ins_conseil_card_title", descKey: "ins_conseil_card_desc", categoryKey: "ins_conseil_category", icon: "🔍", href: "/entreprises/audit-management", status: "recommandee" as const },
+    { titleKey: "ins_multi_risque_card_title", descKey: "ins_multi_risque_card_desc", categoryKey: "ins_biens_category", icon: "🏢", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_personnes_card_title", descKey: "ins_personnes_card_desc", categoryKey: "ins_personnes_category", icon: "👥", href: "/entreprises", status: "obligatoire" as const },
+    { titleKey: "ins_rc_pro_card_title", descKey: "ins_rc_pro_card_desc", categoryKey: "ins_rc_category", icon: "⚖️", href: "/entreprises", status: "obligatoire" as const },
+    { titleKey: "ins_risques_tech_card_title", descKey: "ins_risques_tech_card_desc", categoryKey: "ins_techniques_category", icon: "⚙️", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_flotte_card_title", descKey: "ins_flotte_card_desc", categoryKey: "ins_flotte_category", icon: "🚙", href: "/entreprises", status: "obligatoire" as const },
+    { titleKey: "ins_transport_card_title", descKey: "ins_transport_card_desc", categoryKey: "ins_transport_category", icon: "🚢", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_pertes_card_title", descKey: "ins_pertes_card_desc", categoryKey: "ins_pertes_category", icon: "📊", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_chantier_card_title", descKey: "ins_chantier_card_desc", categoryKey: "ins_chantier_category", icon: "🏗️", href: "/entreprises", status: "obligatoire" as const },
+    { titleKey: "ins_cyber_card_title", descKey: "ins_cyber_card_desc", categoryKey: "ins_cyber_category", icon: "💻", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_terrorisme_card_title", descKey: "ins_terrorisme_card_desc", categoryKey: "ins_risques_speciaux_category", icon: "🛡️", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_epargne_entreprise_card_title", descKey: "ins_epargne_entreprise_card_desc", categoryKey: "ins_epargne_category", icon: "💎", href: "/entreprises", status: "recommandee" as const },
+    { titleKey: "ins_conseil_card_title", descKey: "ins_conseil_card_desc", categoryKey: "ins_conseil_category", icon: "🔍", href: "/entreprises", status: "recommandee" as const },
   ];
 
   const openInsuranceModal = (insurance: InsuranceCardProps) => {
