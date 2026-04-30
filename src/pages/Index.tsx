@@ -14,7 +14,6 @@ import CTASection from "@/components/CTASection";
 import PartnersSection from "@/components/PartnersSection";
 import ClientsSection from "@/components/ClientsSection";
 import AffiliationsSection from "@/components/AffiliationsSection";
-import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -44,7 +43,6 @@ const Index = () => {
            <PartnersSection />
            <ClientsSection />
            <AffiliationsSection />
-           <FAQSection />
            <CTASection />
            <Footer />
          </motion.div>
