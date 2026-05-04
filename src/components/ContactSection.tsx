@@ -7,7 +7,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 const departments = [
   {
     id: "automobile",
-    name: "Département Automobile",
+    nameKey: "dept_automobile",
     whatsapp: "0667558436",
     whatsappFull: "+212667558436",
     icon: Car,
@@ -16,7 +16,7 @@ const departments = [
   },
   {
     id: "sinistre_at",
-    name: "Département Sinistre AT",
+    nameKey: "dept_sinistre_at",
     whatsapp: "0655357453",
     whatsappFull: "+212665357453",
     icon: Shield,
@@ -25,7 +25,7 @@ const departments = [
   },
   {
     id: "sinistre_maladie",
-    name: "Département Sinistre Maladie",
+    nameKey: "dept_sinistre_maladie",
     whatsapp: "0678293901",
     whatsappFull: "+212678293901",
     icon: Heart,
@@ -34,7 +34,7 @@ const departments = [
   },
   {
     id: "production_divers",
-    name: "Département Production & Risques Divers",
+    nameKey: "dept_production_divers",
     whatsapp: "078991814",
     whatsappFull: "+21278991814",
     icon: Briefcase,
@@ -238,8 +238,8 @@ const ContactSection = () => {
           className="max-w-6xl mx-auto mt-12"
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-bold text-foreground mb-2">Nos Départements & Contacts WhatsApp</h3>
-            <p className="text-muted-foreground">Sélectionnez votre type d'assurance et contactez directement le département responsable</p>
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-2">{t("contact_departments_title")}</h3>
+            <p className="text-muted-foreground">{t("contact_departments_desc")}</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {departments.map((dept, index) => {
@@ -256,7 +256,7 @@ const ContactSection = () => {
                   <div className={`w-12 h-12 rounded-lg ${dept.color} flex items-center justify-center mb-4`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h4 className="font-heading font-bold text-foreground text-sm mb-2">{dept.name}</h4>
+                  <h4 className="font-heading font-bold text-foreground text-sm mb-2">{t(dept.nameKey as any)}</h4>
                   <a
                     href={`https://wa.me/${dept.whatsapp}`}
                     target="_blank"
@@ -267,7 +267,7 @@ const ContactSection = () => {
                     {dept.whatsapp}
                   </a>
                   <p className="text-xs text-muted-foreground mt-2">
-                    {dept.types.length} type{dept.types.length > 1 ? "s" : ""} d'assurance
+                    {dept.types.length} {dept.types.length > 1 ? t("dept_insurance_types_plural") : t("dept_insurance_types")}
                   </p>
                 </motion.div>
               );

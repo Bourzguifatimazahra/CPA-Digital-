@@ -233,6 +233,15 @@ export const translations = {
   },
   contact_insurance_type: { fr: "Type d'assurance", en: "Insurance type", ar: "نوع التأمين", es: "Tipo de seguro" },
   contact_insurance_select: { fr: "Sélectionnez un type d'assurance", en: "Select an insurance type", ar: "اختر نوع التأمين", es: "Seleccione un tipo de seguro" },
+  // Departments WhatsApp Section
+  contact_departments_title: { fr: "Nos Départements & Contacts WhatsApp", en: "Our Departments & WhatsApp Contacts", ar: "أقسامنا واتصالات WhatsApp", es: "Nuestros Departamentos y Contactos de WhatsApp" },
+  contact_departments_desc: { fr: "Sélectionnez votre type d'assurance et contactez directement le département responsable", en: "Select your insurance type and contact the responsible department directly", ar: "اختر نوع التأمين الخاص بك وتواصل مباشرة مع القسم المسؤول", es: "Seleccione su tipo de seguro y contacte directamente al departamento responsable" },
+  dept_insurance_types: { fr: "type d'assurance", en: "insurance type", ar: "نوع التأمين", es: "tipo de seguro" },
+  dept_insurance_types_plural: { fr: "types d'assurance", en: "insurance types", ar: "أنواع التأمين", es: "tipos de seguro" },
+  dept_automobile: { fr: "Département Automobile", en: "Automobile Department", ar: "قسم السيارات", es: "Departamento de Automóviles" },
+  dept_sinistre_at: { fr: "Département Sinistre AT", en: "Work Accident Claims Department", ar: "قسم مطالبات حوادث العمل", es: "Departamento de Siniestros de Trabajo" },
+  dept_sinistre_maladie: { fr: "Département Sinistre Maladie", en: "Health Claims Department", ar: "قسم مطالبات الأمراض", es: "Departamento de Siniestros de Salud" },
+  dept_production_divers: { fr: "Département Production & Risques Divers", en: "Production & Miscellaneous Risks Department", ar: "قسم الإنتاج والمخاطر المتنوعة", es: "Departamento de Producción y Riesgos Diversos" },
   // Insurance type options
   ins_auto: { fr: "Assurance Auto", en: "Auto Insurance", ar: "تأمين السيارات", es: "Seguro de Auto" },
   ins_habitation: { fr: "Assurance Habitation", en: "Home Insurance", ar: "تأمين المنزل", es: "Seguro de Hogar" },
