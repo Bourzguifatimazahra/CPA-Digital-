@@ -178,6 +178,11 @@ export const translations = {
   figures_title: { fr: "CPA en Chiffres", en: "CPA in Numbers", ar: "CPA بالأرقام", es: "CPA en Cifras" },
   figures_subtitle: { fr: "Des résultats qui témoignent de notre expertise et de la confiance de nos clients", en: "Results that reflect our expertise and our clients' trust", ar: "نتائج تعكس خبرتنا وثقة عملائنا", es: "Resultados que reflejan nuestra experiencia y la confianza de nuestros clientes" },
 
+  // Project Health Dashboard
+  health_badge: { fr: "Qualité du Projet", en: "Project Quality", ar: "جودة المشروع", es: "Calidad del Proyecto" },
+  health_title: { fr: "Tableau de Bord Santé du Projet", en: "Project Health Dashboard", ar: "لوحة صحة المشروع", es: "Panel de Salud del Proyecto" },
+  health_subtitle: { fr: "Suivez la qualité de votre code avec des métriques en temps réel", en: "Monitor your code quality with real-time metrics", ar: "تتبع جودة الكود الخاص بك مع مقاييس في الوقت الحقيقي", es: "Monitoree la calidad de su código con métricas en tiempo real" },
+
   // Values
   values_badge: { fr: "Nos Valeurs", en: "Our Values", ar: "قيمنا", es: "Nuestros Valores" },
   values_title: { fr: "Les Valeurs Qui Nous Guident", en: "The Values That Guide Us", ar: "القيم التي ترشدنا", es: "Los Valores Que Nos Guían" },

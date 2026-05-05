@@ -8,6 +8,7 @@ import ValuesSection from "@/components/ValuesSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 // TeamSection removed - domains moved to ExpertiseSection marquee
 import KeyFiguresSection from "@/components/KeyFiguresSection";
+import ProjectHealthDashboard from "@/components/ProjectHealthDashboard";
 import ExpansionSection from "@/components/ExpansionSection";
 import NewInsuranceSection from "@/components/NewInsuranceSection";
 import CTASection from "@/components/CTASection";
@@ -38,6 +39,7 @@ const Index = () => {
            <ExpertiseSection />
            {/* TeamSection removed - domains in ExpertiseSection */}
            <KeyFiguresSection />
+           <ProjectHealthDashboard />
            <ExpansionSection />
            <NewInsuranceSection />
            <PartnersSection />
