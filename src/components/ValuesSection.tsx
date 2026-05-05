@@ -3,7 +3,15 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Heart, Lightbulb, Target, Shield } from "lucide-react";
 import FlipCard from "@/components/ui/FlipCard";
 
-const values = [
+type LocalizedText = { fr: string; en: string; ar: string; es: string };
+
+interface ValueItem {
+  icon: React.ElementType;
+  title: LocalizedText;
+  desc: LocalizedText;
+}
+
+const values: ValueItem[] = [
   {
     icon: Heart,
     title: { fr: "Proximité", en: "Proximity", ar: "القرب", es: "Proximidad" },
@@ -46,6 +54,10 @@ const values = [
   },
 ];
 
+const getLocalizedText = (text: LocalizedText, lang: string): string => {
+  return text[lang as keyof LocalizedText] || text.fr;
+};
+
 const ValuesSection = () => {
   const { t, lang } = useLanguage();
 
@@ -76,10 +88,10 @@ const ValuesSection = () => {
                       <v.icon className="w-8 h-8 text-primary-foreground" />
                     </div>
                     <h3 className="font-heading font-bold text-foreground text-lg mb-2">
-                      {(v.title as any)[lang] || v.title.fr}
+                      {getLocalizedText(v.title, lang)}
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
-                      {(v.desc as any)[lang] || v.desc.fr}
+                      {getLocalizedText(v.desc, lang)}
                     </p>
                   </div>
                   {/* Back */}
@@ -89,10 +101,10 @@ const ValuesSection = () => {
                   >
                     <v.icon className="w-12 h-12 text-primary-foreground mb-4" />
                     <h3 className="text-primary-foreground font-heading font-bold text-xl mb-3">
-                      {(v.title as any)[lang] || v.title.fr}
+                      {getLocalizedText(v.title, lang)}
                     </h3>
                     <p className="text-primary-foreground/80 text-sm leading-relaxed">
-                      {(v.desc as any)[lang] || v.desc.fr}
+                      {getLocalizedText(v.desc, lang)}
                     </p>
                   </div>
                 </>

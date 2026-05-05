@@ -3,7 +3,20 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 import { TrendingUp, HeartPulse, Car, Anchor, HardHat, Home, AlertTriangle, Users } from "lucide-react";
 
-const figures = [
+type LocalizedText = { fr: string; en: string; ar: string; es: string };
+
+interface Figure {
+  icon: React.ElementType;
+  value: number;
+  suffix: string;
+  label: LocalizedText;
+}
+
+const getLocalizedText = (text: LocalizedText, lang: string): string => {
+  return text[lang as keyof LocalizedText] || text.fr;
+};
+
+const figures: Figure[] = [
   { icon: TrendingUp, value: 410, suffix: " MDH", label: { fr: "de primes émises", en: "in premiums issued", ar: "ألف درهم أقساط", es: "en primas emitidas" } },
   { icon: Users, value: 345000, suffix: "", label: { fr: "adhérents santé", en: "health members", ar: "منخرط صحي", es: "afiliados salud" } },
   { icon: HeartPulse, value: 230000, suffix: "", label: { fr: "dossiers maladie traités", en: "health claims processed", ar: "مطالبات صحية", es: "siniestros salud" } },
@@ -81,7 +94,7 @@ const KeyFiguresSection = () => {
               <fig.icon className="w-8 h-8 text-primary mx-auto mb-3 opacity-70" />
               <AnimatedNumber value={fig.value} suffix={fig.suffix} />
               <p className="text-muted-foreground text-sm font-medium mt-2">
-                {(fig.label as any)[lang] || fig.label.fr}
+                {getLocalizedText(fig.label, lang)}
               </p>
             </motion.div>
           ))}

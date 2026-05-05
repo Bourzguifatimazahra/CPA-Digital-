@@ -2,7 +2,19 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Lightbulb, ShieldCheck, Handshake, RefreshCw, FileCheck, HeadphonesIcon, Briefcase, Building2, Truck, Zap, Wrench, Users, HardHat, Plane, Heart, Landmark, Factory, Wheat, Droplets, GraduationCap } from "lucide-react";
 
-const expertiseItems = [
+type LocalizedText = { fr: string; en: string; ar: string; es: string };
+
+interface ExpertiseItem {
+  icon: React.ElementType;
+  title: LocalizedText;
+}
+
+interface DomainItem {
+  icon: React.ElementType;
+  label: LocalizedText;
+}
+
+const expertiseItems: ExpertiseItem[] = [
   { icon: Lightbulb, title: { fr: "Solutions adaptées", en: "Tailored solutions", ar: "حلول مخصصة", es: "Soluciones adaptadas" } },
   { icon: ShieldCheck, title: { fr: "Analyse des risques", en: "Risk analysis", ar: "تحليل المخاطر", es: "Análisis de riesgos" } },
   { icon: Handshake, title: { fr: "Suivi personnalisé", en: "Personalized follow-up", ar: "متابعة شخصية", es: "Seguimiento personalizado" } },
@@ -11,7 +23,7 @@ const expertiseItems = [
   { icon: HeadphonesIcon, title: { fr: "Support administratif", en: "Administrative support", ar: "دعم إداري", es: "Soporte administrativo" } },
 ];
 
-const domainsData = [
+const domainsData: DomainItem[] = [
   { icon: Landmark, label: { fr: "Finance", en: "Finance", ar: "المالية", es: "Finanzas" } },
   { icon: Factory, label: { fr: "Industrie", en: "Industry", ar: "الصناعة", es: "Industria" } },
   { icon: Wheat, label: { fr: "Agroalimentaire", en: "Agri-Food", ar: "الصناعات الغذائية", es: "Agroalimentario" } },
@@ -26,6 +38,10 @@ const domainsData = [
   { icon: Users, label: { fr: "Artisanat", en: "Craftsmanship", ar: "الحرف", es: "Artesanía" } },
   { icon: HardHat, label: { fr: "Agriculture", en: "Agriculture", ar: "الفلاحة", es: "Agricultura" } },
 ];
+
+const getLocalizedText = (text: LocalizedText, lang: string): string => {
+  return text[lang as keyof LocalizedText] || text.fr;
+};
 
 const ExpertiseSection = () => {
   const { t, lang } = useLanguage();
@@ -78,7 +94,7 @@ const ExpertiseSection = () => {
                 <item.icon className="w-7 h-7 text-primary-foreground" />
               </motion.div>
               <h3 className="font-heading font-bold text-foreground text-base">
-                {(item.title as any)[lang] || item.title.fr}
+                {getLocalizedText(item.title, lang)}
               </h3>
             </motion.div>
           ))}
@@ -114,7 +130,7 @@ const ExpertiseSection = () => {
                     <Icon className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <span className="font-heading font-semibold text-foreground text-sm whitespace-nowrap">
-                    {(domain.label as any)[lang] || domain.label.fr}
+                    {getLocalizedText(domain.label, lang)}
                   </span>
                 </div>
               );

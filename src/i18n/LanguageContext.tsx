@@ -4,7 +4,7 @@ import { Lang, translations, TranslationKey } from "./translations";
 type LanguageContextType = {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  t: (key: TranslationKey) => string;
+  t: (key: string) => string;
   isRTL: boolean;
 };
 
@@ -14,7 +14,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLang] = useState<Lang>("fr");
   const isRTL = lang === "ar";
 
-  const t = (key: TranslationKey): string => {
+  const t = (key: string): string => {
     return translations[key]?.[lang] || translations[key]?.["fr"] || key;
   };
 

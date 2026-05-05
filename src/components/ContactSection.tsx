@@ -2,9 +2,20 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, Shield, Heart, Car, Briefcase } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { TranslationKey } from "@/i18n/translations";
+
+interface Department {
+  id: string;
+  nameKey: TranslationKey;
+  whatsapp: string;
+  whatsappFull: string;
+  icon: React.ElementType;
+  color: string;
+  types: string[];
+}
 
 // Department configuration with WhatsApp numbers and responsible insurance types
-const departments = [
+const departments: Department[] = [
   {
     id: "automobile",
     nameKey: "dept_automobile",
@@ -256,7 +267,7 @@ const ContactSection = () => {
                   <div className={`w-12 h-12 rounded-lg ${dept.color} flex items-center justify-center mb-4`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <h4 className="font-heading font-bold text-foreground text-sm mb-2">{t(dept.nameKey as any)}</h4>
+                  <h4 className="font-heading font-bold text-foreground text-sm mb-2">{t(dept.nameKey)}</h4>
                   <a
                     href={`https://wa.me/${dept.whatsapp}`}
                     target="_blank"

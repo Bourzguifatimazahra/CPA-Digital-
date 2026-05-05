@@ -6,7 +6,14 @@ import holmarcomLogo from "@/assets/Affiliations/holmarcom.png";
 import euribronLogo from "@/assets/Affiliations/euribron.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const contactItems = [
+interface ContactItem {
+  icon: React.ElementType;
+  text: string;
+  ltr?: boolean;
+  href?: string;
+}
+
+const contactItems: ContactItem[] = [
   { icon: Phone, text: "+212 5 22 95 39 00", ltr: true },
   { icon: Mail, text: "info@cpa.ma" },
   { icon: MapPin, text: "Casablanca, Maroc", href: "https://maps.app.goo.gl/ZL7oQLPCXskUGTUz5" },
@@ -67,7 +74,7 @@ const Footer = () => {
               {item.href ? (
                 <a href={item.href} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">{item.text}</a>
               ) : (
-                <span dir={(item as any).ltr ? "ltr" : undefined}>{item.text}</span>
+                <span dir={item.ltr ? "ltr" : undefined}>{item.text}</span>
               )}
             </div>
           ))}

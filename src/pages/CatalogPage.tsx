@@ -87,14 +87,14 @@ const InsuranceCard = ({ titleKey, descKey, categoryKey, icon, href, status, onC
               {t(config.label)}
             </span>
             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
-              {t(categoryKey as any)}
+              {t(categoryKey)}
             </span>
           </div>
           <h4 className="font-bold text-sm mb-1 line-clamp-1 group-hover:text-primary transition-colors">
-            {t(titleKey as any)}
+            {t(titleKey)}
           </h4>
           <p className="text-muted-foreground text-xs leading-snug line-clamp-2">
-            {t(descKey as any)}
+            {t(descKey)}
           </p>
           <div className="mt-2 flex items-center gap-1 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
             <span>{t("ins_auto_lire_plus")}</span>
@@ -120,19 +120,19 @@ const blogContentMap: Record<string, { titleKey: string; contentKeys: string[]; 
 };
 
 const InsuranceModal = ({ insurance, isOpen, onClose }: InsuranceModalProps) => {
-  if (!insurance) return null;
   const { t } = useLanguage();
-  const config = statusConfig[insurance.status];
+  const config = insurance ? statusConfig[insurance.status] : null;
 
   // Get translated blog content based on titleKey
   const getBlogContent = () => {
+    if (!insurance) return { title: "", content: [], conseils: [] };
     const blogData = blogContentMap[insurance.titleKey];
     
     if (blogData) {
       return {
-        title: t(blogData.titleKey as any),
-        content: blogData.contentKeys.map(key => t(key as any)),
-        conseils: blogData.conseilKeys.map(key => t(key as any)),
+        title: t(blogData.titleKey),
+        content: blogData.contentKeys.map(key => t(key)),
+        conseils: blogData.conseilKeys.map(key => t(key)),
       };
     }
     
@@ -160,6 +160,8 @@ const InsuranceModal = ({ insurance, isOpen, onClose }: InsuranceModalProps) => 
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  if (!insurance) return null;
 
   return (
     <AnimatePresence>
@@ -191,11 +193,11 @@ const InsuranceModal = ({ insurance, isOpen, onClose }: InsuranceModalProps) => 
                       {t(config.label)}
                     </span>
                     <span className="text-xs text-muted-foreground bg-white/50 px-2 py-0.5 rounded-full">
-                      {t(insurance.categoryKey as any)}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold">{t(insurance.titleKey as any)}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{t(insurance.descKey as any)}</p>
+                        {t(insurance.categoryKey)}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold">{t(insurance.titleKey)}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{t(insurance.descKey)}</p>
                 </div>
                 <button
                   onClick={onClose}

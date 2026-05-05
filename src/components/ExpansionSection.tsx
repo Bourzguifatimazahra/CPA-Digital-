@@ -5,10 +5,26 @@ import { Badge } from "@/components/ui/badge";
 import tangerImage from "@/assets/site/tanger.jpg";
 import casaImage from "@/assets/site/casa.jpg";
 
+type LocalizedText = { fr: string; en: string; ar: string; es: string };
+
+interface Office {
+  city: LocalizedText;
+  isNew: boolean;
+  address: LocalizedText;
+  phone: string;
+  email: string;
+  image: string;
+  mapsUrl: string;
+}
+
+const getLocalizedText = (text: LocalizedText, lang: string): string => {
+  return text[lang as keyof LocalizedText] || text.fr;
+};
+
 const ExpansionSection = () => {
   const { t, lang } = useLanguage();
 
-  const offices = [
+  const offices: Office[] = [
     {
       city: { fr: "Tanger", en: "Tangier", ar: "طنجة", es: "Tánger" },
       isNew: false,
@@ -128,7 +144,7 @@ const ExpansionSection = () => {
               >
                 <img
                   src={office.image}
-                  alt={`Bureau ${(office.city as any)[lang]}`}
+                  alt={`Bureau ${getLocalizedText(office.city, lang)}`}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
@@ -138,7 +154,7 @@ const ExpansionSection = () => {
                   <div className="flex items-center gap-2 text-white">
                     <Building2 className="w-6 h-6" />
                     <h3 className="text-2xl font-heading font-bold">
-                      {(office.city as any)[lang] || office.city.fr}
+                      {getLocalizedText(office.city, lang)}
                     </h3>
                   </div>
                 </div>
@@ -156,7 +172,7 @@ const ExpansionSection = () => {
                        lang === "ar" ? "العنوان" : "Dirección"}
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      {(office.address as any)[lang] || office.address.fr}
+                      {getLocalizedText(office.address, lang)}
                     </p>
                   </div>
                 </div>

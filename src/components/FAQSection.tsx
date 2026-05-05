@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { Search, HelpCircle, Phone, Mail, ChevronUp, ChevronDown } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import React from "react";
+import { TranslationKey } from "@/i18n/translations";
 
 interface FAQItem {
-  questionKey: string;
-  answerKey: string;
+  questionKey: TranslationKey;
+  answerKey: TranslationKey;
 }
 
 const faqData: FAQItem[] = [
@@ -95,7 +96,7 @@ const FAQSection = () => {
                     <div className="p-2 rounded-lg bg-blue-500/10 mt-0.5">
                       <HelpCircle className="w-4 h-4 text-blue-500" />
                     </div>
-                    <span className="font-medium text-foreground">{t(faq.questionKey as any)}</span>
+                    <span className="font-medium text-foreground">{t(faq.questionKey)}</span>
                   </div>
                   {isExpanded ? (
                     <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
@@ -112,7 +113,7 @@ const FAQSection = () => {
                     className="px-6 pb-4"
                   >
                     <div className="pl-11 text-muted-foreground leading-relaxed">
-                      {t(faq.answerKey as any)}
+                      {t(faq.answerKey)}
                     </div>
                   </motion.div>
                 )}

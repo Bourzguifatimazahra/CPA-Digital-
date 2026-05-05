@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+﻿import { useState, useMemo } from "react";
 import { Search, HelpCircle, FileText, Shield, ChevronDown, ChevronUp, Phone, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -137,9 +137,9 @@ const FAQPage = () => {
     if (!searchQuery.trim()) return faqData;
     
     const query = searchQuery.toLowerCase();
-    return faqData.filter((faq) => 
-      t(faq.questionKey as any).toLowerCase().includes(query) ||
-      t(faq.answerKey as any).toLowerCase().includes(query)
+    return faqData.filter((faq) =>
+      t(faq.questionKey).toLowerCase().includes(query) ||
+      t(faq.answerKey).toLowerCase().includes(query)
     );
   }, [searchQuery, t]);
 
@@ -245,7 +245,7 @@ const FAQPage = () => {
                                 <div className="p-2 rounded-lg bg-blue-500/10 mt-0.5">
                                   <FileText className="w-4 h-4 text-blue-500" />
                                 </div>
-                                <span className="font-medium text-foreground">{t(faq.questionKey as any)}</span>
+                                <span className="font-medium text-foreground">{t(faq.questionKey)}</span>
                               </div>
                               {isExpanded ? (
                                 <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
@@ -262,7 +262,7 @@ const FAQPage = () => {
                                 className="px-6 pb-4"
                               >
                                 <div className="pl-11 text-muted-foreground leading-relaxed">
-                                  {t(faq.answerKey as any)}
+                                  {t(faq.answerKey)}
                                 </div>
                               </motion.div>
                             )}
@@ -301,7 +301,7 @@ const FAQPage = () => {
                                 <div className="p-2 rounded-lg bg-green-500/10 mt-0.5">
                                   <Shield className="w-4 h-4 text-green-500" />
                                 </div>
-                                <span className="font-medium text-foreground">{t(faq.questionKey as any)}</span>
+                                <span className="font-medium text-foreground">{t(faq.questionKey )}</span>
                               </div>
                               {isExpanded ? (
                                 <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
@@ -318,7 +318,7 @@ const FAQPage = () => {
                                 className="px-6 pb-4"
                               >
                                 <div className="pl-11 text-muted-foreground leading-relaxed">
-                                  {t(faq.answerKey as any)}
+                                  {t(faq.answerKey )}
                                 </div>
                               </motion.div>
                             )}
@@ -357,7 +357,7 @@ const FAQPage = () => {
                                 <div className="p-2 rounded-lg bg-purple-500/10 mt-0.5">
                                   <HelpCircle className="w-4 h-4 text-purple-500" />
                                 </div>
-                                <span className="font-medium text-foreground">{t(faq.questionKey as any)}</span>
+                                <span className="font-medium text-foreground">{t(faq.questionKey )}</span>
                               </div>
                               {isExpanded ? (
                                 <ChevronUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
@@ -374,7 +374,7 @@ const FAQPage = () => {
                                 className="px-6 pb-4"
                               >
                                 <div className="pl-11 text-muted-foreground leading-relaxed">
-                                  {t(faq.answerKey as any)}
+                                  {t(faq.answerKey )}
                                 </div>
                               </motion.div>
                             )}
