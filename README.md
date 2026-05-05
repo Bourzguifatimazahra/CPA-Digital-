@@ -5,14 +5,15 @@
   
   ### Application Web Moderne pour Services d'Assurance
   
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
-  [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-  
-  ![Version](https://img.shields.io/badge/version-2.0.0-38B2AC?style=for-the-badge)
-  ![License](https://img.shields.io/badge/license-Proprietary-FF6B6B?style=for-the-badge)
-  ![Last Update](https://img.shields.io/badge/last%20update-April%202026-38B2AC?style=for-the-badge)
+   [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+   [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+   [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+   
+   ![Version](https://img.shields.io/badge/version-2.0.0-38B2AC?style=for-the-badge)
+   ![License](https://img.shields.io/badge/license-Proprietary-FF6B6B?style=for-the-badge)
+   ![Last Update](https://img.shields.io/badge/last%20update-April%202026-38B2AC?style=for-the-badge)
+   [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=CPA-Digital&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=CPA-Digital)
   
 </div>
 

@@ -1,0 +1,1 @@
+export type TranslationKey = keyof typeof import("@/i18n/translations").translations;

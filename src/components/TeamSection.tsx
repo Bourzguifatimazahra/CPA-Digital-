@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Users, Briefcase, Building2 } from "lucide-react";
+import FlipCard from "@/components/ui/FlipCard";
 
 const domainsData: Record<string, string[]> = {
   fr: ["Finance", "Industrie", "Agroalimentaire", "Santé", "Énergies", "Eaux", "Transport", "Aérien", "Formation", "Agriculture", "BTP", "Logistique", "Audiovisuel", "Artisanat"],
@@ -11,44 +11,6 @@ const domainsData: Record<string, string[]> = {
 };
 
 const domainIcons = ["💰", "🏭", "🌾", "🏥", "⚡", "💧", "🚛", "✈️", "📚", "🌱", "🏗️", "📦", "🎬", "🎨"];
-
-const FlipDomainCard = ({ domain, icon, index }: { domain: string; icon: string; index: number }) => {
-  const [flipped, setFlipped] = useState(false);
-
-  return (
-    <motion.div
-      className="relative h-20 cursor-pointer"
-      style={{ perspective: 800 }}
-      onHoverStart={() => setFlipped(true)}
-      onHoverEnd={() => setFlipped(false)}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.04 }}
-    >
-      <motion.div
-        className="w-full h-full relative"
-        style={{ transformStyle: "preserve-3d" }}
-        animate={{ rotateY: flipped ? 180 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div
-          className="absolute inset-0 bg-card rounded-xl border border-border cpa-shadow flex items-center gap-3 px-4"
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          <span className="text-2xl">{icon}</span>
-          <span className="font-heading font-semibold text-foreground text-sm">{domain}</span>
-        </div>
-        <div
-          className="absolute inset-0 rounded-xl cpa-gradient-bg flex items-center justify-center px-3"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-        >
-          <span className="text-primary-foreground font-heading font-bold text-sm text-center">{domain}</span>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
 
 const TeamSection = () => {
   const { t, lang } = useLanguage();
@@ -116,7 +78,27 @@ const TeamSection = () => {
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {domainList.map((domain, i) => (
-                <FlipDomainCard key={domain} domain={domain} icon={domainIcons[i]} index={i} />
+                <FlipCard key={domain} index={i} className="h-20">
+                  {({ flipped }) => (
+                    <>
+                      {/* Front */}
+                      <div
+                        className="absolute inset-0 bg-card rounded-xl border border-border cpa-shadow flex items-center gap-3 px-4"
+                        style={{ backfaceVisibility: "hidden" }}
+                      >
+                        <span className="text-2xl">{domainIcons[i]}</span>
+                        <span className="font-heading font-semibold text-foreground text-sm">{domain}</span>
+                      </div>
+                      {/* Back */}
+                      <div
+                        className="absolute inset-0 rounded-xl cpa-gradient-bg flex items-center justify-center px-3"
+                        style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                      >
+                        <span className="text-primary-foreground font-heading font-bold text-sm text-center">{domain}</span>
+                      </div>
+                    </>
+                  )}
+                </FlipCard>
               ))}
             </div>
           </motion.div>
