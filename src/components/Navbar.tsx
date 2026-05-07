@@ -105,9 +105,7 @@ const Navbar = () => {
         { label: t("nav_audit"), href: "/entreprises/audit-management" },
       ],
     },
-    {
-      label: t("nav_expertise"), href: "/expertise",
-    },
+    
     {
       label: t("nav_catalog"),
       href: "/catalog",
@@ -116,6 +114,10 @@ const Navbar = () => {
         { label: t("nav_faq"), href: "/faq" },
       ],
     },
+    {
+      label: t("nav_expertise"), href: "/expertise",
+    },
+     
     { label: t("nav_contact"), href: "/contact" },
   ];
 
