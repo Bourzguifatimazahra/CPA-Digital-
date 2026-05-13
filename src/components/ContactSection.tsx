@@ -9,6 +9,8 @@ interface Department {
   nameKey: TranslationKey;
   whatsapp: string;
   whatsappFull: string;
+  fix: string;
+  fixFull: string;
   icon: React.ElementType;
   color: string;
   types: string[];
@@ -21,6 +23,8 @@ const departments: Department[] = [
     nameKey: "dept_automobile",
     whatsapp: "0667558436",
     whatsappFull: "+212667558436",
+    fix: "05 22 95 39 02",
+    fixFull: "+212522953902",
     icon: Car,
     color: "bg-blue-500",
     types: ["auto", "vehicules", "auto_moto", "flotte"],
@@ -30,6 +34,8 @@ const departments: Department[] = [
     nameKey: "dept_sinistre_at",
     whatsapp: "0655357453",
     whatsappFull: "+212665357453",
+    fix: "05 22 95 39 08",
+    fixFull: "+212522953908",
     icon: Shield,
     color: "bg-orange-500",
     types: ["individuelle"],
@@ -39,6 +45,8 @@ const departments: Department[] = [
     nameKey: "dept_sinistre_maladie",
     whatsapp: "0678293901",
     whatsappFull: "+212678293901",
+    fix: "05 22 95 39 06",
+    fixFull: "+212522953906",
     icon: Heart,
     color: "bg-red-500",
     types: ["sante"],
@@ -48,6 +56,8 @@ const departments: Department[] = [
     nameKey: "dept_production_divers",
     whatsapp: "078991814",
     whatsappFull: "+21278991814",
+    fix: "05 22 95 39 04",
+    fixFull: "+212522953904",
     icon: Briefcase,
     color: "bg-green-500",
     types: ["habitation", "multirisques", "voyage", "assistance", "entreprise", "retraite", "epargne", "rc", "rc_pro", "biens", "personnes", "risques_tech", "transport", "dommage", "pertes", "chantier", "cyber", "terrorisme", "audit"],
@@ -268,16 +278,31 @@ const ContactSection = () => {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <h4 className="font-heading font-bold text-foreground text-sm mb-2">{t(dept.nameKey)}</h4>
-                  <a
-                    href={`https://wa.me/${dept.whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm"
-                  >
-                    <Phone className="w-4 h-4" />
-                    {dept.whatsapp}
-                  </a>
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <div className="space-y-2">
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">Fix</p>
+                      <a
+                        href={`tel:${dept.fixFull}`}
+                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold text-sm"
+                      >
+                        <Phone className="w-4 h-4" />
+                        {dept.fix}
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground mb-1">WhatsApp</p>
+                      <a
+                        href={`https://wa.me/${dept.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm"
+                      >
+                        <Phone className="w-4 h-4" />
+                        {dept.whatsapp}
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-3">
                     {dept.types.length} {dept.types.length > 1 ? t("dept_insurance_types_plural") : t("dept_insurance_types")}
                   </p>
                 </motion.div>
