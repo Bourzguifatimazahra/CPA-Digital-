@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, Shield, Heart, Car, Briefcase } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  Shield,
+  Heart,
+  Car,
+  Briefcase,
+} from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TranslationKey } from "@/i18n/translations";
 import { Link } from "react-router-dom";
@@ -10,74 +20,96 @@ interface Department {
   nameKey: TranslationKey;
   whatsapp: string;
   whatsappFull: string;
-  fix: string;
-  fixFull: string;
+  direct: string;
+  directFull: string;
   icon: React.ElementType;
   color: string;
+  glow: string;
   types: string[];
 }
 
-// Department configuration with WhatsApp numbers and responsible insurance types
 const departments: Department[] = [
   {
     id: "automobile",
     nameKey: "dept_automobile",
     whatsapp: "0667558436",
-    whatsappFull: "+212667558436",
-    fix: "05 22 95 39 02",
-    fixFull: "+212522953902",
+    whatsappFull: "212667558436",
+    direct: "05 22 95 39 02",
+    directFull: "+212522953902",
     icon: Car,
-    color: "bg-blue-500",
+    color: "from-blue-500 to-cyan-500",
+    glow: "shadow-blue-500/30",
     types: ["auto", "vehicules", "auto_moto", "flotte"],
   },
   {
     id: "sinistre_at",
     nameKey: "dept_sinistre_at",
     whatsapp: "0655357453",
-    whatsappFull: "+212665357453",
-    fix: "05 22 95 39 08",
-    fixFull: "+212522953908",
+    whatsappFull: "212665357453",
+    direct: "05 22 95 39 08",
+    directFull: "+212522953908",
     icon: Shield,
-    color: "bg-orange-500",
+    color: "from-orange-500 to-amber-500",
+    glow: "shadow-orange-500/30",
     types: ["individuelle"],
   },
   {
     id: "sinistre_maladie",
     nameKey: "dept_sinistre_maladie",
     whatsapp: "0678293901",
-    whatsappFull: "+212678293901",
-    fix: "05 22 95 39 06",
-    fixFull: "+212522953906",
+    whatsappFull: "212678293901",
+    direct: "05 22 95 39 06",
+    directFull: "+212522953906",
     icon: Heart,
-    color: "bg-red-500",
+    color: "from-red-500 to-pink-500",
+    glow: "shadow-red-500/30",
     types: ["sante"],
   },
   {
     id: "production_divers",
     nameKey: "dept_production_divers",
     whatsapp: "078991814",
-    whatsappFull: "+21278991814",
-    fix: "05 22 95 39 04",
-    fixFull: "+212522953904",
+    whatsappFull: "21278991814",
+    direct: "05 22 95 39 04",
+    directFull: "+212522953904",
     icon: Briefcase,
-    color: "bg-green-500",
-    types: ["habitation", "multirisques", "voyage", "assistance", "entreprise", "retraite", "epargne", "rc", "rc_pro", "biens", "personnes", "risques_tech", "transport", "dommage", "pertes", "chantier", "cyber", "terrorisme", "audit"],
+    color: "from-green-500 to-emerald-500",
+    glow: "shadow-green-500/30",
+    types: [
+      "habitation",
+      "multirisques",
+      "voyage",
+      "assistance",
+      "entreprise",
+      "retraite",
+      "epargne",
+      "rc",
+      "rc_pro",
+      "biens",
+      "personnes",
+      "risques_tech",
+      "transport",
+      "dommage",
+      "pertes",
+      "chantier",
+      "cyber",
+      "terrorisme",
+      "audit",
+    ],
   },
 ];
 
-// Helper function to get department for an insurance type
-const getDepartmentForInsurance = (insuranceType: string) => {
-  for (const dept of departments) {
-    if (dept.types.includes(insuranceType)) {
-      return dept;
-    }
-  }
-  return departments[3]; // Default to Production & Risques Divers
-};
-
 const ContactSection = () => {
   const { t, lang } = useLanguage();
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", insuranceType: "", message: "" });
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    insuranceType: "",
+    message: "",
+  });
+
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const insuranceOptions = [
@@ -109,231 +141,145 @@ const ContactSection = () => {
     { value: "audit", label: t("ins_audit") },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.insuranceType) {
-      alert("Veuillez sélectionner un type d'assurance");
-      return;
-    }
-
-    if (!privacyAccepted) {
-      alert(t("contact_privacy_error"));
-      return;
-    }
-
-    // Get the responsible department for the selected insurance type
-    const department = getDepartmentForInsurance(formData.insuranceType);
-    
-    // Get the selected insurance type label
-    const selectedOption = insuranceOptions.find(opt => opt.value === formData.insuranceType);
-    const insuranceLabel = selectedOption ? selectedOption.label : formData.insuranceType;
-    
-    // Construct the WhatsApp message
-    const whatsappMessage = `Bonjour CPA,\n\nJe suis intéressé(e) par l'assurance suivante : ${insuranceLabel}\n\nMes coordonnées :\n• Nom : ${formData.name}\n• Email : ${formData.email}\n• Téléphone : ${formData.phone || "Non fourni"}\n\nMon message :\n${formData.message}`;
-    
-    // Encode the message for URL
-    const encodedWhatsAppMessage = encodeURIComponent(whatsappMessage);
-    
-    // Open WhatsApp with the department's phone number and message
-    window.open(`https://wa.me/${department.whatsapp}?text=${encodedWhatsAppMessage}`, "_blank");
-    
-    // Also send via email
-    const emailSubject = encodeURIComponent(`Demande de devis - ${insuranceLabel}`);
-    const emailBody = encodeURIComponent(`Bonjour,\n\nJe suis intéressé(e) par l'assurance suivante : ${insuranceLabel}\n\nMes coordonnées :\nNom : ${formData.name}\nEmail : ${formData.email}\n• Téléphone : ${formData.phone || "Non fourni"}\n\nMon message :\n${formData.message}\n\nCordialement,\n${formData.name}`);
-    window.open(`mailto:info@cpa.ma?subject=${emailSubject}&body=${emailBody}`, "_blank");
-    
-    // Show success message
-    alert(t("contact_success"));
-    setFormData({ name: "", email: "", phone: "", insuranceType: "", message: "" });
+  const getDepartmentForInsurance = (type: string) => {
+    return departments.find((d) => d.types.includes(type)) || departments[3];
   };
 
-  const infoItems = [
-    { icon: Phone, title: t("contact_phone"), value: "+212 5 22 95 39 00", href: "tel:+212522953900" },
-    { icon: Mail, title: t("contact_email"), value: "info@cpa.ma", href: "mailto:info@cpa.ma" },
-    { icon: MapPin, title: t("contact_address_casa"), value: "Casablanca, Maroc", href: "https://maps.app.goo.gl/ZL7oQLPCXskUGTUz5" },
-    { icon: MapPin, title: t("contact_address_tanger"), value: "Tanger, Maroc", href: "https://maps.app.goo.gl/haMwPhLXUVd39k1eA" },
-    { icon: Clock, title: t("contact_hours"), value: t("footer_hours_label") },
-  ];
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.insuranceType || !privacyAccepted) return;
+
+    const dept = getDepartmentForInsurance(formData.insuranceType);
+
+    const label =
+      insuranceOptions.find((o) => o.value === formData.insuranceType)
+        ?.label || formData.insuranceType;
+
+    const msg = `CPA - Demande
+
+Type: ${label}
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Message: ${formData.message}`;
+
+    window.open(
+      `https://wa.me/${dept.whatsappFull}?text=${encodeURIComponent(msg)}`,
+      "_blank"
+    );
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      insuranceType: "",
+      message: "",
+    });
+  };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-background">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <span className="text-accent font-semibold text-sm tracking-wide uppercase">{t("contact_badge")}</span>
-          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-foreground mt-3 mb-4">{t("contact_title")}</h2>
-          <p className="text-muted-foreground text-lg">{t("contact_desc")}</p>
-        </motion.div>
 
-        {/* Main Contact Grid: Info + Form */}
-        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 space-y-4"
-          >
-            {infoItems.map((item, i) => (
+        {/* DEPARTMENTS FLIP */}
+        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4 max-w-[1800px] mx-auto mt-20">
+
+          {departments.map((dept, index) => {
+            const Icon = dept.icon;
+
+            return (
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={dept.id}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 bg-card rounded-xl p-5 border border-border cpa-shadow"
+                transition={{ delay: index * 0.1 }}
+                className="group [perspective:1600px] h-[420px] w-full"
               >
-                <div className="w-11 h-11 rounded-lg cpa-gradient-bg flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <h4 className="font-heading font-bold text-foreground text-sm">{item.title}</h4>
-                  {item.href ? (
-                    <a href={item.href} dir={item.href?.startsWith("tel:") ? "ltr" : undefined} className="text-muted-foreground text-sm hover:text-primary transition-colors">{item.value}</a>
-                  ) : (
-                    <p className="text-muted-foreground text-sm">{item.value}</p>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
-          <motion.form
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-3 bg-card rounded-2xl p-8 border border-border cpa-shadow-lg"
-          >
-            <h3 className="font-heading font-bold text-foreground text-xl mb-6">{t("contact_form_title")}</h3>
-            <div className="grid sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_name")}</label>
-                <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                  placeholder={t("contact_name_ph")} />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_email")}</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                  placeholder={t("contact_email_ph")} />
-              </div>
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_phone")}</label>
-              <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-                placeholder={t("contact_phone_ph")} />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_insurance_type")}</label>
-              <select
-                value={formData.insuranceType}
-                onChange={(e) => setFormData({ ...formData, insuranceType: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
-              >
-                {insuranceOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-foreground mb-1.5">{t("contact_message")}</label>
-              <textarea rows={4} required value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"
-                placeholder={t("contact_message_ph")} />
-            </div>
-            <div className="mb-6">
-              <label className="flex items-start gap-3 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={privacyAccepted}
-                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                  className="mt-1 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
-                  required
-                />
-                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                  {t("contact_privacy_accept")}{" "}
-                  <Link to="/politique-confidentialite" className="text-primary hover:underline font-medium">
-                    {t("contact_privacy_link")}
-                  </Link>
-                </span>
-              </label>
-            </div>
-            <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-heading font-bold text-base cpa-shadow hover:opacity-90 transition-opacity">
-              <Send className="w-5 h-5" />
-              {t("contact_submit")}
-            </motion.button>
-          </motion.form>
-        </div>
+                  {/* FRONT */}
+                  <div className="absolute inset-0 rounded-[36px] overflow-hidden border bg-card shadow-2xl [backface-visibility:hidden]">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-10`} />
 
-        {/* Department WhatsApp Contacts Section - Full Width */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-6xl mx-auto mt-12"
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-heading font-bold text-foreground mb-2">{t("contact_departments_title")}</h3>
-            <p className="text-muted-foreground">{t("contact_departments_desc")}</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {departments.map((dept, index) => {
-              const Icon = dept.icon;
-              return (
-                <motion.div
-                  key={dept.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-card rounded-xl p-5 border border-border cpa-shadow hover:shadow-lg transition-shadow"
-                >
-                  <div className={`w-12 h-12 rounded-lg ${dept.color} flex items-center justify-center mb-4`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="font-heading font-bold text-foreground text-sm mb-2">{t(dept.nameKey)}</h4>
-                  <div className="space-y-2">
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">Fix</p>
-                      <a
-                        href={`tel:${dept.fixFull}`}
-                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold text-sm"
-                      >
-                        <Phone className="w-4 h-4" />
-                        {dept.fix}
-                      </a>
+                    <div className="flex flex-col items-center justify-center h-full text-center p-8">
+                      <div className={`w-24 h-24 rounded-3xl bg-gradient-to-br ${dept.color} flex items-center justify-center mb-8 ${dept.glow}`}>
+                        <Icon className="w-10 h-10 text-white" />
+                      </div>
+
+                      <h3 className="text-xl font-bold text-foreground mb-3">
+                        {t(dept.nameKey)}
+                      </h3>
+
+                      <div className="text-sm text-muted-foreground">
+                        {dept.types.length} services
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">WhatsApp</p>
+                  </div>
+
+                  {/* BACK */}
+                  <div className="absolute inset-0 rounded-[36px] overflow-hidden border bg-card shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+
+                    <div className="p-7 h-full flex flex-col justify-between">
+
+                      {/* DIRECT */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <Phone className="w-5 h-5 text-primary" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">
+                            Direct
+                          </p>
+                          <a
+                            href={`tel:${dept.directFull}`}
+                            className="font-bold text-foreground"
+                          >
+                            {dept.direct}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* WHATSAPP */}
+                      <div className="flex items-start gap-4 mt-6">
+                        <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center">
+                          <Phone className="w-5 h-5 text-green-600" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs text-muted-foreground mb-1">
+                            WhatsApp
+                          </p>
+                          <a
+                            href={`https://wa.me/${dept.whatsappFull}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-bold text-green-600"
+                          >
+                            {dept.whatsapp}
+                          </a>
+                        </div>
+                      </div>
+
                       <a
-                        href={`https://wa.me/${dept.whatsapp}`}
+                        href={`https://wa.me/${dept.whatsappFull}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold text-sm"
+                        className={`mt-8 py-4 rounded-2xl text-white text-center font-bold bg-gradient-to-r ${dept.color}`}
                       >
-                        <Phone className="w-4 h-4" />
-                        {dept.whatsapp}
+                        Contacter
                       </a>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-3">
-                    {dept.types.length} {dept.types.length > 1 ? t("dept_insurance_types_plural") : t("dept_insurance_types")}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

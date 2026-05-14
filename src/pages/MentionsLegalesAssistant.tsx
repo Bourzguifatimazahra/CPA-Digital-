@@ -280,15 +280,6 @@ const MentionsLegalesAssistantPage = () => {
                       ? "a socios aseguradores y proveedores técnicos que intervienen en los servicios ofrecidos;"
                       : "للشركاء المؤمّنين ومقدمي الخدمات التقنية المشاركين في الخدمات المقدمة؛"}
                   </li>
-                  <li>
-                    {lang === "fr"
-                      ? "aux sous-traitants techniques assurant l'hébergement, la maintenance ou le fonctionnement de l'assistant virtuel."
-                      : lang === "en"
-                      ? "to technical subcontractors ensuring the hosting, maintenance or operation of the virtual assistant."
-                      : lang === "es"
-                      ? "a subcontratistas técnicos que aseguran el alojamiento, mantenimiento o funcionamiento del asistente virtual."
-                      : "لمقاولي التقنيات الفرعيين الذين يضمنون استضافة وصيانة أو تشغيل المساعد الافتراضي."}
-                  </li>
                 </ul>
                 <p className="text-muted-foreground mt-4">
                   {lang === "fr"
@@ -362,23 +353,24 @@ const MentionsLegalesAssistantPage = () => {
                     : "استضافة ونقل البيانات"}
                 </h2>
                 <p className="text-muted-foreground">
-                  {lang === "fr"
-                    ? "Dans le cadre du fonctionnement de l'Assistant Virtuel CPA, certaines données peuvent être hébergées ou traitées par des prestataires techniques situés hors du Maroc, notamment au sein de l'Union Européenne."
-                    : lang === "en"
-                    ? "As part of the CPA Virtual Assistant's operation, certain data may be hosted or processed by technical providers located outside Morocco, notably within the European Union."
-                    : lang === "es"
-                    ? "Como parte del funcionamiento del Asistente Virtual CPA, ciertos datos pueden ser alojados o procesados por proveedores técnicos ubicados fuera de Marruecos, en particular dentro de la Unión Europea."
-                    : "في إطار عمل مساعد CPA الافتراضي، قد يتم استضافة أو معالجة بعض البيانات من قبل مقدمي خدمات تقنيين موجودين خارج المغرب، ولا سيما داخل الاتحاد الأوروبي."}
-                </p>
-                <p className="text-muted-foreground mt-4">
-                  {lang === "fr"
-                    ? "CPA veille à ce que ces transferts soient effectués conformément aux exigences de la Loi n°09-08 relative à la protection des données à caractère personnel et aux recommandations de la CNDP."
-                    : lang === "en"
-                    ? "CPA ensures that these transfers are carried out in compliance with the requirements of Law No. 09-08 on the protection of personal data and the recommendations of the CNDP."
-                    : lang === "es"
-                    ? "CPA garantiza que estas transferencias se realicen de conformidad con los requisitos de la Ley n.º 09-08 sobre la protección de datos personales y las recomendaciones de la CNDP."
-                    : "تحرص CPA على أن تتم هذه التحويلات وفقاً لمتطلبات القانون رقم 09-08 المتعلق بحماية البيانات الشخصية وتوصيات اللجنة الوطنية لمراقبة حماية البيانات الشخصية (CNDP)."}
-                </p>
+  {lang === "fr"
+    ? "L’ensemble des données utilisées dans le cadre des services digitaux et de l’Assistant Virtuel CPA est déployé, hébergé et traité exclusivement au Maroc sur des infrastructures sécurisées."
+    : lang === "en"
+    ? "All data used within CPA digital services and the CPA Virtual Assistant is deployed, hosted, and processed exclusively in Morocco on secure infrastructures."
+    : lang === "es"
+    ? "Todos los datos utilizados en los servicios digitales y en el Asistente Virtual CPA se implementan, alojan y procesan exclusivamente en Marruecos sobre infraestructuras seguras."
+    : "يتم نشر واستضافة ومعالجة جميع البيانات المستخدمة ضمن الخدمات الرقمية ومساعد CPA الافتراضي حصريًا داخل المغرب على بنية تحتية آمنة."}
+</p>
+
+<p className="text-muted-foreground mt-4">
+  {lang === "fr"
+    ? "CPA applique les mesures techniques et organisationnelles nécessaires afin de garantir la sécurité, la confidentialité et la protection des données personnelles conformément à la réglementation marocaine en vigueur."
+    : lang === "en"
+    ? "CPA implements the necessary technical and organizational measures to ensure the security, confidentiality, and protection of personal data in compliance with applicable Moroccan regulations."
+    : lang === "es"
+    ? "CPA aplica las medidas técnicas y organizativas necesarias para garantizar la seguridad, confidencialidad y protección de los datos personales de conformidad con la normativa marroquí vigente."
+    : "تطبق CPA جميع التدابير التقنية والتنظيمية اللازمة لضمان أمن وسرية وحماية المعطيات الشخصية وفقًا للتشريعات المغربية المعمول بها."}
+</p>
               </div>
 
               <div className="bg-card rounded-2xl p-8 border border-border">
@@ -392,14 +384,14 @@ const MentionsLegalesAssistantPage = () => {
                     : "مدة الاحتفاظ"}
                 </h2>
                 <p className="text-muted-foreground">
-                  {lang === "fr"
-                    ? "Les données collectées via l'Assistant Virtuel CPA sont conservées pour une durée maximale de 12 mois, sauf obligation légale contraire ou nécessité liée à la gestion de la relation client."
-                    : lang === "en"
-                    ? "Data collected via the CPA Virtual Assistant is retained for a maximum period of 12 months, unless otherwise required by law or necessary for customer relationship management."
-                    : lang === "es"
-                    ? "Los datos recopilados a través del Asistente Virtual CPA se conservan durante un período máximo de 12 meses, salvo que la ley exija lo contrario o sea necesario para la gestión de la relación con el cliente."
-                    : "البيانات المجمعة عبر مساعد CPA الافتراضي تُحفظ لمدة أقصاها 12 شهرًا، ما لم يقتضِ القانون خلاف ذلك أو تقتضي ضرورة إدارة العلاقة مع العميل."}
-                </p>
+  {lang === "fr"
+    ? "Les données collectées via l'Assistant Virtuel CPA sont conservées pour une durée maximale de 12 mois, sauf obligation légale contraire ou nécessité liée à la gestion de la relation client. Vous pouvez à tout moment demander la suppression ou la modification de vos données personnelles en envoyant un e-mail à : info@cpa.ma."
+    : lang === "en"
+    ? "Data collected via the CPA Virtual Assistant is retained for a maximum period of 12 months, unless otherwise required by law or necessary for customer relationship management. You may request the deletion or modification of your personal data at any time by sending an email to: info@cpa.ma."
+    : lang === "es"
+    ? "Los datos recopilados a través del Asistente Virtual CPA se conservan durante un período máximo de 12 meses, salvo que la ley exija lo contrario o sea necesario para la gestión de la relación con el cliente. Puede solicitar en cualquier momento la eliminación o modificación de sus datos personales enviando un correo electrónico a: info@cpa.ma."
+    : "يتم الاحتفاظ بالبيانات التي يتم جمعها عبر مساعد CPA الافتراضي لمدة أقصاها 12 شهرًا، ما لم ينص القانون على خلاف ذلك أو تقتضي ضرورة إدارة العلاقة مع العميل ذلك. ويمكنكم في أي وقت طلب حذف أو تعديل بياناتكم الشخصية عبر إرسال بريد إلكتروني إلى: info@cpa.ma."}
+</p>
               </div>
 
               <div className="bg-card rounded-2xl p-8 border border-border">

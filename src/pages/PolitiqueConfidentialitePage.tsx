@@ -954,28 +954,6 @@ const PolitiqueConfidentialitePage = () => {
         ],
       },
     },
-    
-    automatedDecision: {
-      title: {
-        fr: "Décisions Automatisées et Profilage",
-        en: "Automated Decision-Making and Profiling",
-        ar: "القرارات الآلية والتمييز",
-        es: "Decisiones Automatizadas y Perfilado",
-      },
-      content: {
-        fr: "Nous vous informons de la possibilité de faire l'objet d'une décision fondée exclusivement sur un traitement automatisé, y compris le profilage, produisant des effets juridiques vous concernant. Vous avez le droit de ne pas être soumis à une telle décision si elle produit un effet juridique ou vous affecte significativement, sauf si la décision est nécessaire à la conclusion ou à l'exécution d'un contrat.",
-        en: "We inform you of the possibility of being subject to automated decision-making, including profiling, producing legal effects concerning you. You have the right not to be subject to such decisions if they produce legal effects or significantly affect you, unless the decision is necessary for the conclusion or performance of a contract.",
-        ar: "نخبرك بإمكانية خضوعك لقرار يعتمد حصريًا على المعالجة الآلية، بما في ذلك التمييز، مما ينتج عنه آثار قانونية تخصك. يحق لك عدم خضوع هذا القرار إذا كان ينتج أثرًا قانونيًا أو يؤثر عليك بشكل كبير، ما لم يكن القرار ضروريًا للعقد.",
-        es: "Le informamos de la posibilidad de ser objeto de decisiones automatizadas, incluido el perfilado, que produzcan efectos legales que le conciernan. Tiene derecho a no ser objeto de tales decisiones si producen efectos legales o le afectan significativamente, a menos que la decisión sea necesaria para la celebración o ejecución de un contrato.",
-      },
-      contact: {
-        fr: "Pour exercer ce droit ou obtenir des informations complémentaires :",
-        en: "To exercise this right or obtain additional information:",
-        ar: "لممارسة هذا الحق أو الحصول على معلومات إضافية:",
-        es: "Para ejercer este derecho u obtener información adicional:",
-      },
-      email: "info@cpa.ma",
-    },
   };
 
   const getText = (obj: { [key: string]: string }) => obj[lang] || obj.fr;
@@ -1466,30 +1444,6 @@ const PolitiqueConfidentialitePage = () => {
                   ))}
                 </ul>
               </div>
-
-              {/* Automated Decision Making */}
-              <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Lock className="w-5 h-5 text-primary" />
-                  </div>
-                  <h2 className="text-2xl font-heading font-bold text-primary">
-                    {getText(content.automatedDecision.title)}
-                  </h2>
-                </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  {getText(content.automatedDecision.content)}
-                </p>
-                <div className="bg-muted/50 rounded-lg p-4">
-                  <p className="text-foreground font-semibold mb-1">
-                    {getText(content.automatedDecision.contact)}
-                  </p>
-                  <p className="text-muted-foreground">
-                    <strong>Email:</strong> <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a>
-                  </p>
-                </div>
-              </div>
-
               {/* Children Protection */}
               <div className="bg-card rounded-2xl p-8 border border-border shadow-sm">
                 <h2 className="text-2xl font-heading font-bold text-primary mb-4">
