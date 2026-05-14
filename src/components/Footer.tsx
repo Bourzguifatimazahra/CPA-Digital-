@@ -140,19 +140,23 @@ const Footer = () => {
             >
               <div className="flex items-center gap-2">
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.8 }}
-                  className="bg-white rounded p-1 w-12 h-8 flex items-center justify-center"
-                >
-                  <img src={holmarcomLogo} alt="Holmarcom" className="w-full h-full object-contain" />
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-white rounded p-1 w-12 h-8 flex items-center justify-center"
-                >
-                  <img src={euribronLogo} alt="EURIBRON" className="w-full h-full object-contain" />
-                </motion.div>
+                   whileHover={{ scale: 1.1 }}
+                   transition={{ duration: 0.8 }}
+                   className="bg-white rounded p-1 w-12 h-8 flex items-center justify-center"
+                 >
+                   <a href="https://www.holmarcom.ma" target="_blank" rel="noopener noreferrer">
+                     <img src={holmarcomLogo} alt="Holmarcom" className="w-full h-full object-contain cursor-pointer" />
+                   </a>
+                 </motion.div>
+                 <motion.div
+                   whileHover={{ scale: 1.1 }}
+                   transition={{ duration: 0.3 }}
+                   className="bg-white rounded p-1 w-12 h-8 flex items-center justify-center"
+                 >
+                   <a href="https://euribron.com" target="_blank" rel="noopener noreferrer">
+                     <img src={euribronLogo} alt="EURIBRON" className="w-full h-full object-contain cursor-pointer" />
+                   </a>
+                 </motion.div>
               </div>
             </motion.div>
 
@@ -164,7 +168,8 @@ const Footer = () => {
               </p>
               <div className="flex gap-3 text-primary-foreground/50 text-xs ml-2">
                 <Link to="/mentions-legales" className="hover:text-primary-foreground transition-colors">{t("footer_legal")}</Link>
-                <Link to="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">{t("footer_privacy")}</Link>
+                 <Link to="/mentions-legales-assistant" className="hover:text-primary-foreground transition-colors">{t("footer_legal_assistant")}</Link>
+                 <Link to="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">{t("footer_privacy")}</Link>
               </div>
             </div>
           </div>

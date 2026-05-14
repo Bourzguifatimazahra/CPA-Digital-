@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, Shield, Heart, Car, Briefcase } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { TranslationKey } from "@/i18n/translations";
+import { Link } from "react-router-dom";
 
 interface Department {
   id: string;
@@ -77,6 +78,7 @@ const getDepartmentForInsurance = (insuranceType: string) => {
 const ContactSection = () => {
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", insuranceType: "", message: "" });
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const insuranceOptions = [
     { value: "", label: t("contact_insurance_select") },
@@ -112,6 +114,11 @@ const ContactSection = () => {
     
     if (!formData.insuranceType) {
       alert("Veuillez sélectionner un type d'assurance");
+      return;
+    }
+
+    if (!privacyAccepted) {
+      alert(t("contact_privacy_error"));
       return;
     }
 
@@ -242,6 +249,23 @@ const ContactSection = () => {
               <textarea rows={4} required value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"
                 placeholder={t("contact_message_ph")} />
+            </div>
+            <div className="mb-6">
+              <label className="flex items-start gap-3 cursor-pointer group">
+                <input
+                  type="checkbox"
+                  checked={privacyAccepted}
+                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                  className="mt-1 w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary cursor-pointer"
+                  required
+                />
+                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                  {t("contact_privacy_accept")}{" "}
+                  <Link to="/politique-confidentialite" className="text-primary hover:underline font-medium">
+                    {t("contact_privacy_link")}
+                  </Link>
+                </span>
+              </label>
             </div>
             <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
               className="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl cpa-gradient-bg text-primary-foreground font-heading font-bold text-base cpa-shadow hover:opacity-90 transition-opacity">

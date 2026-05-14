@@ -22,6 +22,7 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const MentionsLegalesPage = lazy(() => import("./pages/MentionsLegalesPage"));
+const MentionsLegalesAssistantPage = lazy(() => import("./pages/MentionsLegalesAssistant"));
 const PolitiqueConfidentialitePage = lazy(() => import("./pages/PolitiqueConfidentialitePage"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 
@@ -67,6 +68,7 @@ const usePageContext = (): PageContext => {
   if (path === "/expertise") return 'expertise';
   if (path === "/contact") return 'contact';
   if (path === "/mentions-legales") return 'mentions-legales';
+  if (path === "/mentions-legales-assistant") return 'mentions-legales-assistant';
   if (path === "/politique-confidentialite") return 'politique-confidentialite';
   if (path === "/catalog") return 'catalog';
   
@@ -123,6 +125,7 @@ const App = () => (
               <Route path="/catalog" element={<CatalogPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+              <Route path="/mentions-legales-assistant" element={<MentionsLegalesAssistantPage />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
               <Route path="/:category/:slug" element={<ServiceDetail />} />
               <Route path="*" element={<NotFound />} />

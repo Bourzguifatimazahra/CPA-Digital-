@@ -46,17 +46,17 @@ const PolitiqueConfidentialitePage = () => {
       },
       regulations: {
         fr: [
+          "Loi n° 09-08 relative à la protection des personnes physiques (CNDP) - Maroc",
           "Règlement Général sur la Protection des Données (RGPD) - Union Européenne",
-          "Loi n° 09-08 relative à la protection des personnes physiques - Maroc",
           "California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA) - États-Unis",
           "Personal Information Protection Law (PIPL) - Chine",
           "Lei Geral de Proteção de Dados (LGPD) - Brésil",
           "Data Protection Act 2018 - Royaume-Uni",
           "Protection of Personal Information Act (POPIA) - Afrique du Sud",
         ],
-        en: [
+        en: [ 
+          "Law No. 09-08 on the protection of individuals (CNDP) - Morocco",
           "General Data Protection Regulation (GDPR) - European Union",
-          "Law No. 09-08 on the protection of individuals - Morocco",
           "California Consumer Privacy Act (CCPA) / California Privacy Rights Act (CPRA) - United States",
           "Personal Information Protection Law (PIPL) - China",
           "Lei Geral de Proteção de Dados (LGPD) - Brazil",
@@ -64,8 +64,8 @@ const PolitiqueConfidentialitePage = () => {
           "Protection of Personal Information Act (POPIA) - South Africa",
         ],
         ar: [
+          "القانون رقم 09-08 المتعلق بحماية الأشخاص الطبيعيين  (CNDP)- المغرب",
           "اللائحة العامة لحماية البيانات (GDPR) - الاتحاد الأوروبي",
-          "القانون رقم 09-08 المتعلق بحماية الأشخاص الطبيعيين - المغرب",
           "قانون خصوصية المستهلك في كاليفورنيا (CCPA) / قانون حقوق الخصوصية في كاليفورنيا (CPRA) - الولايات المتحدة",
           "قانون حماية المعلومات الشخصية (PIPL) - الصين",
           "قانون الحماية العامة للبيانات (LGPD) - البرازيل",
@@ -73,8 +73,8 @@ const PolitiqueConfidentialitePage = () => {
           "قانون حماية المعلومات الشخصية (POPIA) - جنوب أفريقيا",
         ],
         es: [
+          "Ley N° 09-08 relativa a la protección de personas físicas (CNDP) - Marruecos",
           "Reglamento General de Protección de Datos (RGPD) - Unión Europea",
-          "Ley N° 09-08 relativa a la protección de personas físicas - Marruecos",
           "Ley de Privacidad del Consumidor de California (CCPA) / Ley de Derechos de Privacidad de California (CPRA) - Estados Unidos",
           "Ley de Protección de Información Personal (PIPL) - China",
           "Lei Geral de Proteção de Dados (LGPD) - Brasil",
@@ -371,7 +371,7 @@ const PolitiqueConfidentialitePage = () => {
           { title: "تنفيذ عقد", desc: "المعالجة ضرورية لتنفيذ عقد أنت طرف فيه (خدمات التأمين)." },
           { title: "الموافقة", desc: "لقد أعطيت موافقتك الصريحة على معالجة بياناتك لأغراض محددة." },
           { title: "المصلحة المشروعة", desc: "المعالجة ضرورية لتحقيق مصالحنا المشروعة أو مصالح طرف ثالث، شريطة ألا تسود مصالحك الأساسية." },
-          { title: "الالتزام القانوني", desc: "المعالجة ضرورية للامتثال لالتزام قانوني我们是." },
+          { title: "الالتزام القانوني", desc: "المعالجة ضرورية للامتثال لالتزام قانوني." },
         ],
         es: [
           { title: "Ejecución de un contrato", desc: "El tratamiento es necesario para la ejecución de un contrato en el que usted es parte (servicios de seguros)." },
@@ -490,25 +490,25 @@ const PolitiqueConfidentialitePage = () => {
           "Données de gestion de contrat : durée du contrat + 5 ans (بيانات إدارة العقد: مدة العقد + 5 سنوات)",
           "Données comptables : 10 ans (البيانات المحاسبية: 10 سنوات)",
           "Données de candidature : 2 ans (بيانات الطلب: سنتان)",
-          "Données de navigation : 13 mois (بيانات التصفح: 13 شهرًا)",
+          "Données de navigation : 12 mois (بيانات التصفح: 12 شهرًا)",
         ],
         en: [
           "Contract management data: contract duration + 5 years",
           "Accounting data: 10 years",
           "Application data: 2 years",
-          "Browsing data: 13 months",
+          "Browsing data: 12 months",
         ],
         ar: [
           "بيانات إدارة العقد: مدة العقد + 5 سنوات",
           "البيانات المحاسبية: 10 سنوات",
           "بيانات الطلب: سنتان",
-          "بيانات التصفح: 13 شهرًا",
+          "بيانات التصفح:  12 شهرًا",
         ],
         es: [
           "Datos de gestión de contratos: duración del contrato + 5 años",
           "Datos contables: 10 años",
           "Datos de solicitudes: 2 años",
-          "Datos de navegación: 13 meses",
+          "Datos de navegación: 12 meses",
         ],
       },
     },
@@ -783,7 +783,7 @@ const PolitiqueConfidentialitePage = () => {
         ar: "للإبلاغ عن اختراق البيانات:",
         es: "Para reportar una violación de datos:",
       },
-      email: "security@cpa.ma",
+      email: "info@cpa.ma",
     },
     
     supervisoryAuthority: {
@@ -974,7 +974,7 @@ const PolitiqueConfidentialitePage = () => {
         ar: "لممارسة هذا الحق أو الحصول على معلومات إضافية:",
         es: "Para ejercer este derecho u obtener información adicional:",
       },
-      email: "dpo@cpa.ma",
+      email: "info@cpa.ma",
     },
   };
 
@@ -1098,7 +1098,7 @@ const PolitiqueConfidentialitePage = () => {
                     {getText(content.dataProtectionOfficer.contact)}
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Email:</strong> <a href="mailto:dpo@cpa.ma" className="text-primary hover:underline">dpo@cpa.ma</a>
+                    <strong>Email:</strong> <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a>
                   </p>
                   <p className="text-muted-foreground text-sm mt-2">
                     {getText(content.dataProtectionOfficer.note)}
@@ -1373,7 +1373,7 @@ const PolitiqueConfidentialitePage = () => {
                     {getText(content.dataBreach.contact)}
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Email:</strong> <a href="mailto:security@cpa.ma" className="text-primary hover:underline">security@cpa.ma</a>
+                    <strong>Email:</strong> <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a>
                   </p>
                 </div>
               </div>
@@ -1485,7 +1485,7 @@ const PolitiqueConfidentialitePage = () => {
                     {getText(content.automatedDecision.contact)}
                   </p>
                   <p className="text-muted-foreground">
-                    <strong>Email:</strong> <a href="mailto:dpo@cpa.ma" className="text-primary hover:underline">dpo@cpa.ma</a>
+                    <strong>Email:</strong> <a href="mailto:info@cpa.ma" className="text-primary hover:underline">info@cpa.ma</a>
                   </p>
                 </div>
               </div>

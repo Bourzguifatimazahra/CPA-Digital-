@@ -81,14 +81,15 @@ const MentionsLegalesPage = () => {
                   {lang === "fr" ? "Hébergement" : lang === "en" ? "Hosting" : lang === "es" ? "Alojamiento" : "الاستضافة"}
                 </h2>
                 <p className="text-muted-foreground">
-                  {lang === "fr"
-                    ? "Ce site est hébergé par Netlify, Front Street, San Francisco, CA, 94111, États-Unis."
-                    : lang === "en"
-                    ? "This website is hosted by Netlify, Front Street, San Francisco, CA, 94111, United States."
-                    : lang === "es"
-                    ? "Este sitio web está alojado por Netlify, Front Street, San Francisco, CA, 94111, Estados Unidos."
-                    : "هذا الموقع مستضاف بواسطة Netlify، شارع فرونت، سان فرانسيسكو، كاليفورنيا، 94111، الولايات المتحدة الأمريكية."
-                  }
+                {
+     lang === "fr"
+    ? "Ce site ainsi que l’ensemble des données et informations associées sont hébergés et stockés au Maroc sur des infrastructures sécurisées conformes aux exigences de protection des données."
+    : lang === "en"
+    ? "This website, including all associated data and information, is hosted and stored in Morocco on secure infrastructures compliant with data protection requirements."
+    : lang === "es"
+    ? "Este sitio web, así como todos los datos e informaciones asociados, están alojados y almacenados en Marruecos sobre infraestructuras seguras conformes a los requisitos de protección de datos."
+    : "يتم استضافة هذا الموقع وجميع البيانات والمعلومات المرتبطة به داخل المغرب على بنية تحتية آمنة ومتوافقة مع متطلبات حماية المعطيات الشخصية."
+}
                 </p>
               </div>
 
@@ -227,14 +228,15 @@ const MentionsLegalesPage = () => {
                       {lang === "fr" ? "Conservation des données" : lang === "en" ? "Data Retention" : lang === "es" ? "Conservación de Datos" : "الاحتفاظ بالبيانات"}
                     </h3>
                     <p>
-                      {lang === "fr"
-                        ? "Vos données personnelles sont conservées pour la durée nécessaire à la réalisation des finalités pour lesquelles elles ont été collectées, dans le respect des délais légaux de conservation."
-                        : lang === "en"
-                        ? "Your personal data is kept for the duration necessary to achieve the purposes for which it was collected, in compliance with legal retention periods."
-                        : lang === "es"
-                        ? "Sus datos personales se conservan durante el tiempo necesario para lograr los fines para los que fueron recopilados, de acuerdo con los períodos legales de retención."
-                        : "يتم الاحتفاظ ببياناتك الشخصية للمدة اللازمة لتحقيق الأغراض التي جمعتها من أجلها، مع مراعاة فترات الاحتفاظ القانونية."
-                      }
+                    {
+  lang === "fr"
+    ? "Vos données personnelles sont conservées pendant une durée maximale de 12 mois, dans le respect de la réglementation applicable relative à la protection des données. Vous pouvez à tout moment demander la suppression ou la modification de vos informations en nous contactant à l’adresse suivante : info@cpa.ma."
+    : lang === "en"
+    ? "Your personal data is retained for a maximum period of 12 months in compliance with applicable data protection regulations. You may request the deletion or modification of your information at any time by contacting us at: info@cpa.ma."
+    : lang === "es"
+    ? "Sus datos personales se conservan durante un período máximo de 12 meses, de conformidad con la normativa aplicable en materia de protección de datos. Puede solicitar la eliminación o modificación de su información en cualquier momento contactándonos en: info@cpa.ma."
+    : "يتم الاحتفاظ ببياناتكم الشخصية لمدة أقصاها 12 شهرًا وفقًا للتشريعات المعمول بها المتعلقة بحماية المعطيات الشخصية. ويمكنكم في أي وقت طلب حذف أو تعديل معلوماتكم عبر التواصل معنا على البريد الإلكتروني التالي: info@cpa.ma."
+}
                     </p>
                   </div>
 
@@ -272,7 +274,9 @@ const MentionsLegalesPage = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">Cookies</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      {lang === "fr" ? "Cookies" : lang === "en" ? "Cookies" : lang === "es" ? "Cookies" : "ملفات تعريف الارتباط"}
+                    </h3>
                     <p>
                       {lang === "fr"
                         ? "Notre site utilise des cookies pour améliorer votre expérience de navigation. Vous pouvez configurer votre navigateur pour refuser tous les cookies ou pour être alerté lorsqu'un cookie est envoyé."

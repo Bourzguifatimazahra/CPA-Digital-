@@ -28,7 +28,8 @@ export type PageContext =
   | 'trottinette'
   | 'animaux'
   | 'mentions-legales'
-  | 'politique-confidentialite'
+   | 'mentions-legales-assistant'
+   | 'politique-confidentialite'
   | 'catalog'
   | 'service';
 
@@ -171,13 +172,21 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "❤️", title: "Tranquillité", titleEn: "Peace of Mind", titleAr: "راحة البال", titleEs: "Tranquilidad", text: "Pour votre companion", textEn: "For your companion", textAr: "لرفيقك", textEs: "Para tu compañero" },
   ],
   'mentions-legales': [
-    { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
-    { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
-    { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
-    { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
-    { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
-    { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
-  ],
+     { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
+     { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
+     { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
+     { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
+     { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+     { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+   ],
+   'mentions-legales-assistant': [
+     { icon: "🤖", title: "Assistant Virtuel", titleEn: "Virtual Assistant", titleAr: "المساعد الافتراضي", titleEs: "Asistente Virtual", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
+     { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
+     { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
+     { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
+     { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+     { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+   ],
   'politique-confidentialite': [
     { icon: "🔒", title: "Confidentialité", titleEn: "Privacy", titleAr: "الخصوصية", titleEs: "Confidencialidad", text: "Protection données", textEn: "Data protection", textAr: "حماية البيانات", textEs: "Protección de datos" },
     { icon: "📧", title: "Contact RGPD", titleEn: "GDPR Contact", titleAr: "اتصال RGPD", titleEs: "Contacto RGPD", text: "Pour vos droits", textEn: "For your rights", textAr: "لحقوقك", textEs: "Para tus derechos" },
@@ -409,6 +418,7 @@ interface ChatbotProps {
 const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [hasAccepted, setHasAccepted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", text: t("chat_greeting") },
     { role: "bot", text: t("chat_enterprise_protection") },
@@ -424,6 +434,82 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [showAds, setShowAds] = useState(true);
   const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Privacy consent message
+  const privacyMessage = {
+    fr: `Bienvenue sur l'Assistant Virtuel CPA
+
+Afin d'améliorer votre expérience et assurer le bon fonctionnement du chatbot, CPA utilise des cookies et peut collecter certaines données techniques et personnelles lors de vos échanges.
+
+Ces informations permettent notamment :
+• de répondre à vos demandes ;
+• d'améliorer la qualité du service ;
+• de vous recontacter si nécessaire ;
+• de sécuriser les échanges et prévenir les usages frauduleux.
+
+Conformément à la Loi n°09-08 relative à la protection des données à caractère personnel, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données.
+
+Vous pouvez consulter notre politique de confidentialité à tout moment sur :
+Mentions légales – Assistant CPA`,
+    en: `Welcome to the CPA Virtual Assistant
+
+To improve your experience and ensure the proper functioning of the chatbot, CPA uses cookies and may collect certain technical and personal data during your exchanges.
+
+This information is used to:
+• respond to your requests;
+• improve service quality;
+• contact you if necessary;
+• secure exchanges and prevent fraudulent use.
+
+Under Law No. 09-08 on the protection of personal data, you have the right to access, rectify, object to, and delete your data.
+
+You can consult our privacy policy at any time at:
+Legal Notice – CPA Assistant`,
+    ar: `مرحباً بك في المساعد الافتراضي لـ CPA
+
+لتحسين تجربتك وضمان عمل المساعد بشكل صحيح، يستخدم CPA ملفات تعريف الارتباط وقد يجمع بعض البيانات التقنية والشخصية أثناء تبادلاتك.
+
+يتم استخدام هذه المعلومات لـ:
+• الرد على طلباتك؛
+• تحسين جودة الخدمة؛
+• التواصل معك إذا لزم الأمر؛
+• تأمين التبادلات ومنع الاستخدامات الاحتيالية.
+
+وفقاً للقانون رقم 09-08 المتعلق بحماية البيانات الشخصية، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.
+
+يمكنك الاطلاع على سياسة الخصوصية الخاصة بنا في أي وقت على:
+الإشارات القانونية – مساعد CPA`,
+    es: `Bienvenido al Asistente Virtual CPA
+
+Para mejorar tu experiencia y asegurar el correcto funcionamiento del chatbot, CPA utiliza cookies y puede recopilar ciertos datos técnicos y personales durante tus intercambios.
+
+Esta información se utiliza para:
+• responder a tus solicitudes;
+• mejorar la calidad del servicio;
+• contactarte si es necesario;
+• asegurar los intercambios y prevenir usos fraudulentos.
+
+De acuerdo con la Ley n°09-08 sobre la protección de datos personales, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos.
+
+Puedes consultar nuestra política de confidencialidad en cualquier momento en:
+Aviso Legal – Asistente CPA`
+  };
+
+  // Handle privacy consent
+  const handleAccept = () => {
+    setHasAccepted(true);
+    setMessages([
+      { role: "bot", text: t("chat_greeting") },
+      { role: "bot", text: t("chat_enterprise_protection") },
+    ]);
+  };
+
+  const handleRefuse = () => {
+    setHasAccepted(false);
+    setMessages([
+      { role: "bot", text: t("chat_privacy_refused") || "Vous devez accepter la politique de confidentialité pour utiliser le chatbot." },
+    ]);
+  };
   
   // Get page-specific ads or fallback to home ads
   const ads = pageSpecificAds[pageContext] || pageSpecificAds.home;
@@ -627,7 +713,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       </motion.button>
 
       <motion.button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          if (!hasAccepted) {
+            setMessages([{ role: "bot", text: privacyMessage[lang as keyof typeof privacyMessage] || privacyMessage.fr }]);
+          }
+        }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cpa-gradient-bg text-primary-foreground flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -676,20 +767,45 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 </motion.div>
               ))}
               <div ref={messagesEndRef} />
-              {/* Always show suggestions */}
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap gap-2 pt-2"
-              >
-                {currentSuggestions.map((s) => (
-                  <button key={s} onClick={() => handleSend(s)}
-                    className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-secondary transition-colors">
-                    {s}
+              
+              {/* Privacy Consent Buttons - Show only when not accepted yet */}
+              {!hasAccepted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex gap-2 pt-2"
+                >
+                  <button
+                    onClick={handleAccept}
+                    className="flex-1 px-4 py-2 cpa-gradient-bg text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+                  >
+                    {t("chat_accept") || "Accepter"}
                   </button>
-                ))}
-              </motion.div>
+                  <button
+                    onClick={handleRefuse}
+                    className="flex-1 px-4 py-2 bg-muted text-foreground rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors"
+                  >
+                    {t("chat_refuse") || "Refuser"}
+                  </button>
+                </motion.div>
+              )}
+              
+              {/* Suggestions - Show only after acceptance */}
+              {hasAccepted && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-wrap gap-2 pt-2"
+                >
+                  {currentSuggestions.map((s) => (
+                    <button key={s} onClick={() => handleSend(s)}
+                      className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-secondary transition-colors">
+                      {s}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
             </div>
 
           </motion.div>

@@ -238,6 +238,9 @@ export const translations = {
   },
   contact_insurance_type: { fr: "Type d'assurance", en: "Insurance type", ar: "نوع التأمين", es: "Tipo de seguro" },
   contact_insurance_select: { fr: "Sélectionnez un type d'assurance", en: "Select an insurance type", ar: "اختر نوع التأمين", es: "Seleccione un tipo de seguro" },
+  contact_privacy_accept: { fr: "J'ai lu et j'accepte la politique de confidentialité", en: "I have read and accept the privacy policy", ar: "لقد قرأت وقبلت سياسة الخصوصية", es: "He leído y acepto la política de privacidad" },
+  contact_privacy_link: { fr: "Politique de confidentialité", en: "Privacy Policy", ar: "سياسة الخصوصية", es: "Política de Privacidad" },
+  contact_privacy_error: { fr: "Vous devez accepter la politique de confidentialité pour envoyer votre demande.", en: "You must accept the privacy policy to send your request.", ar: "يجب عليك قبول سياسة الخصوصية لإرسال طلبك.", es: "Debe aceptar la política de privacidad para enviar su solicitud." },
   // Departments WhatsApp Section
   contact_departments_title: { fr: "Nos Départements & Contacts WhatsApp", en: "Our Departments & WhatsApp Contacts", ar: "أقسامنا واتصالات WhatsApp", es: "Nuestros Departamentos y Contactos de WhatsApp" },
   contact_departments_desc: { fr: "Sélectionnez votre type d'assurance et contactez directement le département responsable", en: "Select your insurance type and contact the responsible department directly", ar: "اختر نوع التأمين الخاص بك وتواصل مباشرة مع القسم المسؤول", es: "Seleccione su tipo de seguro y contacte directamente al departamento responsable" },
@@ -284,7 +287,8 @@ export const translations = {
   footer_nav: { fr: "Navigation", en: "Navigation", ar: "التنقل", es: "Navegación" },
   footer_rights: { fr: "Tous droits réservés.", en: "All rights reserved.", ar: "جميع الحقوق محفوظة.", es: "Todos los derechos reservados." },
   footer_legal: { fr: "Mentions légales", en: "Legal Notice", ar: "الإشعارات القانونية", es: "Aviso Legal" },
-  footer_privacy: { fr: "Politique de confidentialité", en: "Privacy Policy", ar: "سياسة الخصوصية", es: "Política de Privacidad" },
+   footer_legal_assistant: { fr: "Mentions légales – Assistant Virtuel", en: "Legal Notice – Virtual Assistant", ar: "الإشعارات القانونية – المساعد الافتراضي", es: "Aviso Legal – Asistente Virtual" },
+   footer_privacy: { fr: "Politique de confidentialité", en: "Privacy Policy", ar: "سياسة الخصوصية", es: "Política de Privacidad" },
   footer_hours_label: { fr: "Lun - Ven : 8h30 - 18h00", en: "Mon - Fri: 8:30 AM - 6:00 PM", ar: "الإثنين - الجمعة: 8:30 - 18:00", es: "Lun - Vie: 8:30 - 18:00" },
 
   // Chatbot
@@ -302,11 +306,19 @@ export const translations = {
   chat_placeholder: { fr: "Posez votre question...", en: "Ask your question...", ar: "اطرح سؤالك...", es: "Haga su pregunta..." },
   chat_online: { fr: "En ligne", en: "Online", ar: "متصل", es: "En línea" },
   chat_no_answer: {
-    fr: "Je n'ai pas la réponse à cette question. N'hésitez pas à nous contacter au +212 5 22 95 39 00.",
-    en: "I don't have the answer to that question. Feel free to contact us at +212 5 22 95 39 00.",
-    ar: "ليس لدي إجابة على هذا السؤال. لا تتردد في الاتصال بنا على +212 5 22 95 39 00.",
-    es: "No tengo la respuesta a esa pregunta. Contáctenos al +212 5 22 95 39 00.",
-  },
+   fr: "Je n'ai pas la réponse à cette question. N'hésitez pas à nous contacter au +212 5 22 95 39 00.",
+   en: "I don't have the answer to that question. Feel free to contact us at +212 5 22 95 39 00.",
+   ar: "ليس لدي إجابة على هذا السؤال. لا تتردد في الاتصال بنا على +212 5 22 95 39 00.",
+   es: "No tengo la respuesta a esa pregunta. Contáctenos al +212 5 22 95 39 00.",
+ },
+ chat_privacy_refused: {
+   fr: "Vous devez accepter la politique de confidentialité pour utiliser le chatbot.",
+   en: "You must accept the privacy policy to use the chatbot.",
+   ar: "يجب عليك قبول سياسة الخصوصية لاستخدام المساعد الافتراضي.",
+   es: "Debe aceptar la política de privacidad para usar el chatbot.",
+ },
+ chat_accept: { fr: "Accepter", en: "Accept", ar: "قبول", es: "Aceptar" },
+ chat_refuse: { fr: "Refuser", en: "Refuse", ar: "رفض", es: "Rechazar" },
 
   // New Insurance
   new_insurance_badge: { fr: "Nouveautés", en: "New Products", ar: "منتجات جديدة", es: "Novedades" },
