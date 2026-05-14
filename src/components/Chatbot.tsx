@@ -435,65 +435,69 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Privacy consent message
-  const privacyMessage = {
-    fr: `Bienvenue sur l'Assistant Virtuel CPA
+ // Privacy consent message (compact version)
+const privacyMessage = {
+  fr: `Bienvenue 
 
-Afin d'améliorer votre expérience et assurer le bon fonctionnement du chatbot, CPA utilise des cookies et peut collecter certaines données techniques et personnelles lors de vos échanges.
+CPA utilise des cookies.
 
-Ces informations permettent notamment :
-• de répondre à vos demandes ;
-• d'améliorer la qualité du service ;
-• de vous recontacter si nécessaire ;
-• de sécuriser les échanges et prévenir les usages frauduleux.
+Objectifs :
 
-Conformément à la Loi n°09-08 relative à la protection des données à caractère personnel, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données.
+• Répondre à vos demandes
+• Améliorer la qualité du service
+• Vous recontacter si nécessaire
+• Sécuriser les échanges
 
-Vous pouvez consulter notre politique de confidentialité à tout moment sur :
+Conformément à la Loi n°09-08 (CNDP), vous disposez des droits : accès, rectification, opposition et suppression de vos données.
+
+Politique de confidentialité :
 Mentions légales – Assistant CPA`,
-    en: `Welcome to the CPA Virtual Assistant
 
-To improve your experience and ensure the proper functioning of the chatbot, CPA uses cookies and may collect certain technical and personal data during your exchanges.
+  en: `Welcome to the CPA Virtual Assistant
 
-This information is used to:
-• respond to your requests;
-• improve service quality;
-• contact you if necessary;
-• secure exchanges and prevent fraudulent use.
+CPA uses cookies and may process technical and personal data to improve the service and ensure proper chatbot functionality.
 
-Under Law No. 09-08 on the protection of personal data, you have the right to access, rectify, object to, and delete your data.
+Purposes:
+• Respond to requests
+• Improve service quality
+• Contact you if needed
+• Secure interactions
 
-You can consult our privacy policy at any time at:
+Under Law No. 09-08, you have the right to access, rectify, object to, and delete your data.
+
+Privacy policy:
 Legal Notice – CPA Assistant`,
-    ar: `مرحباً بك في المساعد الافتراضي لـ CPA
 
-لتحسين تجربتك وضمان عمل المساعد بشكل صحيح، يستخدم CPA ملفات تعريف الارتباط وقد يجمع بعض البيانات التقنية والشخصية أثناء تبادلاتك.
+  ar: `مرحباً بك في المساعد الافتراضي CPA
 
-يتم استخدام هذه المعلومات لـ:
-• الرد على طلباتك؛
-• تحسين جودة الخدمة؛
-• التواصل معك إذا لزم الأمر؛
-• تأمين التبادلات ومنع الاستخدامات الاحتيالية.
+يستخدم CPA ملفات تعريف الارتباط وقد تتم معالجة بيانات تقنية وشخصية لتحسين الخدمة وضمان عمل المساعد بشكل صحيح.
 
-وفقاً للقانون رقم 09-08 المتعلق بحماية البيانات الشخصية، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.
+الأهداف:
+• الرد على الطلبات
+• تحسين جودة الخدمة
+• التواصل عند الحاجة
+• تأمين التبادلات
 
-يمكنك الاطلاع على سياسة الخصوصية الخاصة بنا في أي وقت على:
-الإشارات القانونية – مساعد CPA`,
-    es: `Bienvenido al Asistente Virtual CPA
+وفقاً للقانون 09-08، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.
 
-Para mejorar tu experiencia y asegurar el correcto funcionamiento del chatbot, CPA utiliza cookies y puede recopilar ciertos datos técnicos y personales durante tus intercambios.
+سياسة الخصوصية:
+الإشعار القانوني – مساعد CPA`,
 
-Esta información se utiliza para:
-• responder a tus solicitudes;
-• mejorar la calidad del servicio;
-• contactarte si es necesario;
-• asegurar los intercambios y prevenir usos fraudulentos.
+  es: `Bienvenido al Asistente Virtual CPA
 
-De acuerdo con la Ley n°09-08 sobre la protección de datos personales, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos.
+CPA utiliza cookies y puede procesar datos técnicos y personales para mejorar el servicio y garantizar el correcto funcionamiento del chatbot.
 
-Puedes consultar nuestra política de confidencialidad en cualquier momento en:
-Aviso Legal – Asistente CPA`
-  };
+Objetivos:
+• Responder solicitudes
+• Mejorar la calidad del servicio
+• Contactarte si es necesario
+• Seguridad de los intercambios
+
+Según la Ley 09-08, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos.
+
+Política de privacidad:
+Aviso legal – Asistente CPA`,
+};
 
   // Handle privacy consent
   const handleAccept = () => {
