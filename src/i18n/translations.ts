@@ -317,8 +317,21 @@ export const translations = {
    ar: "يجب عليك قبول سياسة الخصوصية لاستخدام المساعد الافتراضي.",
    es: "Debe aceptar la política de privacidad para usar el chatbot.",
  },
- chat_accept: { fr: "Accepter", en: "Accept", ar: "قبول", es: "Aceptar" },
- chat_refuse: { fr: "Refuser", en: "Refuse", ar: "رفض", es: "Rechazar" },
+  chat_accept: { fr: "Accepter", en: "Accept", ar: "قبول", es: "Aceptar" },
+  chat_refuse: { fr: "Refuser", en: "Refuse", ar: "رفض", es: "Rechazar" },
+  // Chatbot privacy consent
+  chat_purposes_title: { fr: "Objectifs :", en: "Purposes:", ar: "الأهداف:", es: "Objetivos:" },
+  chat_purpose_1: { fr: "Répondre à vos demandes", en: "Respond to requests", ar: "الرد على الطلبات", es: "Responder solicitudes" },
+  chat_purpose_2: { fr: "Améliorer la qualité du service", en: "Improve service quality", ar: "تحسين جودة الخدمة", es: "Mejorar la calidad del servicio" },
+  chat_purpose_3: { fr: "Vous recontacter si nécessaire", en: "Contact you if needed", ar: "التواصل عند الحاجة", es: "Contactarte si es necesario" },
+  chat_purpose_4: { fr: "Sécuriser les échanges", en: "Secure interactions", ar: "تأمين التبادلات", es: "Seguridad de los intercambios" },
+  chat_privacy_policy: { fr: "Politique de confidentialité", en: "Privacy policy", ar: "سياسة الخصوصية", es: "Política de privacidad" },
+  chat_legal_notice: { fr: "Mentions légales", en: "Legal notice", ar: "الإشعارات القانونية", es: "Aviso legal" },
+  chat_consent_checkbox: { fr: "J'ai lu et j'accepte les conditions", en: "I have read and accept the terms", ar: "لقد قرأت وأقبل الشروط", es: "He leído y acepto los términos" },
+  chat_privacy_welcome: { fr: "Bienvenue sur l'assistant CPA.", en: "Welcome to the CPA Assistant.", ar: "مرحباً بكم في مساعد CPA.", es: "Bienvenido al Asistente CPA." },
+  chat_privacy_cookies: { fr: "CPA utilise des cookies et peut traiter des données techniques et personnelles pour améliorer le service et garantir le bon fonctionnement du chatbot.", en: "CPA uses cookies and may process technical and personal data to improve the service and ensure proper chatbot functionality.", ar: "يستخدم CPA ملفات تعريف الارتباط وقد تتم معالجة بيانات تقنية وشخصية لتحسين الخدمة وضمان عمل المساعد بشكل صحيح.", es: "CPA utiliza cookies y puede procesar datos técnicos y personales para mejorar el servicio y garantizar el correcto funcionamiento del chatbot." },
+  chat_privacy_law: { fr: "Conformément à la Loi n°09-08 (CNDP), vous disposez des droits : accès, rectification, opposition et suppression de vos données.", en: "Under Law No. 09-08, you have the right to access, rectify, object to, and delete your data.", ar: "وفقاً للقانون 09-08، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.", es: "Según la Ley 09-08, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos." },
+  chat_privacy_consent_text: { fr: "En acceptant, vous consentez à l'utilisation de cookies et au traitement de vos données personnelles pour la conversation.", en: "By accepting, you consent to the use of cookies and the processing of your personal data for the conversation.", ar: "بقبولك، توافق على استخدام ملفات تعريف الارتباط ومعالجة بياناتك الشخصية للمحادثة.", es: "Al aceptar, consiente el uso de cookies y el tratamiento de sus datos personales para la conversación." },
 
   // New Insurance
   new_insurance_badge: { fr: "Nouveautés", en: "New Products", ar: "منتجات جديدة", es: "Novedades" },
@@ -461,8 +474,12 @@ export const translations = {
   faq_q16: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
   faq_a16: { fr: "Contactez-nous au +212 5 22 95 39 00 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at +212 5 22 95 39 00 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على +212 5 22 95 39 00 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctenos al +212 5 22 95 39 00 o envíe un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." },
   faq_kw16: { fr: "comment, déclarer, procédure", en: "how, report, procedure", ar: "كيف, إبلاغ, إجراء", es: "cómo, denunciar, procedimiento" },
-
-  faq_q17: { fr: "Qui êtes-vous ?", en: "Who are you?", ar: "من أنتم؟", es: "¿Quiénes son?" },
+  faq_q17: { 
+    fr: "Qui sommes-nous ?", 
+    en: "Who are we?", 
+    ar: "من نحن؟", 
+    es: "¿Quiénes somos?" 
+  },
   faq_a17: { fr: "Nous sommes CPA (Conseil et Placement d'Assurances), un cabinet de courtage en assurances spécialisé dans l'accompagnement des particuliers et des entreprises depuis 1957 à Casablanca.", en: "We are CPA (Conseil et Placement d'Assurances), an insurance brokerage firm specialized in supporting individuals and businesses since 1957 in Casablanca.", ar: "نحن CPA (Conseil et Placement d'Assurances)، مكتب وساطة تأمين متخصص في مرافقة الأفراد والشركات منذ 1957 في الدار البيضاء.", es: "Somos CPA (Conseil et Placement d'Assurances), una correduría de seguros especializada en apoyar a particulares y empresas desde 1957 en Casablanca." },
   faq_kw17: { fr: "qui, êtes, cpa, présentation", en: "who, are, cpa, presentation", ar: "من, أنتم, cpa, تعريف", es: "quién, son, cpa, presentación" },
 
@@ -776,7 +793,12 @@ export const translations = {
   ins_conseil_category: { fr: "Conseil", en: "Consulting", ar: "الاستشارات", es: "Consultoría" },
   chat_suggestion_2: { fr: "Vos services ?", en: "Your services?", ar: "خدماتهم؟", es: "¿Sus servicios?" },
   chat_suggestion_3: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" },
-  chat_suggestion_4: { fr: "Qui êtes-vous ?", en: "Who are you?", ar: "من أنتم؟", es: "¿Quiénes son?" },
+  chat_suggestion_4: { 
+    fr: "Qui sommes-nous ?", 
+    en: "Who are we?", 
+    ar: "من نحن؟", 
+    es: "¿Quiénes somos?" 
+  },
   chat_suggestion_auto_1: { fr: "Quelles sont les garanties auto ?", en: "What are auto coverage options?", ar: "ما هي تغطيات السيارات؟", es: "¿Cuáles son las coberturas de auto?" },
   chat_suggestion_auto_2: { fr: "Combien coûte l'assurance auto ?", en: "How much does auto insurance cost?", ar: "كم تكلفة التأمين على السيارات؟", es: "¿Cuánto cuesta el seguro de auto?" },
   chat_suggestion_auto_3: { fr: "Comment assurer ma flotte ?", en: "How to insure my fleet?", ar: "كيفية تأمين أسطولي؟", es: "¿Cómo asegurar mi flota?" },

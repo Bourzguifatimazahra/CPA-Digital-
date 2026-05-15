@@ -22,7 +22,6 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage"));
 const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const MentionsLegalesPage = lazy(() => import("./pages/MentionsLegalesPage"));
-const MentionsLegalesAssistantPage = lazy(() => import("./pages/MentionsLegalesAssistant"));
 const PolitiqueConfidentialitePage = lazy(() => import("./pages/PolitiqueConfidentialitePage"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 
@@ -125,7 +124,6 @@ const App = () => (
               <Route path="/catalog" element={<CatalogPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-              <Route path="/mentions-legales-assistant" element={<MentionsLegalesAssistantPage />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
               <Route path="/:category/:slug" element={<ServiceDetail />} />
               <Route path="*" element={<NotFound />} />

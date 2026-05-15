@@ -4,8 +4,9 @@ import { MessageCircle, X, Send, Bot, User, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
 import chatbotGif from "@/assets/chatbot.gif";
+import { Checkbox } from "@/components/ui/checkbox";
 
-const WHATSAPP_NUMBER = "0667558436";
+const WHATSAPP_NUMBER = "212667558436";
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
 
 // Page context types for page-specific ads
@@ -28,8 +29,8 @@ export type PageContext =
   | 'trottinette'
   | 'animaux'
   | 'mentions-legales'
-   | 'mentions-legales-assistant'
-   | 'politique-confidentialite'
+  | 'mentions-legales-assistant'
+  | 'politique-confidentialite'
   | 'catalog'
   | 'service';
 
@@ -67,7 +68,7 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "🛡️", title: "Suivi Sinistres", titleEn: "Claims Follow-up", titleAr: "متابعة المطالبات", titleEs: "Seguimiento Siniestros", text: "À vos côtés", textEn: "By your side", textAr: "بجانبك", textEs: "A tu lado" },
     { icon: "⚡", title: "Réactivité", titleEn: "Responsiveness", titleAr: "الاستجابة", titleEs: "Rapidez", text: "Réponse 24h", textEn: "24h response", textAr: "استجابة 24 ساعة", textEs: "Respuesta 24h" },
   ],
-   contact: [
+  contact: [
     { icon: "📞", title: "Appelez-nous", titleEn: "Call us", titleAr: "اتصل بنا", titleEs: "Llámanos", text: "0667558436", textEn: "0667558436", textAr: "0667558436", textEs: "0667558436" },
     { icon: "✉️", title: "Email", titleEn: "Email", titleAr: "البريد الإلكتروني", titleEs: "Correo", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
     { icon: "📍", title: "Casablanca", titleEn: "Casablanca", titleAr: "الدار البيضاء", titleEs: "Casablanca", text: "Siège CPA", textEn: "CPA Headquarters", textAr: "مقر CPA", textEs: "Sede CPA" },
@@ -144,7 +145,6 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "🦠", title: "Ransomware", titleEn: "Ransomware", titleAr: "برامج الفدية", titleEs: "Ransomware", text: "Couvert", textEn: "Covered", textAr: "مشمول", textEs: "Cubierto" },
     { icon: "💻", title: "Perte de Données", titleEn: "Data Loss", titleAr: "فقدان البيانات", titleEs: "Pérdida de Datos", text: "Récupération", textEn: "Recovery", textAr: "استرداد", textEs: "Recuperación" },
     { icon: "⚖️", title: "RC Numérique", titleEn: "Digital Liability", titleAr: "المسؤولية الرقمية", titleEs: "RC Digital", text: "Couverture", textEn: "Coverage", textAr: "تغطية", textEs: "Cobertura" },
-    { icon: "🔧", title: "Assistance IT", titleEn: "IT Assistance", titleAr: "مساعدة تقنية", titleEs: "Asistencia IT", text: "24/7 Support", textEn: "24/7 Support", textAr: "دعم 24/7", textEs: "Soporte 24/7" },
     { icon: "📱", title: "Cybermobbing", titleEn: "Cybermobbing", titleAr: "تنمر إلكتروني", titleEs: "Ciberacoso", text: "Protection", textEn: "Protection", textAr: "حماية", textEs: "Protección" },
   ],
   flotte: [
@@ -172,30 +172,30 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "❤️", title: "Tranquillité", titleEn: "Peace of Mind", titleAr: "راحة البال", titleEs: "Tranquilidad", text: "Pour votre companion", textEn: "For your companion", textAr: "لرفيقك", textEs: "Para tu compañero" },
   ],
   'mentions-legales': [
-     { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
-     { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
-     { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
-     { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
-     { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
-     { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
-   ],
-   'mentions-legales-assistant': [
-     { icon: "🤖", title: "Assistant Virtuel", titleEn: "Virtual Assistant", titleAr: "المساعد الافتراضي", titleEs: "Asistente Virtual", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
-     { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
-     { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
-     { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
-     { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
-     { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
-   ],
+    { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
+    { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
+    { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
+    { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
+    { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+    { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+  ],
+  'mentions-legales-assistant': [
+    { icon: "🤖", title: "Assistant Virtuel", titleEn: "Virtual Assistant", titleAr: "المساعد الافتراضي", titleEs: "Asistente Virtual", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
+    { icon: "🏢", title: "Siège Social", titleEn: "Headquarters", titleAr: "المقر الاجتماعي", titleEs: "Sede Social", text: "Casablanca", textEn: "Casablanca", textAr: "الدار البيضاء", textEs: "Casablanca" },
+    { icon: "📋", title: "RC courtier", titleEn: "Broker Liability", titleAr: "مسؤولية الوسيط", titleEs: "RC Corredor", text: "Autorisé", textEn: "Authorized", textAr: "مرخص", textEs: "Autorizado" },
+    { icon: "⚖️", title: "Juridiction", titleEn: "Jurisdiction", titleAr: "الاختصاص", titleEs: "Jurisdicción", text: "Maroc", textEn: "Morocco", textAr: "المغرب", textEs: "Marruecos" },
+    { icon: "📧", title: "Contact", titleEn: "Contact", titleAr: "اتصل", titleEs: "Contacto", text: "info@cpa.ma", textEn: "info@cpa.ma", textAr: "info@cpa.ma", textEs: "info@cpa.ma" },
+    { icon: "💼", title: "ICE", titleEn: "ICE", titleAr: "المعرف الموحد", titleEs: "ICE", text: "Obligatoire", textEn: "Mandatory", textAr: "إلزامي", textEs: "Obligatorio" },
+  ],
   'politique-confidentialite': [
     { icon: "🔒", title: "Confidentialité", titleEn: "Privacy", titleAr: "الخصوصية", titleEs: "Confidencialidad", text: "Protection données", textEn: "Data protection", textAr: "حماية البيانات", textEs: "Protección de datos" },
-    { icon: "📧", title: "Contact RGPD", titleEn: "GDPR Contact", titleAr: "اتصال RGPD", titleEs: "Contacto RGPD", text: "Pour vos droits", textEn: "For your rights", textAr: "لحقوقك", textEs: "Para tus derechos" },
+    { icon: "📧", title: "Contact CNDP", titleEn: "GDPR Contact", titleAr: "اتصال CNDP", titleEs: "Contacto CNDP", text: "Pour vos droits", textEn: "For your rights", textAr: "لحقوقك", textEs: "Para tus derechos" },
     { icon: "🍪", title: "Cookies", titleEn: "Cookies", titleAr: "ملفات تعريفية", titleEs: "Cookies", text: "Gestion", textEn: "Management", textAr: "إدارة", textEs: "Gestión" },
     { icon: "📝", title: "Consentement", titleEn: "Consent", titleAr: "موافقة", titleEs: "Consentimiento", text: "Transparent", textEn: "Transparent", textAr: "شفاف", textEs: "Transparente" },
     { icon: "🛡️", title: "Sécurité", titleEn: "Security", titleAr: "الأمان", titleEs: "Seguridad", text: "Données protégées", textEn: "Protected data", textAr: "بيانات محمية", textEs: "Datos protegidos" },
     { icon: "⚙️", title: "Paramètres", titleEn: "Settings", titleAr: "الإعدادات", titleEs: "Configuración", text: "Personnalisation", textEn: "Customization", textAr: "تخصيص", textEs: "Personalización" },
   ],
-  'catalog': [
+  catalog: [
     { icon: "📚", title: "Catalogue", titleEn: "Catalog", titleAr: "الكتالوج", titleEs: "Catálogo", text: "PDF téléchargeable", textEn: "Downloadable PDF", textAr: "PDF قابل للتحميل", textEs: "PDF descargable" },
     { icon: "👥", title: "Particuliers", titleEn: "Individuals", titleAr: "الأفراد", titleEs: "Particulares", text: "Toutes assurances", textEn: "All insurances", textAr: "جميع التأمينات", textEs: "Todos los seguros" },
     { icon: "🏢", title: "Entreprises", titleEn: "Business", titleAr: "الشركات", titleEs: "Empresas", text: "Risques pros", textEn: "Business risks", textAr: "المخاطر المهنية", textEs: "Riesgos profesionales" },
@@ -205,7 +205,6 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
   ],
   service: [
     { icon: "⭐", title: "Service Premium", titleEn: "Premium Service", titleAr: "خدمة مميزة", titleEs: "Servicio Premium", text: "Devis personnalisé", textEn: "Personalized quote", textAr: "عرض سعر مخصص", textEs: "Presupuesto personalizado" },
-    { icon: "💬", title: "Assistance", titleEn: "Assistance", titleAr: "مساعدة", titleEs: "Asistencia", text: "24/7 disponible", textEn: "24/7 available", textAr: "متاح 24/7", textEs: "Disponible 24/7" },
     { icon: "🔄", title: "Suivi", titleEn: "Tracking", titleAr: "تتبع", titleEs: "Seguimiento", text: "En temps réel", textEn: "Real-time", textAr: "في الوقت الفعلي", textEs: "En tiempo real" },
     { icon: "📋", title: "Documents", titleEn: "Documents", titleAr: "مستندات", titleEs: "Documentos", text: "Upload sécurisé", textEn: "Secure upload", textAr: "تحميل آمن", textEs: "Carga segura" },
     { icon: "💰", title: "Économies", titleEn: "Savings", titleAr: "توفير", titleEs: "Ahorros", text: "Meilleur tarif", textEn: "Best rate", textAr: "أفضل سعر", textEs: "Mejor tarifa" },
@@ -231,7 +230,7 @@ const faqData: FAQItem[] = [
   { q: { fr: "À quoi sert l'assurance ?", en: "What is insurance for?", ar: "ما فائدة التأمين؟", es: "¿Para qué sirve el seguro?" }, a: { fr: "Elle permet de réduire les conséquences financières en cas de sinistre.", en: "It helps reduce financial consequences in case of a claim.", ar: "يساعد في تقليل العواقب المالية في حالة المطالبة.", es: "Ayuda a reducir las consecuencias financieras en caso de siniestro." }, keywords: { fr: ["sert", "conséquences", "financières", "sinistre"], en: ["purpose", "consequences", "financial", "claim"], ar: ["الغرض", "العواقب", "مالية", "مطالبة"], es: ["sirve", "consecuencias", "financieras", "siniestro"] } },
   { q: { fr: "Quelle est la différence entre assureur et courtier ?", en: "What is the difference between insurer and broker?", ar: "ما هو الفرق بين شركة التأمين والوسيط؟", es: "¿Cuál es la diferencia entre aseguradora y corredor?" }, a: { fr: "L'assureur garantit le risque, le courtier conseille et représente le client. CPA est votre courtier de confiance.", en: "The insurer guarantees the risk, the broker advises and represents the client. CPA is your trusted broker.", ar: "شركة التأمين تضمن المخاطر، والوسيط ينصح ويمثل العميل. CPA هو وسيطك الموثوق.", es: "La aseguradora garantiza el riesgo, el corredor asesora y representa al cliente. CPA es su corredor de confianza." }, keywords: { fr: ["différence", "assureur", "courtier", "garantit"], en: ["difference", "insurer", "broker", "guarantee"], ar: ["فرق", "شركة تأمين", "وسيط", "يضمن"], es: ["diferencia", "aseguradora", "corredor", "garantiza"] } },
   { q: { fr: "Qu'est-ce qu'une prime d'assurance ?", en: "What is an insurance premium?", ar: "ما هو قسط التأمين؟", es: "¿Qué es una prima de seguro?" }, a: { fr: "C'est le montant que vous payez pour être assuré. Elle varie selon le type de couverture et le profil de risque.", en: "It's the amount you pay to be insured. It varies depending on the type of coverage and risk profile.", ar: "هو المبلغ الذي تدفعه للتأمين. يختلف حسب نوع التغطية وملف المخاطر.", es: "Es el monto que paga por estar asegurado. Varía según el tipo de cobertura y el perfil de riesgo." }, keywords: { fr: ["prime", "montant", "payez", "assuré"], en: ["premium", "amount", "pay", "insured"], ar: ["قسط", "مبلغ", "تدفع", "مؤمن"], es: ["prima", "monto", "paga", "asegurado"] } },
-  { q: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي франшиза؟", es: "¿Qué es un deducible?" }, a: { fr: "C'est la part du sinistre qui reste à votre charge. Plus la franchise est élevée, plus la prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower the premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت франшиза، انخفض القسط.", es: "Es la parte del siniestro que corre por su cuenta. Cuanto mayor sea el deducible, menor será la prima." }, keywords: { fr: ["franchise", "charge", "sinistre"], en: ["deductible", "charge", "claim"], ar: ["فرانشيز", "مسؤولية", "مطالبة"], es: ["deducible", "cargo", "siniestro"] } },
+  { q: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي الفرانشيز؟", es: "¿Qué es un deducible?" }, a: { fr: "C'est la part du sinistre qui reste à votre charge. Plus la franchise est élevée, plus la prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower the premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت الفرانشيز، انخفض القسط.", es: "Es la parte del siniestro que corre por su cuenta. Cuanto mayor sea el deducible, menor será la prima." }, keywords: { fr: ["franchise", "charge", "sinistre"], en: ["deductible", "charge", "claim"], ar: ["فرانشيز", "مسؤولية", "مطالبة"], es: ["deducible", "cargo", "siniestro"] } },
   { q: { fr: "Le courtier est-il payant ?", en: "Is the broker paid?", ar: "هل الوسيط مدفوع الأجر؟", es: "¿El corredor es de pago?" }, a: { fr: "Non, sa rémunération est incluse dans la prime d'assurance. Nos services de conseil sont gratuits pour vous.", en: "No, their remuneration is included in the insurance premium. Our advisory services are free for you.", ar: "لا، يتم تضمين أجره في قسط التأمين. خدماتنا الاستشارية مجانية لك.", es: "No, su remuneración está incluida en la prima del seguro. Nuestros servicios de asesoramiento son gratuitos para usted." }, keywords: { fr: ["courtier", "payant", "gratuit", "rémunération"], en: ["broker", "paid", "free", "remuneration"], ar: ["وسيط", "مدفوع", "مجاني", "أجر"], es: ["corredor", "pagado", "gratis", "remuneración"] } },
   
   // Automobile / Auto
@@ -241,7 +240,7 @@ const faqData: FAQItem[] = [
   { q: { fr: "Comment assurer ma flotte de véhicules ?", en: "How to insure my vehicle fleet?", ar: "كيفية تأمين أسطول السيارات؟", es: "¿Cómo asegurar mi flota de vehículos?" }, a: { fr: "CPA propose des contrats flotte pour les entreprises à partir de 5 véhicules avec des tarifs préférentiels et une gestion simplifiée.", en: "CPA offers fleet contracts for companies starting from 5 vehicles with preferential rates and simplified management.", ar: "تقدم CPA عقود أسطول للشركات ابتداءً من 5 سيارات مع أسعار تفضيلية وإدارة مبسطة.", es: "CPA ofrece contratos de flota para empresas a partir de 5 vehículos con tarifas preferenciales y gestión simplificada." }, keywords: { fr: ["flotte", "véhicules", "entreprise", "parc"], en: ["fleet", "vehicles", "company", "fleet"], ar: ["أسطول", "مركبات", "شركة", "مجموعة"], es: ["flota", "vehículos", "empresa", "parque"] } },
 
   // Habitation / Home
-  { q: { fr: "Pourquoi souscription une assurance habitation ?", en: "Why subscribe to home insurance?", ar: "لماذا الاشتراك في تأمين المنزل؟", es: "¿Por qué suscribir un seguro de hogar?" }, a: { fr: "L'assurance habitation protège votre logement et vos biens contre le vol, l'incendie, les dégâts des eaux, les catastrophes naturelles et la responsabilité civile.", en: "Home insurance protects your home and belongings against theft, fire, water damage, natural disasters and civil liability.", ar: "يغطي تأمين المنزل منزلك وممتلكاتك ضد السرقة والحريق وتلف المياه والكوارث الطبيعية والمسؤولية المدنية.", es: "El seguro de hogar protege su vivienda y sus bienes contra robo, incendio, daños por agua, catástrofes naturales y responsabilidad civil." }, keywords: { fr: ["habitation", "maison", "logement", "domicile"], en: ["home", "house", "housing", "residence"], ar: ["منزل", "بيت", "سكن", "إقامة"], es: ["hogar", "casa", "alojamiento", "domicilio"] } },
+  { q: { fr: "Pourquoi souscrire une assurance habitation ?", en: "Why subscribe to home insurance?", ar: "لماذا الاشتراك في تأمين المنزل؟", es: "¿Por qué suscribir un seguro de hogar?" }, a: { fr: "L'assurance habitation protège votre logement et vos biens contre le vol, l'incendie, les dégâts des eaux, les catastrophes naturelles et la responsabilité civile.", en: "Home insurance protects your home and belongings against theft, fire, water damage, natural disasters and civil liability.", ar: "يغطي تأمين المنزل منزلك وممتلكاتك ضد السرقة والحريق وتلف المياه والكوارث الطبيعية والمسؤولية المدنية.", es: "El seguro de hogar protege su vivienda y sus bienes contra robo, incendio, daños por agua, catástrofes naturales y responsabilidad civil." }, keywords: { fr: ["habitation", "maison", "logement", "domicile"], en: ["home", "house", "housing", "residence"], ar: ["منزل", "بيت", "سكن", "إقامة"], es: ["hogar", "casa", "alojamiento", "domicilio"] } },
   
   // Santé / Health
   { q: { fr: "Comment fonctionne l'assurance santé ?", en: "How does health insurance work?", ar: "كيف يعمل التأمين الصحي؟", es: "¿Cómo funciona el seguro de salud?" }, a: { fr: "L'assurance santé rembourse vos frais médicaux (consultations, hospitalisations, médicaments, optique, dentaire) selon les barèmes de votre contrat.", en: "Health insurance reimburses your medical expenses (consultations, hospitalizations, medications, optical, dental) according to your contract rates.", ar: "يعيد التأمين الصحي تعويض نفقاتك الطبية (الاستشارات، المستشفى، الأدوية، البصريات، طب الأسنان) وفق أسعار عقدك.", es: "El seguro de salud reembolsa sus gastos médicos (consultas, hospitalizaciones, medicamentos, óptica, dental) según las tarifas de su contrato." }, keywords: { fr: ["santé", "médical", "remboursement", "maladie", "soin"], en: ["health", "medical", "reimbursement", "illness", "care"], ar: ["صحة", "طبي", "تعويض", "مرض", "رعاية"], es: ["salud", "médico", "reembolso", "enfermedad", "cuidado"] } },
@@ -250,16 +249,21 @@ const faqData: FAQItem[] = [
   // Sinistres / Claims
   { q: { fr: "Qu'est-ce qu'un sinistre ?", en: "What is a claim?", ar: "ما هي المطالبة؟", es: "¿Qué es un siniestro?" }, a: { fr: "C'est la réalisation du risque assuré : accident, vol, incendie, dégât des eaux, etc.", en: "It's the occurrence of the insured risk: accident, theft, fire, water damage, etc.", ar: "إنها حدوث الخطر المؤمن عليه: حادث، سرقة، حريق، تلف المياه، إلخ.", es: "Es la ocurrencia del riesgo asegurado: accidente, robo, incendio, daños por agua, etc." }, keywords: { fr: ["sinistre", "réalisation", "accident"], en: ["claim", "occurrence", "accident"], ar: ["مطالبة", "وقوع", "حادث"], es: ["siniestro", "ocurrencia", "accidente"] } },
   { q: { fr: "Quand déclarer un sinistre ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" }, a: { fr: "Dans les 5 jours ouvrables à compter du moment où vous en avez connaissance. Pour un vol, le délai est de 48 heures.", en: "Within 5 working days from when you become aware. For theft, the deadline is 48 hours.", ar: "خلال 5 أيام عمل من علمك بالأمر. في حالة السرقة، المهلة 48 ساعة.", es: "Dentro de los 5 días hábiles desde que tenga conocimiento. Para robo, el plazo es de 48 horas." }, keywords: { fr: ["déclarer", "sinistre", "délai", "jours"], en: ["report", "claim", "deadline", "days"], ar: ["إبلاغ", "مطالبة", "مهلة", "أيام"], es: ["denunciar", "siniestro", "plazo", "días"] } },
-   { q: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" }, a: { fr: "Contactez-nous au 0667558436 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at 0667558436 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctenos al 0667558436 o envíe un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." }, keywords: { fr: ["comment", "déclarer", "procédure"], en: ["how", "report", "procedure"], ar: ["كيف", "إبلاغ", "إجراء"], es: ["cómo", "denunciar", "procedimiento"] } },
+  { q: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" }, a: { fr: "Contactez-nous au 0667558436 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at 0667558436 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctenos al 0667558436 o envíe un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." }, keywords: { fr: ["comment", "déclarer", "procédure"], en: ["how", "report", "procedure"], ar: ["كيف", "إبلاغ", "إجراء"], es: ["cómo", "denunciar", "procedimiento"] } },
 
   // CPA
-  { q: { fr: "Qui êtes-vous ?", en: "Who are you?", ar: "من أنتم؟", es: "¿Quiénes son?" }, a: { fr: "Nous sommes CPA (Conseil et Placement d'Assurances), un cabinet de courtage en assurances spécialisé dans l'accompagnement des particuliers et des entreprises depuis 1957 à Casablanca.", en: "We are CPA (Conseil et Placement d'Assurances), an insurance brokerage firm specialized in supporting individuals and businesses since 1957 in Casablanca.", ar: "نحن CPA (Conseil et Placement d'Assurances)، مكتب وساطة تأمين متخصص في مرافقة الأفراد والشركات منذ 1957 في الدار البيضاء.", es: "Somos CPA (Conseil et Placement d'Assurances), una correduría de seguros especializada en apoyar a particulares y empresas desde 1957 en Casablanca." }, keywords: { fr: ["qui", "êtes", "cpa", "présentation"], en: ["who", "are", "cpa", "presentation"], ar: ["من", "أنتم", "cpa", "تعريف"], es: ["quién", "son", "cpa", "presentación"] } },
+  { q: {
+    "fr": "Qui sommes-nous ?",
+    "en": "Who are we?",
+    "ar": "من نحن؟",
+    "es": "¿Quiénes somos?"
+  }, a: { fr: "Nous sommes CPA (Conseil et Placement d'Assurances), un cabinet de courtage en assurances spécialisé dans l'accompagnement des particuliers et des entreprises depuis 1957 à Casablanca.", en: "We are CPA (Conseil et Placement d'Assurances), an insurance brokerage firm specialized in supporting individuals and businesses since 1957 in Casablanca.", ar: "نحن CPA (Conseil et Placement d'Assurances)، مكتب وساطة تأمين متخصص في مرافقة الأفراد والشركات منذ 1957 في الدار البيضاء.", es: "Somos CPA (Conseil et Placement d'Assurances), una correduría de seguros especializada en apoyar a particulares y empresas desde 1957 en Casablanca." }, keywords: { fr: ["qui", "sommes", "cpa", "présentation"], en: ["who", "are", "cpa", "presentation"], ar: ["من", "نحن", "cpa", "تعريف"], es: ["quién", "somos", "cpa", "presentación"] } },
   { q: { fr: "Quelles assurances proposez-vous ?", en: "What insurance do you offer?", ar: "ما هي التأمينات التي تقدمونها؟", es: "¿Qué seguros ofrecen?" }, a: { fr: "Nous proposons : Auto, Habitation, Santé, Prévoyance, Épargne, Accidents de Travail, Responsabilité Civile, Construction, Transport Maritime, Cyber Risques, Flotte Auto, Trottinette Électrique et Animaux de Compagnie.", en: "We offer: Auto, Home, Health, Foresight, Savings, Work Accidents, Civil Liability, Construction, Maritime Transport, Cyber Risks, Auto Fleet, Electric Scooter and Pet Insurance.", ar: "نقدم: السيارات، المنزل، الصحة، التأمين التكميلي، الادخار، حوادث العمل، المسؤولية المدنية، البناء، النقل البحري، مخاطر الإنترنت، أسطول السيارات، السكوتر الكهربائي وتأمين الحيوانات الأليفة.", es: "Ofrecemos: Auto, Hogar, Salud, Previsión, Ahorro, Accidentes Laborales, Responsabilidad Civil, Construcción, Transporte Marítimo, Riesgos Cibernéticos, Flota de Autos, Patinete Eléctrico y Seguro de Mascotas." }, keywords: { fr: ["proposez", "services", "offres", "produits", "assurances"], en: ["offer", "services", "products", "insurance"], ar: ["نقدم", "خدمات", "عروض", "منتجات", "تأمين"], es: ["ofrecen", "servicios", "ofertas", "productos", "seguros"] } },
   { q: { fr: "Pourquoi passer par un courtier ?", en: "Why use a broker?", ar: "لماذا الاستفادة من وسيط؟", es: "¿Por qué usar un corredor?" }, a: { fr: "Pour comparer les offres de plusieurs compagnies, négocier les meilleurs tarifs, bénéficier d'un accompagnement personnalisé et d'un suivi des sinistres.", en: "To compare offers from several companies, negotiate the best rates, benefit from personalized support and claim follow-up.", ar: "لمقارنة عروض عدة شركات، التفاوض على أفضل الأسعار، الاستفادة من الدعم الشخصي ومتابعة المطالبات.", es: "Para comparar ofertas de varias compañías, negociar las mejores tarifas, beneficiarse de acompañamiento personalizado y seguimiento de siniestros." }, keywords: { fr: ["pourquoi", "courtier", "avantage", "intérêt"], en: ["why", "broker", "advantage", "benefit"], ar: ["لماذا", "وسيط", "ميزة", "فائدة"], es: ["por qué", "corredor", "ventaja", "interés"] } },
-  { q: { fr: "Quels sont vos horaires ?", en: "What are your hours?", ar: "ما هي ساعات عملكم؟", es: "¿Cuáles son sus horarios?" }, a: { fr: "Du lundi au vendredi, de 8h30 à 18h00. Nous sommes également joignables par email 24h/24.", en: "Monday to Friday, from 8:30 AM to 6:00 PM. We are also reachable by email 24/7.", ar: "من الاثنين إلى الجمعة، من 8:30 إلى 18:00. يمكن أيضًا التواصل معنا عبر البريد الإلكتروني على مدار الساعة.", es: "De lunes a viernes, de 8:30 a 18:00. También puede contactarnos por correo electrónico las 24 horas." }, keywords: { fr: ["horaires", "heures", "ouverture", "disponible"], en: ["hours", "opening", "available"], ar: ["ساعات", "فتح", "متاح"], es: ["horarios", "apertura", "disponible"] } },
+  { q: { fr: "Quels sont vos horaires ?", en: "What are your hours?", ar: "ما هي ساعات عملكم؟", es: "¿Cuáles son sus horarios?" }, a: { fr: "Du lundi au vendredi, de 8h30 à 18h00.", en: "Monday to Friday, from 8:30 AM to 6:00 PM.", ar: "من الاثنين إلى الجمعة، من 8:30 إلى 18:00.", es: "De lunes a viernes, de 8:30 a 18:00." }, keywords: { fr: ["horaires", "heures", "ouverture", "disponible"], en: ["hours", "opening", "available"], ar: ["ساعات", "فتح", "متاح"], es: ["horarios", "apertura", "disponible"] } },
   { q: { fr: "Quelles sont vos valeurs ?", en: "What are your values?", ar: "ما هي قيمكم؟", es: "¿Cuáles son sus valores?" }, a: { fr: "La proximité, l'innovation, la performance et l'éthique. Ce sont les valeurs qui nous guident depuis 1957 pour vous offrir un accompagnement humain, des solutions modernes, les meilleures garanties au meilleur rapport qualité-prix et des conseils transparents.", en: "Proximity, innovation, performance and ethics. These are the values that have guided us since 1957 to offer you human support, modern solutions, the best coverage at the best value and transparent advice.", ar: "القرب، الابتكار، الأداء والأخلاق. هذه هي القيم التي ترشدنا منذ 1957 لنقدم لك مرافقة إنسانية، حلولاً عصرية، أفضل الضمانات بأفضل نسبة جودة سعر ونصائح شفافة.", es: "La proximidad, la innovación, el rendimiento y la ética. Estos son los valores que nos guían desde 1957 para ofrecerle acompañamiento humano, soluciones modernas, las mejores garantías al mejor rapport calidad-precio y consejos transparentes." }, keywords: { fr: ["valeurs", "engagement", "philosophie"], en: ["values", "commitment", "philosophy"], ar: ["قيم", "التزام", "فلسفة"], es: ["valores", "compromiso", "filosofía"] } },
-   { q: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" }, a: { fr: "Appelez-nous au 0667558436, envoyez un email à info@cpa.ma, ou remplissez le formulaire de contact sur notre site. Vous pouvez aussi utiliser notre estimateur de devis en ligne !", en: "Call us at 0667558436, send an email to info@cpa.ma, or fill out the contact form on our website. You can also use our online quote estimator!", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma أو املأ نموذج الاتصال على موقعنا. يمكنك أيضًا استخدام أداة تقدير العرض عبر الإنترنت!", es: "Llámenos al 0667558436, envíe un correo a info@cpa.ma, o complete el formulario de contacto en nuestro sitio. ¡También puede usar nuestro estimador de presupuesto en línea!" }, keywords: { fr: ["devis", "estimation", "tarif", "prix"], en: ["quote", "estimate", "rate", "price"], ar: ["عرض أسعار", "تقدير", "رسوم", "سعر"], es: ["presupuesto", "estimación", "tarifa", "precio"] } },
-   { q: { fr: "Où êtes-vous situés ?", en: "Where are you located?", ar: "أين موقعكم؟", es: "¿Dónde están ubicados?" }, a: { fr: "Notre siège est à Casablanca, Maroc. Adresse : Casablanca, Maroc. Téléphone : 0667558436.", en: "Our headquarters is in Casablanca, Morocco. Address: Casablanca, Morocco. Phone: 0667558436.", ar: "مقرنا في الدار البيضاء، المغرب. العنوان: الدار البيضاء، المغرب. الهاتف: 0667558436.", es: "Nuestra sede está en Casablanca, Marruecos. Dirección: Casablanca, Marruecos. Teléfono: 0667558436." }, keywords: { fr: ["adresse", "situés", "localisation", "bureau", "siège"], en: ["address", "located", "location", "office", "headquarters"], ar: ["عنوان", "موقع", "مكتب", "مقر"], es: ["dirección", "ubicados", "ubicación", "oficina", "sede"] } },
+  { q: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" }, a: { fr: "Appelez-nous au 0667558436, envoyez un email à info@cpa.ma, ou remplissez le formulaire de contact sur notre site. Vous pouvez aussi utiliser notre estimateur de devis en ligne !", en: "Call us at 0667558436, send an email to info@cpa.ma, or fill out the contact form on our website. You can also use our online quote estimator!", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma أو املأ نموذج الاتصال على موقعنا. يمكنك أيضًا استخدام أداة تقدير العرض عبر الإنترنت!", es: "Llámenos al 0667558436, envíe un correo a info@cpa.ma, o complete el formulario de contacto en nuestro sitio. ¡También puede usar nuestro estimador de presupuesto en línea!" }, keywords: { fr: ["devis", "estimation", "tarif", "prix"], en: ["quote", "estimate", "rate", "price"], ar: ["عرض أسعار", "تقدير", "رسوم", "سعر"], es: ["presupuesto", "estimación", "tarifa", "precio"] } },
+  { q: { fr: "Où êtes-vous situés ?", en: "Where are you located?", ar: "أين موقعكم؟", es: "¿Dónde están ubicados?" }, a: { fr: "Notre siège est à Casablanca, Maroc. Adresse : Casablanca, Maroc. Téléphone : 0667558436.", en: "Our headquarters is in Casablanca, Morocco. Address: Casablanca, Morocco. Phone: 0667558436.", ar: "مقرنا في الدار البيضاء، المغرب. العنوان: الدار البيضاء، المغرب. الهاتف: 0667558436.", es: "Nuestra sede está en Casablanca, Marruecos. Dirección: Casablanca, Marruecos. Teléfono: 0667558436." }, keywords: { fr: ["adresse", "situés", "localisation", "bureau", "siège"], en: ["address", "located", "location", "office", "headquarters"], ar: ["عنوان", "موقع", "مكتب", "مقر"], es: ["dirección", "ubicados", "ubicación", "oficina", "sede"] } },
 
   // Entreprises / Business
   { q: { fr: "Proposez-vous des assurances pour les entreprises ?", en: "Do you offer insurance for businesses?", ar: "هل تقدمون التأمين للشركات؟", es: "¿Ofrecen seguros para empresas?" }, a: { fr: "Oui, nous proposons une gamme complète : Responsabilité Civile, Accidents de Travail, Risques Techniques, Dommage aux Biens, Perte d'Exploitation, Transport, Construction, Cyber Risques et Épargne Vie.", en: "Yes, we offer a complete range: Civil Liability, Work Accidents, Technical Risks, Property Damage, Business Interruption, Transport, Construction, Cyber Risks and Life Savings.", ar: "نعم، نقدم مجموعة كاملة: المسؤولية المدنية، حوادث العمل، المخاطر التقنية، أضرار الممتلكات، فقدان الأرباح، النقل، البناء، مخاطر الإنترنت والادخار على الحياة.", es: "Sí, ofrecemos una gama completa: Responsabilidad Civil, Accidentes Laborales, Riesgos Técnicos, Daños a Bienes, Pérdida de Explotación, Transporte, Construcción, Riesgos Cibernéticos y Ahorro Vida." }, keywords: { fr: ["entreprise", "professionnel", "société", "commercial"], en: ["business", "professional", "company", "commercial"], ar: ["شركة", "محترف", "مؤسسة", "تجاري"], es: ["empresa", "profesional", "sociedad", "comercial"] } },
@@ -269,7 +273,7 @@ const faqData: FAQItem[] = [
 
   // Nouveautés / New Products
   { q: { fr: "Qu'est-ce que l'assurance trottinette électrique ?", en: "What is electric scooter insurance?", ar: "ما هو تأمين السكوتر الكهربائي؟", es: "¿Qué es el seguro de patinete eléctrico?" }, a: { fr: "C'est une assurance spécialement conçue pour les utilisateurs de trottinettes électriques. Elle couvre la responsabilité civile, le vol, les dommages matériels et la protection du conducteur.", en: "It's insurance specially designed for electric scooter users. It covers civil liability, theft, material damage and driver protection.", ar: "إنه تأمين مصمم خصيصًا لمستخدمي السكوتر الكهربائي. يغطي المسؤولية المدنية والسرقة والأضرار المادية وحماية السائق.", es: "Es un seguro especialmente diseñado para usuarios de patinetes eléctricos. Cubre responsabilidad civil, robo, daños materiales y protección del conductor." }, keywords: { fr: ["trottinette", "électrique", "mobilité", "edpm"], en: ["scooter", "electric", "mobility", "edpm"], ar: ["سكوتر", "كهربائي", "تنقل", "edpm"], es: ["patinete", "eléctrico", "movilidad", "edpm"] } },
-  { q: { fr: "Qu'est-ce que l'assurance animaux de compagnie ?", en: "What is pet insurance?", ar: "ما هو تأمين الحيوانات الأليفة؟", es: "¿Qué es el seguro de mascotas?" }, a: { fr: "Elle couvre les frais vétérinaires de vos animaux (chien, chat) en cas de maladie ou d'accident : consultations, chirurgie, hospitalisation et médicaments.", en: "It covers veterinary expenses for your pets (dog, cat) in case of illness or accident: consultations, surgery, hospitalization and medications.", ar: "تغطي نفقات البيطرية لحيواناتك الأليفة (كلب، قطة) في حالة المرض أو الحادث: الاستشارات، الجراحة، المستشفى والأدوية.", es: "Cubre los gastos veterinarios de sus mascotas (perro, gato) en caso de enfermedad o accidente: consultas, cirugía, hospitalización y medicamentos." }, keywords: { fr: ["animaux", "compagnie", "chien", "chat", "vétérinaire", "animal"], en: ["pets", "companion", "dog", "cat", "veterinary", "animal"], ar: ["حيوانات", "رفقة", "كلب", "قطة", "بيطري", "حيوان"], es: ["mascotas", "compañía", "perro", "gato", "veterinario", "animal"] } },
+  { q: { fr: "Qu'est-ce que l'assurance animaux de compagnie ?", en: "What is pet insurance?", ar: "ما هو تأمين الحيوانات الأليفة؟", es: "¿Qué es el seguro de mascotas?" }, a: { fr: "Elle couvre les frais vétérinaires de vos animaux (chien, chat) en cas de maladie ou d'accident : consultations, chirurgie, hospitalisation et médicaments.", en: "It covers veterinary expenses for your pets (dog, cat) in case of illness or accident: consultations, surgery, hospitalization and medications.", ar: "تغطي النفقات البيطرية لحيواناتك الأليفة (كلب، قطة) في حالة المرض أو الحادث: الاستشارات، الجراحة، المستشفى والأدوية.", es: "Cubre los gastos veterinarios de sus mascotas (perro, gato) en caso de enfermedad o accidente: consultas, cirugía, hospitalización y medicamentos." }, keywords: { fr: ["animaux", "compagnie", "chien", "chat", "vétérinaire", "animal"], en: ["pets", "companion", "dog", "cat", "veterinary", "animal"], ar: ["حيوانات", "رفقة", "كلب", "قطة", "بيطري", "حيوان"], es: ["mascotas", "compañía", "perro", "gato", "veterinario", "animal"] } },
   
   // Paiement / Payment
   { q: { fr: "Comment payer ma prime d'assurance ?", en: "How to pay my insurance premium?", ar: "كيفية دفع قسط التأمين؟", es: "¿Cómo pagar mi prima de seguro?" }, a: { fr: "Vous pouvez payer par virement bancaire, chèque, ou carte bancaire. Des facilités de paiement sont possibles selon le contrat.", en: "You can pay by bank transfer, check, or credit card. Payment facilities are available depending on the contract.", ar: "يمكنك الدفع عن طريق التحويل البنكي أو الشيك أو بطاقة الائتمان. تسهيلات الدفع متاحة حسب العقد.", es: "Puede pagar mediante transferencia bancaria, cheque o tarjeta de crédito. Hay facilidades de pago disponibles según el contrato." }, keywords: { fr: ["payer", "paiement", "règlement", "carte", "virement"], en: ["pay", "payment", "settlement", "card", "transfer"], ar: ["دفع", "مالية", "تسوية", "بطاقة", "تحويل"], es: ["pagar", "pago", "liquidación", "tarjeta", "transferencia"] } },
@@ -353,7 +357,7 @@ const getContextualSuggestions = (lastMessage: string, lang: string): string[] =
       "¿Cómo denunciar un siniestro?",
       lang === "fr" ? "Qu'est-ce qu'une franchise ?" :
       lang === "en" ? "What is a deductible?" :
-      lang === "ar" ? "ما هي франшиза؟" :
+      lang === "ar" ? "ما هي الفرانشيز؟" :
       "¿Qué es un deducible?"
     ];
   }
@@ -390,20 +394,23 @@ const getContextualSuggestions = (lastMessage: string, lang: string): string[] =
     ];
   }
   
-  // Default suggestions
+  // Default suggestions - CORRECTED VERSION
   return [
     lang === "fr" ? "Quelles assurances proposez-vous ?" :
     lang === "en" ? "What insurance do you offer?" :
     lang === "ar" ? "ما هي التأمينات التي تقدمونها؟" :
     "¿Qué seguros ofrecen?",
+    
     lang === "fr" ? "Comment obtenir un devis ?" :
     lang === "en" ? "How to get a quote?" :
     lang === "ar" ? "كيفية الحصول على عرض أسعار؟" :
     "¿Cómo obtener un presupuesto?",
-    lang === "fr" ? "Qui êtes-vous ?" :
-    lang === "en" ? "Who are you?" :
-    lang === "ar" ? "من أنتم؟" :
-    "¿Quiénes son?",
+    
+    lang === "fr" ? "Qui sommes-nous ?" :
+    lang === "en" ? "Who are we?" :
+    lang === "ar" ? "من نحن؟" :
+    "¿Quiénes somos?",
+    
     lang === "fr" ? "Quels sont vos horaires ?" :
     lang === "en" ? "What are your hours?" :
     lang === "ar" ? "ما هي ساعات عملكم؟" :
@@ -419,10 +426,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [hasAccepted, setHasAccepted] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", text: t("chat_greeting") },
-    { role: "bot", text: t("chat_enterprise_protection") },
-  ]);
+  const [hasReadAndAccepted, setHasReadAndAccepted] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([
     t("chat_suggestion_1"),
@@ -435,73 +440,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
- // Privacy consent message (compact version)
-const privacyMessage = {
-  fr: `Bienvenue 
-
-CPA utilise des cookies.
-
-Objectifs :
-
-• Répondre à vos demandes
-• Améliorer la qualité du service
-• Vous recontacter si nécessaire
-• Sécuriser les échanges
-
-Conformément à la Loi n°09-08 (CNDP), vous disposez des droits : accès, rectification, opposition et suppression de vos données.
-
-Politique de confidentialité :
-Mentions légales – Assistant CPA`,
-
-  en: `Welcome to the CPA Virtual Assistant
-
-CPA uses cookies and may process technical and personal data to improve the service and ensure proper chatbot functionality.
-
-Purposes:
-• Respond to requests
-• Improve service quality
-• Contact you if needed
-• Secure interactions
-
-Under Law No. 09-08, you have the right to access, rectify, object to, and delete your data.
-
-Privacy policy:
-Legal Notice – CPA Assistant`,
-
-  ar: `مرحباً بك في المساعد الافتراضي CPA
-
-يستخدم CPA ملفات تعريف الارتباط وقد تتم معالجة بيانات تقنية وشخصية لتحسين الخدمة وضمان عمل المساعد بشكل صحيح.
-
-الأهداف:
-• الرد على الطلبات
-• تحسين جودة الخدمة
-• التواصل عند الحاجة
-• تأمين التبادلات
-
-وفقاً للقانون 09-08، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.
-
-سياسة الخصوصية:
-الإشعار القانوني – مساعد CPA`,
-
-  es: `Bienvenido al Asistente Virtual CPA
-
-CPA utiliza cookies y puede procesar datos técnicos y personales para mejorar el servicio y garantizar el correcto funcionamiento del chatbot.
-
-Objetivos:
-• Responder solicitudes
-• Mejorar la calidad del servicio
-• Contactarte si es necesario
-• Seguridad de los intercambios
-
-Según la Ley 09-08, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos.
-
-Política de privacidad:
-Aviso legal – Asistente CPA`,
-};
-
   // Handle privacy consent
   const handleAccept = () => {
+    if (!hasReadAndAccepted) return;
     setHasAccepted(true);
+    setHasReadAndAccepted(false);
     setMessages([
       { role: "bot", text: t("chat_greeting") },
       { role: "bot", text: t("chat_enterprise_protection") },
@@ -510,6 +453,7 @@ Aviso legal – Asistente CPA`,
 
   const handleRefuse = () => {
     setHasAccepted(false);
+    setHasReadAndAccepted(false);
     setMessages([
       { role: "bot", text: t("chat_privacy_refused") || "Vous devez accepter la politique de confidentialité pour utiliser le chatbot." },
     ]);
@@ -720,7 +664,7 @@ Aviso legal – Asistente CPA`,
         onClick={() => {
           setIsOpen(true);
           if (!hasAccepted) {
-            setMessages([{ role: "bot", text: privacyMessage[lang as keyof typeof privacyMessage] || privacyMessage.fr }]);
+            setHasReadAndAccepted(false);
           }
         }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cpa-gradient-bg text-primary-foreground flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"
@@ -770,27 +714,75 @@ Aviso legal – Asistente CPA`,
                   }`}>{msg.text}</div>
                 </motion.div>
               ))}
-              <div ref={messagesEndRef} />
               
-              {/* Privacy Consent Buttons - Show only when not accepted yet */}
+              {/* Privacy Consent Form - Show only when not accepted yet */}
               {!hasAccepted && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex gap-2 pt-2"
+                  className="space-y-3 pt-2"
                 >
-                  <button
-                    onClick={handleAccept}
-                    className="flex-1 px-4 py-2 cpa-gradient-bg text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
-                  >
-                    {t("chat_accept") || "Accepter"}
-                  </button>
-                  <button
-                    onClick={handleRefuse}
-                    className="flex-1 px-4 py-2 bg-muted text-foreground rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors"
-                  >
-                    {t("chat_refuse") || "Refuser"}
-                  </button>
+                  {/* Privacy message box */}
+                  <div className="bg-muted/50 rounded-lg p-3 text-xs leading-relaxed text-foreground/80 border border-border">
+                    <p className="font-semibold mb-1.5">
+                      {t("chat_privacy_welcome")}
+                    </p>
+                    <p className="mb-1.5">
+                      {t("chat_privacy_cookies")}
+                    </p>
+                    <p className="font-semibold mb-1">{t("chat_purposes_title")}</p>
+                    <ul className="list-disc list-inside space-y-0.5 mb-1.5">
+                      <li>{t("chat_purpose_1")}</li>
+                      <li>{t("chat_purpose_2")}</li>
+                      <li>{t("chat_purpose_3")}</li>
+                      <li>{t("chat_purpose_4")}</li>
+                    </ul>
+                    <p className="text-xs mb-1.5">
+                      {t("chat_privacy_law")}
+                    </p>
+                    <p className="text-xs mb-1.5">
+                      {t("chat_privacy_consent_text")}
+                    </p>
+                    <div className="flex gap-3 text-xs">
+                      <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                        {t("chat_privacy_policy")}
+                      </a>
+                      <span>•</span>
+                      <a href="/mentions-legales-assistant" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                        {t("chat_legal_notice")}
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Checkbox consent */}
+                  <div className="flex items-start gap-2.5">
+                    <Checkbox
+                      id="privacy-consent"
+                      checked={hasReadAndAccepted}
+                      onCheckedChange={(checked) => setHasReadAndAccepted(checked === true)}
+                      className="mt-0.5"
+                    />
+                    <label htmlFor="privacy-consent" className="text-xs leading-tight cursor-pointer">
+                      {t("chat_consent_checkbox")}
+                    </label>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={handleAccept}
+                      disabled={!hasReadAndAccepted}
+                      className="flex-1 px-4 py-2 cpa-gradient-bg text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {t("chat_accept")}
+                    </button>
+                    <button
+                      onClick={handleRefuse}
+                      className="flex-1 px-4 py-2 bg-muted text-foreground rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors"
+                    >
+                      {t("chat_refuse")}
+                    </button>
+                  </div>
                 </motion.div>
               )}
               
@@ -810,8 +802,8 @@ Aviso legal – Asistente CPA`,
                   ))}
                 </motion.div>
               )}
+              <div ref={messagesEndRef} />
             </div>
-
           </motion.div>
         )}
       </AnimatePresence>

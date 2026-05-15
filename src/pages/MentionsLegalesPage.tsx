@@ -76,22 +76,67 @@ const MentionsLegalesPage = () => {
                 </p>
               </div>
 
-              <div className="bg-card rounded-2xl p-8 border border-border">
-                <h2 className="text-2xl font-heading font-bold text-primary mb-4">
-                  {lang === "fr" ? "Hébergement" : lang === "en" ? "Hosting" : lang === "es" ? "Alojamiento" : "الاستضافة"}
-                </h2>
-                <p className="text-muted-foreground">
-                {
-     lang === "fr"
-    ? "Ce site ainsi que l’ensemble des données et informations associées sont hébergés et stockés au Maroc sur des infrastructures sécurisées conformes aux exigences de protection des données."
-    : lang === "en"
-    ? "This website, including all associated data and information, is hosted and stored in Morocco on secure infrastructures compliant with data protection requirements."
-    : lang === "es"
-    ? "Este sitio web, así como todos los datos e informaciones asociados, están alojados y almacenados en Marruecos sobre infraestructuras seguras conformes a los requisitos de protección de datos."
-    : "يتم استضافة هذا الموقع وجميع البيانات والمعلومات المرتبطة به داخل المغرب على بنية تحتية آمنة ومتوافقة مع متطلبات حماية المعطيات الشخصية."
-}
-                </p>
-              </div>
+              <div className="space-y-8">
+
+{/* Hébergement */}
+<div className="bg-card rounded-2xl p-8 border border-border">
+  <h2 className="text-2xl font-heading font-bold text-primary mb-4">
+    {lang === "fr"
+      ? "Hébergement"
+      : lang === "en"
+      ? "Hosting"
+      : lang === "es"
+      ? "Alojamiento"
+      : "الاستضافة"}
+  </h2>
+
+  <p className="text-muted-foreground leading-relaxed">
+    {lang === "fr"
+      ? "Ce site ainsi que l’ensemble des données et informations associées sont hébergés et stockés au Maroc sur des infrastructures sécurisées conformes aux exigences de protection des données."
+      : lang === "en"
+      ? "This website, including all associated data and information, is hosted and stored in Morocco on secure infrastructures compliant with data protection requirements."
+      : lang === "es"
+      ? "Este sitio web, así como todos los datos e informaciones asociados, están alojados y almacenados en Marruecos sobre infraestructuras seguras conformes a los requisitos de protección de datos."
+      : "يتم استضافة هذا الموقع وجميع البيانات والمعلومات المرتبطة به داخل المغرب على بنية تحتية آمنة ومتوافقة مع متطلبات حماية المعطيات الشخصية."}
+  </p>
+</div>
+
+{/* Hébergement et transfert des données */}
+<div className="bg-card rounded-2xl p-8 border border-border">
+  <h2 className="text-2xl font-heading font-bold text-primary mb-4">
+    {lang === "fr"
+      ? "Hébergement et transfert des données"
+      : lang === "en"
+      ? "Data Hosting and Transfer"
+      : lang === "es"
+      ? "Alojamiento y Transferencia de Datos"
+      : "استضافة ونقل البيانات"}
+  </h2>
+
+  <div className="space-y-4 text-muted-foreground leading-relaxed">
+    <p>
+      {lang === "fr"
+        ? "L’ensemble des données utilisées dans le cadre des services digitaux et de l’Assistant Virtuel CPA est déployé, hébergé et traité exclusivement au Maroc sur des infrastructures sécurisées."
+        : lang === "en"
+        ? "All data used within CPA digital services and the CPA Virtual Assistant is deployed, hosted, and processed exclusively in Morocco on secure infrastructures."
+        : lang === "es"
+        ? "Todos los datos utilizados en los servicios digitales y en el Asistente Virtual CPA se implementan, alojan y procesan exclusivamente en Marruecos sobre infraestructuras seguras."
+        : "يتم نشر واستضافة ومعالجة جميع البيانات المستخدمة ضمن الخدمات الرقمية ومساعد CPA الافتراضي حصريًا داخل المغرب على بنية تحتية آمنة."}
+    </p>
+
+    <p>
+      {lang === "fr"
+        ? "CPA applique les mesures techniques et organisationnelles nécessaires afin de garantir la sécurité, la confidentialité et la protection des données personnelles conformément à la réglementation marocaine en vigueur."
+        : lang === "en"
+        ? "CPA implements the necessary technical and organizational measures to ensure the security, confidentiality, and protection of personal data in compliance with applicable Moroccan regulations."
+        : lang === "es"
+        ? "CPA aplica las medidas técnicas y organizativas necesarias para garantizar la seguridad, confidencialidad y protección de los datos personales de conformidad con la normativa marroquí vigente."
+        : "تطبق CPA جميع التدابير التقنية والتنظيمية اللازمة لضمان أمن وسرية وحماية المعطيات الشخصية وفقًا للتشريعات المغربية المعمول بها."}
+    </p>
+  </div>
+</div>
+
+</div>
 
               <div className="bg-card rounded-2xl p-8 border border-border">
                 <h2 className="text-2xl font-heading font-bold text-primary mb-4">

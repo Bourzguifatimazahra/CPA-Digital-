@@ -168,7 +168,6 @@ const Footer = () => {
               </p>
               <div className="flex gap-3 text-primary-foreground/50 text-xs ml-2">
                 <Link to="/mentions-legales" className="hover:text-primary-foreground transition-colors">{t("footer_legal")}</Link>
-                 <Link to="/mentions-legales-assistant" className="hover:text-primary-foreground transition-colors">{t("footer_legal_assistant")}</Link>
                  <Link to="/politique-confidentialite" className="hover:text-primary-foreground transition-colors">{t("footer_privacy")}</Link>
               </div>
             </div>
