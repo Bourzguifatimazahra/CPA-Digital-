@@ -579,47 +579,49 @@ ${formData.message}`;
                                   </span>
                                 </div>
 
-                                {/* WhatsApp */}
-                                <div 
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sendToWhatsApp(dept.whatsappFull);
-                                  }}
-                                  className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <MessageCircle className="w-4 h-4 text-green-600" />
-                                    <span className="text-xs font-medium text-green-700">WHATSAPP</span>
-                                  </div>
-                                  <span className="text-sm font-semibold text-green-700">
-                                    {dept.whatsapp}
-                                  </span>
-                                </div>
+                                 {/* WhatsApp */}  
+                                 <div 
+                                   onClick={(e) => {  
+                                     e.stopPropagation();  
+                                     sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);  
+                                   }}  
+                                   className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"  
+                                 >  
+                                   <div className="flex items-center gap-2">  
+                                     <MessageCircle className="w-4 h-4 text-green-600" />  
+                                     <span className="text-xs font-medium text-green-700">WHATSAPP</span>  
+                                   </div>  
+                                   <span className="text-sm font-semibold text-green-700">  
+                                     {dept.whatsapp}  
+                                   </span>  
+                                 </div>
 
                                 {/* Bouton principal WhatsApp */}
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sendToWhatsApp(dept.whatsappFull);
-                                  }}
-                                  className={`w-full mt-4 py-2.5 rounded-xl bg-gradient-to-r ${dept.color} text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}
-                                >
-                                  <MessageCircle className="w-4 h-4" />
-                                  {lang === "fr" ? "Discuter sur WhatsApp" : 
-                                   lang === "en" ? "Chat on WhatsApp" : 
-                                   lang === "es" ? "Chatear en WhatsApp" : 
-                                   "تحدث على واتساب"}
-                                </button>
+                                 <button
+                                   onClick={(e) => {
+                                     e.stopPropagation();
+                                     sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
+                                   }}
+                                   className={`w-full mt-4 py-2.5 rounded-xl bg-gradient-to-r ${dept.color} text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}
+                                 >
+                                   <MessageCircle className="w-4 h-4" />
+                                   {lang === "fr" ? "Discuter sur WhatsApp" : 
+                                    lang === "en" ? "Chat on WhatsApp" : 
+                                    lang === "es" ? "Chatear en WhatsApp" : 
+                                    "تحدث على واتساب"}
+                                 </button>
                               </div>
                             </div>
                           </div>
                         </div>
                       ) : (
-                        /* Version Mobile - Carte simple cliquable avec les deux options */
-                        <div 
-                          onClick={() => sendToWhatsApp(dept.whatsappFull)}
-                          className="bg-card rounded-2xl border border-border/50 shadow-md overflow-hidden transition-all duration-300 active:scale-95"
-                        >
+                         /* Version Mobile - Carte simple cliquable avec les deux options */
+                         <div 
+                           onClick={() => {
+                             sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
+                           }}
+                           className="bg-card rounded-2xl border border-border/50 shadow-md overflow-hidden transition-all duration-300 active:scale-95"
+                         >
                           <div className={`h-1.5 bg-gradient-to-r ${dept.color}`} />
                           <div className="p-5 text-center">
                             <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-md mx-auto mb-3`}>
