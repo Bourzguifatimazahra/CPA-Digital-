@@ -748,9 +748,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                         {t("chat_privacy_policy")}
                       </a>
                       <span>•</span>
-                      <a href="/mentions-legales-assistant" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        {t("chat_legal_notice")}
-                      </a>
+                      <a href="/mentions-legales" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                         {t("chat_legal_notice")}
+                       </a>
                     </div>
                   </div>
 
