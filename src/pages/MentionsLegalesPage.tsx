@@ -197,12 +197,12 @@ const MentionsLegalesPage = () => {
                     </h3>
                     <p>
                       {lang === "fr"
-                        ? "La présente politique de confidentialité décrit comment CPA collecte, utilise et protège vos données personnelles conformément à la réglementation marocaine en matière de protection des données personnelles (Loi 09-08)."
+                        ? "La présente politique de confidentialité décrit comment CPA collecte, utilise et protège vos données personnelles conformément à la réglementation marocaine en matière de protection des données personnelles (Loi 09-08). Le site web est actuellement en cours d'homologation auprès de la CNDP."
                         : lang === "en"
-                        ? "This privacy policy describes how CPA collects, uses and protects your personal data in accordance with Moroccan regulations on personal data protection (Law 09-08)."
+                        ? "This privacy policy describes how CPA collects, uses and protects your personal data in accordance with Moroccan regulations on personal data protection (Law 09-08). The website is currently undergoing approval by the CNDP."
                         : lang === "es"
-                        ? "Esta política de privacidad describe cómo CPA recopila, usa y protege sus datos personales de acuerdo con las regulaciones marroquíes sobre protección de datos personales (Ley 09-08)."
-                        : "تصف سياسة الخصوصية هذه كيفية قيام CPA بجمع واستخدام وحماية بياناتك الشخصية وفقًا للوائح المغربية لحماية البيانات الشخصية (القانون 09-08)."
+                        ? "Esta política de privacidad describe cómo CPA recopila, usa y protege sus datos personales de acuerdo con las regulaciones marroquíes sobre protección de datos personales (Ley 09-08). El sitio web está actualmente en proceso de homologación ante la CNDP."
+                        : "تصف سياسة الخصوصية هذه كيفية قيام CPA بجمع واستخدام وحماية بياناتك الشخصية وفقًا للوائح المغربية لحماية البيانات الشخصية (القانون 09-08). الموقع الإلكتروني يخضع حاليًا لعملية homologation لدى CNDP."
                       }
                     </p>
                   </div>

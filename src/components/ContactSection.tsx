@@ -71,7 +71,7 @@ const departments: Department[] = [
   {
     id: "production_divers",
     nameKey: "dept_production_divers",
-    whatsapp: "078991814",
+    whatsapp: "0678991814",
     whatsappFull: "21278991814",
     fix: "05 22 95 39 04",
     fixFull: "+212522953904",
