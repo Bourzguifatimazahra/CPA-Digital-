@@ -102,10 +102,7 @@ const AffiliationsSection = () => {
                   <MapPin className="w-7 h-7 text-primary" />
                 </motion.div>
                 <div>
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
-                    {t("affiliations_national_badge")}
-                  </span>
-                  <h3 className="text-2xl font-heading font-bold text-foreground mt-1">
+                  <h3 className="text-2xl font-heading font-bold text-foreground">
                     Holmarcom
                   </h3>
                 </div>
@@ -147,10 +144,7 @@ const AffiliationsSection = () => {
                   <Globe2 className="w-7 h-7 text-accent" />
                 </motion.div>
                 <div>
-                  <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-                    {t("affiliations_international_badge")}
-                  </span>
-                  <h3 className="text-2xl font-heading font-bold text-foreground mt-1">
+                  <h3 className="text-2xl font-heading font-bold text-foreground">
                     EURIBRON
                   </h3>
                 </div>
