@@ -5,17 +5,15 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { 
   Shield, Lock, FileText, AlertCircle, Globe, UserCheck, 
   Database, Scale, Mail, Phone, MapPin, Cookie, Eye, 
-  Trash2, Edit, Download, XCircle, Clock, Users 
+  Trash2, Edit, Download, XCircle, Clock, Users, ChevronRight
 } from "lucide-react";
 
 const PolitiqueConfidentialitePage = () => {
   const { lang } = useLanguage();
   const isRTL = lang === "ar";
 
-  // Translation helper
   const t = (obj: Record<string, string>) => obj[lang] || obj.fr;
 
-  // Content configuration
   const content = {
     meta: {
       title: { fr: "Politique de Protection des Données", en: "Data Protection Policy", ar: "سياسة حماية البيانات", es: "Política de Protección de Datos" },
@@ -257,12 +255,16 @@ const PolitiqueConfidentialitePage = () => {
               <p className="text-slate-600 leading-relaxed">{t(content.sections.introduction.content)}</p>
             </SectionCard>
 
-            {/* Data Controller & DPO */}
+            {/* Data Controller & DPO - Version avec style cohérent */}
             <div className="grid md:grid-cols-2 gap-6">
               <SectionCard icon={content.sections.dataController.icon} title={t(content.sections.dataController.title)} delay={0.2}>
                 <p className="text-slate-600 mb-3">{t(content.sections.dataController.content)}</p>
-                <div className="bg-slate-50 rounded-xl p-4 text-sm whitespace-pre-line font-mono">
-                  {t(content.sections.dataController.details)}
+                <div className="text-slate-600 text-sm leading-relaxed space-y-1">
+                  <p>CPA - Conseil et Placement d'Assurances</p>
+                  <p>S.A. au capital de 5 000 000 DH</p>
+                  <p>Angle Boulevard Moulay Youssef et Boulevard Ziraoui</p>
+                  <p>Complexe Moulay Youssef Work Center, 2ème Étage</p>
+                  <p>Casablanca, Maroc</p>
                 </div>
               </SectionCard>
 
