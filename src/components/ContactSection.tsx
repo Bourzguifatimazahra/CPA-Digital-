@@ -504,158 +504,77 @@ ${formData.message}`;
               <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
             </button>
 
-            {/* Container du carousel */}
-            <div className="overflow-hidden mx-8 md:mx-10">
-              <motion.div
-                className="flex gap-4 md:gap-6"
-                animate={{ x: `-${currentSlide * (100 / 3)}%` }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              >
+             {/* Container du carousel */}
+             <div className="overflow-hidden mx-8 md:mx-10">
+               <motion.div
+                 className={`flex ${isMobile ? "flex-col" : "row"} gap-4 md:gap-6`}
+                 animate={{ x: isMobile ? `0` : `-${currentSlide * (100 / 3)}%` }}
+                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+               >
                 {departments.map((dept, index) => {
                   const Icon = dept.icon;
 
-                  return (
-                    <motion.div
-                      key={dept.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.05 }}
-                      className="cursor-pointer group"
-                      style={{ flex: "0 0 calc(33.333% - 16px)" }}
-                    >
-                      {/* Version Desktop avec effet flip */}
-                      {!isMobile ? (
-                        <div className="relative h-[280px] w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                          {/* FRONT */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-card to-card/90 border border-border/50 shadow-xl overflow-hidden [backface-visibility:hidden]">
-                            <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-5`} />
-                            <div className="relative z-10 flex flex-col items-center justify-center h-full p-6 text-center">
-                              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-2xl ${dept.glow} mb-5`}>
-                                <Icon className="w-10 h-10 text-white" />
-                              </div>
-                              <h3 className="text-xl font-bold text-foreground mb-2">
-                                {t(dept.nameKey)}
-                              </h3>
-                              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mt-2" />
-                              <p className="text-xs text-muted-foreground mt-4 flex items-center gap-1">
-                                <MessageCircle className="w-3 h-3 text-green-600" />
-                                {lang === "fr" ? "Cliquez pour contacter" : 
-                                 lang === "en" ? "Click to contact" : 
-                                 lang === "es" ? "Haga clic para contactar" : 
-                                 "انقر للاتصال"}
-                              </p>
-                            </div>
-                          </div>
-
-                          {/* BACK - Avec numéro direct et WhatsApp */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-card to-card/95 border border-primary/20 shadow-xl overflow-hidden [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                            <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-10`} />
-                            <div className="relative z-10 flex flex-col justify-center h-full p-6">
-                              <div className="text-center mb-4">
-                                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-lg mx-auto mb-3`}>
-                                  <Icon className="w-7 h-7 text-white" />
-                                </div>
-                                <h4 className="text-lg font-bold text-foreground">
-                                  {t(dept.nameKey)}
-                                </h4>
-                              </div>
-                              
-                              <div className="space-y-3">
-                                {/* Numéro direct (téléphone) */}
-                                <div 
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    makePhoneCall(dept.fixFull);
-                                  }}
-                                  className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-all cursor-pointer"
-                                >
-                                  <div className="flex items-center gap-2">
-                                    <Phone className="w-4 h-4 text-primary" />
-                                    <span className="text-xs font-medium text-muted-foreground">DIRECT</span>
-                                  </div>
-                                  <span className="text-sm font-semibold text-foreground">
-                                    {dept.fix}
-                                  </span>
-                                </div>
-
-                                 {/* WhatsApp */}  
-                                 <div 
-                                   onClick={(e) => {  
-                                     e.stopPropagation();  
-                                     sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);  
-                                   }}  
-                                   className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"  
-                                 >  
-                                   <div className="flex items-center gap-2">  
-                                     <MessageCircle className="w-4 h-4 text-green-600" />  
-                                     <span className="text-xs font-medium text-green-700">WHATSAPP</span>  
-                                   </div>  
-                                   <span className="text-sm font-semibold text-green-700">  
-                                     {dept.whatsapp}  
-                                   </span>  
-                                 </div>
-
-                                {/* Bouton principal WhatsApp */}
-                                 <button
-                                   onClick={(e) => {
-                                     e.stopPropagation();
-                                     sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
-                                   }}
-                                   className={`w-full mt-4 py-2.5 rounded-xl bg-gradient-to-r ${dept.color} text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]`}
-                                 >
-                                   <MessageCircle className="w-4 h-4" />
-                                   {lang === "fr" ? "Discuter sur WhatsApp" : 
-                                    lang === "en" ? "Chat on WhatsApp" : 
-                                    lang === "es" ? "Chatear en WhatsApp" : 
-                                    "تحدث على واتساب"}
-                                 </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                         /* Version Mobile - Carte simple cliquable avec les deux options */
-                         <div 
-                           onClick={() => {
-                             sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
-                           }}
-                           className="bg-card rounded-2xl border border-border/50 shadow-md overflow-hidden transition-all duration-300 active:scale-95"
-                         >
+                       return (
+                     <motion.div
+                       key={dept.id}
+                       initial={{ opacity: 0, y: 20 }}
+                       whileInView={{ opacity: 1, y: 0 }}
+                       viewport={{ once: true }}
+                       transition={{ delay: index * 0.05 }}
+                       className="cursor-pointer group"
+                       style={{ flex: isMobile ? "0 0 100%" : "0 0 calc(33.333% - 16px)" }}
+                     >
+                        {/* Version Desktop et Mobile - Carte simple avec boutons cliquables */}
+                        <div 
+                          className="bg-card rounded-2xl border border-border/50 shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                        >
                           <div className={`h-1.5 bg-gradient-to-r ${dept.color}`} />
-                          <div className="p-5 text-center">
-                            <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-md mx-auto mb-3`}>
+                          <div className="p-6">
+                            <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-md mx-auto mb-4`}>
                               <Icon className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-base font-bold text-foreground mb-2">
+                            <h3 className="text-xl font-bold text-foreground mb-3">
                               {t(dept.nameKey)}
                             </h3>
                             
-                            {/* Numéro direct sur mobile */}
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                makePhoneCall(dept.fixFull);
-                              }}
-                              className="w-full flex items-center justify-center gap-2 mt-3 p-2 rounded-lg bg-muted/50 active:bg-muted transition-colors"
-                            >
-                              <Phone className="w-3 h-3 text-primary" />
-                              <span className="text-xs text-muted-foreground">Appeler</span>
-                              <span className="text-xs font-medium text-foreground">{dept.fix}</span>
-                            </button>
-                            
-                            <div className="flex items-center justify-center gap-2 mt-2 text-green-600">
-                              <MessageCircle className="w-4 h-4" />
-                              <span className="text-xs font-medium">
-                                {lang === "fr" ? "Cliquez pour WhatsApp" : 
-                                 lang === "en" ? "Tap for WhatsApp" : 
-                                 lang === "es" ? "Toque para WhatsApp" : 
-                                 "انقر للواتساب"}
-                              </span>
+                            {/* Boutons d'action */}
+                            <div className="space-y-4">
+                              {/* Numéro direct (téléphone) */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  makePhoneCall(dept.fixFull);
+                                }}
+                                className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-all cursor-pointer"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <Phone className="w-4 h-4 text-primary" />
+                                  <span className="text-xs font-medium text-muted-foreground">DIRECT</span>
+                                </div>
+                                <span className="text-sm font-semibold text-foreground">
+                                  {dept.fix}
+                                </span>
+                              </button>
+
+                              {/* WhatsApp */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
+                                }}
+                                className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <MessageCircle className="w-4 h-4 text-green-600" />
+                                  <span className="text-xs font-medium text-green-700">WHATSAPP</span>
+                                </div>
+                                <span className="text-sm font-semibold text-green-700">
+                                  {dept.whatsapp}
+                                </span>
+                              </button>
                             </div>
                           </div>
                         </div>
-                      )}
                     </motion.div>
                   );
                 })}
