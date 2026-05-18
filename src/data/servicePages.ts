@@ -530,10 +530,37 @@ export const nouveautesPages: ServicePageData[] = [
       es: "Protéjase y proteja su patinete eléctrico con un seguro adaptado a la nueva movilidad urbana.",
     },
     features: {
-      fr: ["Responsabilité civile obligatoire", "Vol et tentative de vol", "Dommages matériels au véhicule", "Protection du conducteur", "Assistance en cas de panne", "Dommages corporels", "Vandalisme", "Protection juridique"],
-      en: ["Mandatory liability", "Theft and attempted theft", "Vehicle material damage", "Driver protection", "Breakdown assistance", "Bodily injury", "Vandalism", "Legal protection"],
-      ar: ["المسؤولية المدنية الإلزامية", "السرقة ومحاولة السرقة", "الأضرار المادية للمركبة", "حماية السائق", "المساعدة في حالة العطل", "الإصابات الجسدية", "التخريب", "الحماية القانونية"],
-      es: ["Responsabilidad civil obligatoria", "Robo y tentativa de robo", "Daños materiales al vehículo", "Protección del conductor", "Asistencia en caso de avería", "Daños corporales", "Vandalismo", "Protección jurídica"],
+      fr: [
+        "Responsabilité civile conducteur",
+        "Défense et recours",
+        "Dommages matériels",
+        "Protection du conducteur",
+        "Dommages corporels"
+      ],
+    
+      en: [
+        "Driver civil liability",
+        "Legal defense and recourse",
+        "Material damage",
+        "Driver protection",
+        "Bodily injury"
+      ],
+    
+      ar: [
+        "المسؤولية المدنية للسائق",
+        "الدفاع والرجوع",
+        "الأضرار المادية",
+        "حماية السائق",
+        "الأضرار الجسدية"
+      ],
+    
+      es: [
+        "Responsabilidad civil del conductor",
+        "Defensa y recurso",
+        "Daños materiales",
+        "Protección del conductor",
+        "Daños corporales"
+      ],
     },
     details: {
       fr: "Avec l'essor des trottinettes électriques au Maroc et dans le monde, il est essentiel de se protéger contre les risques liés à ce nouveau mode de déplacement. Notre assurance trottinette électrique couvre votre responsabilité civile en cas d'accident, les dommages causés à votre engin, le vol, et assure votre protection corporelle. Que vous utilisiez votre trottinette pour vos trajets quotidiens ou pour vos loisirs, nous vous proposons des formules complètes et accessibles.",
