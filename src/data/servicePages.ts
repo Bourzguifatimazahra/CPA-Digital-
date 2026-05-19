@@ -571,9 +571,6 @@ export const nouveautesPages: ServicePageData[] = [
     whyInsure: {
       fr: [
         "La responsabilité civile est obligatoire pour tout engin motorisé, y compris les trottinettes électriques",
-        "Les accidents de trottinette peuvent causer des blessures graves aux conducteurs et aux piétons",
-        "Le vol de trottinettes électriques est en forte augmentation dans les zones urbaines",
-        "Les réparations d'une trottinette électrique endommagée peuvent coûter très cher",
         "Une assurance vous protège financièrement en cas de dommages causés à des tiers",
         "Circuler sans assurance vous expose à des amendes et sanctions légales",
       ],
