@@ -77,7 +77,7 @@ const testimonials = [
   {
     name: "Karim D.", role: { fr: "Gérant de Flotte", en: "Fleet Manager", ar: "مدير أسطول", es: "Gestor de Flota" },
     type: { fr: "Automobile & Flotte", en: "Auto & Fleet", ar: "سيارات وأسطول", es: "Automóvil y Flota" },
-    text: { fr: "50 véhicules assurés chez CPA. Gestion simplifiée, sinistres traités rapidement. Très satisfait.", en: "50 vehicles insured with CPA. Simplified management, claims handled quickly. Very satisfied.", ar: "50 مركبة مؤمنة لدى CPA. إدارة مبسطة.", es: "50 vehículos asegurados con CPA. Gestión simplificada." },
+    text: { fr: "50 véhicules assurés chez CPA. Gestion simplifiée, Accidents traités rapidement. Très satisfait.", en: "50 vehicles insured with CPA. Simplified management, claims handled quickly. Very satisfied.", ar: "50 مركبة مؤمنة لدى CPA. إدارة مبسطة.", es: "50 vehículos asegurados con CPA. Gestión simplificada." },
     rating: 5,
     photo: profilePhoto,
   },

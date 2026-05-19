@@ -29,6 +29,7 @@ interface Department {
   color: string;
   glow: string;
   types: string[];
+  customMessage?: string;
 }
 
 const departments: Department[] = [
@@ -45,8 +46,8 @@ const departments: Department[] = [
     types: ["auto", "vehicules", "auto_moto", "flotte"],
   },
   {
-    id: "sinistre_at",
-    nameKey: "dept_sinistre_at",
+    id: "Accident_at",
+    nameKey: "dept_Accident_at",
     whatsapp: "0655357453",
     whatsappFull: "212655357453",
     fix: "05 22 95 39 08",
@@ -55,10 +56,11 @@ const departments: Department[] = [
     color: "from-orange-500 to-amber-500",
     glow: "shadow-orange-500/30",
     types: ["individuelle"],
+    customMessage: "Bonjour CPA, je souhaite obtenir plus d'informations concernant une déclaration d'accident de travail (AT). Pourriez-vous m'indiquer la procédure ainsi que les documents nécessaires ?",
   },
   {
-    id: "sinistre_maladie",
-    nameKey: "dept_sinistre_maladie",
+    id: "Accident_maladie",
+    nameKey: "dept_Accident_maladie",
     whatsapp: "0678293901",
     whatsappFull: "212678293901",
     fix: "05 22 95 39 06",
@@ -67,10 +69,11 @@ const departments: Department[] = [
     color: "from-red-500 to-pink-500",
     glow: "shadow-red-500/30",
     types: ["sante"],
+    customMessage: "Bonjour CPA, je souhaite obtenir plus d’informations concernant les services liés à la santé et à la couverture maladie. Pourriez-vous me guider sur les démarches et les options disponibles ?",
   },
   {
-    id: "sinistre_auto_risque_divers",
-    nameKey: "dept_sinistre_auto_risque_divers",
+    id: "Accident_auto_risque_divers",
+    nameKey: "dept_Accident_auto_risque_divers",
     whatsapp: "0678828163",
     whatsappFull: "212678828163",
     fix: "05 22 95 39 17",
@@ -78,7 +81,8 @@ const departments: Department[] = [
     icon: Shield,
     color: "from-purple-500 to-violet-500",
     glow: "shadow-purple-500/30",
-    types: ["auto_sinistre", "risque_divers"],
+    types: ["auto_Accident", "risque_divers"],
+    customMessage: "Bonjour CPA, je souhaite obtenir plus d’informations concernant une déclaration de sinistre auto et risques divers auprès de votre organisation. Pourriez-vous m’indiquer les démarches à suivre ainsi que les documents nécessaires ?",
   },
   {
     id: "production_divers",
@@ -109,9 +113,10 @@ const departments: Department[] = [
       "chantier",
       "cyber",
       "terrorisme",
-      "audit",
-    ],
-  },
+       "audit",
+     ],
+   customMessage: "Bonjour CPA, je souhaite obtenir une proposition concernant un contrat Multirisque ou une couverture Accident de Travail. Pourriez-vous me communiquer les offres disponibles ainsi que les informations nécessaires pour la souscription ?",
+   },
 ];
 
 const getDepartmentForInsurance = (insuranceType: string) => {
@@ -560,7 +565,7 @@ ${formData.message}`;
                               <button
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  sendToWhatsApp(dept.whatsappFull, `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
+                                  sendToWhatsApp(dept.whatsappFull, dept.customMessage || `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
                                 }}
                                 className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"
                               >

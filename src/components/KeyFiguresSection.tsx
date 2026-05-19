@@ -22,10 +22,10 @@ const figures: Figure[] = [
   { icon: HeartPulse, value: 230000, suffix: "", label: { fr: "dossiers maladie traités", en: "health claims processed", ar: "مطالبات صحية", es: "siniestros salud" } },
   { icon: AlertTriangle, value: 900, suffix: "", label: { fr: "prises en charge majeures", en: "major care cases", ar: "حالات رعاية كبرى", es: "casos atención mayor" } },
   { icon: Car, value: 4000, suffix: "", label: { fr: "véhicules et camions assurés", en: "insured vehicles & trucks", ar: "مركبة مؤمنة", es: "vehículos asegurados" } },
-  { icon: Car, value: 720, suffix: "", label: { fr: "sinistres auto", en: "auto claims", ar: "مطالبات سيارات", es: "siniestros auto" } },
+  { icon: Car, value: 720, suffix: "", label: { fr: "Accidents auto", en: "auto claims", ar: "مطالبات سيارات", es: "siniestros auto" } },
   { icon: Anchor, value: 815, suffix: "", label: { fr: "contrats maritimes", en: "maritime contracts", ar: "عقود بحرية", es: "contratos marítimos" } },
-  { icon: HardHat, value: 220, suffix: "/an", label: { fr: "sinistres AT", en: "work accident claims", ar: "حوادث عمل/سنة", es: "siniestros laborales/año" } },
-  { icon: Home, value: 110, suffix: "", label: { fr: "sinistres dommages gérés", en: "damage claims managed", ar: "مطالبات أضرار", es: "siniestros daños" } },
+  { icon: HardHat, value: 220, suffix: "/an", label: { fr: "Accidents AT", en: "work accident claims", ar: "حوادث عمل/سنة", es: "siniestros laborales/año" } },
+  { icon: Home, value: 110, suffix: "", label: { fr: "Accidents dommages gérés", en: "damage claims managed", ar: "مطالبات أضرار", es: "siniestros daños" } },
 ];
 
 const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) => {

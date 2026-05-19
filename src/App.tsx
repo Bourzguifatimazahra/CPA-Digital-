@@ -33,24 +33,24 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Google Analytics tracking component (only active when consent given)
+// Google Analytics tracking component (only active when stats consent given)
 const GoogleAnalyticsTracker = () => {
   const { pathname, search } = useLocation();
-  const { consent } = useCookieConsent();
+  const { prefs } = useCookieConsent();
 
   useEffect(() => {
-    // Initialize Google Analytics only if consent was given
-    if (consent === "accepted") {
+    // Initialize Google Analytics only if stats consent was given
+    if (prefs.stats) {
       initializeAnalytics();
     }
-  }, [consent]);
+  }, [prefs.stats]);
 
   useEffect(() => {
-    // Track page view on route change only if consent was given
-    if (consent === "accepted") {
+    // Track page view on route change only if stats consent was given
+    if (prefs.stats) {
       trackPageView(pathname + search);
     }
-  }, [pathname, search, consent]);
+  }, [pathname, search, prefs.stats]);
 
   return null;
 };

@@ -13,12 +13,12 @@ const expertiseItems = [
   {
     icon: ShieldCheck,
     title: { fr: "Gestion des risques et responsabilités", en: "Risk and liability management", ar: "إدارة المخاطر والمسؤوليات", es: "Gestión de riesgos y responsabilidades" },
-    desc: { fr: "Accompagnement environnemental et responsabilités civiles. Nous identifions et évaluons vos risques pour mettre en place les protections nécessaires et vous accompagner en cas de sinistre.", en: "Environmental support and civil liabilities. We identify and evaluate your risks to implement necessary protections.", ar: "دعم بيئي ومسؤوليات مدنية. نحدد ونقيم مخاطركم لتنفيذ الحماية اللازمة.", es: "Apoyo ambiental y responsabilidades civiles. Identificamos y evaluamos sus riesgos para implementar las protecciones necesarias." },
+    desc: { fr: "Accompagnement environnemental et responsabilités civiles. Nous identifions et évaluons vos risques pour mettre en place les protections nécessaires et vous accompagner en cas de Accident.", en: "Environmental support and civil liabilities. We identify and evaluate your risks to implement necessary protections.", ar: "دعم بيئي ومسؤوليات مدنية. نحدد ونقيم مخاطركم لتنفيذ الحماية اللازمة.", es: "Apoyo ambiental y responsabilidades civiles. Identificamos y evaluamos sus riesgos para implementar las protecciones necesarias." },
   },
   {
     icon: Handshake,
     title: { fr: "Accompagnement de qualité", en: "Quality support", ar: "دعم عالي الجودة", es: "Acompañamiento de calidad" },
-    desc: { fr: "Un suivi personnalisé et une protection optimale. Votre conseiller dédié vous accompagne à chaque étape, de la souscription à la gestion de vos sinistres, avec réactivité et professionnalisme.", en: "Personalized follow-up and optimal protection. Your dedicated advisor accompanies you at every step.", ar: "متابعة شخصية وحماية مثلى. مستشارك المخصص يرافقك في كل خطوة.", es: "Seguimiento personalizado y protección óptima. Su asesor dedicado le acompaña en cada paso." },
+    desc: { fr: "Un suivi personnalisé et une protection optimale. Votre conseiller dédié vous accompagne à chaque étape, de la souscription à la gestion de vos Accidents, avec réactivité et professionnalisme.", en: "Personalized follow-up and optimal protection. Your dedicated advisor accompanies you at every step.", ar: "متابعة شخصية وحماية مثلى. مستشارك المخصص يرافقك في كل خطوة.", es: "Seguimiento personalizado y protección óptima. Su asesor dedicado le acompaña en cada paso." },
   },
   {
     icon: RefreshCw,
@@ -33,7 +33,7 @@ const expertiseItems = [
   {
     icon: HeadphonesIcon,
     title: { fr: "Assistance administrative", en: "Administrative assistance", ar: "المساعدة الإدارية", es: "Asistencia administrativa" },
-    desc: { fr: "Support complet dans toutes vos démarches administratives. De la déclaration de sinistre au suivi des indemnisations, nous gérons l'ensemble de vos formalités pour vous simplifier la vie.", en: "Complete support in all your administrative procedures. From claims declaration to compensation monitoring.", ar: "دعم كامل في جميع إجراءاتكم الإدارية. من إعلان الحادث إلى متابعة التعويضات.", es: "Soporte completo en todos sus trámites administrativos. Desde la declaración de siniestro hasta el seguimiento de indemnizaciones." },
+    desc: { fr: "Support complet dans toutes vos démarches administratives. De la déclaration de Accident au suivi des indemnisations, nous gérons l'ensemble de vos formalités pour vous simplifier la vie.", en: "Complete support in all your administrative procedures. From claims declaration to compensation monitoring.", ar: "دعم كامل في جميع إجراءاتكم الإدارية. من إعلان الحادث إلى متابعة التعويضات.", es: "Soporte completo en todos sus trámites administrativos. Desde la declaración de siniestro hasta el seguimiento de indemnizaciones." },
   },
 ];
 

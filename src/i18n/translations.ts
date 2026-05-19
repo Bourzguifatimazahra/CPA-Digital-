@@ -97,8 +97,8 @@ export const translations = {
    faq_insurance_types_answer: { fr: "Nous proposons une large gamme d'assurances pour particuliers (automobile, santé, habitation, voyage, épargne) et pour entreprises (biens, personnes, responsabilité civile, risques techniques, etc.).", en: "We offer a wide range of insurance for individuals (auto, health, home, travel, savings) and businesses (property, people, liability, technical risks, etc.).", ar: "نقدم مجموعة واسعة من التأمينات للأفراد (السيارات والصحة والمنزل والسفر والادخار) وللشركات (الممتلكات والأشخاص والمسؤولية والمخاطر التقنية، إلخ).", es: "Ofrecemos una amplia gama de seguros para particulares (auto, salud, hogar, viaje, ahorro) y empresas (bienes, personas, responsabilidad civil, riesgos técnicos, etc.)." },
    faq_contract_modification: { fr: "Puis-je modifier mon contrat en cours d'année ?", en: "Can I modify my contract mid-year?", ar: "هل يمكنني تعديل عقدي خلال العام؟", es: "¿Puedo modificar mi contrato a mitad de año?" },
    faq_contract_modification_answer: { fr: "Oui, certaines modifications sont possibles (ajout de garanties, changement de véhicule, etc.). Contactez votre conseiller pour discuter de vos besoins.", en: "Yes, certain modifications are possible (adding coverage, changing vehicle, etc.). Contact your advisor to discuss your needs.", ar: "نعم، بعض التعديلات ممكنة (إضافة تغطيات، تغيير المركبة، إلخ). اتصل بمستشارك لمناقشة احتياجاتك.", es: "Sí, ciertas modificaciones son posibles (agregar coberturas, cambiar vehículo, etc.). Contacta a tu asesor para discutir tus necesidades." },
-   faq_claims_process: { fr: "Comment déclarer un sinistre ?", en: "How do I file a claim?", ar: "كيف يمكنني الإبلاغ عن خسارة؟", es: "¿Cómo presentar un reclamo?" },
-   faq_claims_process_answer: { fr: "Vous pouvez déclarer un sinistre par téléphone au +212 522 123 456, via notre application mobile, ou en vous rendant dans l'une de nos agences. Assistance 24h/24 et 7j/7.", en: "You can file a claim by phone at +212 522 123 456, through our mobile app, or by visiting one of our branches. 24/7 assistance.", ar: "يمكنك الإبلاغ عن خسارة عبر الهاتف على +212 522 123 456، من خلال تطبيقنا المحمول، أو بالزيارة إحدى فروعنا. مساعدة على مدار الساعة.", es: "Puedes presentar un reclamo por teléfono al +212 522 123 456, a través de nuestra aplicación móvil, o visitando una de nuestras sucursales. Asistencia 24/7." },
+   faq_claims_process: { fr: "Comment déclarer un Accident ?", en: "How do I file a claim?", ar: "كيف يمكنني الإبلاغ عن خسارة؟", es: "¿Cómo presentar un reclamo?" },
+   faq_claims_process_answer: { fr: "Vous pouvez déclarer un Accident par téléphone au +212 522 123 456, via notre application mobile, ou en vous rendant dans l'une de nos agences. Assistance 24h/24 et 7j/7.", en: "You can file a claim by phone at +212 522 123 456, through our mobile app, or by visiting one of our branches. 24/7 assistance.", ar: "يمكنك الإبلاغ عن خسارة عبر الهاتف على +212 522 123 456، من خلال تطبيقنا المحمول، أو بالزيارة إحدى فروعنا. مساعدة على مدار الساعة.", es: "Puedes presentar un reclamo por teléfono al +212 522 123 456, a través de nuestra aplicación móvil, o visitando una de nuestras sucursales. Asistencia 24/7." },
    faq_payment_options: { fr: "Quelles sont les modalités de paiement ?", en: "What are the payment options?", ar: "ما هي طرق الدفع المتاحة؟", es: "¿Cuáles son las opciones de pago?" },
    faq_payment_options_answer: { fr: "Nous acceptons les paiements par prélèvement automatique, carte bancaire, chèque ou virement. Des facilités de paiement peuvent être envisagées.", en: "We accept payments by direct debit, credit card, check, or bank transfer. Payment plans may be available.", ar: "نقبل المدفوعات عن طريق السحب التلقائي، بطاقة الائتمان، الشيك أو التحويل البنكي. قد تكون هناك خطط دفع متاحة.", es: "Aceptamos pagos por débito automático, tarjeta de crédito, cheque o transferencia bancaria. Se pueden considerar planes de pago." },
    faq_company_experience: { fr: "Depuis combien d'années existez-vous ?", en: "How many years have you been in business?", ar: "كم سنة وأنتم في activity؟", es: "¿Cuántos años llevan en el negocio?" },
@@ -247,9 +247,9 @@ export const translations = {
   dept_insurance_types: { fr: "type d'assurance", en: "insurance type", ar: "نوع التأمين", es: "tipo de seguro" },
   dept_insurance_types_plural: { fr: "types d'assurance", en: "insurance types", ar: "أنواع التأمين", es: "tipos de seguro" },
   dept_automobile: { fr: "Automobile", en: "Automobile ", ar: "  السيارات", es: "Automóviles" },
-   dept_sinistre_at: { fr: "Sinistre AT", en: "Work Accident Claims ", ar: "  مطالبات حوادث العمل", es: "  Siniestros de Trabajo" },
-   dept_sinistre_maladie: { fr: " Sinistre Maladie", en: "Health Claims", ar: "   مطالبات الأمراض", es: " Siniestros de Salud" },
-   dept_sinistre_auto_risque_divers: { fr: " Sinistre Auto & Risque Divers", en: "Auto Claims & Miscellaneous Risks ", ar: " مطالبات السيارات والمخاطر المتنوعة", es: "Siniestros de Auto y Riesgos Diversos" },
+   dept_Accident_at: { fr: "Accident AT", en: "Work Accident Claims ", ar: "  مطالبات حوادث العمل", es: "  Siniestros de Trabajo" },
+   dept_Accident_maladie: { fr: " Accident Maladie", en: "Health Claims", ar: "   مطالبات الأمراض", es: " Siniestros de Salud" },
+   dept_Accident_auto_risque_divers: { fr: " Accident Auto & Risque Divers", en: "Auto Claims & Miscellaneous Risks ", ar: " مطالبات السيارات والمخاطر المتنوعة", es: "Siniestros de Auto y Riesgos Diversos" },
    dept_production_divers: { fr: "Production Risques Divers", en: "Production Miscellaneous Risks ", ar: " الإنتاج المخاطر المتنوعة", es: "Producción y Riesgos Diversos" },
   // Insurance type options
   ins_auto: { fr: "Assurance Auto", en: "Auto Insurance", ar: "تأمين السيارات", es: "Seguro de Auto" },
@@ -417,8 +417,8 @@ export const translations = {
   faq_kw1: { fr: "assurance, contrat, protège, risque", en: "insurance, contract, protect, risk", ar: "تأمين, عقد, حماية, خطر", es: "seguro, contrato, protege, riesgo" },
 
   faq_q2: { fr: "À quoi sert l'assurance ?", en: "What is insurance for?", ar: "ما فائدة التأمين؟", es: "¿Para qué sirve el seguro?" },
-  faq_a2: { fr: "Elle permet de réduire les conséquences financières en cas de sinistre.", en: "It helps reduce financial consequences in case of a claim.", ar: "يساعد في تقليل العواقب المالية في حالة المطالبة.", es: "Ayuda a reducir las consecuencias financieras en caso de siniestro." },
-  faq_kw2: { fr: "sert, conséquences, financières, sinistre", en: "purpose, consequences, financial, claim", ar: "الغرض, العواقب, مالية, مطالبة", es: "sirve, consecuencias, financieras, siniestro" },
+  faq_a2: { fr: "Elle permet de réduire les conséquences financières en cas de Accident.", en: "It helps reduce financial consequences in case of a claim.", ar: "يساعد في تقليل العواقب المالية في حالة المطالبة.", es: "Ayuda a reducir las consecuencias financieras en caso de siniestro." },
+  faq_kw2: { fr: "sert, conséquences, financières, Accident", en: "purpose, consequences, financial, claim", ar: "الغرض, العواقب, مالية, مطالبة", es: "sirve, consecuencias, financieras, siniestro" },
 
   faq_q3: { fr: "Quelle est la différence entre assureur et courtier ?", en: "What is the difference between insurer and broker?", ar: "ما هو الفرق بين شركة التأمين والوسيط؟", es: "¿Cuál es la diferencia entre aseguradora y corredor?" },
   faq_a3: { fr: "L'assureur garantit le risque, le courtier conseille et représente le client. CPA est votre courtier de confiance.", en: "The insurer guarantees the risk, the broker advises and represents the client. CPA is your trusted broker.", ar: "شركة التأمين تضمن المخاطر، والوسيط ينصح ويمثل العميل. CPA هو وسيطك الموثوق.", es: "La aseguradora garantiza el riesgo, el corredor asesora y representa al cliente. CPA es su corredor de confianza." },
@@ -429,8 +429,8 @@ export const translations = {
   faq_kw4: { fr: "prime, montant, payez, assuré", en: "premium, amount, pay, insured", ar: "قسط, مبلغ, تدفع, مؤمن", es: "prima, monto, paga, asegurado" },
 
   faq_q5: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي франшиза؟", es: "¿Qué es un deducible?" },
-  faq_a5: { fr: "C'est la part du sinistre qui reste à votre charge. Plus la franchise est élevée, plus la prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower the premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت франшиза، انخفض القسط.", es: "Es la parte del siniestro que corre por su cuenta. Cuanto mayor sea el deducible, menor será la prima." },
-  faq_kw5: { fr: "franchise, charge, sinistre", en: "deductible, charge, claim", ar: "فرانشيز, مسؤولية, مطالبة", es: "deducible, cargo, siniestro" },
+  faq_a5: { fr: "C'est la part du Accident qui reste à votre charge. Plus la franchise est élevée, plus la prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower the premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت франшиза، انخفض القسط.", es: "Es la parte del siniestro que corre por su cuenta. Cuanto mayor sea el deducible, menor será la prima." },
+  faq_kw5: { fr: "franchise, charge, Accident", en: "deductible, charge, claim", ar: "فرانشيز, مسؤولية, مطالبة", es: "deducible, cargo, siniestro" },
 
   faq_q6: { fr: "Le courtier est-il payant ?", en: "Is the broker paid?", ar: "هل الوسيط مدفوع الأجر؟", es: "¿El corredor es de pago?" },
   faq_a6: { fr: "Non, sa rémunération est incluse dans la prime d'assurance. Nos services de conseil sont gratuits pour vous.", en: "No, their remuneration is included in the insurance premium. Our advisory services are free for you.", ar: "لا، يتم تضمين أجره في قسط التأمين. خدماتنا الاستشارية مجانية لك.", es: "No, su remuneración está incluida en la prima del seguro. Nuestros servicios de asesoramiento son gratuitos para usted." },
@@ -464,15 +464,15 @@ export const translations = {
   faq_a13: { fr: "Oui, nous proposons des contrats santé groupe pour les entreprises couvrant les employés et leurs familles avec des tarifs avantageux.", en: "Yes, we offer group health contracts for companies covering employees and their families with advantageous rates.", ar: "نعم، نقدم عقود صحية جماعية للشركات تغطي الموظفين وعائلاتهم بأسعار مميزة.", es: "Sí, ofrecemos contratos de salud grupal para empresas que cubren a los empleados y sus familias con tarifas ventajosas." },
   faq_kw13: { fr: "groupe, entreprise, employés, collectif", en: "group, company, employees, collective", ar: "جماعي, شركة, موظفين, جماعي", es: "grupo, empresa, empleados, colectivo" },
 
-  faq_q14: { fr: "Qu'est-ce qu'un sinistre ?", en: "What is a claim?", ar: "ما هي المطالبة؟", es: "¿Qué es un siniestro?" },
+  faq_q14: { fr: "Qu'est-ce qu'un Accident ?", en: "What is a claim?", ar: "ما هي المطالبة؟", es: "¿Qué es un siniestro?" },
   faq_a14: { fr: "C'est la réalisation du risque assuré : accident, vol, incendie, dégât des eaux, etc.", en: "It's the occurrence of the insured risk: accident, theft, fire, water damage, etc.", ar: "إنها حدوث الخطر المؤمن عليه: حادث، سرقة، حريق، تلف المياه، إلخ.", es: "Es la ocurrencia del riesgo asegurado: accidente, robo, incendio, daños por agua, etc." },
-  faq_kw14: { fr: "sinistre, réalisation, accident", en: "claim, occurrence, accident", ar: "مطالبة, وقوع, حادث", es: "siniestro, ocurrencia, accidente" },
+  faq_kw14: { fr: "Accident, réalisation, accident", en: "claim, occurrence, accident", ar: "مطالبة, وقوع, حادث", es: "siniestro, ocurrencia, accidente" },
 
-  faq_q15: { fr: "Quand déclarer un sinistre ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" },
+  faq_q15: { fr: "Quand déclarer un Accident ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" },
   faq_a15: { fr: "Dans les 5 jours ouvrables à compter du moment où vous en avez connaissance. Pour un vol, le délai est de 48 heures.", en: "Within 5 working days from when you become aware. For theft, the deadline is 48 hours.", ar: "خلال 5 أيام عمل من علمك بالأمر. في حالة السرقة، المهلة 48 ساعة.", es: "Dentro de los 5 días hábiles desde que tenga conocimiento. Para robo, el plazo es de 48 horas." },
-  faq_kw15: { fr: "déclarer, sinistre, délai, jours", en: "report, claim, deadline, days", ar: "إبلاغ, مطالبة, مهلة, أيام", es: "denunciar, siniestro, plazo, días" },
+  faq_kw15: { fr: "déclarer, Accident, délai, jours", en: "report, claim, deadline, days", ar: "إبلاغ, مطالبة, مهلة, أيام", es: "denunciar, siniestro, plazo, días" },
 
-  faq_q16: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
+  faq_q16: { fr: "Comment déclarer un Accident ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
   faq_a16: { fr: "Contactez-nous au +212 5 22 95 39 00 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at +212 5 22 95 39 00 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على +212 5 22 95 39 00 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctenos al +212 5 22 95 39 00 o envíe un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." },
   faq_kw16: { fr: "comment, déclarer, procédure", en: "how, report, procedure", ar: "كيف, إبلاغ, إجراء", es: "cómo, denunciar, procedimiento" },
   faq_q17: { 
@@ -489,7 +489,7 @@ export const translations = {
   faq_kw18: { fr: "proposez, services, offres, produits, assurances", en: "offer, services, products, insurance", ar: "نقدم, خدمات, عروض, منتجات, تأمين", es: "ofrecen, servicios, ofertas, productos, seguros" },
 
   faq_q19: { fr: "Pourquoi passer par un courtier ?", en: "Why use a broker?", ar: "لماذا الاستفادة من وسيط؟", es: "¿Por qué usar un corredor?" },
-  faq_a19: { fr: "Pour comparer les offres de plusieurs compagnies, négocier les meilleurs tarifs, bénéficier d'un accompagnement personnalisé et d'un suivi des sinistres.", en: "To compare offers from several companies, negotiate the best rates, benefit from personalized support and claim follow-up.", ar: "لمقارنة عروض عدة شركات، التفاوض على أفضل الأسعار، الاستفادة من الدعم الشخصي ومتابعة المطالبات.", es: "Para comparar ofertas de varias compañías, negociar las mejores tarifas, beneficiarse de acompañamiento personalizado y seguimiento de siniestros." },
+  faq_a19: { fr: "Pour comparer les offres de plusieurs compagnies, négocier les meilleurs tarifs, bénéficier d'un accompagnement personnalisé et d'un suivi des Accidents.", en: "To compare offers from several companies, negotiate the best rates, benefit from personalized support and claim follow-up.", ar: "لمقارنة عروض عدة شركات، التفاوض على أفضل الأسعار، الاستفادة من الدعم الشخصي ومتابعة المطالبات.", es: "Para comparar ofertas de varias compañías, negociar las mejores tarifas, beneficiarse de acompañamiento personalizado y seguimiento de siniestros." },
   faq_kw19: { fr: "pourquoi, courtier, avantage, intérêt", en: "why, broker, advantage, benefit", ar: "لماذا, وسيط, ميزة, فائدة", es: "por qué, corredor, ventaja, interés" },
 
   faq_q20: { fr: "Quels sont vos horaires ?", en: "What are your hours?", ar: "ما هي ساعات عملكم؟", es: "¿Cuáles son sus horarios?" },
@@ -636,7 +636,7 @@ export const translations = {
 
   ins_pertes_title: { fr: "Pertes", en: "Losses", ar: "الخسارات", es: "Pérdidas" },
   ins_pertes_desc: { fr: "Pertes d'Exploitation", en: "Business Interruption", ar: "خسارات التشغيل", es: "Pérdidas de Explotación" },
-  ins_pertes_details: { fr: "Garantissez la continuité financière en cas de sinistre.", en: "Guarantee financial continuity in case of claim.", ar: "تكفلوا الاستمرارية المالية في حالة الحادث.", es: "Garanticen la continuidad financiera en caso de siniestro." },
+  ins_pertes_details: { fr: "Garantissez la continuité financière en cas de Accident.", en: "Guarantee financial continuity in case of claim.", ar: "تكفلوا الاستمرارية المالية في حالة الحادث.", es: "Garanticen la continuidad financiera en caso de siniestro." },
 
   ins_chantier_title: { fr: "Chantier", en: "Construction", ar: "الموثق", es: "Obra" },
   ins_chantier_desc: { fr: "Tout Risques Chantier", en: "All-Risk Construction", ar: "جميع مخاطر الموثق", es: "Todo Riesgo Obra" },
@@ -675,9 +675,9 @@ export const translations = {
   blog_auto_title: { fr: "Guide complet de l'Assurance Auto au Maroc", en: "Complete Guide to Auto Insurance in Morocco", ar: "دليل شامل للتأمين على السيارات في المغرب", es: "Guía Completa del Seguro de Auto en Marruecos" },
   blog_auto_content_1: { fr: "L'assurance automobile est obligatoire au Maroc pour tous les propriétaires de véhicules à moteur. Elle couvre la responsabilité civile envers les tiers.", en: "Auto insurance is mandatory in Morocco for all motor vehicle owners. It covers civil liability towards third parties.", ar: "التأمين على السيارات إلزامي في المغرب لجميع مالكي المركبات ذات المحركات. يغطي المسؤولية المدنية تجاه الغير.", es: "El seguro de auto es obligatorio en Marruecos para todos los propietarios de vehículos de motor. Cubre la responsabilidad civil hacia terceros." },
   blog_auto_content_2: { fr: "Les garanties principales incluent la RC (responsabilité civile), la garantie tous risques, le vol, l'incendie, et l'assistance dépannage.", en: "The main guarantees include RC (civil liability), all-risk coverage, theft, fire, and breakdown assistance.", ar: "تشمل الضمانات الرئيسية RC (المسؤولية المدنية)، وضمان جميع المخاطر، والسرقة، والحريق، ومساعدة الإصلاح.", es: "Las garantías principales incluyen RC (responsabilidad civil), cobertura todo riesgo, robo, incendio y asistencia en caso de avería." },
-  blog_auto_content_3: { fr: "Le prix varie selon le type de véhicule, l'âge du conducteur, et l'historique de sinistres. Comparez toujours plusieurs devis.", en: "The price varies according to the type of vehicle, the driver's age, and the claims history. Always compare several quotes.", ar: "يختلف السعر حسب نوع المركبة وعمر السائق وتاريخ المطالبات. قارن دائمًا عدة عروض أسعار.", es: "El precio varía según el tipo de vehículo, la edad del conductor y el historial de siniestros. Siempre compare varias cotizaciones." },
+  blog_auto_content_3: { fr: "Le prix varie selon le type de véhicule, l'âge du conducteur, et l'historique de Accidents. Comparez toujours plusieurs devis.", en: "The price varies according to the type of vehicle, the driver's age, and the claims history. Always compare several quotes.", ar: "يختلف السعر حسب نوع المركبة وعمر السائق وتاريخ المطالبات. قارن دائمًا عدة عروض أسعار.", es: "El precio varía según el tipo de vehículo, la edad del conductor y el historial de siniestros. Siempre compare varias cotizaciones." },
   blog_auto_advice_1: { fr: "Vérifiez toujours les exclusions de votre contrat", en: "Always check the exclusions in your contract", ar: "تحقق دائمًا من استثناءات عقدك", es: "Siempre verifique las exclusiones de su contrato" },
-  blog_auto_advice_2: { fr: "Conservez un historique de conduite sans sinistres pour bénéficier de réduction", en: "Keep a claim-free driving record to benefit from discounts", ar: "احتفظ بسجل قيادة بدون مطالبات للاستفادة من الخصومات", es: "Mantenga un historial de conducción sin siniestros para beneficiarse de descuentos" },
+  blog_auto_advice_2: { fr: "Conservez un historique de conduite sans Accidents pour bénéficier de réduction", en: "Keep a claim-free driving record to benefit from discounts", ar: "احتفظ بسجل قيادة بدون مطالبات للاستفادة من الخصومات", es: "Mantenga un historial de conducción sin siniestros para beneficiarse de descuentos" },
   blog_auto_advice_3: { fr: "Ajoutez une garantie conducteur pour une protection complète", en: "Add driver coverage for complete protection", ar: "أضف ضمان السائق للحصول على حماية كاملة", es: "Añada cobertura para conductor para una protección completa" },
 
   blog_sante_title: { fr: "Comprendre l'Assurance Santé au Maroc", en: "Understanding Health Insurance in Morocco", ar: "فهم التأمين الصحي في المغرب", es: "Entendiendo el Seguro de Salud en Marruecos" },
@@ -770,7 +770,7 @@ export const translations = {
   ins_transport_category: { fr: "Transport", en: "Transport", ar: "النقل", es: "Transporte" },
 
   ins_pertes_card_title: { fr: "Pertes d'Exploitation", en: "Business Interruption", ar: "خسائر الاستغلال", es: "Pérdidas de Explotación" },
-  ins_pertes_card_desc: { fr: "Garantissez la continuité financière en cas de sinistre.", en: "Guarantee financial continuity in case of claim.", ar: "ضمان الاستمرارية المالية في حالة المطالبة.", es: "Garantice la continuidad financiera en caso de siniestro." },
+  ins_pertes_card_desc: { fr: "Garantissez la continuité financière en cas de Accident.", en: "Guarantee financial continuity in case of claim.", ar: "ضمان الاستمرارية المالية في حالة المطالبة.", es: "Garantice la continuidad financiera en caso de siniestro." },
   ins_pertes_category: { fr: "Pertes", en: "Losses", ar: "الخسائر", es: "Pérdidas" },
 
   ins_chantier_card_title: { fr: "Tout Risques Chantier", en: "All-Risk Construction", ar: "جميع مخاطر الورش", es: "Todo Riesgo Obra" },
@@ -803,15 +803,15 @@ export const translations = {
   chat_suggestion_auto_1: { fr: "Quelles sont les garanties auto ?", en: "What are auto coverage options?", ar: "ما هي تغطيات السيارات؟", es: "¿Cuáles son las coberturas de auto?" },
   chat_suggestion_auto_2: { fr: "Combien coûte l'assurance auto ?", en: "How much does auto insurance cost?", ar: "كم تكلفة التأمين على السيارات؟", es: "¿Cuánto cuesta el seguro de auto?" },
   chat_suggestion_auto_3: { fr: "Comment assurer ma flotte ?", en: "How to insure my fleet?", ar: "كيفية تأمين أسطولي؟", es: "¿Cómo asegurar mi flota?" },
-  chat_suggestion_auto_4: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
+  chat_suggestion_auto_4: { fr: "Comment déclarer un Accident ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
   chat_suggestion_health_1: { fr: "Comment fonctionne l'assurance santé ?", en: "How does health insurance work?", ar: "كيف يعمل التأمين الصحي؟", es: "¿Cómo funciona el seguro de salud?" },
   chat_suggestion_health_2: { fr: "Proposez-vous une assurance santé groupe ?", en: "Do you offer group health insurance?", ar: "هل تقدمون تأمين صحي جماعي؟", es: "¿Ofrecen seguro de salud grupal?" },
   chat_suggestion_health_3: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" },
   chat_suggestion_business_1: { fr: "Assurances pour les entreprises ?", en: "Insurance for businesses?", ar: "تأمين للشركات؟", es: "¿Seguros para empresas?" },
   chat_suggestion_business_2: { fr: "Assurance cyber risques ?", en: "Cyber risk insurance?", ar: "تأمين مخاطر الإنترنت؟", es: "¿Seguro de riesgos cibernéticos?" },
   chat_suggestion_business_3: { fr: "Assurance accidents de travail ?", en: "Work accident insurance?", ar: "تأمين حوادث العمل؟", es: "¿Seguro de accidentes laborales?" },
-  chat_suggestion_claim_1: { fr: "Quand déclarer un sinistre ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" },
-  chat_suggestion_claim_2: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
+  chat_suggestion_claim_1: { fr: "Quand déclarer un Accident ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" },
+  chat_suggestion_claim_2: { fr: "Comment déclarer un Accident ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" },
   chat_suggestion_claim_3: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي франшиза؟", es: "¿Qué es un deducible?" },
   chat_suggestion_new_1: { fr: "Assurance trottinette électrique ?", en: "Electric scooter insurance?", ar: "تأمين السكوتر الكهربائي؟", es: "¿Seguro de patinete eléctrico?" },
   chat_suggestion_new_2: { fr: "Assurance animaux de compagnie ?", en: "Pet insurance?", ar: "تأمين الحيوانات الأليفة؟", es: "¿Seguro de mascotas?" },
@@ -823,7 +823,7 @@ export const translations = {
   // Cookie Consent
   cookie_title: { fr: "Confidentialité et Cookies", en: "Privacy and Cookies", ar: "الخصوصية وملفات تعريف الارتباط", es: "Privacidad y Cookies" },
   cookie_description: {
-    fr: "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le contenu. En cliquant sur « Accepter », vous consentez à l'utilisation de cookies à des fins de statistiques et d'amélioration de notre site. Notre site web est actuellement en cours d'homologation auprès de la CNDP.",
+    fr: "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser le contenu. En cliquant sur « Accepter », vous consentez à l'utilisation de cookies à des fins de statistiques, de performance et d'amélioration de notre site.",
     en: "We use cookies to enhance your experience, analyze traffic, and personalize content. By clicking « Accept », you consent to the use of cookies for statistics and site improvement purposes. Our website is currently undergoing approval by the CNDP.",
     ar: "نستخدم ملفات تعريف الارتباط لتحسين تجربتك، وتحليل حركة المرور، وتخصيص المحتوى. بالنقر على « قبول»، فإنك توافق على استخدام ملفات تعريف الارتباط لأغراض إحصائية وتحسين موقعنا. موقعنا الإلكتروني يخضع حاليًا لعملية homologation لدى CNDP.",
     es: "Utilizamos cookies para mejorar su experiencia, analizar el tráfico y personalizar el contenido. Al hacer clic en « Aceptar », usted consiente el uso de cookies para fines estadísticos y de mejora de nuestro sitio. Nuestro sitio web está actualmente en proceso de homologación ante la CNDP."
@@ -836,6 +836,22 @@ export const translations = {
   },
   cookie_accept: { fr: "Accepter", en: "Accept", ar: "قبول", es: "Aceptar" },
   cookie_reject: { fr: "Refuser", en: "Reject", ar: "رفض", es: "Rechazar" },
+
+  // Cookie Consent - Extended
+  cookie_continue_without: { fr: "Continuer sans accepter", en: "Continue without accepting", ar: "المتابعة بدون قبول", es: "Continuar sin aceptar" },
+  cookie_settings: { fr: "Paramétrer", en: "Settings", ar: "الإعدادات", es: "Configurar" },
+  cookie_modal_title: { fr: "Centre de préférences", en: "Preference Center", ar: "مركز التفضيلات", es: "Centro de Preferencias" },
+  cookie_essential: { fr: "Essentiels (obligatoires)", en: "Essential (required)", ar: "أساسية (إلزامية)", es: "Esenciales (obligatorios)" },
+  cookie_stats: { fr: "Statistiques", en: "Analytics", ar: "الإحصائيات", es: "Estadísticas" },
+  cookie_personalization: { fr: "Personnalisation", en: "Personalization", ar: "التخصيص", es: "Personalización" },
+  cookie_security: { fr: "Sécurité et amélioration", en: "Security & improvement", ar: "الأمان وتحسين الخدمة", es: "Seguridad y mejora" },
+  cookie_save: { fr: "Enregistrer", en: "Save", ar: "حفظ", es: "Guardar" },
+  cookie_all_accept: { fr: "Tout accepter", en: "Accept all", ar: "قبول الكل", es: "Aceptar todo" },
+  cookie_all_reject: { fr: "Tout refuser", en: "Reject all", ar: "رفض الكل", es: "Rechazar todo" },
+  cookie_essential_desc: { fr: "Nécessaires au fonctionnement du site", en: "Necessary for the website to function", ar: "ضرورية لعمل الموقع", es: "Necesarias para el funcionamiento del sitio" },
+  cookie_stats_desc: { fr: "Nous aident à améliorer nos performances", en: "Help us improve our performance", ar: "تساعدنا على تحسين أدائنا", es: "Nos ayudan a mejorar nuestro rendimiento" },
+  cookie_personalization_desc: { fr: "Adaptent le contenu à vos préférences", en: "Adapt content to your preferences", ar: "تكيف المحتوى مع تفضيلاتك", es: "Adaptan el contenido a tus preferencias" },
+  cookie_security_desc: { fr: "Protègent et améliorent nos services", en: "Protect and improve our services", ar: "تحمي وتحسن خدماتنا", es: "Protegen y mejoran nuestros servicios" },
 } as const;
 
 export type TranslationKey = keyof typeof translations;
