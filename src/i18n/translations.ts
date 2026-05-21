@@ -241,15 +241,16 @@ export const translations = {
   contact_privacy_accept: { fr: "J'ai lu et j'accepte la politique de confidentialité", en: "I have read and accept the privacy policy", ar: "لقد قرأت وقبلت سياسة الخصوصية", es: "He leído y acepto la política de privacidad" },
   contact_privacy_link: { fr: "Politique de confidentialité", en: "Privacy Policy", ar: "سياسة الخصوصية", es: "Política de Privacidad" },
   contact_privacy_error: { fr: "Vous devez accepter la politique de confidentialité pour envoyer votre demande.", en: "You must accept the privacy policy to send your request.", ar: "يجب عليك قبول سياسة الخصوصية لإرسال طلبك.", es: "Debe aceptar la política de privacidad para enviar su solicitud." },
-  // Departments WhatsApp Section
-  contact_departments_title: { fr: "Nos Départements & Contacts WhatsApp", en: "Our Departments & WhatsApp Contacts", ar: "أقسامنا واتصالات WhatsApp", es: "Nuestros Departamentos y Contactos de WhatsApp" },
-  contact_departments_desc: { fr: "Sélectionnez votre type d'assurance et contactez directement le département responsable", en: "Select your insurance type and contact the responsible department directly", ar: "اختر نوع التأمين الخاص بك وتواصل مباشرة مع القسم المسؤول", es: "Seleccione su tipo de seguro y contacte directamente al departamento responsable" },
+  contact_marketing_accept: { fr: "Je souhaite être informé(e) en avant-première des meilleures offres de CPA.", en: "I would like to be informed in advance of CPA's best offers.", ar: "أود أن أُبلَّغ مسبقاً بأفضل عروض CPA.", es: "Deseo ser informado/a de antemano de las mejores ofertas de CPA." },
+   // Departments WhatsApp Section
+   contact_departments_title: { fr: "Nos Départements & Contacts", en: "Our Departments & Contacts", ar: "أقسامنا واتصالات", es: "Nuestros Departamentos y Contactos" },
+   contact_departments_desc: { fr: "Sélectionnez votre type d'assurance et contactez directement le département responsable", en: "Select your insurance type and contact the responsible department directly", ar: "اختر نوع التأمين الخاص بك وتواصل مباشرة مع القسم المسؤول", es: "Seleccione su tipo de seguro y contacte directamente al departamento responsable" },
   dept_insurance_types: { fr: "type d'assurance", en: "insurance type", ar: "نوع التأمين", es: "tipo de seguro" },
   dept_insurance_types_plural: { fr: "types d'assurance", en: "insurance types", ar: "أنواع التأمين", es: "tipos de seguro" },
   dept_automobile: { fr: "Automobile", en: "Automobile ", ar: "  السيارات", es: "Automóviles" },
    dept_Accident_at: { fr: "Accident AT", en: "Work Accident Claims ", ar: "  مطالبات حوادث العمل", es: "  Siniestros de Trabajo" },
    dept_Accident_maladie: { fr: " Accident Maladie", en: "Health Claims", ar: "   مطالبات الأمراض", es: " Siniestros de Salud" },
-   dept_Accident_auto_risque_divers: { fr: " Accident Auto & Risque Divers", en: "Auto Claims & Miscellaneous Risks ", ar: " مطالبات السيارات والمخاطر المتنوعة", es: "Siniestros de Auto y Riesgos Diversos" },
+   dept_Accident_auto_risque_divers: { fr: " Accident Auto ", en: "Auto Claims", ar: " مطالبات السيارات ", es: "Siniestros de Auto " },
    dept_production_divers: { fr: "Production Risques Divers", en: "Production Miscellaneous Risks ", ar: " الإنتاج المخاطر المتنوعة", es: "Producción y Riesgos Diversos" },
   // Insurance type options
   ins_auto: { fr: "Assurance Auto", en: "Auto Insurance", ar: "تأمين السيارات", es: "Seguro de Auto" },

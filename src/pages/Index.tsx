@@ -4,6 +4,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import DepartmentsContactsSection from "@/components/DepartmentsContactsSection";
 import ValuesSection from "@/components/ValuesSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 // TeamSection removed - domains moved to ExpertiseSection marquee
@@ -31,13 +32,14 @@ const Index = () => {
            animate={{ opacity: 1 }}
            transition={{ duration: 0.5 }}
          >
-           <Navbar />
-           <HeroSection />
-           <AboutSection />
-           <ValuesSection />
-           <ExpertiseSection />
-           {/* TeamSection removed - domains in ExpertiseSection */}
-            <KeyFiguresSection />
+            <Navbar />
+            <HeroSection />
+            <AboutSection />
+            <DepartmentsContactsSection />
+            <ValuesSection />
+            <ExpertiseSection />
+            {/* TeamSection removed - domains in ExpertiseSection */}
+             <KeyFiguresSection />
             <ExpansionSection />
            <NewInsuranceSection />
            <PartnersSection />

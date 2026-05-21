@@ -140,6 +140,7 @@ const ContactSection = () => {
   });
 
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [marketingAccepted, setMarketingAccepted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -358,38 +359,52 @@ ${formData.message}`;
             </h3>
 
             <div className="grid sm:grid-cols-2 gap-4 md:gap-5 mb-4 md:mb-5">
-              <input
-                type="text"
-                required
-                placeholder={t("contact_name_ph")}
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    name: e.target.value,
-                  })
-                }
-                className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none text-sm md:text-base"
-              />
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1.5">
+                  {t("contact_name_ph")} <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder={t("contact_name_ph")}
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none text-sm md:text-base"
+                />
+              </div>
 
-              <input
-                type="email"
-                required
-                placeholder={t("contact_email_ph")}
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    email: e.target.value,
-                  })
-                }
-                className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none text-sm md:text-base"
-              />
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1.5">
+                  {t("contact_email_ph")} <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder={t("contact_email_ph")}
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      email: e.target.value,
+                    })
+                  }
+                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none text-sm md:text-base"
+                />
+              </div>
             </div>
 
             <div className="mb-4 md:mb-5">
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                {t("contact_phone")} <span className="text-red-500">*</span>
+              </label>
               <input
                 type="tel"
+                required
                 placeholder={t("contact_phone_ph")}
                 value={formData.phone}
                 onChange={(e) =>
@@ -403,6 +418,9 @@ ${formData.message}`;
             </div>
 
             <div className="mb-4 md:mb-5">
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                {t("contact_insurance_select")}
+              </label>
               <select
                 value={formData.insuranceType}
                 onChange={(e) =>
@@ -422,9 +440,11 @@ ${formData.message}`;
             </div>
 
             <div className="mb-5 md:mb-6">
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                {t("contact_message_ph")}
+              </label>
               <textarea
                 rows={4}
-                required
                 placeholder={t("contact_message_ph")}
                 value={formData.message}
                 onChange={(e) =>
@@ -437,8 +457,23 @@ ${formData.message}`;
               />
             </div>
 
+            {/* Marketing opt-in */}
+            <div className="mb-4 md:mb-5">
+              <label className="flex items-start gap-2 md:gap-3">
+                <input
+                  type="checkbox"
+                  checked={marketingAccepted}
+                  onChange={(e) => setMarketingAccepted(e.target.checked)}
+                  className="mt-0.5 w-4 h-4 md:w-5 md:h-5 flex-shrink-0"
+                />
+                <span className="text-xs md:text-sm text-muted-foreground">
+                  {t("contact_marketing_accept")}
+                </span>
+              </label>
+            </div>
+
             {/* Privacy */}
-            <div className="mb-6 md:mb-8">
+            <div className="mb-4 md:mb-5">
               <label className="flex items-start gap-2 md:gap-3">
                 <input
                   type="checkbox"
@@ -460,6 +495,10 @@ ${formData.message}`;
               </label>
             </div>
 
+            <p className="text-xs text-muted-foreground mb-4">
+              * Champs obligatoires
+            </p>
+
             {/* Submit */}
             <motion.button
               type="submit"
@@ -473,133 +512,7 @@ ${formData.message}`;
           </motion.form>
         </div>
 
-        {/* Departments Cards - Version cliquable direct WhatsApp et téléphone */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-7xl mx-auto mt-16 md:mt-24"
-        >
-          <div className="text-center mb-10 md:mb-14">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-foreground mb-3 md:mb-4 px-4">
-              {t("contact_departments_title")}
-            </h3>
 
-            <p className="text-muted-foreground text-base md:text-lg px-4">
-              {t("contact_departments_desc")}
-            </p>
-          </div>
-
-          {/* Carousel avec cartes cliquables */}
-          <div className="relative">
-            {/* Boutons de navigation */}
-            <button
-              onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all disabled:opacity-50"
-              disabled={currentSlide === 0}
-            >
-              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-            </button>
-            
-            <button
-              onClick={() => setCurrentSlide(Math.min(departments.length - 3, currentSlide + 1))}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all disabled:opacity-50"
-              disabled={currentSlide >= departments.length - 3}
-            >
-              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-            </button>
-
-             {/* Container du carousel */}
-             <div className="overflow-hidden mx-8 md:mx-10">
-               <motion.div
-                 className={`flex ${isMobile ? "flex-col" : "row"} gap-4 md:gap-6`}
-                 animate={{ x: isMobile ? `0` : `-${currentSlide * (100 / 3)}%` }}
-                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-               >
-                {departments.map((dept, index) => {
-                  const Icon = dept.icon;
-
-                       return (
-                     <motion.div
-                       key={dept.id}
-                       initial={{ opacity: 0, y: 20 }}
-                       whileInView={{ opacity: 1, y: 0 }}
-                       viewport={{ once: true }}
-                       transition={{ delay: index * 0.05 }}
-                       className="cursor-pointer group"
-                       style={{ flex: isMobile ? "0 0 100%" : "0 0 calc(33.333% - 16px)" }}
-                     >
-                        {/* Version Desktop et Mobile - Carte simple avec boutons cliquables */}
-                        <div 
-                          className="bg-card rounded-2xl border border-border/50 shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                        >
-                          <div className={`h-1.5 bg-gradient-to-r ${dept.color}`} />
-                          <div className="p-6">
-                            <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${dept.color} flex items-center justify-center shadow-md mx-auto mb-4`}>
-                              <Icon className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground mb-3">
-                              {t(dept.nameKey)}
-                            </h3>
-                            
-                            {/* Boutons d'action */}
-                            <div className="space-y-4">
-                              {/* Numéro direct (téléphone) */}
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  makePhoneCall(dept.fixFull);
-                                }}
-                                className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-all cursor-pointer"
-                              >
-                                <div className="flex items-center gap-2">
-                                  <Phone className="w-4 h-4 text-primary" />
-                                  <span className="text-xs font-medium text-muted-foreground">DIRECT</span>
-                                </div>
-                                <span className="text-sm font-semibold text-foreground">
-                                  {dept.fix}
-                                </span>
-                              </button>
-
-                              {/* WhatsApp */}
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  sendToWhatsApp(dept.whatsappFull, dept.customMessage || `Bonjour CPA, je souhaite obtenir plus d'informations. Je suis intéressé(e) par : ${t(dept.nameKey)}`);
-                                }}
-                                className="w-full flex items-center justify-between gap-3 p-3 rounded-xl bg-green-50 hover:bg-green-100 transition-all cursor-pointer"
-                              >
-                                <div className="flex items-center gap-2">
-                                  <MessageCircle className="w-4 h-4 text-green-600" />
-                                  <span className="text-xs font-medium text-green-700">WHATSAPP</span>
-                                </div>
-                                <span className="text-sm font-semibold text-green-700">
-                                  {dept.whatsapp}
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </div>
-
-            {/* Indicateurs de pagination */}
-            <div className="flex justify-center gap-2 mt-8">
-              {Array.from({ length: Math.ceil(departments.length / 3) }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSlide(i * 3)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentSlide / 3) === i ? "bg-primary w-8" : "bg-muted w-2"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

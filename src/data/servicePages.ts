@@ -31,7 +31,7 @@ export const particuliersPages: ServicePageData[] = [
       es: ["Responsabilidad civil obligatoria", "Cobertura todo riesgo", "Asistencia 24/7", "Protección del conductor", "Robo e incendio", "Rotura de cristales", "Vehículo de sustitución", "Protección jurídica" , "Daños por colisión"],
     },
     details: {
-      fr: "Notre assurance véhicules couvre l'ensemble de vos besoins en matière de mobilité. Que vous conduisiez une voiture, une moto ou un utilitaire, nous vous proposons des formules adaptées avec les meilleures garanties du marché. Bénéficiez d'une assistance dépannage disponible 24h/24, d'une indemnisation rapide en cas de Accident et d'un accompagnement personnalisé tout au long de la vie de votre contrat.",
+      fr: "Notre assurance véhicules couvre l'ensemble de vos besoins en matière de mobilité. Que vous conduisiez une voiture, une moto ou un utilitaire, nous vous proposons des formules adaptées avec les meilleures garanties du marché. Bénéficiez d'une assistance dépannage disponible 24h/24, d'une indemnisation rapide en cas de sinistre et d'un accompagnement personnalisé tout au long de la vie de votre contrat.",
       en: "Our vehicle insurance covers all your mobility needs. Whether you drive a car, motorcycle or van, we offer adapted formulas with the best guarantees on the market. Benefit from 24/7 breakdown assistance, fast claims settlement and personalized support throughout your contract.",
       ar: "يغطي تأمين المركبات لدينا جميع احتياجاتك في مجال التنقل. سواء كنت تقود سيارة أو دراجة نارية أو شاحنة، نقدم لك صيغاً مناسبة مع أفضل الضمانات في السوق.",
       es: "Nuestro seguro de vehículos cubre todas sus necesidades de movilidad. Ya conduzca un coche, moto o furgoneta, le ofrecemos fórmulas adaptadas con las mejores garantías del mercado.",
@@ -81,7 +81,7 @@ export const particuliersPages: ServicePageData[] = [
       es: ["Incendio y explosión", "Daños por agua", "Robo y vandalismo", "Rotura de cristales", "Catástrofes naturales", "RC vida privada", "Protección jurídica", "Daños eléctricos"],
     },
     details: {
-      fr: "Notre assurance multirisques habitation vous offre une protection globale pour votre résidence principale ou secondaire. Que vous soyez propriétaire ou locataire, nos garanties couvrent les dommages à vos biens, votre responsabilité civile et vous assurent une assistance en cas de Accident.",
+      fr: "Notre assurance multirisques habitation vous offre une protection globale pour votre résidence principale ou secondaire. Que vous soyez propriétaire ou locataire, nos garanties couvrent les dommages à vos biens, votre responsabilité civile et vous assurent une assistance en cas de sinistre.",
       en: "Our home multi-risk insurance offers global protection for your primary or secondary residence. Whether you are an owner or tenant, our guarantees cover damage to your property and your liability.",
       ar: "يوفر لك تأمين المنزل متعدد المخاطر حماية شاملة لمسكنك الرئيسي أو الثانوي.",
       es: "Nuestro seguro multirriesgo hogar le ofrece una protección global para su residencia principal o secundaria.",
@@ -303,7 +303,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: "Gestione y proteja toda su flota de vehículos con soluciones a medida.",
     },
     features: {
-      fr: ["Gestion de flotte centralisée", "RC obligatoire", "Tous risques flotte", "Assistance 24h/24", "Gestion des Accidents", "Véhicules de remplacement", "Tarification dégressive", "Reporting et suivi"],
+      fr: ["Gestion de flotte centralisée", "RC obligatoire", "Tous risques flotte", "Assistance 24h/24", "Gestion des sinistres", "Véhicules de remplacement", "Tarification dégressive", "Reporting et suivi"],
       en: ["Centralized fleet management", "Mandatory liability", "All-risk fleet", "24/7 assistance", "Claims management", "Replacement vehicles", "Degressive pricing", "Reporting and tracking"],
       ar: ["إدارة أسطول مركزية", "مسؤولية مدنية إلزامية", "جميع مخاطر الأسطول", "مساعدة على مدار الساعة", "إدارة المطالبات", "مركبات بديلة", "تسعير تنازلي", "تقارير ومتابعة"],
       es: ["Gestión de flota centralizada", "RC obligatoria", "Todo riesgo flota", "Asistencia 24/7", "Gestión de siniestros", "Vehículos de sustitución", "Tarificación degresiva", "Reporting y seguimiento"],
@@ -359,7 +359,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: ["Incendio y explosión", "Daños por agua", "Catástrofes naturales", "Disturbios", "Derrumbe", "Impacto de vehículos", "Tempestad y granizo", "Vandalismo"],
     },
     details: {
-      fr: "Notre assurance dommage aux biens protège vos locaux, équipements et stocks contre les Accidents majeurs. Une indemnisation rapide pour assurer la continuité de votre activité.",
+      fr: "Notre assurance dommage aux biens protège vos locaux, équipements et stocks contre les sinistres majeurs. Une indemnisation rapide pour assurer la continuité de votre activité.",
       en: "Our property damage insurance protects your premises, equipment and stock against major claims.",
       ar: "يحمي تأمين أضرار الممتلكات مبانيك ومعداتك ومخزوناتك ضد الحوادث الكبرى.",
       es: "Nuestro seguro de daños a bienes protege sus locales, equipos y stocks contra siniestros importantes.",
@@ -372,7 +372,7 @@ export const entreprisesPages: ServicePageData[] = [
     icon: AlertTriangle,
     title: { fr: "Pertes d'Exploitation", en: "Business Interruption", ar: "خسائر التشغيل", es: "Pérdidas de Explotación" },
     description: {
-      fr: "Garantissez la continuité financière de votre entreprise en cas de Accident.",
+      fr: "Garantissez la continuité financière de votre entreprise en cas de sinistre.",
       en: "Ensure the financial continuity of your business in case of a claim.",
       ar: "اضمن الاستمرارية المالية لشركتك في حالة حادث.",
       es: "Garantice la continuidad financiera de su empresa en caso de siniestro.",
@@ -384,7 +384,7 @@ export const entreprisesPages: ServicePageData[] = [
       es: ["Margen bruto garantizado", "Gastos adicionales de explotación", "Período de indemnización modulable", "Carencia modulable", "Pérdidas por incendio", "Pérdidas por rotura de maquinaria", "Pérdida de alquileres", "Gastos de traslado provisional"],
     },
     details: {
-      fr: "L'assurance pertes d'exploitation compense la perte de marge brute et les frais supplémentaires engagés pour maintenir votre activité suite à un Accident garanti. Elle est le complément indispensable de votre assurance dommages aux biens.",
+      fr: "L'assurance pertes d'exploitation compense la perte de marge brute et les frais supplémentaires engagés pour maintenir votre activité suite à un sinistre garanti. Elle est le complément indispensable de votre assurance dommages aux biens.",
       en: "Business interruption insurance compensates for the loss of gross margin and additional costs incurred to maintain your activity following a covered claim.",
       ar: "يعوض تأمين خسائر التشغيل فقدان الهامش الإجمالي والتكاليف الإضافية للحفاظ على نشاطك بعد حادث مغطى.",
       es: "El seguro de pérdidas de explotación compensa la pérdida de margen bruto y los gastos adicionales para mantener su actividad tras un siniestro.",
