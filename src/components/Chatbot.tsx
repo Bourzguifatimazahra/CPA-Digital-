@@ -4,7 +4,6 @@ import { MessageCircle, X, Send, Bot, User, MessageSquare } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
 import chatbotGif from "@/assets/chatbot.gif";
-import { Checkbox } from "@/components/ui/checkbox";
 
 const WHATSAPP_NUMBER = "212667558436";
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
@@ -425,8 +424,6 @@ interface ChatbotProps {
 const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [hasAccepted, setHasAccepted] = useState(false);
-  const [hasReadAndAccepted, setHasReadAndAccepted] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([
@@ -440,25 +437,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Handle privacy consent
-  const handleAccept = () => {
-    if (!hasReadAndAccepted) return;
-    setHasAccepted(true);
-    setHasReadAndAccepted(false);
-    setMessages([
-      { role: "bot", text: t("chat_greeting") },
-      { role: "bot", text: t("chat_enterprise_protection") },
-    ]);
-  };
-
-  const handleRefuse = () => {
-    setHasAccepted(false);
-    setHasReadAndAccepted(false);
-    setMessages([
-      { role: "bot", text: t("chat_privacy_refused") || "Vous devez accepter la politique de confidentialité pour utiliser le chatbot." },
-    ]);
-  };
-  
   // Get page-specific ads or fallback to home ads
   const ads = pageSpecificAds[pageContext] || pageSpecificAds.home;
 
@@ -663,9 +641,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       <motion.button
         onClick={() => {
           setIsOpen(true);
-          if (!hasAccepted) {
-            setHasReadAndAccepted(false);
-          }
         }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cpa-gradient-bg text-primary-foreground flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"
         whileHover={{ scale: 1.1 }}
@@ -715,93 +690,20 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 </motion.div>
               ))}
               
-              {/* Privacy Consent Form - Show only when not accepted yet */}
-              {!hasAccepted && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="space-y-3 pt-2"
-                >
-                  {/* Privacy message box */}
-                  <div className="bg-muted/50 rounded-lg p-3 text-xs leading-relaxed text-foreground/80 border border-border">
-                    <p className="font-semibold mb-1.5">
-                      {t("chat_privacy_welcome")}
-                    </p>
-                    <p className="mb-1.5">
-                      {t("chat_privacy_cookies")}
-                    </p>
-                    <p className="font-semibold mb-1">{t("chat_purposes_title")}</p>
-                    <ul className="list-disc list-inside space-y-0.5 mb-1.5">
-                      <li>{t("chat_purpose_1")}</li>
-                      <li>{t("chat_purpose_2")}</li>
-                      <li>{t("chat_purpose_3")}</li>
-                      <li>{t("chat_purpose_4")}</li>
-                    </ul>
-                    <p className="text-xs mb-1.5">
-                      {t("chat_privacy_law")}
-                    </p>
-                    <p className="text-xs mb-1.5">
-                      {t("chat_privacy_consent_text")}
-                    </p>
-                    <div className="flex gap-3 text-xs">
-                      <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        {t("chat_privacy_policy")}
-                      </a>
-                      <span>•</span>
-                      <a href="/mentions-legales" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                         {t("chat_legal_notice")}
-                       </a>
-                    </div>
-                  </div>
-
-                  {/* Checkbox consent */}
-                  <div className="flex items-start gap-2.5">
-                    <Checkbox
-                      id="privacy-consent"
-                      checked={hasReadAndAccepted}
-                      onCheckedChange={(checked) => setHasReadAndAccepted(checked === true)}
-                      className="mt-0.5"
-                    />
-                    <label htmlFor="privacy-consent" className="text-xs leading-tight cursor-pointer">
-                      {t("chat_consent_checkbox")}
-                    </label>
-                  </div>
-
-                  {/* Action buttons */}
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleAccept}
-                      disabled={!hasReadAndAccepted}
-                      className="flex-1 px-4 py-2 cpa-gradient-bg text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {t("chat_accept")}
-                    </button>
-                    <button
-                      onClick={handleRefuse}
-                      className="flex-1 px-4 py-2 bg-muted text-foreground rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors"
-                    >
-                      {t("chat_refuse")}
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-              
-              {/* Suggestions - Show only after acceptance */}
-              {hasAccepted && (
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="flex flex-wrap gap-2 pt-2"
-                >
-                  {currentSuggestions.map((s) => (
-                    <button key={s} onClick={() => handleSend(s)}
-                      className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-secondary transition-colors">
-                      {s}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
+              {/* Suggestions */}
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex flex-wrap gap-2 pt-2"
+              >
+                {currentSuggestions.map((s) => (
+                  <button key={s} onClick={() => handleSend(s)}
+                    className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-secondary transition-colors">
+                    {s}
+                  </button>
+                ))}
+              </motion.div>
               <div ref={messagesEndRef} />
             </div>
           </motion.div>

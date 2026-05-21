@@ -313,28 +313,6 @@ export const translations = {
    ar: "ليس لدي إجابة على هذا السؤال. لا تتردد في الاتصال بنا على +212 5 22 95 39 00.",
    es: "No tengo la respuesta a esa pregunta. Contáctenos al +212 5 22 95 39 00.",
  },
- chat_privacy_refused: {
-   fr: "Vous devez accepter la politique de confidentialité pour utiliser le chatbot.",
-   en: "You must accept the privacy policy to use the chatbot.",
-   ar: "يجب عليك قبول سياسة الخصوصية لاستخدام المساعد الافتراضي.",
-   es: "Debe aceptar la política de privacidad para usar el chatbot.",
- },
-  chat_accept: { fr: "Accepter", en: "Accept", ar: "قبول", es: "Aceptar" },
-  chat_refuse: { fr: "Refuser", en: "Refuse", ar: "رفض", es: "Rechazar" },
-  // Chatbot privacy consent
-  chat_purposes_title: { fr: "Objectifs :", en: "Purposes:", ar: "الأهداف:", es: "Objetivos:" },
-  chat_purpose_1: { fr: "Répondre à vos demandes", en: "Respond to requests", ar: "الرد على الطلبات", es: "Responder solicitudes" },
-  chat_purpose_2: { fr: "Améliorer la qualité du service", en: "Improve service quality", ar: "تحسين جودة الخدمة", es: "Mejorar la calidad del servicio" },
-  chat_purpose_3: { fr: "Vous recontacter si nécessaire", en: "Contact you if needed", ar: "التواصل عند الحاجة", es: "Contactarte si es necesario" },
-  chat_purpose_4: { fr: "Sécuriser les échanges", en: "Secure interactions", ar: "تأمين التبادلات", es: "Seguridad de los intercambios" },
-  chat_privacy_policy: { fr: "Politique de confidentialité", en: "Privacy policy", ar: "سياسة الخصوصية", es: "Política de privacidad" },
-  chat_legal_notice: { fr: "Mentions légales", en: "Legal notice", ar: "الإشعارات القانونية", es: "Aviso legal" },
-  chat_consent_checkbox: { fr: "J'ai lu et j'accepte les conditions", en: "I have read and accept the terms", ar: "لقد قرأت وأقبل الشروط", es: "He leído y acepto los términos" },
-  chat_privacy_welcome: { fr: "Bienvenue sur l'assistant CPA.", en: "Welcome to the CPA Assistant.", ar: "مرحباً بكم في مساعد CPA.", es: "Bienvenido al Asistente CPA." },
-  chat_privacy_cookies: { fr: "CPA utilise des cookies et peut traiter des données techniques et personnelles pour améliorer le service et garantir le bon fonctionnement du chatbot. Notre site web est actuellement en cours d'homologation auprès de la CNDP.", en: "CPA uses cookies and may process technical and personal data to improve the service and ensure proper chatbot functionality. Our website is currently undergoing approval by the CNDP.", ar: "يستخدم CPA ملفات تعريف الارتباط وقد تتم معالجة بيانات تقنية وشخصية لتحسين الخدمة وضمان عمل المساعد بشكل صحيح. موقعنا الإلكتروني يخضع حاليًا لعملية homologation لدى CNDP.", es: "CPA utiliza cookies y puede procesar datos técnicos y personales para mejorar el servicio y garantizar el correcto funcionamiento del chatbot. Nuestro sitio web está actualmente en proceso de homologación ante la CNDP." },
-  chat_privacy_law: { fr: "Conformément à la Loi n°09-08 (CNDP), vous disposez des droits : accès, rectification, opposition et suppression de vos données.", en: "Under Law No. 09-08, you have the right to access, rectify, object to, and delete your data.", ar: "وفقاً للقانون 09-08، لديك حق الوصول والتصحيح والاعتراض وحذف بياناتك.", es: "Según la Ley 09-08, tienes derecho a acceder, rectificar, oponerte y eliminar tus datos." },
-  chat_privacy_consent_text: { fr: "En acceptant, vous consentez à l'utilisation de cookies et au traitement de vos données personnelles pour la conversation. Notre site web est actuellement en cours d'homologation auprès de la CNDP.", en: "By accepting, you consent to the use of cookies and the processing of your personal data for the conversation. Our website is currently undergoing approval by the CNDP.", ar: "بقبولك، توافق على استخدام ملفات تعريف الارتباط ومعالجة بياناتك الشخصية للمحادثة. موقعنا الإلكتروني يخضع حاليًا لعملية homologation لدى CNDP.", es: "Al aceptar, consiente el uso de cookies y el tratamiento de sus datos personales para la conversación. Nuestro sitio web está actualmente en proceso de homologación ante la CNDP." },
-
   // New Insurance
   new_insurance_badge: { fr: "Nouveautés", en: "New Products", ar: "منتجات جديدة", es: "Novedades" },
   new_insurance_title: { fr: "Assurances Disponibles", en: "Available Insurance", ar: "التأمينات المتاحة", es: "Seguros Disponibles" },
