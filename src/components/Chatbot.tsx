@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, MessageSquare } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
 import chatbotGif from "@/assets/chatbot.gif";
@@ -94,25 +94,25 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
   sante: [
     { icon: "🏥", title: "Remboursement", titleEn: "Reimbursement", titleAr: "تعويض", titleEs: "Reembolso", text: "Frais médicaux", textEn: "Medical expenses", textAr: "نفقات طبية", textEs: "Gastos médicos" },
     { icon: "🦷", title: "Dentaire & Optique", titleEn: "Dental & Optical", titleAr: "أسنان وبصريات", titleEs: "Dental y Óptica", text: "Inclus", textEn: "Included", textAr: "مشمول", textEs: "Incluido" },
-    { icon: "👨‍👩‍👧‍👦", title: "Famille", titleEn: "Family", titleAr: "عائلة", titleEs: "Familia", text: "Covers all", textEn: "Covers all", textAr: "تغطي الجميع", textEs: "Cubre a todos" },
-    { icon: "🏢", title: "Groupe Entreprise", titleEn: "Group Business", titleAr: "مجموعة شركات", titleEs: "Grupo Empresa", text: "Tarifs preferentiels", textEn: "Preferential rates", textAr: "أسعار تفضيلية", textEs: "Tarifas preferenciales" },
-    { icon: "💊", title: "Pharmacie", titleEn: "Pharmacy", titleAr: "صيدلية", titleEs: "Farmacia", text: "Remboursement med", textEn: "Reimbursement med", textAr: "تعويض طبي", textEs: "Reembolso médico" },
+    { icon: "👨‍👩‍👧‍👦", title: "Famille", titleEn: "Family", titleAr: "عائلة", titleEs: "Familia", text: "Couvre toute votre famille", textEn: "Covers your whole family", textAr: "يغطي عائلتك بأكملها", textEs: "Cubre a toda tu familia" },
+    { icon: "🏢", title: "Groupe Entreprise", titleEn: "Group Business", titleAr: "مجموعة شركات", titleEs: "Grupo Empresa", text: "Tarifs préférentiels", textEn: "Preferential rates", textAr: "أسعار تفضيلية", textEs: "Tarifas preferenciales" },
+    { icon: "💊", title: "Pharmacie", titleEn: "Pharmacy", titleAr: "صيدلية", titleEs: "Farmacia", text: "Remboursement médicaments", textEn: "Medication reimbursement", textAr: "تعويض الأدوية", textEs: "Reembolso de medicamentos" },
     { icon: "🚑", title: "Hospitalisation", titleEn: "Hospitalization", titleAr: "مستشفى", titleEs: "Hospitalización", text: "Frais couverts", textEn: "Expenses covered", textAr: "نفقات مشمولة", textEs: "Gastos cubiertos" },
   ],
   epargne: [
     { icon: "💰", title: "Épargne Vie", titleEn: "Life Savings", titleAr: "ادخار الحياة", titleEs: "Ahorro Vida", text: "Fiscalité avantageuse", textEn: "Tax advantages", textAr: "مزايا ضريبية", textEs: "Ventajas fiscales" },
-    { icon: "📈", title: "Rendement", titleEn: "Returns", titleAr: "عائد", titleEs: "Rendimiento", text: "Croissance", textEn: "Growth", textAr: "نمو", textEs: "Crecimiento" },
-    { icon: "🛡️", title: "Capital", titleEn: "Capital", titleAr: "رأس المال", titleEs: "Capital", text: "Garantie", textEn: "Guaranteed", textAr: "مضمون", textEs: "Garantizado" },
-    { icon: "📅", title: "Durée Flexible", titleEn: "Flexible Duration", titleAr: "مدة مرنة", titleEs: "Duración Flexible", text: "Selon vos besoins", textEn: "As needed", textAr: "حسب احتياجاتك", textEs: "Según tus necesidades" },
-    { icon: "🎁", title: "Avantages", titleEn: "Benefits", titleAr: "مزايا", titleEs: "Beneficios", text: "Multiples", textEn: "Multiple", textAr: "متعددة", textEs: "Múltiples" },
+    { icon: "📈", title: "Rendement", titleEn: "Returns", titleAr: "عائد", titleEs: "Rendimiento", text: "Faites croître votre argent", textEn: "Grow your money", textAr: "نمِّ أموالك", textEs: "Haz crecer tu dinero" },
+    { icon: "🛡️", title: "Capital", titleEn: "Capital", titleAr: "رأس المال", titleEs: "Capital", text: "Garanti", textEn: "Guaranteed", textAr: "مضمون", textEs: "Garantizado" },
+    { icon: "📅", title: "Durée Flexible", titleEn: "Flexible Duration", titleAr: "مدة مرنة", titleEs: "Duración Flexible", text: "Selon vos besoins", textEn: "According to your needs", textAr: "حسب احتياجاتك", textEs: "Según tus necesidades" },
+    { icon: "🎁", title: "Avantages", titleEn: "Benefits", titleAr: "مزايا", titleEs: "Beneficios", text: "Multiples avantages", textEn: "Multiple benefits", textAr: "مزايا متعددة", textEs: "Múltiples beneficios" },
     { icon: "💎", title: "Capital Différé", titleEn: "Deferred Capital", titleAr: "رأس المال المؤجل", titleEs: "Capital Diferido", text: "Option retraite", textEn: "Retirement option", textAr: "خيار التقاعد", textEs: "Opción jubilación" },
   ],
   prevoyance: [
-    { icon: "🛡️", title: "Prévoyance", titleEn: "Foresight", titleAr: "التأمين التكميلي", titleEs: "Previsión", text: "Protection famille", textEn: "Family protection", textAr: "حماية العائلة", textEs: "Protección familia" },
-    { icon: "👨‍👩‍👧‍👦", title: "Garantie Décès", titleEn: "Death Benefit", titleAr: "ضمان الوفاة", titleEs: "Garantía Deceso", text: "Securité", textEn: "Security", textAr: "أمان", textEs: "Seguridad" },
+    { icon: "🛡️", title: "Prévoyance", titleEn: "Foresight", titleAr: "التأمين التكميلي", titleEs: "Previsión", text: "Protégez votre famille", textEn: "Protect your family", textAr: "احمِ عائلتك", textEs: "Protege a tu familia" },
+    { icon: "👨‍👩‍👧‍👦", title: "Garantie Décès", titleEn: "Death Benefit", titleAr: "ضمان الوفاة", titleEs: "Garantía Deceso", text: "Sécurité pour vos proches", textEn: "Security for your loved ones", textAr: "أمان لأحبائك", textEs: "Seguridad para tus seres queridos" },
     { icon: "💼", title: "PTIA", titleEn: "PTIA", titleAr: "عجز كلي", titleEs: "Invalidez Total", text: "Incapacité totale", textEn: "Total disability", textAr: "عجز كلي", textEs: "Invalidez total" },
     { icon: "🏥", title: "Frais Funéraires", titleEn: "Funeral Expenses", titleAr: "نفقات الجنازة", titleEs: "Gastos Funerarios", text: "Prise en charge", textEn: "Coverage", textAr: "تغطية", textEs: "Cobertura" },
-    { icon: "💰", title: "Rente", titleEn: "Annuity", titleAr: "معاش", titleEs: "Renta", text: "Conjoint survivant", textEn: "Surviving spouse", textAr: "الزوج الباقي", textEs: "Cónyuge superviviente" },
+    { icon: "💰", title: "Rente", titleEn: "Annuity", titleAr: "معاش", titleEs: "Renta", text: "Pour votre conjoint", textEn: "For your spouse", textAr: "لزوجك", textEs: "Para tu cónyuge" },
     { icon: "📋", title: "Personnalisable", titleEn: "Customizable", titleAr: "قابل للتخصيص", titleEs: "Personalizable", text: "Adapté à vous", textEn: "Adapted to you", textAr: "مناسب لك", textEs: "Adaptado a ti" },
   ],
   travail: [
@@ -133,7 +133,7 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
   ],
   transport: [
     { icon: "🚢", title: "Maritime", titleEn: "Maritime", titleAr: "بحري", titleEs: "Marítimo", text: "Cargo & Marchandises", textEn: "Cargo & Goods", textAr: "شحن وبضائع", textEs: "Carga y Mercancías" },
-    { icon: "✈️", title: "Aérien", titleEn: "Air", titleAr: "جوي", titleEs: "Aéreo", text: "Transport Aerial", textEn: "Aerial Transport", textAr: "نقل جوي", textEs: "Transporte Aéreo" },
+    { icon: "✈️", title: "Aérien", titleEn: "Air", titleAr: "جوي", titleEs: "Aéreo", text: "Transport Aérien", textEn: "Air Transport", textAr: "نقل جوي", textEs: "Transporte Aéreo" },
     { icon: "🚛", title: "Terrestre", titleEn: "Land", titleAr: "بري", titleEs: "Terrestre", text: "Camions & Autos", textEn: "Trucks & Cars", textAr: "شاحنات وسيارات", textEs: "Camiones y Autos" },
     { icon: "📦", title: "Entreposage", titleEn: "Warehousing", titleAr: "تخزين", titleEs: "Almacenamiento", text: "Stockage couvert", textEn: "Storage covered", textAr: "تخزين مشمول", textEs: "Almacenamiento cubierto" },
     { icon: "🛡️", title: "RC Transport", titleEn: "Transport Liability", titleAr: "مسؤولية النقل", titleEs: "RC Transporte", text: "Responsabilité", textEn: "Liability", textAr: "مسؤولية", textEs: "Responsabilidad" },
@@ -144,11 +144,11 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "🦠", title: "Ransomware", titleEn: "Ransomware", titleAr: "برامج الفدية", titleEs: "Ransomware", text: "Couvert", textEn: "Covered", textAr: "مشمول", textEs: "Cubierto" },
     { icon: "💻", title: "Perte de Données", titleEn: "Data Loss", titleAr: "فقدان البيانات", titleEs: "Pérdida de Datos", text: "Récupération", textEn: "Recovery", textAr: "استرداد", textEs: "Recuperación" },
     { icon: "⚖️", title: "RC Numérique", titleEn: "Digital Liability", titleAr: "المسؤولية الرقمية", titleEs: "RC Digital", text: "Couverture", textEn: "Coverage", textAr: "تغطية", textEs: "Cobertura" },
-    { icon: "📱", title: "Cybermobbing", titleEn: "Cybermobbing", titleAr: "تنمر إلكتروني", titleEs: "Ciberacoso", text: "Protection", textEn: "Protection", textAr: "حماية", textEs: "Protección" },
+    { icon: "📱", title: "Cyberharcèlement", titleEn: "Cyberbullying", titleAr: "تنمر إلكتروني", titleEs: "Ciberacoso", text: "Protection", textEn: "Protection", textAr: "حماية", textEs: "Protección" },
   ],
   flotte: [
     { icon: "🚗", title: "Flotte Auto", titleEn: "Auto Fleet", titleAr: "أسطول السيارات", titleEs: "Flota de Autos", text: "5+ véhicules", textEn: "5+ vehicles", textAr: "5+ مركبات", textEs: "5+ vehículos" },
-    { icon: "💰", title: "Tarifs Groupés", titleEn: "Group Rates", titleAr: "أسعار جماعية", titleEs: "Tarifas Grupales", text: "-15% réduit", textEn: "-15% discount", textAr: "-15% خصم", textEs: "-15% descuento" },
+    { icon: "💰", title: "Tarifs Groupés", titleEn: "Group Rates", titleAr: "أسعار جماعية", titleEs: "Tarifas Grupales", text: "-15% de réduction", textEn: "-15% discount", textAr: "-15% خصم", textEs: "-15% descuento" },
     { icon: "📋", title: "Gestion Simplifiée", titleEn: "Simplified Management", titleAr: "إدارة مبسطة", titleEs: "Gestión Simplificada", text: "Un seul contrat", textEn: "One contract", textAr: "عقد واحد", textEs: "Un contrato" },
     { icon: "🛡️", title: "Couvertures Multiples", titleEn: "Multiple Coverages", titleAr: "تغطيات متعددة", titleEs: "Coberturas Múltiples", text: "Flexibles", textEn: "Flexible", textAr: "مرنة", textEs: "Flexible" },
     { icon: "📊", title: "Reporting", titleEn: "Reporting", titleAr: "تقارير", titleEs: "Informes", text: "Suivi détaillé", textEn: "Detailed tracking", textAr: "تتبع مفصل", textEs: "Seguimiento detallado" },
@@ -159,7 +159,7 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "👤", title: "RC Obligatoire", titleEn: "Mandatory Liability", titleAr: "المسؤولية المدنية الإلزامية", titleEs: "RC Obligatorio", text: "Légal", textEn: "Legal", textAr: "قانوني", textEs: "Legal" },
     { icon: "🔒", title: "Vol & Vandalisme", titleEn: "Theft & Vandalism", titleAr: "سرقة وتخريب", titleEs: "Robo y Vandalismo", text: "Sécurisé", textEn: "Secure", textAr: "مؤمن", textEs: "Asegurado" },
     { icon: "🩹", title: "Blessures", titleEn: "Injuries", titleAr: "إصابات", titleEs: "Lesiones", text: "Couvertes", textEn: "Covered", textAr: "مشمولة", textEs: "Cubiertas" },
-    { icon: "💶", title: "Pas Cher", titleEn: "Not Expensive", titleAr: "غير مكلف", titleEs: "No Caro", text: "À partir de X DH", textEn: "From X DH", textAr: "ابتداءً من X درهم", textEs: "Desde X DH" },
+    { icon: "💶", title: "Prix Compétitif", titleEn: "Competitive Price", titleAr: "سعر تنافسي", titleEs: "Precio Competitivo", text: "À partir de X DH", textEn: "From X DH", textAr: "ابتداءً من X درهم", textEs: "Desde X DH" },
     { icon: "⚡", title: "EDPM", titleEn: "EDPM", titleAr: "مركبات كهربائية", titleEs: "EDPM", text: "Tous types", textEn: "All types", textAr: "جميع الأنواع", textEs: "Todos los tipos" },
   ],
   animaux: [
@@ -168,7 +168,7 @@ const pageSpecificAds: Record<PageContext, Array<{ icon: string; title: string; 
     { icon: "💊", title: "Médicaments", titleEn: "Medications", titleAr: "أدوية", titleEs: "Medicamentos", text: "Couverts", textEn: "Covered", textAr: "مشمولة", textEs: "Cubiertos" },
     { icon: "🏨", title: "Hospitalisation", titleEn: "Hospitalization", titleAr: "مستشفى", titleEs: "Hospitalización", text: "Frais couverts", textEn: "Expenses covered", textAr: "نفقات مشمولة", textEs: "Gastos cubiertos" },
     { icon: "💰", title: "Budget Maîtrisé", titleEn: "Controlled Budget", titleAr: "ميزانية متحكم فيها", titleEs: "Presupuesto Controlado", text: "Pas de surprises", textEn: "No surprises", textAr: "بدون مفاجآت", textEs: "Sin sorpresas" },
-    { icon: "❤️", title: "Tranquillité", titleEn: "Peace of Mind", titleAr: "راحة البال", titleEs: "Tranquilidad", text: "Pour votre companion", textEn: "For your companion", textAr: "لرفيقك", textEs: "Para tu compañero" },
+    { icon: "❤️", title: "Tranquillité", titleEn: "Peace of Mind", titleAr: "راحة البال", titleEs: "Tranquilidad", text: "Pour votre compagnon", textEn: "For your companion", textAr: "لرفيقك", textEs: "Para tu compañero" },
   ],
   'mentions-legales': [
     { icon: "📜", title: "Mentions Légales", titleEn: "Legal Notice", titleAr: "الإشارات القانونية", titleEs: "Aviso Legal", text: "CPA 1957", textEn: "CPA 1957", textAr: "CPA 1957", textEs: "CPA 1957" },
@@ -225,30 +225,30 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   // Concepts généraux / General Concepts
-  { q: { fr: "Qu'est-ce que l'assurance ?", en: "What is insurance?", ar: "ما هو التأمين؟", es: "¿Qué es el seguro?" }, a: { fr: "L'assurance est un contrat par lequel une personne se protège contre un risque en échange d'une cotisation.", en: "Insurance is a contract by which a person protects themselves against a risk in exchange for a contribution.", ar: "التأمين عقد يحمي الشخص نفسه من المخاطر مقابل اشتراك.", es: "El seguro es un contrato por el cual una persona se protege contra un riesgo a cambio de una contribución." }, keywords: { fr: ["assurance", "contrat", "protège", "risque"], en: ["insurance", "contract", "protect", "risk"], ar: ["تأمين", "عقد", "حماية", "خطر"], es: ["seguro", "contrato", "protege", "riesgo"] } },
-  { q: { fr: "À quoi sert l'assurance ?", en: "What is insurance for?", ar: "ما فائدة التأمين؟", es: "¿Para qué sirve el seguro?" }, a: { fr: "Elle permet de réduire les conséquences financières en cas de sinistre.", en: "It helps reduce financial consequences in case of a claim.", ar: "يساعد في تقليل العواقب المالية في حالة المطالبة.", es: "Ayuda a reducir las consecuencias financieras en caso de siniestro." }, keywords: { fr: ["sert", "conséquences", "financières", "sinistre"], en: ["purpose", "consequences", "financial", "claim"], ar: ["الغرض", "العواقب", "مالية", "مطالبة"], es: ["sirve", "consecuencias", "financieras", "siniestro"] } },
-  { q: { fr: "Quelle est la différence entre assureur et courtier ?", en: "What is the difference between insurer and broker?", ar: "ما هو الفرق بين شركة التأمين والوسيط؟", es: "¿Cuál es la diferencia entre aseguradora y corredor?" }, a: { fr: "L'assureur garantit le risque, le courtier conseille et représente le client. CPA est votre courtier de confiance.", en: "The insurer guarantees the risk, the broker advises and represents the client. CPA is your trusted broker.", ar: "شركة التأمين تضمن المخاطر، والوسيط ينصح ويمثل العميل. CPA هو وسيطك الموثوق.", es: "La aseguradora garantiza el riesgo, el corredor asesora y representa al cliente. CPA es su corredor de confianza." }, keywords: { fr: ["différence", "assureur", "courtier", "garantit"], en: ["difference", "insurer", "broker", "guarantee"], ar: ["فرق", "شركة تأمين", "وسيط", "يضمن"], es: ["diferencia", "aseguradora", "corredor", "garantiza"] } },
-  { q: { fr: "Qu'est-ce qu'une prime d'assurance ?", en: "What is an insurance premium?", ar: "ما هو قسط التأمين؟", es: "¿Qué es una prima de seguro?" }, a: { fr: "C'est le montant que vous payez pour être assuré. Elle varie selon le type de couverture et le profil de risque.", en: "It's the amount you pay to be insured. It varies depending on the type of coverage and risk profile.", ar: "هو المبلغ الذي تدفعه للتأمين. يختلف حسب نوع التغطية وملف المخاطر.", es: "Es el monto que paga por estar asegurado. Varía según el tipo de cobertura y el perfil de riesgo." }, keywords: { fr: ["prime", "montant", "payez", "assuré"], en: ["premium", "amount", "pay", "insured"], ar: ["قسط", "مبلغ", "تدفع", "مؤمن"], es: ["prima", "monto", "paga", "asegurado"] } },
-  { q: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي الفرانشيز؟", es: "¿Qué es un deducible?" }, a: { fr: "C'est la part du sinistre qui reste à votre charge. Plus la franchise est élevée, plus la prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower the premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت الفرانشيز، انخفض القسط.", es: "Es la parte del siniestro que corre por su cuenta. Cuanto mayor sea el deducible, menor será la prima." }, keywords: { fr: ["franchise", "charge", "sinistre"], en: ["deductible", "charge", "claim"], ar: ["فرانشيز", "مسؤولية", "مطالبة"], es: ["deducible", "cargo", "siniestro"] } },
-  { q: { fr: "Le courtier est-il payant ?", en: "Is the broker paid?", ar: "هل الوسيط مدفوع الأجر؟", es: "¿El corredor es de pago?" }, a: { fr: "Non, sa rémunération est incluse dans la prime d'assurance. Nos services de conseil sont gratuits pour vous.", en: "No, their remuneration is included in the insurance premium. Our advisory services are free for you.", ar: "لا، يتم تضمين أجره في قسط التأمين. خدماتنا الاستشارية مجانية لك.", es: "No, su remuneración está incluida en la prima del seguro. Nuestros servicios de asesoramiento son gratuitos para usted." }, keywords: { fr: ["courtier", "payant", "gratuit", "rémunération"], en: ["broker", "paid", "free", "remuneration"], ar: ["وسيط", "مدفوع", "مجاني", "أجر"], es: ["corredor", "pagado", "gratis", "remuneración"] } },
+  { q: { fr: "Qu'est-ce que l'assurance ?", en: "What is insurance?", ar: "ما هو التأمين؟", es: "¿Qué es el seguro?" }, a: { fr: "L'assurance est un contrat qui vous protège contre un risque en échange d'une cotisation.", en: "Insurance is a contract that protects you against a risk in exchange for a contribution.", ar: "التأمين عقد يحميك من المخاطر مقابل اشتراك.", es: "El seguro es un contrato que te protege contra un riesgo a cambio de una contribución." }, keywords: { fr: ["assurance", "contrat", "protège", "risque"], en: ["insurance", "contract", "protect", "risk"], ar: ["تأمين", "عقد", "حماية", "خطر"], es: ["seguro", "contrato", "protege", "riesgo"] } },
+  { q: { fr: "À quoi sert l'assurance ?", en: "What is insurance for?", ar: "ما فائدة التأمين؟", es: "¿Para qué sirve el seguro?" }, a: { fr: "Elle vous permet de réduire les conséquences financières en cas de sinistre.", en: "It helps you reduce financial consequences in case of a claim.", ar: "يساعدك في تقليل العواقب المالية في حالة المطالبة.", es: "Te ayuda a reducir las consecuencias financieras en caso de siniestro." }, keywords: { fr: ["sert", "conséquences", "financières", "sinistre"], en: ["purpose", "consequences", "financial", "claim"], ar: ["الغرض", "العواقب", "مالية", "مطالبة"], es: ["sirve", "consecuencias", "financieras", "siniestro"] } },
+  { q: { fr: "Quelle est la différence entre assureur et courtier ?", en: "What is the difference between insurer and broker?", ar: "ما هو الفرق بين شركة التأمين والوسيط؟", es: "¿Cuál es la diferencia entre aseguradora y corredor?" }, a: { fr: "L'assureur garantit le risque, le courtier vous conseille et vous représente. CPA est votre courtier de confiance.", en: "The insurer guarantees the risk, the broker advises and represents you. CPA is your trusted broker.", ar: "شركة التأمين تضمن المخاطر، والوسيط ينصحك ويمثلك. CPA هو وسيطك الموثوق.", es: "La aseguradora garantiza el riesgo, el corredor te asesora y te representa. CPA es tu corredor de confianza." }, keywords: { fr: ["différence", "assureur", "courtier", "garantit"], en: ["difference", "insurer", "broker", "guarantee"], ar: ["فرق", "شركة تأمين", "وسيط", "يضمن"], es: ["diferencia", "aseguradora", "corredor", "garantiza"] } },
+  { q: { fr: "Qu'est-ce qu'une prime d'assurance ?", en: "What is an insurance premium?", ar: "ما هو قسط التأمين؟", es: "¿Qué es una prima de seguro?" }, a: { fr: "C'est le montant que vous payez pour être assuré. Il varie selon le type de couverture et votre profil de risque.", en: "It's the amount you pay to be insured. It varies depending on the type of coverage and your risk profile.", ar: "هو المبلغ الذي تدفعه للتأمين. يختلف حسب نوع التغطية وملف المخاطر الخاص بك.", es: "Es el monto que pagas por estar asegurado. Varía según el tipo de cobertura y tu perfil de riesgo." }, keywords: { fr: ["prime", "montant", "payez", "assuré"], en: ["premium", "amount", "pay", "insured"], ar: ["قسط", "مبلغ", "تدفع", "مؤمن"], es: ["prima", "monto", "pagas", "asegurado"] } },
+  { q: { fr: "Qu'est-ce qu'une franchise ?", en: "What is a deductible?", ar: "ما هي الفرانشيز؟", es: "¿Qué es un deducible?" }, a: { fr: "C'est la part du sinistre qui reste à votre charge. Plus la franchise est élevée, plus votre prime est basse.", en: "It's the portion of the claim that remains your responsibility. The higher the deductible, the lower your premium.", ar: "إنها حصة المطالبة التي تبقى مسؤوليتك. كلما ارتفعت الفرانشيز، انخفض قسطك.", es: "Es la parte del siniestro que corre por tu cuenta. Cuanto mayor sea el deducible, menor será tu prima." }, keywords: { fr: ["franchise", "charge", "sinistre"], en: ["deductible", "charge", "claim"], ar: ["فرانشيز", "مسؤولية", "مطالبة"], es: ["deducible", "cargo", "siniestro"] } },
+  { q: { fr: "Le courtier est-il payant ?", en: "Is the broker paid?", ar: "هل الوسيط مدفوع الأجر؟", es: "¿El corredor es de pago?" }, a: { fr: "Non, sa rémunération est incluse dans votre prime d'assurance. Nos services de conseil sont gratuits pour vous.", en: "No, their remuneration is included in your insurance premium. Our advisory services are free for you.", ar: "لا، يتم تضمين أجره في قسط التأمين الخاص بك. خدماتنا الاستشارية مجانية لك.", es: "No, su remuneración está incluida en tu prima de seguro. Nuestros servicios de asesoramiento son gratuitos para ti." }, keywords: { fr: ["courtier", "payant", "gratuit", "rémunération"], en: ["broker", "paid", "free", "remuneration"], ar: ["وسيط", "مدفوع", "مجاني", "أجر"], es: ["corredor", "pagado", "gratis", "remuneración"] } },
   
   // Automobile / Auto
-  { q: { fr: "L'assurance automobile est-elle obligatoire au Maroc ?", en: "Is auto insurance mandatory in Morocco?", ar: "هل التأمين على السيارات إلزامي في المغرب؟", es: "¿El seguro de auto es obligatorio en Marruecos?" }, a: { fr: "Oui, l'assurance responsabilité civile automobile est obligatoire au Maroc. Elle couvre les dommages causés aux tiers en cas d'accident.", en: "Yes, mandatory auto liability insurance is required in Morocco. It covers damages caused to third parties in case of an accident.", ar: "نعم، التأمين الإلزامي على المسؤولية المدنية للسيارات مطلوب في المغرب. يغطي الأضرار التي تلحق بالأطراف الثالثة في حالة الحادث.", es: "Sí, el seguro obligatorio de responsabilidad civil de auto es obligatorio en Marruecos. Cubre los daños causados a terceros en caso de accidente." }, keywords: { fr: ["automobile", "obligatoire", "maroc", "voiture", "auto"], en: ["auto", "mandatory", "morocco", "car"], ar: ["سيارات", "إلزامي", "المغرب", "سيارة"], es: ["auto", "obligatorio", "marruecos", "coche"] } },
-  { q: { fr: "Quelles sont les garanties auto ?", en: "What are the auto coverage options?", ar: "ما هي تغطيات السيارات؟", es: "¿Cuáles son las coberturas de auto?" }, a: { fr: "Nous proposons : responsabilité civile, tous risques, vol, incendie, bris de glace, assistance, protection du conducteur, et dommages collision.", en: "We offer: liability, comprehensive, theft, fire, glass breakage, assistance, driver protection, and collision damage.", ar: "نقدم: المسؤولية المدنية، شاملة، سرقة، حريق، كسر الزجاج، مساعدة، حماية السائق، وأضرار التصادم.", es: "Ofrecemos: responsabilidad civil, todo riesgo, robo, incendio, rotura de cristales, asistencia, protección del conductor y daños por colisión." }, keywords: { fr: ["garanties", "auto", "tous risques", "vol", "incendie"], en: ["coverage", "auto", "comprehensive", "theft", "fire"], ar: ["تغطية", "سيارات", "شامل", "سرقة", "حريق"], es: ["coberturas", "auto", "todo riesgo", "robo", "incendio"] } },
-  { q: { fr: "Combien coûte l'assurance auto ?", en: "How much does auto insurance cost?", ar: "كم تكلفة التأمين على السيارات؟", es: "¿Cuánto cuesta el seguro de auto?" }, a: { fr: "Le tarif dépend du véhicule, de votre profil conducteur, de la zone géographique et des garanties choisies. Demandez un devis personnalisé !", en: "The rate depends on the vehicle, your driver profile, geographic area and chosen coverage. Request a personalized quote!", ar: "تعتمد الرسوم على السيارة وملف السائق والمنطقة الجغرافية والتغطيات المختارة. اطلب عرض أسعار مخصص!", es: "La tarifa depende del vehículo, su perfil de conductor, área geográfica y coberturas elegidas. ¡Solicite un presupuesto personalizado!" }, keywords: { fr: ["coût", "prix", "tarif", "auto", "combien"], en: ["cost", "price", "rate", "auto", "how much"], ar: ["تكلفة", "سعر", "رسوم", "سيارات", "كم"], es: ["costo", "precio", "tarifa", "auto", "cuánto"] } },
-  { q: { fr: "Comment assurer ma flotte de véhicules ?", en: "How to insure my vehicle fleet?", ar: "كيفية تأمين أسطول السيارات؟", es: "¿Cómo asegurar mi flota de vehículos?" }, a: { fr: "CPA propose des contrats flotte pour les entreprises à partir de 5 véhicules avec des tarifs préférentiels et une gestion simplifiée.", en: "CPA offers fleet contracts for companies starting from 5 vehicles with preferential rates and simplified management.", ar: "تقدم CPA عقود أسطول للشركات ابتداءً من 5 سيارات مع أسعار تفضيلية وإدارة مبسطة.", es: "CPA ofrece contratos de flota para empresas a partir de 5 vehículos con tarifas preferenciales y gestión simplificada." }, keywords: { fr: ["flotte", "véhicules", "entreprise", "parc"], en: ["fleet", "vehicles", "company", "fleet"], ar: ["أسطول", "مركبات", "شركة", "مجموعة"], es: ["flota", "vehículos", "empresa", "parque"] } },
+  { q: { fr: "L'assurance automobile est-elle obligatoire au Maroc ?", en: "Is auto insurance mandatory in Morocco?", ar: "هل التأمين على السيارات إلزامي في المغرب؟", es: "¿El seguro de auto es obligatorio en Marruecos?" }, a: { fr: "Oui, l'assurance responsabilité civile automobile est obligatoire au Maroc. Elle couvre les dommages que vous pourriez causer aux tiers en cas d'accident.", en: "Yes, mandatory auto liability insurance is required in Morocco. It covers damages you could cause to third parties in case of an accident.", ar: "نعم، التأمين الإلزامي على المسؤولية المدنية للسيارات مطلوب في المغرب. يغطي الأضرار التي قد تسببها للأطراف الثالثة في حالة الحادث.", es: "Sí, el seguro obligatorio de responsabilidad civil de auto es obligatorio en Marruecos. Cubre los daños que puedas causar a terceros en caso de accidente." }, keywords: { fr: ["automobile", "obligatoire", "maroc", "voiture", "auto"], en: ["auto", "mandatory", "morocco", "car"], ar: ["سيارات", "إلزامي", "المغرب", "سيارة"], es: ["auto", "obligatorio", "marruecos", "coche"] } },
+  { q: { fr: "Quelles sont les garanties auto ?", en: "What are the auto coverage options?", ar: "ما هي تغطيات السيارات؟", es: "¿Cuáles son las coberturas de auto?" }, a: { fr: "Nous vous proposons : responsabilité civile, tous risques, vol, incendie, bris de glace, assistance, protection du conducteur, et dommages collision.", en: "We offer you: liability, comprehensive, theft, fire, glass breakage, assistance, driver protection, and collision damage.", ar: "نقدم لك: المسؤولية المدنية، شاملة، سرقة، حريق، كسر الزجاج، مساعدة، حماية السائق، وأضرار التصادم.", es: "Te ofrecemos: responsabilidad civil, todo riesgo, robo, incendio, rotura de cristales, asistencia, protección del conductor y daños por colisión." }, keywords: { fr: ["garanties", "auto", "tous risques", "vol", "incendie"], en: ["coverage", "auto", "comprehensive", "theft", "fire"], ar: ["تغطية", "سيارات", "شامل", "سرقة", "حريق"], es: ["coberturas", "auto", "todo riesgo", "robo", "incendio"] } },
+  { q: { fr: "Combien coûte l'assurance auto ?", en: "How much does auto insurance cost?", ar: "كم تكلفة التأمين على السيارات؟", es: "¿Cuánto cuesta el seguro de auto?" }, a: { fr: "Le tarif dépend de votre véhicule, de votre profil conducteur, de votre zone géographique et des garanties que vous choisissez. Demandez un devis personnalisé !", en: "The rate depends on your vehicle, your driver profile, your geographic area and the coverage you choose. Request a personalized quote!", ar: "تعتمد الرسوم على سيارتك وملف السائق الخاص بك والمنطقة الجغرافية والتغطيات التي تختارها. اطلب عرض أسعار مخصص!", es: "La tarifa depende de tu vehículo, tu perfil de conductor, tu área geográfica y las coberturas que elijas. ¡Solicita un presupuesto personalizado!" }, keywords: { fr: ["coût", "prix", "tarif", "auto", "combien"], en: ["cost", "price", "rate", "auto", "how much"], ar: ["تكلفة", "سعر", "رسوم", "سيارات", "كم"], es: ["costo", "precio", "tarifa", "auto", "cuánto"] } },
+  { q: { fr: "Comment assurer ma flotte de véhicules ?", en: "How to insure my vehicle fleet?", ar: "كيفية تأمين أسطول السيارات؟", es: "¿Cómo asegurar mi flota de vehículos?" }, a: { fr: "CPA vous propose des contrats flotte pour les entreprises à partir de 5 véhicules avec des tarifs préférentiels et une gestion simplifiée.", en: "CPA offers you fleet contracts for companies starting from 5 vehicles with preferential rates and simplified management.", ar: "تقدم لك CPA عقود أسطول للشركات ابتداءً من 5 سيارات مع أسعار تفضيلية وإدارة مبسطة.", es: "CPA te ofrece contratos de flota para empresas a partir de 5 vehículos con tarifas preferenciales y gestión simplificada." }, keywords: { fr: ["flotte", "véhicules", "entreprise", "parc"], en: ["fleet", "vehicles", "company", "fleet"], ar: ["أسطول", "مركبات", "شركة", "مجموعة"], es: ["flota", "vehículos", "empresa", "parque"] } },
 
   // Habitation / Home
-  { q: { fr: "Pourquoi souscrire une assurance habitation ?", en: "Why subscribe to home insurance?", ar: "لماذا الاشتراك في تأمين المنزل؟", es: "¿Por qué suscribir un seguro de hogar?" }, a: { fr: "L'assurance habitation protège votre logement et vos biens contre le vol, l'incendie, les dégâts des eaux, les catastrophes naturelles et la responsabilité civile.", en: "Home insurance protects your home and belongings against theft, fire, water damage, natural disasters and civil liability.", ar: "يغطي تأمين المنزل منزلك وممتلكاتك ضد السرقة والحريق وتلف المياه والكوارث الطبيعية والمسؤولية المدنية.", es: "El seguro de hogar protege su vivienda y sus bienes contra robo, incendio, daños por agua, catástrofes naturales y responsabilidad civil." }, keywords: { fr: ["habitation", "maison", "logement", "domicile"], en: ["home", "house", "housing", "residence"], ar: ["منزل", "بيت", "سكن", "إقامة"], es: ["hogar", "casa", "alojamiento", "domicilio"] } },
+  { q: { fr: "Pourquoi souscrire une assurance habitation ?", en: "Why subscribe to home insurance?", ar: "لماذا الاشتراك في تأمين المنزل؟", es: "¿Por qué suscribir un seguro de hogar?" }, a: { fr: "L'assurance habitation protège votre logement et vos biens contre le vol, l'incendie, les dégâts des eaux, les catastrophes naturelles et votre responsabilité civile.", en: "Home insurance protects your home and belongings against theft, fire, water damage, natural disasters and your civil liability.", ar: "يغطي تأمين المنزل منزلك وممتلكاتك ضد السرقة والحريق وتلف المياه والكوارث الطبيعية ومسؤوليتك المدنية.", es: "El seguro de hogar protege tu vivienda y tus bienes contra robo, incendio, daños por agua, catástrofes naturales y tu responsabilidad civil." }, keywords: { fr: ["habitation", "maison", "logement", "domicile"], en: ["home", "house", "housing", "residence"], ar: ["منزل", "بيت", "سكن", "إقامة"], es: ["hogar", "casa", "alojamiento", "domicilio"] } },
   
   // Santé / Health
-  { q: { fr: "Comment fonctionne l'assurance santé ?", en: "How does health insurance work?", ar: "كيف يعمل التأمين الصحي؟", es: "¿Cómo funciona el seguro de salud?" }, a: { fr: "L'assurance santé rembourse vos frais médicaux (consultations, hospitalisations, médicaments, optique, dentaire) selon les barèmes de votre contrat.", en: "Health insurance reimburses your medical expenses (consultations, hospitalizations, medications, optical, dental) according to your contract rates.", ar: "يعيد التأمين الصحي تعويض نفقاتك الطبية (الاستشارات، المستشفى، الأدوية، البصريات، طب الأسنان) وفق أسعار عقدك.", es: "El seguro de salud reembolsa sus gastos médicos (consultas, hospitalizaciones, medicamentos, óptica, dental) según las tarifas de su contrato." }, keywords: { fr: ["santé", "médical", "remboursement", "maladie", "soin"], en: ["health", "medical", "reimbursement", "illness", "care"], ar: ["صحة", "طبي", "تعويض", "مرض", "رعاية"], es: ["salud", "médico", "reembolso", "enfermedad", "cuidado"] } },
-  { q: { fr: "Proposez-vous une assurance santé groupe ?", en: "Do you offer group health insurance?", ar: "هل تقدمون تأمين صحي جماعي؟", es: "¿Ofrecen seguro de salud grupal?" }, a: { fr: "Oui, nous proposons des contrats santé groupe pour les entreprises couvrant les employés et leurs familles avec des tarifs avantageux.", en: "Yes, we offer group health contracts for companies covering employees and their families with advantageous rates.", ar: "نعم، نقدم عقود صحية جماعية للشركات تغطي الموظفين وعائلاتهم بأسعار مميزة.", es: "Sí, ofrecemos contratos de salud grupal para empresas que cubren a los empleados y sus familias con tarifas ventajosas." }, keywords: { fr: ["groupe", "entreprise", "employés", "collectif"], en: ["group", "company", "employees", "collective"], ar: ["جماعي", "شركة", "موظفين", "جماعي"], es: ["grupo", "empresa", "empleados", "colectivo"] } },
+  { q: { fr: "Comment fonctionne l'assurance santé ?", en: "How does health insurance work?", ar: "كيف يعمل التأمين الصحي؟", es: "¿Cómo funciona el seguro de salud?" }, a: { fr: "L'assurance santé vous rembourse vos frais médicaux (consultations, hospitalisations, médicaments, optique, dentaire) selon les barèmes de votre contrat.", en: "Health insurance reimburses your medical expenses (consultations, hospitalizations, medications, optical, dental) according to your contract rates.", ar: "يعيد التأمين الصحي تعويض نفقاتك الطبية (الاستشارات، المستشفى، الأدوية، البصريات، طب الأسنان) وفق أسعار عقدك.", es: "El seguro de salud te reembolsa tus gastos médicos (consultas, hospitalizaciones, medicamentos, óptica, dental) según las tarifas de tu contrato." }, keywords: { fr: ["santé", "médical", "remboursement", "maladie", "soin"], en: ["health", "medical", "reimbursement", "illness", "care"], ar: ["صحة", "طبي", "تعويض", "مرض", "رعاية"], es: ["salud", "médico", "reembolso", "enfermedad", "cuidado"] } },
+  { q: { fr: "Proposez-vous une assurance santé groupe ?", en: "Do you offer group health insurance?", ar: "هل تقدمون تأمين صحي جماعي؟", es: "¿Ofrecen seguro de salud grupal?" }, a: { fr: "Oui, nous vous proposons des contrats santé groupe pour les entreprises couvrant les employés et leurs familles avec des tarifs avantageux.", en: "Yes, we offer you group health contracts for companies covering employees and their families with advantageous rates.", ar: "نعم، نقدم لك عقود صحية جماعية للشركات تغطي الموظفين وعائلاتهم بأسعار مميزة.", es: "Sí, te ofrecemos contratos de salud grupal para empresas que cubren a los empleados y sus familias con tarifas ventajosas." }, keywords: { fr: ["groupe", "entreprise", "employés", "collectif"], en: ["group", "company", "employees", "collective"], ar: ["جماعي", "شركة", "موظفين", "جماعي"], es: ["grupo", "empresa", "empleados", "colectivo"] } },
 
   // Sinistres / Claims
   { q: { fr: "Qu'est-ce qu'un sinistre ?", en: "What is a claim?", ar: "ما هي المطالبة؟", es: "¿Qué es un siniestro?" }, a: { fr: "C'est la réalisation du risque assuré : accident, vol, incendie, dégât des eaux, etc.", en: "It's the occurrence of the insured risk: accident, theft, fire, water damage, etc.", ar: "إنها حدوث الخطر المؤمن عليه: حادث، سرقة، حريق، تلف المياه، إلخ.", es: "Es la ocurrencia del riesgo asegurado: accidente, robo, incendio, daños por agua, etc." }, keywords: { fr: ["sinistre", "réalisation", "accident"], en: ["claim", "occurrence", "accident"], ar: ["مطالبة", "وقوع", "حادث"], es: ["siniestro", "ocurrencia", "accidente"] } },
-  { q: { fr: "Quand déclarer un sinistre ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" }, a: { fr: "Dans les 5 jours ouvrables à compter du moment où vous en avez connaissance. Pour un vol, le délai est de 48 heures.", en: "Within 5 working days from when you become aware. For theft, the deadline is 48 hours.", ar: "خلال 5 أيام عمل من علمك بالأمر. في حالة السرقة، المهلة 48 ساعة.", es: "Dentro de los 5 días hábiles desde que tenga conocimiento. Para robo, el plazo es de 48 horas." }, keywords: { fr: ["déclarer", "sinistre", "délai", "jours"], en: ["report", "claim", "deadline", "days"], ar: ["إبلاغ", "مطالبة", "مهلة", "أيام"], es: ["denunciar", "siniestro", "plazo", "días"] } },
-  { q: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" }, a: { fr: "Contactez-nous au 0667558436 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at 0667558436 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctenos al 0667558436 o envíe un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." }, keywords: { fr: ["comment", "déclarer", "procédure"], en: ["how", "report", "procedure"], ar: ["كيف", "إبلاغ", "إجراء"], es: ["cómo", "denunciar", "procedimiento"] } },
+  { q: { fr: "Quand déclarer un sinistre ?", en: "When to report a claim?", ar: "متى يجب الإبلاغ عن مطالبة؟", es: "¿Cuándo denunciar un siniestro?" }, a: { fr: "Dans les 5 jours ouvrables à compter du moment où vous en avez connaissance. Pour un vol, le délai est de 48 heures.", en: "Within 5 working days from when you become aware. For theft, the deadline is 48 hours.", ar: "خلال 5 أيام عمل من علمك بالأمر. في حالة السرقة، المهلة 48 ساعة.", es: "Dentro de los 5 días hábiles desde que tengas conocimiento. Para robo, el plazo es de 48 horas." }, keywords: { fr: ["déclarer", "sinistre", "délai", "jours"], en: ["report", "claim", "deadline", "days"], ar: ["إبلاغ", "مطالبة", "مهلة", "أيام"], es: ["denunciar", "siniestro", "plazo", "días"] } },
+  { q: { fr: "Comment déclarer un sinistre ?", en: "How to report a claim?", ar: "كيفية الإبلاغ عن مطالبة؟", es: "¿Cómo denunciar un siniestro?" }, a: { fr: "Contactez-nous au 0667558436 ou envoyez un email à info@cpa.ma avec les détails et les justificatifs.", en: "Contact us at 0667558436 or send an email to info@cpa.ma with the details and supporting documents.", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma مع التفاصيل والمستندات الداعمة.", es: "Contáctanos al 0667558436 o envía un correo electrónico a info@cpa.ma con los detalles y documentos de respaldo." }, keywords: { fr: ["comment", "déclarer", "procédure"], en: ["how", "report", "procedure"], ar: ["كيف", "إبلاغ", "إجراء"], es: ["cómo", "denunciar", "procedimiento"] } },
 
   // CPA
   { q: {
@@ -256,32 +256,43 @@ const faqData: FAQItem[] = [
     "en": "Who are we?",
     "ar": "من نحن؟",
     "es": "¿Quiénes somos?"
-  }, a: { fr: "Nous sommes CPA (Conseil et Placement d'Assurances), un cabinet de courtage en assurances spécialisé dans l'accompagnement des particuliers et des entreprises depuis 1957 à Casablanca.", en: "We are CPA (Conseil et Placement d'Assurances), an insurance brokerage firm specialized in supporting individuals and businesses since 1957 in Casablanca.", ar: "نحن CPA (Conseil et Placement d'Assurances)، مكتب وساطة تأمين متخصص في مرافقة الأفراد والشركات منذ 1957 في الدار البيضاء.", es: "Somos CPA (Conseil et Placement d'Assurances), una correduría de seguros especializada en apoyar a particulares y empresas desde 1957 en Casablanca." }, keywords: { fr: ["qui", "sommes", "cpa", "présentation"], en: ["who", "are", "cpa", "presentation"], ar: ["من", "نحن", "cpa", "تعريف"], es: ["quién", "somos", "cpa", "presentación"] } },
-  { q: { fr: "Quelles assurances proposez-vous ?", en: "What insurance do you offer?", ar: "ما هي التأمينات التي تقدمونها؟", es: "¿Qué seguros ofrecen?" }, a: { fr: "Nous proposons : Auto, Habitation, Santé, Prévoyance, Épargne, Accidents de Travail, Responsabilité Civile, Construction, Transport Maritime, Cyber Risques, Flotte Auto, Trottinette Électrique et Animaux de Compagnie.", en: "We offer: Auto, Home, Health, Foresight, Savings, Work Accidents, Civil Liability, Construction, Maritime Transport, Cyber Risks, Auto Fleet, Electric Scooter and Pet Insurance.", ar: "نقدم: السيارات، المنزل، الصحة، التأمين التكميلي، الادخار، حوادث العمل، المسؤولية المدنية، البناء، النقل البحري، مخاطر الإنترنت، أسطول السيارات، السكوتر الكهربائي وتأمين الحيوانات الأليفة.", es: "Ofrecemos: Auto, Hogar, Salud, Previsión, Ahorro, Accidentes Laborales, Responsabilidad Civil, Construcción, Transporte Marítimo, Riesgos Cibernéticos, Flota de Autos, Patinete Eléctrico y Seguro de Mascotas." }, keywords: { fr: ["proposez", "services", "offres", "produits", "assurances"], en: ["offer", "services", "products", "insurance"], ar: ["نقدم", "خدمات", "عروض", "منتجات", "تأمين"], es: ["ofrecen", "servicios", "ofertas", "productos", "seguros"] } },
-  { q: { fr: "Pourquoi passer par un courtier ?", en: "Why use a broker?", ar: "لماذا الاستفادة من وسيط؟", es: "¿Por qué usar un corredor?" }, a: { fr: "Pour comparer les offres de plusieurs compagnies, négocier les meilleurs tarifs, bénéficier d'un accompagnement personnalisé et d'un suivi des sinistres.", en: "To compare offers from several companies, negotiate the best rates, benefit from personalized support and claim follow-up.", ar: "لمقارنة عروض عدة شركات، التفاوض على أفضل الأسعار، الاستفادة من الدعم الشخصي ومتابعة المطالبات.", es: "Para comparar ofertas de varias compañías, negociar las mejores tarifas, beneficiarse de acompañamiento personalizado y seguimiento de siniestros." }, keywords: { fr: ["pourquoi", "courtier", "avantage", "intérêt"], en: ["why", "broker", "advantage", "benefit"], ar: ["لماذا", "وسيط", "ميزة", "فائدة"], es: ["por qué", "corredor", "ventaja", "interés"] } },
-  { q: { fr: "Quels sont vos horaires ?", en: "What are your hours?", ar: "ما هي ساعات عملكم؟", es: "¿Cuáles son sus horarios?" }, a: { fr: "Du lundi au vendredi, de 8h30 à 18h00.", en: "Monday to Friday, from 8:30 AM to 6:00 PM.", ar: "من الاثنين إلى الجمعة، من 8:30 إلى 18:00.", es: "De lunes a viernes, de 8:30 a 18:00." }, keywords: { fr: ["horaires", "heures", "ouverture", "disponible"], en: ["hours", "opening", "available"], ar: ["ساعات", "فتح", "متاح"], es: ["horarios", "apertura", "disponible"] } },
-  { q: { fr: "Quelles sont vos valeurs ?", en: "What are your values?", ar: "ما هي قيمكم؟", es: "¿Cuáles son sus valores?" }, a: { fr: "La proximité, l'innovation, la performance et l'éthique. Ce sont les valeurs qui nous guident depuis 1957 pour vous offrir un accompagnement humain, des solutions modernes, les meilleures garanties au meilleur rapport qualité-prix et des conseils transparents.", en: "Proximity, innovation, performance and ethics. These are the values that have guided us since 1957 to offer you human support, modern solutions, the best coverage at the best value and transparent advice.", ar: "القرب، الابتكار، الأداء والأخلاق. هذه هي القيم التي ترشدنا منذ 1957 لنقدم لك مرافقة إنسانية، حلولاً عصرية، أفضل الضمانات بأفضل نسبة جودة سعر ونصائح شفافة.", es: "La proximidad, la innovación, el rendimiento y la ética. Estos son los valores que nos guían desde 1957 para ofrecerle acompañamiento humano, soluciones modernas, las mejores garantías al mejor rapport calidad-precio y consejos transparentes." }, keywords: { fr: ["valeurs", "engagement", "philosophie"], en: ["values", "commitment", "philosophy"], ar: ["قيم", "التزام", "فلسفة"], es: ["valores", "compromiso", "filosofía"] } },
-  { q: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" }, a: { fr: "Appelez-nous au 0667558436, envoyez un email à info@cpa.ma, ou remplissez le formulaire de contact sur notre site. Vous pouvez aussi utiliser notre estimateur de devis en ligne !", en: "Call us at 0667558436, send an email to info@cpa.ma, or fill out the contact form on our website. You can also use our online quote estimator!", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma أو املأ نموذج الاتصال على موقعنا. يمكنك أيضًا استخدام أداة تقدير العرض عبر الإنترنت!", es: "Llámenos al 0667558436, envíe un correo a info@cpa.ma, o complete el formulario de contacto en nuestro sitio. ¡También puede usar nuestro estimador de presupuesto en línea!" }, keywords: { fr: ["devis", "estimation", "tarif", "prix"], en: ["quote", "estimate", "rate", "price"], ar: ["عرض أسعار", "تقدير", "رسوم", "سعر"], es: ["presupuesto", "estimación", "tarifa", "precio"] } },
+  }, a: { fr: "Nous sommes CPA (Conseil et Placement d'Assurances), un cabinet de courtage en assurances spécialisé pour vous accompagner, vous particuliers et entreprises, depuis 1957 à Casablanca.", en: "We are CPA (Conseil et Placement d'Assurances), an insurance brokerage firm specialized in supporting you, individuals and businesses, since 1957 in Casablanca.", ar: "نحن CPA (Conseil et Placement d'Assurances)، مكتب وساطة تأمين متخصص في مرافقتك، أنت الأفراد والشركات، منذ 1957 في الدار البيضاء.", es: "Somos CPA (Conseil et Placement d'Assurances), una correduría de seguros especializada en apoyarte, a ti particulares y empresas, desde 1957 en Casablanca." }, keywords: { fr: ["qui", "sommes", "cpa", "présentation"], en: ["who", "are", "cpa", "presentation"], ar: ["من", "نحن", "cpa", "تعريف"], es: ["quién", "somos", "cpa", "presentación"] } },
+  { q: { fr: "Quelles assurances proposez-vous ?", en: "What insurance do you offer?", ar: "ما هي التأمينات التي تقدمونها؟", es: "¿Qué seguros ofrecen?" }, a: { fr: "Je vous propose : Auto, Habitation, Santé, Prévoyance, Épargne, Accidents de Travail, Responsabilité Civile, Construction, Transport Maritime, Cyber Risques, Flotte Auto, Trottinette Électrique et Animaux de Compagnie.", en: "I offer you: Auto, Home, Health, Foresight, Savings, Work Accidents, Civil Liability, Construction, Maritime Transport, Cyber Risks, Auto Fleet, Electric Scooter and Pet Insurance.", ar: "أقدم لك: السيارات، المنزل، الصحة، التأمين التكميلي، الادخار، حوادث العمل، المسؤولية المدنية، البناء، النقل البحري، مخاطر الإنترنت، أسطول السيارات، السكوتر الكهربائي وتأمين الحيوانات الأليفة.", es: "Te ofrezco: Auto, Hogar, Salud, Previsión, Ahorro, Accidentes Laborales, Responsabilidad Civil, Construcción, Transporte Marítimo, Riesgos Cibernéticos, Flota de Autos, Patinete Eléctrico y Seguro de Mascotas." }, keywords: { fr: ["proposez", "services", "offres", "produits", "assurances"], en: ["offer", "services", "products", "insurance"], ar: ["نقدم", "خدمات", "عروض", "منتجات", "تأمين"], es: ["ofrecen", "servicios", "ofertas", "productos", "seguros"] } },
+  { q: { fr: "Pourquoi passer par un courtier ?", en: "Why use a broker?", ar: "لماذا الاستفادة من وسيط؟", es: "¿Por qué usar un corredor?" }, a: { fr: "Pour comparer les offres de plusieurs compagnies, négocier les meilleurs tarifs pour vous, bénéficier d'un accompagnement personnalisé et d'un suivi des sinistres.", en: "To compare offers from several companies, negotiate the best rates for you, benefit from personalized support and claim follow-up.", ar: "لمقارنة عروض عدة شركات، التفاوض على أفضل الأسعار لك، الاستفادة من الدعم الشخصي ومتابعة المطالبات.", es: "Para comparar ofertas de varias compañías, negociar las mejores tarifas para ti, beneficiarte de acompañamiento personalizado y seguimiento de siniestros." }, keywords: { fr: ["pourquoi", "courtier", "avantage", "intérêt"], en: ["why", "broker", "advantage", "benefit"], ar: ["لماذا", "وسيط", "ميزة", "فائدة"], es: ["por qué", "corredor", "ventaja", "interés"] } },
+  { q: { fr: "Quels sont vos horaires ?", en: "What are your hours?", ar: "ما هي ساعات عملكم؟", es: "¿Cuáles son sus horarios?" }, a: { fr: "Nous sommes à votre disposition du lundi au vendredi, de 8h30 à 18h00.", en: "We are at your disposal Monday to Friday, from 8:30 AM to 6:00 PM.", ar: "نحن في خدمتك من الاثنين إلى الجمعة، من 8:30 إلى 18:00.", es: "Estamos a tu disposición de lunes a viernes, de 8:30 a 18:00." }, keywords: { fr: ["horaires", "heures", "ouverture", "disponible"], en: ["hours", "opening", "available"], ar: ["ساعات", "فتح", "متاح"], es: ["horarios", "apertura", "disponible"] } },
+  { q: { fr: "Quelles sont vos valeurs ?", en: "What are your values?", ar: "ما هي قيمكم؟", es: "¿Cuáles son sus valores?" }, a: { fr: "La proximité, l'innovation, la performance et l'éthique. Ce sont les valeurs qui nous guident depuis 1957 pour vous offrir un accompagnement humain, des solutions modernes, les meilleures garanties au meilleur rapport qualité-prix et des conseils transparents.", en: "Proximity, innovation, performance and ethics. These are the values that have guided us since 1957 to offer you human support, modern solutions, the best coverage at the best value and transparent advice.", ar: "القرب، الابتكار، الأداء والأخلاق. هذه هي القيم التي ترشدنا منذ 1957 لنقدم لك مرافقة إنسانية، حلولاً عصرية، أفضل الضمانات بأفضل نسبة جودة سعر ونصائح شفافة.", es: "La proximidad, la innovación, el rendimiento y la ética. Estos son los valores que nos guían desde 1957 para ofrecerte acompañamiento humano, soluciones modernas, las mejores garantías al mejor rapport calidad-precio y consejos transparentes." }, keywords: { fr: ["valeurs", "engagement", "philosophie"], en: ["values", "commitment", "philosophy"], ar: ["قيم", "التزام", "فلسفة"], es: ["valores", "compromiso", "filosofía"] } },
+  { q: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" }, a: { fr: "Appelez-nous au 0667558436, envoyez un email à info@cpa.ma, ou remplissez le formulaire de contact sur notre site. Vous pouvez aussi utiliser notre estimateur de devis en ligne !", en: "Call us at 0667558436, send an email to info@cpa.ma, or fill out the contact form on our website. You can also use our online quote estimator!", ar: "اتصل بنا على 0667558436 أو أرسل بريدًا إلكترونيًا إلى info@cpa.ma أو املأ نموذج الاتصال على موقعنا. يمكنك أيضًا استخدام أداة تقدير العرض عبر الإنترنت!", es: "Llámanos al 0667558436, envía un correo a info@cpa.ma, o completa el formulario de contacto en nuestro sitio. ¡También puedes usar nuestro estimador de presupuesto en línea!" }, keywords: { fr: ["devis", "estimation", "tarif", "prix"], en: ["quote", "estimate", "rate", "price"], ar: ["عرض أسعار", "تقدير", "رسوم", "سعر"], es: ["presupuesto", "estimación", "tarifa", "precio"] } },
   { q: { fr: "Où êtes-vous situés ?", en: "Where are you located?", ar: "أين موقعكم؟", es: "¿Dónde están ubicados?" }, a: { fr: "Notre siège est à Casablanca, Maroc. Adresse : Casablanca, Maroc. Téléphone : 0667558436.", en: "Our headquarters is in Casablanca, Morocco. Address: Casablanca, Morocco. Phone: 0667558436.", ar: "مقرنا في الدار البيضاء، المغرب. العنوان: الدار البيضاء، المغرب. الهاتف: 0667558436.", es: "Nuestra sede está en Casablanca, Marruecos. Dirección: Casablanca, Marruecos. Teléfono: 0667558436." }, keywords: { fr: ["adresse", "situés", "localisation", "bureau", "siège"], en: ["address", "located", "location", "office", "headquarters"], ar: ["عنوان", "موقع", "مكتب", "مقر"], es: ["dirección", "ubicados", "ubicación", "oficina", "sede"] } },
 
   // Entreprises / Business
-  { q: { fr: "Proposez-vous des assurances pour les entreprises ?", en: "Do you offer insurance for businesses?", ar: "هل تقدمون التأمين للشركات؟", es: "¿Ofrecen seguros para empresas?" }, a: { fr: "Oui, nous proposons une gamme complète : Responsabilité Civile, Accidents de Travail, Risques Techniques, Dommage aux Biens, Perte d'Exploitation, Transport, Construction, Cyber Risques et Épargne Vie.", en: "Yes, we offer a complete range: Civil Liability, Work Accidents, Technical Risks, Property Damage, Business Interruption, Transport, Construction, Cyber Risks and Life Savings.", ar: "نعم، نقدم مجموعة كاملة: المسؤولية المدنية، حوادث العمل، المخاطر التقنية، أضرار الممتلكات، فقدان الأرباح، النقل، البناء، مخاطر الإنترنت والادخار على الحياة.", es: "Sí, ofrecemos una gama completa: Responsabilidad Civil, Accidentes Laborales, Riesgos Técnicos, Daños a Bienes, Pérdida de Explotación, Transporte, Construcción, Riesgos Cibernéticos y Ahorro Vida." }, keywords: { fr: ["entreprise", "professionnel", "société", "commercial"], en: ["business", "professional", "company", "commercial"], ar: ["شركة", "محترف", "مؤسسة", "تجاري"], es: ["empresa", "profesional", "sociedad", "comercial"] } },
-  { q: { fr: "Qu'est-ce que l'assurance responsabilité civile ?", en: "What is civil liability insurance?", ar: "ما هو تأمين المسؤولية المدنية؟", es: "¿Qué es el seguro de responsabilidad civil?" }, a: { fr: "Elle couvre les dommages (corporels, matériels, immatériels) que vous ou votre entreprise pourriez causer à des tiers dans le cadre de votre activité.", en: "It covers damages (physical, material, intangible) that you or your company could cause to third parties in the course of your activity.", ar: "يغطي الأضرار (الجسدية، المادية، غير المادية) التي قد تسببها أنت أو شركتك لأطراف ثالثة في إطار نشاطك.", es: "Cubre los daños (corporales, materiales, inmateriales) que usted o su empresa puedan causar a terceros en el marco de su actividad." }, keywords: { fr: ["responsabilité", "civile", "dommages", "tiers"], en: ["liability", "civil", "damages", "third parties"], ar: ["مسؤولية", "مدنية", "أضرار", "أطراف ثالثة"], es: ["responsabilidad", "civil", "daños", "terceros"] } },
-  { q: { fr: "Qu'est-ce que l'assurance accidents de travail ?", en: "What is work accident insurance?", ar: "ما هو تأمين حوادث العمل؟", es: "¿Qué es el seguro de accidentes laborales?" }, a: { fr: "C'est une assurance obligatoire qui protège vos employés en cas d'accident survenu sur le lieu de travail ou durant le trajet.", en: "It's mandatory insurance that protects your employees in case of an accident occurring at the workplace or during the commute.", ar: "إنه تأمين إلزامي يحمي موظفيك في حالة وقوع حادث في مكان العمل أو خلال التنقل.", es: "Es un seguro obligatorio que protege a sus empleados en caso de accidente ocurrido en el lugar de trabajo o durante el trayecto." }, keywords: { fr: ["accidents", "travail", "employés", "obligatoire"], en: ["accidents", "work", "employees", "mandatory"], ar: ["حوادث", "عمل", "موظفين", "إلزامي"], es: ["accidentes", "trabajo", "empleados", "obligatorio"] } },
-  { q: { fr: "Qu'est-ce que l'assurance cyber risques ?", en: "What is cyber risk insurance?", ar: "ما هو تأمين مخاطر الإنترنت؟", es: "¿Qué es el seguro de riesgos cibernéticos?" }, a: { fr: "Elle protège votre entreprise contre les cyberattaques : piratage, vol de données, ransomware, interruption d'activité liée au numérique.", en: "It protects your business against cyberattacks: hacking, data theft, ransomware, digital activity interruption.", ar: "تحمي شركتك من الهجمات الإلكترونية: القرصنة، سرقة البيانات، برامج الفدية، انقطاع النشاط الرقمي.", es: "Protege su empresa contra ciberataques: piratería, robo de datos, ransomware, interrupción de actividad digital." }, keywords: { fr: ["cyber", "numérique", "piratage", "données", "hacking"], en: ["cyber", "digital", "hacking", "data", "ransomware"], ar: ["سيبراني", "رقمي", "قرصنة", "بيانات", "اختراق"], es: ["ciber", "digital", "hacking", "datos", "ransomware"] } },
+  { q: { fr: "Proposez-vous des assurances pour les entreprises ?", en: "Do you offer insurance for businesses?", ar: "هل تقدمون التأمين للشركات؟", es: "¿Ofrecen seguros para empresas?" }, a: { fr: "Oui, je vous propose une gamme complète : Responsabilité Civile, Accidents de Travail, Risques Techniques, Dommage aux Biens, Perte d'Exploitation, Transport, Construction, Cyber Risques et Épargne Vie.", en: "Yes, I offer you a complete range: Civil Liability, Work Accidents, Technical Risks, Property Damage, Business Interruption, Transport, Construction, Cyber Risks and Life Savings.", ar: "نعم، أقدم لك مجموعة كاملة: المسؤولية المدنية، حوادث العمل، المخاطر التقنية، أضرار الممتلكات، فقدان الأرباح، النقل، البناء، مخاطر الإنترنت والادخار على الحياة.", es: "Sí, te ofrezco una gama completa: Responsabilidad Civil, Accidentes Laborales, Riesgos Técnicos, Daños a Bienes, Pérdida de Explotación, Transporte, Construcción, Riesgos Cibernéticos y Ahorro Vida." }, keywords: { fr: ["entreprise", "professionnel", "société", "commercial"], en: ["business", "professional", "company", "commercial"], ar: ["شركة", "محترف", "مؤسسة", "تجاري"], es: ["empresa", "profesional", "sociedad", "comercial"] } },
+  { q: { fr: "Qu'est-ce que l'assurance responsabilité civile ?", en: "What is civil liability insurance?", ar: "ما هو تأمين المسؤولية المدنية؟", es: "¿Qué es el seguro de responsabilidad civil?" }, a: { fr: "Elle couvre les dommages (corporels, matériels, immatériels) que vous ou votre entreprise pourriez causer à des tiers dans le cadre de votre activité.", en: "It covers damages (physical, material, intangible) that you or your company could cause to third parties in the course of your activity.", ar: "يغطي الأضرار (الجسدية، المادية، غير المادية) التي قد تسببها أنت أو شركتك لأطراف ثالثة في إطار نشاطك.", es: "Cubre los daños (corporales, materiales, inmateriales) que tú o tu empresa puedan causar a terceros en el marco de tu actividad." }, keywords: { fr: ["responsabilité", "civile", "dommages", "tiers"], en: ["liability", "civil", "damages", "third parties"], ar: ["مسؤولية", "مدنية", "أضرار", "أطراف ثالثة"], es: ["responsabilidad", "civil", "daños", "terceros"] } },
+  { q: { fr: "Qu'est-ce que l'assurance accidents de travail ?", en: "What is work accident insurance?", ar: "ما هو تأمين حوادث العمل؟", es: "¿Qué es el seguro de accidentes laborales?" }, a: { fr: "C'est une assurance obligatoire qui protège vos employés en cas d'accident survenu sur le lieu de travail ou durant le trajet.", en: "It's mandatory insurance that protects your employees in case of an accident occurring at the workplace or during the commute.", ar: "إنه تأمين إلزامي يحمي موظفيك في حالة وقوع حادث في مكان العمل أو خلال التنقل.", es: "Es un seguro obligatorio que protege a tus empleados en caso de accidente ocurrido en el lugar de trabajo o durante el trayecto." }, keywords: { fr: ["accidents", "travail", "employés", "obligatoire"], en: ["accidents", "work", "employees", "mandatory"], ar: ["حوادث", "عمل", "موظفين", "إلزامي"], es: ["accidentes", "trabajo", "empleados", "obligatorio"] } },
+  { q: { fr: "Qu'est-ce que l'assurance cyber risques ?", en: "What is cyber risk insurance?", ar: "ما هو تأمين مخاطر الإنترنت؟", es: "¿Qué es el seguro de riesgos cibernéticos?" }, a: { fr: "Elle protège votre entreprise contre les cyberattaques : piratage, vol de données, ransomware, interruption d'activité liée au numérique.", en: "It protects your business against cyberattacks: hacking, data theft, ransomware, digital activity interruption.", ar: "تحمي شركتك من الهجمات الإلكترونية: القرصنة، سرقة البيانات، برامج الفدية، انقطاع النشاط الرقمي.", es: "Protege tu empresa contra ciberataques: piratería, robo de datos, ransomware, interrupción de actividad digital." }, keywords: { fr: ["cyber", "numérique", "piratage", "données", "hacking"], en: ["cyber", "digital", "hacking", "data", "ransomware"], ar: ["سيبراني", "رقمي", "قرصنة", "بيانات", "اختراق"], es: ["ciber", "digital", "hacking", "datos", "ransomware"] } },
 
   // Nouveautés / New Products
-  { q: { fr: "Qu'est-ce que l'assurance trottinette électrique ?", en: "What is electric scooter insurance?", ar: "ما هو تأمين السكوتر الكهربائي؟", es: "¿Qué es el seguro de patinete eléctrico?" }, a: { fr: "C'est une assurance spécialement conçue pour les utilisateurs de trottinettes électriques. Elle couvre la responsabilité civile, le vol, les dommages matériels et la protection du conducteur.", en: "It's insurance specially designed for electric scooter users. It covers civil liability, theft, material damage and driver protection.", ar: "إنه تأمين مصمم خصيصًا لمستخدمي السكوتر الكهربائي. يغطي المسؤولية المدنية والسرقة والأضرار المادية وحماية السائق.", es: "Es un seguro especialmente diseñado para usuarios de patinetes eléctricos. Cubre responsabilidad civil, robo, daños materiales y protección del conductor." }, keywords: { fr: ["trottinette", "électrique", "mobilité", "edpm"], en: ["scooter", "electric", "mobility", "edpm"], ar: ["سكوتر", "كهربائي", "تنقل", "edpm"], es: ["patinete", "eléctrico", "movilidad", "edpm"] } },
-  { q: { fr: "Qu'est-ce que l'assurance animaux de compagnie ?", en: "What is pet insurance?", ar: "ما هو تأمين الحيوانات الأليفة؟", es: "¿Qué es el seguro de mascotas?" }, a: { fr: "Elle couvre les frais vétérinaires de vos animaux (chien, chat) en cas de maladie ou d'accident : consultations, chirurgie, hospitalisation et médicaments.", en: "It covers veterinary expenses for your pets (dog, cat) in case of illness or accident: consultations, surgery, hospitalization and medications.", ar: "تغطي النفقات البيطرية لحيواناتك الأليفة (كلب، قطة) في حالة المرض أو الحادث: الاستشارات، الجراحة، المستشفى والأدوية.", es: "Cubre los gastos veterinarios de sus mascotas (perro, gato) en caso de enfermedad o accidente: consultas, cirugía, hospitalización y medicamentos." }, keywords: { fr: ["animaux", "compagnie", "chien", "chat", "vétérinaire", "animal"], en: ["pets", "companion", "dog", "cat", "veterinary", "animal"], ar: ["حيوانات", "رفقة", "كلب", "قطة", "بيطري", "حيوان"], es: ["mascotas", "compañía", "perro", "gato", "veterinario", "animal"] } },
+  { q: { fr: "Qu'est-ce que l'assurance trottinette électrique ?", en: "What is electric scooter insurance?", ar: "ما هو تأمين السكوتر الكهربائي؟", es: "¿Qué es el seguro de patinete eléctrico?" }, a: { fr: "C'est une assurance spécialement conçue pour les utilisateurs de trottinettes électriques. Elle couvre votre responsabilité civile, le vol, les dommages matériels et la protection du conducteur.", en: "It's insurance specially designed for electric scooter users. It covers your civil liability, theft, material damage and driver protection.", ar: "إنه تأمين مصمم خصيصًا لمستخدمي السكوتر الكهربائي. يغطي مسؤوليتك المدنية والسرقة والأضرار المادية وحماية السائق.", es: "Es un seguro especialmente diseñado para usuarios de patinetes eléctricos. Cubre tu responsabilidad civil, robo, daños materiales y protección del conductor." }, keywords: { fr: ["trottinette", "électrique", "mobilité", "edpm"], en: ["scooter", "electric", "mobility", "edpm"], ar: ["سكوتر", "كهربائي", "تنقل", "edpm"], es: ["patinete", "eléctrico", "movilidad", "edpm"] } },
+  { q: { fr: "Qu'est-ce que l'assurance animaux de compagnie ?", en: "What is pet insurance?", ar: "ما هو تأمين الحيوانات الأليفة؟", es: "¿Qué es el seguro de mascotas?" }, a: { fr: "Elle couvre les frais vétérinaires de vos animaux (chien, chat) en cas de maladie ou d'accident : consultations, chirurgie, hospitalisation et médicaments.", en: "It covers veterinary expenses for your pets (dog, cat) in case of illness or accident: consultations, surgery, hospitalization and medications.", ar: "تغطي النفقات البيطرية لحيواناتك الأليفة (كلب، قطة) في حالة المرض أو الحادث: الاستشارات، الجراحة، المستشفى والأدوية.", es: "Cubre los gastos veterinarios de tus mascotas (perro, gato) en caso de enfermedad o accidente: consultas, cirugía, hospitalización y medicamentos." }, keywords: { fr: ["animaux", "compagnie", "chien", "chat", "vétérinaire", "animal"], en: ["pets", "companion", "dog", "cat", "veterinary", "animal"], ar: ["حيوانات", "رفقة", "كلب", "قطة", "بيطري", "حيوان"], es: ["mascotas", "compañía", "perro", "gato", "veterinario", "animal"] } },
   
   // Paiement / Payment
-  { q: { fr: "Comment payer ma prime d'assurance ?", en: "How to pay my insurance premium?", ar: "كيفية دفع قسط التأمين؟", es: "¿Cómo pagar mi prima de seguro?" }, a: { fr: "Vous pouvez payer par virement bancaire, chèque, ou carte bancaire. Des facilités de paiement sont possibles selon le contrat.", en: "You can pay by bank transfer, check, or credit card. Payment facilities are available depending on the contract.", ar: "يمكنك الدفع عن طريق التحويل البنكي أو الشيك أو بطاقة الائتمان. تسهيلات الدفع متاحة حسب العقد.", es: "Puede pagar mediante transferencia bancaria, cheque o tarjeta de crédito. Hay facilidades de pago disponibles según el contrato." }, keywords: { fr: ["payer", "paiement", "règlement", "carte", "virement"], en: ["pay", "payment", "settlement", "card", "transfer"], ar: ["دفع", "مالية", "تسوية", "بطاقة", "تحويل"], es: ["pagar", "pago", "liquidación", "tarjeta", "transferencia"] } },
-  { q: { fr: "Peut-on résilier un contrat d'assurance ?", en: "Can you cancel an insurance contract?", ar: "هل يمكن إلغاء عقد التأمين؟", es: "¿Se puede rescindir un contrato de seguro?" }, a: { fr: "Oui, vous pouvez résilier votre contrat à l'échéance annuelle avec un préavis (généralement 2 mois). Des cas de résiliation anticipée existent aussi.", en: "Yes, you can cancel your contract at the annual expiry with notice (usually 2 months). Early cancellation cases also exist.", ar: "نعم، يمكنك إلغاء عقدك عند انتهاء الصلاحية السنوية مع إشعار (عادةً شهرين). توجد أيضًا حالات إلغاء مبكر.", es: "Sí, puede rescindir su contrato en el vencimiento anual con preaviso (generalmente 2 meses). También existen casos de rescisión anticipada." }, keywords: { fr: ["résilier", "résiliation", "annuler", "arrêter"], en: ["cancel", "termination", "annul", "stop"], ar: ["إلغاء", "فسخ", "إبطال", "توقيف"], es: ["rescindir", "rescisión", "anular", "parar"] } },
-  { q: { fr: "Comment renouveler mon contrat ?", en: "How to renew my contract?", ar: "كيفية تجديد عقدي؟", es: "¿Cómo renovar mi contrato?" }, a: { fr: "Votre contrat se renouvelle automatiquement à l'échéance. Notre équipe vous contacte avant pour ajuster les garanties si nécessaire.", en: "Your contract automatically renews at expiry. Our team contacts you before to adjust coverage if necessary.", ar: "يتم تجديد عقدك تلقائيًا عند انتهاء الصلاحية. يتواصل فريقنا معك قبل ذلك لتعديل التغطيات إذا لزم الأمر.", es: "Su contrato se renueva automáticamente al vencimiento. Nuestro equipo le contacta antes para ajustar las coberturas si es necesario." }, keywords: { fr: ["renouveler", "renouvellement", "échéance"], en: ["renew", "renewal", "expiry"], ar: ["تجديد", "تجديد", "انتهاء"], es: ["renovar", "renovación", "vencimiento"] } },
+  { q: { fr: "Comment payer ma prime d'assurance ?", en: "How to pay my insurance premium?", ar: "كيفية دفع قسط التأمين؟", es: "¿Cómo pagar mi prima de seguro?" }, a: { fr: "Vous pouvez payer par virement bancaire, chèque, ou carte bancaire. Des facilités de paiement sont possibles selon votre contrat.", en: "You can pay by bank transfer, check, or credit card. Payment facilities are available depending on your contract.", ar: "يمكنك الدفع عن طريق التحويل البنكي أو الشيك أو بطاقة الائتمان. تسهيلات الدفع متاحة حسب عقدك.", es: "Puedes pagar mediante transferencia bancaria, cheque o tarjeta de crédito. Hay facilidades de pago disponibles según tu contrato." }, keywords: { fr: ["payer", "paiement", "règlement", "carte", "virement"], en: ["pay", "payment", "settlement", "card", "transfer"], ar: ["دفع", "مالية", "تسوية", "بطاقة", "تحويل"], es: ["pagar", "pago", "liquidación", "tarjeta", "transferencia"] } },
+  { q: { fr: "Peut-on résilier un contrat d'assurance ?", en: "Can you cancel an insurance contract?", ar: "هل يمكن إلغاء عقد التأمين؟", es: "¿Se puede rescindir un contrato de seguro?" }, a: { fr: "Oui, vous pouvez résilier votre contrat à l'échéance annuelle avec un préavis (généralement 2 mois). Des cas de résiliation anticipée existent aussi.", en: "Yes, you can cancel your contract at the annual expiry with notice (usually 2 months). Early cancellation cases also exist.", ar: "نعم، يمكنك إلغاء عقدك عند انتهاء الصلاحية السنوية مع إشعار (عادةً شهرين). توجد أيضًا حالات إلغاء مبكر.", es: "Sí, puedes rescindir tu contrato en el vencimiento anual con preaviso (generalmente 2 meses). También existen casos de rescisión anticipada." }, keywords: { fr: ["résilier", "résiliation", "annuler", "arrêter"], en: ["cancel", "termination", "annul", "stop"], ar: ["إلغاء", "فسخ", "إبطال", "توقيف"], es: ["rescindir", "rescisión", "anular", "parar"] } },
+  { q: { fr: "Comment renouveler mon contrat ?", en: "How to renew my contract?", ar: "كيفية تجديد عقدي؟", es: "¿Cómo renovar mi contrato?" }, a: { fr: "Votre contrat se renouvelle automatiquement à l'échéance. Notre équipe vous contacte avant pour ajuster les garanties si nécessaire.", en: "Your contract automatically renews at expiry. Our team contacts you before to adjust coverage if necessary.", ar: "يتم تجديد عقدك تلقائيًا عند انتهاء الصلاحية. يتواصل فريقنا معك قبل ذلك لتعديل التغطيات إذا لزم الأمر.", es: "Tu contrato se renueva automáticamente al vencimiento. Nuestro equipo te contacta antes para ajustar las coberturas si es necesario." }, keywords: { fr: ["renouveler", "renouvellement", "échéance"], en: ["renew", "renewal", "expiry"], ar: ["تجديد", "تجديد", "انتهاء"], es: ["renovar", "renovación", "vencimiento"] } },
   
   // Partenaires / Partners
   { q: { fr: "Avec quelles compagnies travaillez-vous ?", en: "Which companies do you work with?", ar: "مع أي شركات تعملون؟", es: "¿Con qué compañías trabajan?" }, a: { fr: "Nous travaillons avec les meilleures compagnies du marché : Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, et bien d'autres.", en: "We work with the best companies in the market: Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, and many more.", ar: "نعمل مع أفضل الشركات في السوق: أليانز، AXA، وفاء للتأمين، RMA، سانلام، أتلانتا صد، الشركة المغربية للحياة، وغيرها الكثير.", es: "Trabajamos con las mejores compañías del mercado: Allianz, AXA, Wafa Assurance, RMA, Sanlam, AtlantaSanad, La Marocaine Vie, y muchas más." }, keywords: { fr: ["compagnies", "partenaires", "allianz", "axa", "wafa"], en: ["companies", "partners", "allianz", "axa", "wafa"], ar: ["شركات", "شركاء", "أليانز", "axa", "وفاء"], es: ["compañías", "socios", "allianz", "axa", "wafa"] } },
 ];
+
+// Welcome message for new visitors
+const getWelcomeMessage = (lang: string): string => {
+  const messages = {
+    fr: "👋 Bonjour et bienvenue chez CPA ! Je suis votre assistant virtuel. Comment puis-je vous aider aujourd'hui ?",
+    en: "👋 Hello and welcome to CPA! I am your virtual assistant. How can I help you today?",
+    ar: "👋 مرحباً بك في CPA! أنا مساعدك الافتراضي. كيف يمكنني مساعدتك اليوم؟",
+    es: "👋 ¡Hola y bienvenido a CPA! Soy tu asistente virtual. ¿Cómo puedo ayudarte hoy?"
+  };
+  return messages[lang as keyof typeof messages] || messages.fr;
+};
 
 type Message = { role: "bot" | "user"; text: string };
 
@@ -393,27 +404,27 @@ const getContextualSuggestions = (lastMessage: string, lang: string): string[] =
     ];
   }
   
-  // Default suggestions - CORRECTED VERSION
+  // Default suggestions - welcome the visitor with personalized suggestions
   return [
     lang === "fr" ? "Quelles assurances proposez-vous ?" :
     lang === "en" ? "What insurance do you offer?" :
     lang === "ar" ? "ما هي التأمينات التي تقدمونها؟" :
     "¿Qué seguros ofrecen?",
     
-    lang === "fr" ? "Comment obtenir un devis ?" :
-    lang === "en" ? "How to get a quote?" :
-    lang === "ar" ? "كيفية الحصول على عرض أسعار؟" :
-    "¿Cómo obtener un presupuesto?",
+    lang === "fr" ? "Comment obtenir un devis personnalisé ?" :
+    lang === "en" ? "How to get a personalized quote?" :
+    lang === "ar" ? "كيفية الحصول على عرض سعر مخصص؟" :
+    "¿Cómo obtener un presupuesto personalizado?",
     
-    lang === "fr" ? "Qui sommes-nous ?" :
-    lang === "en" ? "Who are we?" :
-    lang === "ar" ? "من نحن؟" :
-    "¿Quiénes somos?",
+    lang === "fr" ? "Qui est CPA et comment pouvez-vous m'aider ?" :
+    lang === "en" ? "Who is CPA and how can you help me?" :
+    lang === "ar" ? "من هي CPA وكيف يمكنكم مساعدتي؟" :
+    "¿Quién es CPA y cómo pueden ayudarme?",
     
-    lang === "fr" ? "Quels sont vos horaires ?" :
-    lang === "en" ? "What are your hours?" :
+    lang === "fr" ? "Quels sont vos horaires d'ouverture ?" :
+    lang === "en" ? "What are your opening hours?" :
     lang === "ar" ? "ما هي ساعات عملكم؟" :
-    "¿Cuáles son sus horarios?"
+    "¿Cuáles son sus horarios de apertura?"
   ];
 };
 
@@ -424,18 +435,16 @@ interface ChatbotProps {
 const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
-  const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([
-    t("chat_suggestion_1"),
-    t("chat_suggestion_2"),
-    t("chat_suggestion_3"),
-    t("chat_suggestion_4")
+  const [messages, setMessages] = useState<Message[]>([
+    { role: "bot", text: getWelcomeMessage(lang) }
   ]);
+  const [input, setInput] = useState("");
+  const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
   const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   // Get page-specific ads or fallback to home ads
   const ads = pageSpecificAds[pageContext] || pageSpecificAds.home;
@@ -444,52 +453,35 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Initialize suggestions with welcome suggestions
+  useEffect(() => {
+    setCurrentSuggestions(getContextualSuggestions("", lang));
+  }, [lang]);
+
   // Rotate through page-specific ads - ONE ad at a time, 5 seconds display, 20 seconds pause
   useEffect(() => {
-    // Start with showing the first ad
     setShowAds(true);
-    
-    // Change to next ad every 25 seconds (5s display + 20s pause)
     const rotateTimer = setInterval(() => {
       setCurrentAdIndex((prev) => (prev + 1) % ads.length);
-    }, 25000); // 25 seconds total cycle (5s display + 20s wait)
-    
-    return () => {
-      clearInterval(rotateTimer);
-    };
+    }, 25000);
+    return () => clearInterval(rotateTimer);
   }, [ads.length]);
 
   // Toggle GIF visibility: 5 seconds display, 20 seconds hidden
   useEffect(() => {
-    // First toggle after 5 seconds to start the hidden phase
     const hideTimer = setTimeout(() => {
       setShowGif(false);
-      
-      // Then toggle every 25 seconds (20s hidden + 5s display)
       const gifTimer = setInterval(() => {
         setShowGif((prev) => !prev);
       }, 25000);
-      
       return () => clearInterval(gifTimer);
     }, 5000);
-    
     return () => clearTimeout(hideTimer);
   }, []);
-
-  // Update suggestions when language changes
-  useEffect(() => {
-    setCurrentSuggestions([
-      t("chat_suggestion_1"),
-      t("chat_suggestion_2"),
-      t("chat_suggestion_3"),
-      t("chat_suggestion_4")
-    ]);
-  }, [lang, t]);
 
   const findAnswer = (question: string): string => {
     const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     
-    // Try exact keyword matching with scoring
     let bestMatch: { faq: FAQItem; score: number } | null = null;
     
     for (const faq of faqData) {
@@ -498,7 +490,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       for (const keyword of keywords) {
         const normalizedKeyword = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         if (q.includes(normalizedKeyword)) {
-          score += normalizedKeyword.length; // longer keyword matches are more relevant
+          score += normalizedKeyword.length;
         }
       }
       if (score > 0 && (!bestMatch || score > bestMatch.score)) {
@@ -510,7 +502,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       return bestMatch.faq.a[lang as keyof typeof bestMatch.faq.a] || bestMatch.faq.a.fr;
     }
     
-    return t("chat_no_answer");
+    const noAnswerMessages = {
+      fr: "Je suis désolé, je n'ai pas encore de réponse à cette question. Souhaitez-vous que je vous mette en contact avec un conseiller CPA ? Vous pouvez nous appeler au 0667558436 ou nous écrire à info@cpa.ma.",
+      en: "I'm sorry, I don't have an answer to that question yet. Would you like me to put you in touch with a CPA advisor? You can call us at 0667558436 or email us at info@cpa.ma.",
+      ar: "عذراً، ليس لدي إجابة على هذا السؤال بعد. هل تريد مني أن أربطك بمستشار CPA؟ يمكنك الاتصال بنا على 0667558436 أو مراسلتنا على info@cpa.ma.",
+      es: "Lo siento, todavía no tengo respuesta a esa pregunta. ¿Te gustaría que te ponga en contacto con un asesor de CPA? Puedes llamarnos al 0667558436 o escribirnos a info@cpa.ma."
+    };
+    return noAnswerMessages[lang as keyof typeof noAnswerMessages] || noAnswerMessages.fr;
   };
 
   const handleSend = (text?: string) => {
@@ -525,16 +523,23 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     }, 600);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <>
-      {/* Chatbot GIF with Messages ABOVE - LEFT BOTTOM */}
+      {/* Chatbot GIF with Messages - LEFT BOTTOM */}
       <motion.div
         className="fixed bottom-6 left-6 z-50 flex flex-col items-center"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
-        {/* Messages Above GIF - ONE ad at a time, 20s duration */}
+        {/* Messages Above GIF - ONE ad at a time */}
         <AnimatePresence mode="wait">
           {showAds && (
             <motion.div 
@@ -545,7 +550,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
               transition={{ duration: 0.5 }}
             >
               <motion.div 
-                className="bg-white/20 backdrop-blur-md border-2 border-blue-500/50 text-blue-600 px-4 py-2 rounded-2xl text-xs min-w-[180px] max-w-[220px] shadow-lg"
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 backdrop-blur-md border-2 border-blue-400/50 text-blue-700 px-4 py-2.5 rounded-2xl text-xs min-w-[180px] max-w-[220px] shadow-xl"
                 animate={{ 
                   boxShadow: [
                     "0 4px 15px rgba(59, 130, 246, 0.2)",
@@ -561,9 +566,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-2 mb-1.5">
                   <motion.span 
-                    className="text-lg"
+                    className="text-xl"
                     animate={{ 
                       scale: [1, 1.3, 1],
                       rotate: [0, 5, -5, 0]
@@ -572,23 +577,23 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   >
                     {ads[currentAdIndex].icon}
                   </motion.span>
-                  <span className="font-bold text-[11px] text-blue-600 drop-shadow-sm">
+                  <span className="font-bold text-xs bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
                     {lang === "fr" ? ads[currentAdIndex].title : 
                      lang === "en" ? ads[currentAdIndex].titleEn :
                      lang === "ar" ? ads[currentAdIndex].titleAr :
                      ads[currentAdIndex].titleEs}
                   </span>
                 </div>
-                <div className="text-[10px] text-blue-500/90 font-medium">
+                <div className="text-[10px] text-blue-600/80 font-medium leading-relaxed">
                   {lang === "fr" ? ads[currentAdIndex].text :
                    lang === "en" ? ads[currentAdIndex].textEn :
                    lang === "ar" ? ads[currentAdIndex].textAr :
                    ads[currentAdIndex].textEs}
                 </div>
                 {/* Progress bar showing 5s duration with gradient */}
-                <div className="mt-2 h-1.5 bg-blue-500/30 rounded-full overflow-hidden">
+                <div className="mt-2 h-1 bg-blue-200/50 rounded-full overflow-hidden">
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 rounded-full"
+                    className="h-full bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-400 rounded-full"
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 5, ease: "linear" }}
@@ -600,33 +605,36 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
           )}
         </AnimatePresence>
 
-        {/* GIF Container - Show for 5 seconds, hide for 20 seconds */}
+        {/* GIF Container */}
         <AnimatePresence mode="wait">
           {showGif && (
             <motion.div
-              className="relative"
+              className="relative cursor-pointer group"
+              onClick={() => setIsOpen(true)}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
               transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl cpa-shadow-lg">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110">
                 <img 
                   src={chatbotGif} 
                   alt="CPA Assistant" 
-                  className="w-full h-full object-cover bg-transparent transition-transform duration-300 hover:scale-110"
+                  className="w-full h-full object-cover bg-transparent"
                 />
               </div>
-              <div className="absolute inset-0 rounded-full border-4 border-[#1a365d]/20 animate-ping"></div>
-              <div className="absolute inset-0 rounded-full border-2 border-[#1a365d]/30 animate-pulse"></div>
+              <div className="absolute inset-0 rounded-full border-4 border-blue-400/20 animate-ping"></div>
+              <div className="absolute inset-0 rounded-full border-2 border-blue-400/30 animate-pulse"></div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
 
+      {/* WhatsApp Button */}
       <motion.button
         onClick={openWhatsApp}
-        className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"
+        className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform hover:shadow-2xl"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         initial={{ scale: 0 }}
@@ -638,11 +646,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
         </svg>
       </motion.button>
 
+      {/* Chatbot Toggle Button */}
       <motion.button
-        onClick={() => {
-          setIsOpen(true);
-        }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full cpa-gradient-bg text-primary-foreground flex items-center justify-center cpa-shadow-lg hover:scale-110 transition-transform"
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         initial={{ scale: 0 }}
@@ -651,60 +658,130 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
         <MessageCircle className="w-6 h-6" />
       </motion.button>
 
+      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] bg-card rounded-2xl border border-border cpa-shadow-lg flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[550px] max-h-[calc(100vh-6rem)] bg-white rounded-2xl border border-gray-200 shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Promotional Banner */}
             <PromoBanner autoRotate={true} rotationInterval={5000} />
             
-            <div className="cpa-gradient-bg px-5 py-4 flex items-center justify-between shrink-0">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-primary-foreground" />
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                  <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-primary-foreground text-sm">{t("chat_assistant_title")}</h4>
-                  <p className="text-primary-foreground/70 text-xs">{t("chat_online")}</p>
+                  <h4 className="font-bold text-white text-sm flex items-center gap-1">
+                    CPA Assistant
+                    <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
+                  </h4>
+                  <p className="text-white/80 text-xs flex items-center gap-1">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    {t("chat_online") || "En ligne"}
+                  </p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-primary-foreground/70 hover:text-primary-foreground">
+              <button 
+                onClick={() => setIsOpen(false)} 
+                className="text-white/70 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-3">
+            {/* Messages Container */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gradient-to-br from-gray-50 to-gray-100">
               {messages.map((msg, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                  className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${msg.role === "bot" ? "cpa-gradient-bg" : "bg-muted"}`}>
-                    {msg.role === "bot" ? <Bot className="w-4 h-4 text-primary-foreground" /> : <User className="w-4 h-4 text-muted-foreground" />}
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 10 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className={`flex gap-2 ${msg.role === "user" ? "flex-row-reverse" : ""}`}
+                >
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-md ${
+                    msg.role === "bot" 
+                      ? "bg-gradient-to-br from-blue-500 to-indigo-500" 
+                      : "bg-gradient-to-br from-gray-600 to-gray-700"
+                  }`}>
+                    {msg.role === "bot" 
+                      ? <Bot className="w-4 h-4 text-white" /> 
+                      : <User className="w-4 h-4 text-white" />
+                    }
                   </div>
-                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                    msg.role === "bot" ? "bg-muted text-foreground rounded-bl-sm" : "cpa-gradient-bg text-primary-foreground rounded-br-sm"
-                  }`}>{msg.text}</div>
+                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
+                    msg.role === "bot" 
+                      ? "bg-white text-gray-800 rounded-bl-sm border border-gray-200" 
+                      : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm"
+                  }`}>
+                    {msg.text}
+                  </div>
                 </motion.div>
               ))}
               
               {/* Suggestions */}
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex flex-wrap gap-2 pt-2"
-              >
-                {currentSuggestions.map((s) => (
-                  <button key={s} onClick={() => handleSend(s)}
-                    className="text-xs px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-secondary transition-colors">
-                    {s}
-                  </button>
-                ))}
-              </motion.div>
+              {currentSuggestions.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-wrap gap-2 pt-3"
+                >
+                  {currentSuggestions.map((s, idx) => (
+                    <motion.button
+                      key={idx}
+                      onClick={() => handleSend(s)}
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-xs px-3 py-1.5 rounded-full border border-blue-300 bg-white text-blue-600 hover:bg-blue-50 hover:border-blue-400 transition-all shadow-sm"
+                    >
+                      {s}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
               <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input Area */}
+            <div className="p-4 border-t border-gray-200 bg-white shrink-0">
+              <div className="flex gap-2 items-end">
+                <textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder={lang === "fr" ? "Écrivez votre message..." : lang === "en" ? "Type your message..." : lang === "ar" ? "اكتب رسالتك..." : "Escribe tu mensaje..."}
+                  className="flex-1 resize-none rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all max-h-24 min-h-[40px]"
+                  rows={1}
+                  style={{ overflow: 'auto' }}
+                />
+                <motion.button
+                  onClick={() => handleSend()}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  disabled={!input.trim()}
+                  className={`rounded-xl px-4 py-2 transition-all ${
+                    input.trim() 
+                      ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:shadow-lg" 
+                      : "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  <Send className="w-4 h-4" />
+                </motion.button>
+              </div>
+              <p className="text-[10px] text-gray-400 mt-2 text-center">
+                {lang === "fr" ? "L'assistant répond aux questions sur nos services" : 
+                 lang === "en" ? "The assistant answers questions about our services" :
+                 lang === "ar" ? "المساعد يجيب على أسئلة حول خدماتنا" :
+                 "El asistente responde preguntas sobre nuestros servicios"}
+              </p>
             </div>
           </motion.div>
         )}
