@@ -48,7 +48,7 @@ const DepartmentsContactsSection = () => {
       direct: "0522953917",
       whatsapp: "0678828163",
       whatsappLink: "https://wa.me/212678828163",
-      message: "Bonjour, j'ai besoin d'informations sur les risques divers et accidents automobiles.",
+      message: "Bonjour, je souhaite déclarer un sinistre",
       icon: Phone,
       color: "from-purple-500 to-violet-500",
       lightColor: "from-purple-50 to-violet-50",
