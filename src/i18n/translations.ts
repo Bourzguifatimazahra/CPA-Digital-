@@ -796,7 +796,6 @@ export const translations = {
   chat_suggestion_new_2: { fr: "Assurance animaux de compagnie ?", en: "Pet insurance?", ar: "تأمين الحيوانات الأليفة؟", es: "¿Seguro de mascotas?" },
   chat_suggestion_new_3: { fr: "Quelles assurances proposez-vous ?", en: "What insurance do you offer?", ar: "ما هي التأمينات التي تقدمونها؟", es: "¿Qué seguros ofrecen?" },
   chat_suggestion_price_1: { fr: "Comment obtenir un devis ?", en: "How to get a quote?", ar: "كيفية الحصول على عرض أسعار؟", es: "¿Cómo obtener un presupuesto?" },
-  chat_suggestion_price_2: { fr: "Comment payer ma prime ?", en: "How to pay my premium?", ar: "كيفية دفع قسط التأمين؟", es: "¿Cómo pagar mi prima?" },
   chat_suggestion_price_3: { fr: "Quelles assurances proposez-vous ?", en: "What insurance do you offer?", ar: "ما هي التأمينات التي تقدمونها؟", es: "¿Qué seguros ofrecen?" },
 
   // Cookie Consent
