@@ -249,7 +249,7 @@ export const translations = {
   dept_insurance_types_plural: { fr: "types d'assurance", en: "insurance types", ar: "أنواع التأمين", es: "tipos de seguro" },
   dept_automobile: { fr: "Automobile", en: "Automobile ", ar: "  السيارات", es: "Automóviles" },
    dept_Accident_at: { fr: "Accident AT", en: "Work Accident Claims ", ar: "  مطالبات حوادث العمل", es: "  Siniestros de Trabajo" },
-   dept_Accident_maladie: { fr: " Accident Maladie", en: "Health Claims", ar: "   مطالبات الأمراض", es: " Siniestros de Salud" },
+   dept_Accident_maladie: { fr: "Département Maladie", en: "Health Claims", ar: "   مطالبات الأمراض", es: " Siniestros de Salud" },
    dept_Accident_auto_risque_divers: { fr: " Accident Auto ", en: "Auto Claims", ar: " مطالبات السيارات ", es: "Siniestros de Auto " },
    dept_production_divers: { fr: "Production Risques Divers", en: "Production Miscellaneous Risks ", ar: " الإنتاج المخاطر المتنوعة", es: "Producción y Riesgos Diversos" },
   // Insurance type options
