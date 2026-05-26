@@ -439,23 +439,23 @@ ${formData.message}`;
               </select>
             </div>
 
-            <div className="mb-5 md:mb-6">
-              <label className="block text-sm font-medium text-foreground mb-1.5">
-                {t("contact_message_ph")}
-              </label>
-              <textarea
-                rows={4}
-                placeholder={t("contact_message_ph")}
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    message: e.target.value,
-                  })
-                }
-                className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none resize-none text-sm md:text-base"
-              />
-            </div>
+            <div className="mb-4 md:mb-5">
+                           <label className="block text-sm font-medium text-foreground mb-1.5">
+                             {t("contact_message_ph")}
+                           </label>
+                           <textarea
+                             rows={3}
+                             placeholder={t("contact_message_ph")}
+                             value={formData.message}
+                             onChange={(e) =>
+                               setFormData({
+                                 ...formData,
+                                 message: e.target.value,
+                               })
+                             }
+                             className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl md:rounded-2xl bg-muted border border-border focus:ring-2 focus:ring-primary/40 outline-none resize-none text-sm md:text-base"
+                           />
+                         </div>
 
             {/* Marketing opt-in */}
             <div className="mb-4 md:mb-5">
@@ -497,6 +497,11 @@ ${formData.message}`;
 
             <p className="text-xs text-muted-foreground mb-4">
               * Champs obligatoires
+            </p>
+
+            {/* Legal Notice */}
+            <p className="text-xs text-muted-foreground mb-4">
+              {t("contact_law_notice")}
             </p>
 
             {/* Submit */}
