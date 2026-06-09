@@ -688,11 +688,11 @@ npm run preview
 - ✅ **GitHub Pages** (nécessite config)
 - ✅ **AWS S3 + CloudFront** (static hosting)
 
-**Variables d'environnement (optionnelles) :**
+**Variables d'environnement  :**
 ```env
 # .env
-VITE_GA_ID=G-W1KQ22WHE7          # Google Analytics
-VITE_API_URL=https://api.cpa.ma  # Backend API
+VITE_GA_ID=G-xxxx        # Google Analytics
+VITE_API_URL=https://api.xx # Backend API
 ```
 
 ---
