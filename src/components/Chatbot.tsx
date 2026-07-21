@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
-import chatbotGif from "@/assets/chatbot.gif";
 
 const WHATSAPP_NUMBER = "212667558436";
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
@@ -286,10 +285,10 @@ const faqData: FAQItem[] = [
 // Welcome message for new visitors
 const getWelcomeMessage = (lang: string): string => {
   const messages = {
-    fr: "👋 Bonjour et bienvenue chez CPA ! Je suis votre assistant virtuel. Comment puis-je vous aider aujourd'hui ?",
-    en: "👋 Hello and welcome to CPA! I am your virtual assistant. How can I help you today?",
-    ar: "👋 مرحباً بك في CPA! أنا مساعدك الافتراضي. كيف يمكنني مساعدتك اليوم؟",
-    es: "👋 ¡Hola y bienvenido a CPA! Soy tu asistente virtual. ¿Cómo puedo ayudarte hoy?"
+    fr: "👋 Bonjour ! Je suis l'assistant CPA. Comment puis-je vous aider ?",
+    en: "👋 Hello! I'm the CPA assistant. How can I help you?",
+    ar: "👋 مرحباً! أنا مساعد CPA. كيف يمكنني مساعدتك؟",
+    es: "👋 ¡Hola! Soy el asistente de CPA. ¿Cómo puedo ayudarte?"
   };
   return messages[lang as keyof typeof messages] || messages.fr;
 };
@@ -438,7 +437,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
-  const [showGif, setShowGif] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -462,18 +460,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     }, 25000);
     return () => clearInterval(rotateTimer);
   }, [ads.length]);
-
-  // Toggle GIF visibility: 5 seconds display, 20 seconds hidden
-  useEffect(() => {
-    const hideTimer = setTimeout(() => {
-      setShowGif(false);
-      const gifTimer = setInterval(() => {
-        setShowGif((prev) => !prev);
-      }, 25000);
-      return () => clearInterval(gifTimer);
-    }, 5000);
-    return () => clearTimeout(hideTimer);
-  }, []);
 
   const findAnswer = (question: string): string => {
     const q = question.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -528,105 +514,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
 
   return (
     <>
-      {/* Chatbot GIF with Messages - LEFT BOTTOM */}
-      <motion.div
-        className="fixed bottom-6 left-6 z-50 flex flex-col items-center"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        {/* Messages Above GIF - ONE ad at a time */}
-        <AnimatePresence mode="wait">
-          {showAds && (
-            <motion.div 
-              className="flex flex-col gap-1.5 mb-2"
-              initial={{ opacity: 0, y: 10, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.8 }}
-              transition={{ duration: 0.5 }}
-            >
-              <motion.div 
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 backdrop-blur-md border-2 border-blue-400/50 text-blue-700 px-4 py-2.5 rounded-2xl text-xs min-w-[180px] max-w-[220px] shadow-xl"
-                animate={{ 
-                  boxShadow: [
-                    "0 4px 15px rgba(59, 130, 246, 0.2)",
-                    "0 8px 25px rgba(59, 130, 246, 0.4)",
-                    "0 4px 15px rgba(59, 130, 246, 0.2)"
-                  ],
-                  borderColor: [
-                    "rgba(59, 130, 246, 0.4)",
-                    "rgba(59, 130, 246, 0.8)",
-                    "rgba(59, 130, 246, 0.4)"
-                  ],
-                  scale: [1, 1.02, 1]
-                }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <div className="flex items-center gap-2 mb-1.5">
-                  <motion.span 
-                    className="text-xl"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    {ads[currentAdIndex].icon}
-                  </motion.span>
-                  <span className="font-bold text-xs bg-gradient-to-r from-blue-700 to-indigo-600 bg-clip-text text-transparent">
-                    {lang === "fr" ? ads[currentAdIndex].title : 
-                     lang === "en" ? ads[currentAdIndex].titleEn :
-                     lang === "ar" ? ads[currentAdIndex].titleAr :
-                     ads[currentAdIndex].titleEs}
-                  </span>
-                </div>
-                <div className="text-[10px] text-blue-600/80 font-medium leading-relaxed">
-                  {lang === "fr" ? ads[currentAdIndex].text :
-                   lang === "en" ? ads[currentAdIndex].textEn :
-                   lang === "ar" ? ads[currentAdIndex].textAr :
-                   ads[currentAdIndex].textEs}
-                </div>
-                {/* Progress bar showing 5s duration with gradient */}
-                <div className="mt-2 h-1 bg-blue-200/50 rounded-full overflow-hidden">
-                  <motion.div 
-                    className="h-full bg-gradient-to-r from-blue-400 via-blue-600 to-indigo-400 rounded-full"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: 5, ease: "linear" }}
-                    key={currentAdIndex}
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* GIF Container */}
-        <AnimatePresence mode="wait">
-          {showGif && (
-            <motion.div
-              className="relative cursor-pointer group"
-              onClick={() => setIsOpen(true)}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
-            >
-              <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-blue-500/20 transition-transform duration-300 group-hover:scale-110">
-                <img 
-                  src={chatbotGif} 
-                  alt="CPA Assistant" 
-                  className="w-full h-full object-cover bg-transparent"
-                />
-              </div>
-              <div className="absolute inset-0 rounded-full border-4 border-blue-400/20 animate-ping"></div>
-              <div className="absolute inset-0 rounded-full border-2 border-blue-400/30 animate-pulse"></div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-
       {/* WhatsApp Button */}
       <motion.button
         onClick={openWhatsApp}
