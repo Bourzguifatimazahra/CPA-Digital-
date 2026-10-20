@@ -1,4 +1,4 @@
-import { CPA_KNOWLEDGE, ADVISOR_ONLY_TOPICS, PRODUCTS_KNOWLEDGE } from "@/data/chatbotKnowledge";
+import { CPA_KNOWLEDGE, ADVISOR_ONLY_TOPICS } from "@/data/chatbotKnowledge";
 import { departments } from "@/data/departments";
 
 // Clé Gemini (offre gratuite). Elle est visible côté navigateur :
@@ -94,10 +94,6 @@ FORMAT : réponds uniquement avec un objet JSON {"answer": "...", "department": 
 
 BASE DE CONNAISSANCES :
 ${CPA_KNOWLEDGE}
-
-## Produits CPA (fiches produits du site cpa.ma)
-
-${PRODUCTS_KNOWLEDGE}
 `.trim();
 
 const RESPONSE_SCHEMA = {
