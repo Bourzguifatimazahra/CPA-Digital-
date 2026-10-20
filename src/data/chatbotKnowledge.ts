@@ -3,25 +3,6 @@
 // Questions sans réponse ou contradictoires retirées volontairement : le bot renvoie vers un conseiller CPA.
 // ATTENTION : ce contenu est livré dans le JavaScript public du site — n'y mettez rien de confidentiel.
 
-import { allServicePages } from "./servicePages";
-
-// Fiches produits du site (src/data/servicePages.ts), lues directement : toute mise à jour
-// d'un produit sur cpa.ma est connue du chatbot au déploiement suivant.
-export const PRODUCTS_KNOWLEDGE = allServicePages
-  .filter((p, i, all) => all.findIndex((q) => q.slug === p.slug) === i)
-  .map((p) =>
-    [
-      `### ${p.title.fr}`,
-      p.description.fr,
-      `Garanties : ${p.features.fr.join(" ; ")}`,
-      p.details.fr,
-      p.whyInsure ? `Pourquoi s'assurer : ${p.whyInsure.fr.join(" ; ")}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n"),
-  )
-  .join("\n\n");
-
 export const CPA_KNOWLEDGE = `
 ## CPA — Informations sur le cabinet
 - Nom : CPA (Conseil et Placement d'Assurances), cabinet de courtage en assurances.
