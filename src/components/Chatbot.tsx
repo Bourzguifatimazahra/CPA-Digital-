@@ -480,6 +480,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
+  // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
+  const [aiActive, setAiActive] = useState(() => isGeminiEnabled && getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
   // Dernier service CPA détecté dans la conversation (sert au formulaire)
   const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
@@ -555,14 +557,17 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       try {
         ({ text: answer, departmentId } = await askGemini(history, lang));
         incrementAiCount();
+        setAiActive(getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
       } catch (err) {
         // Quota épuisé, réseau, clé invalide... : on retombe sur la FAQ statique
         console.warn("[Chatbot] Gemini indisponible, réponse FAQ utilisée", err);
         answer = findAnswer(msg);
+        setAiActive(false);
       }
     } else {
       await new Promise((resolve) => setTimeout(resolve, 600));
       answer = findAnswer(msg);
+      setAiActive(false);
     }
 
     setMessages((prev) => [...prev, { role: "bot", text: answer, departmentId }]);
@@ -723,7 +728,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
               )}
 
               {/* Suggestions */}
-              {!isTyping && currentSuggestions.length > 0 && (
+              {!isTyping && !aiActive && currentSuggestions.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
