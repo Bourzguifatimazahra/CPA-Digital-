@@ -8,6 +8,7 @@ export interface Department {
   whatsappFull: string;
   fix: string;
   fixFull: string;
+  email: string;
   icon: () => Promise<React.ComponentType<LucideProps>>;
   color: string;
   glow: string;
@@ -23,6 +24,7 @@ export const departments: Department[] = [
     whatsappFull: "212667558436",
     fix: "05 22 95 39 02",
     fixFull: "+212522953902",
+    email: "y.basraoui@cpa.ma",
     icon: () => import("lucide-react").then((mod) => mod.Car),
     color: "from-blue-500 to-cyan-500",
     glow: "shadow-blue-500/30",
@@ -35,6 +37,7 @@ export const departments: Department[] = [
     whatsappFull: "212655357453",
     fix: "05 22 95 39 08",
     fixFull: "+212522953908",
+    email: "s.rachidi@cpa.ma",
     icon: () => import("lucide-react").then((mod) => mod.Shield),
     color: "from-orange-500 to-amber-500",
     glow: "shadow-orange-500/30",
@@ -48,6 +51,7 @@ export const departments: Department[] = [
     whatsappFull: "212678293901",
     fix: "05 22 95 39 06",
     fixFull: "+212522953906",
+    email: "s.tawfik@cpa.ma",
     icon: () => import("lucide-react").then((mod) => mod.Heart),
     color: "from-red-500 to-pink-500",
     glow: "shadow-red-500/30",
@@ -61,6 +65,7 @@ export const departments: Department[] = [
     whatsappFull: "212678828163",
     fix: "05 22 95 39 17",
     fixFull: "+212522953917",
+    email: "a.benouhoud@cpa.ma",
     icon: () => import("lucide-react").then((mod) => mod.Shield),
     color: "from-purple-500 to-violet-500",
     glow: "shadow-purple-500/30",
@@ -74,6 +79,7 @@ export const departments: Department[] = [
     whatsappFull: "212678991814",
     fix: "05 22 95 39 04",
     fixFull: "+212522953904",
+    email: "h.msadya@cpa.ma",
     icon: () => import("lucide-react").then((mod) => mod.Briefcase),
     color: "from-green-500 to-emerald-500",
     glow: "shadow-green-500/30",

@@ -4,6 +4,9 @@ import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
 import { askGemini, isGeminiEnabled } from "@/lib/gemini";
+import { isLeadCaptureEnabled } from "@/lib/leads";
+import DepartmentContactCard from "./DepartmentContactCard";
+import LeadForm, { leadThanksMessage } from "./LeadForm";
 
 const WHATSAPP_NUMBER = "212667558436";
 // Limites pour protéger le quota gratuit Gemini
@@ -24,6 +27,26 @@ const incrementAiCount = () => {
     sessionStorage.setItem(AI_COUNT_KEY, String(getAiCount() + 1));
   } catch {
     // sessionStorage indisponible (navigation privée) : on ignore
+  }
+};
+
+// Formulaire de coordonnées : proposé une fois par session, après la 3e question
+const QUESTIONS_BEFORE_LEAD_FORM = 3;
+const LEAD_STATE_KEY = "cpa_chatbot_lead_state"; // "submitted" | "dismissed"
+
+const isLeadFormClosed = (): boolean => {
+  try {
+    return Boolean(sessionStorage.getItem(LEAD_STATE_KEY));
+  } catch {
+    return false;
+  }
+};
+
+const closeLeadForm = (state: "submitted" | "dismissed") => {
+  try {
+    sessionStorage.setItem(LEAD_STATE_KEY, state);
+  } catch {
+    // sessionStorage indisponible : le formulaire pourra réapparaître, sans gravité
   }
 };
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
@@ -314,7 +337,7 @@ const getWelcomeMessage = (lang: string): string => {
   return messages[lang as keyof typeof messages] || messages.fr;
 };
 
-type Message = { role: "bot" | "user"; text: string };
+type Message = { role: "bot" | "user"; text: string; departmentId?: string | null };
 
 const getContextualSuggestions = (lastMessage: string, lang: string): string[] => {
   const msg = lastMessage.toLowerCase();
@@ -456,6 +479,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  // Dernier service CPA détecté dans la conversation (sert au formulaire)
+  const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
@@ -524,9 +550,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     setIsTyping(true);
 
     let answer: string;
+    let departmentId: string | null = null;
     if (isGeminiEnabled && getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
       try {
-        answer = await askGemini(history, lang);
+        ({ text: answer, departmentId } = await askGemini(history, lang));
         incrementAiCount();
       } catch (err) {
         // Quota épuisé, réseau, clé invalide... : on retombe sur la FAQ statique
@@ -538,9 +565,26 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       answer = findAnswer(msg);
     }
 
-    setMessages((prev) => [...prev, { role: "bot", text: answer }]);
+    setMessages((prev) => [...prev, { role: "bot", text: answer, departmentId }]);
+    if (departmentId) setLastDepartmentId(departmentId);
     setCurrentSuggestions(getContextualSuggestions(msg, lang));
     setIsTyping(false);
+
+    const questionCount = history.filter((m) => m.role === "user").length;
+    if (isLeadCaptureEnabled && questionCount >= QUESTIONS_BEFORE_LEAD_FORM && !isLeadFormClosed()) {
+      setShowLeadForm(true);
+    }
+  };
+
+  const handleLeadDone = () => {
+    closeLeadForm("submitted");
+    setShowLeadForm(false);
+    setMessages((prev) => [...prev, { role: "bot", text: leadThanksMessage(lang) }]);
+  };
+
+  const handleLeadDismiss = () => {
+    closeLeadForm("dismissed");
+    setShowLeadForm(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -642,9 +686,23 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                       : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm"
                   }`}>
                     {msg.text}
+                    {msg.role === "bot" && msg.departmentId && (
+                      <DepartmentContactCard departmentId={msg.departmentId} />
+                    )}
                   </div>
                 </motion.div>
               ))}
+
+              {/* Formulaire de coordonnées (après 3 questions) */}
+              {showLeadForm && !isTyping && (
+                <LeadForm
+                  departmentId={lastDepartmentId}
+                  questions={messages.filter((m) => m.role === "user").map((m) => m.text)}
+                  page={pageContext}
+                  onDone={handleLeadDone}
+                  onDismiss={handleLeadDismiss}
+                />
+              )}
 
               {/* Typing indicator */}
               {isTyping && (
@@ -717,10 +775,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 </motion.button>
               </div>
               <p className="text-[10px] text-gray-400 mt-2 text-center">
-                {lang === "fr" ? "Assistant IA — ne partagez pas d'informations personnelles ou confidentielles." :
-                 lang === "en" ? "AI assistant — please don't share personal or confidential information." :
-                 lang === "ar" ? "مساعد ذكي — يرجى عدم مشاركة معلومات شخصية أو سرية." :
-                 "Asistente IA — no comparta información personal o confidencial."}
+                {lang === "fr" ? "Assistant IA — n'écrivez pas d'informations confidentielles (CIN, n° de contrat, santé) dans le chat." :
+                 lang === "en" ? "AI assistant — don't write confidential information (ID, policy number, health) in the chat." :
+                 lang === "ar" ? "مساعد ذكي — لا تكتب معلومات سرية (البطاقة الوطنية، رقم العقد، الصحة) في المحادثة." :
+                 "Asistente IA — no escriba información confidencial (DNI, n.º de póliza, salud) en el chat."}
               </p>
             </div>
           </motion.div>
