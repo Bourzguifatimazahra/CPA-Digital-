@@ -3,8 +3,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
+import { askGemini, isGeminiEnabled } from "@/lib/gemini";
 
 const WHATSAPP_NUMBER = "212667558436";
+// Limites pour protéger le quota gratuit Gemini
+const MAX_INPUT_LENGTH = 500;
+const MAX_AI_MESSAGES_PER_SESSION = 30;
+const AI_COUNT_KEY = "cpa_chatbot_ai_count";
+
+const getAiCount = (): number => {
+  try {
+    return Number(sessionStorage.getItem(AI_COUNT_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+};
+
+const incrementAiCount = () => {
+  try {
+    sessionStorage.setItem(AI_COUNT_KEY, String(getAiCount() + 1));
+  } catch {
+    // sessionStorage indisponible (navigation privée) : on ignore
+  }
+};
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
 
 // Page context types for page-specific ads
@@ -434,6 +455,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     { role: "bot", text: getWelcomeMessage(lang) }
   ]);
   const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
@@ -493,16 +515,32 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     return noAnswerMessages[lang as keyof typeof noAnswerMessages] || noAnswerMessages.fr;
   };
 
-  const handleSend = (text?: string) => {
-    const msg = text || input.trim();
-    if (!msg) return;
-    setMessages((prev) => [...prev, { role: "user", text: msg }]);
+  const handleSend = async (text?: string) => {
+    const msg = (text || input.trim()).slice(0, MAX_INPUT_LENGTH);
+    if (!msg || isTyping) return;
+    const history: Message[] = [...messages, { role: "user", text: msg }];
+    setMessages(history);
     setInput("");
-    setTimeout(() => {
-      const answer = findAnswer(msg);
-      setMessages((prev) => [...prev, { role: "bot", text: answer }]);
-      setCurrentSuggestions(getContextualSuggestions(msg, lang));
-    }, 600);
+    setIsTyping(true);
+
+    let answer: string;
+    if (isGeminiEnabled && getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
+      try {
+        answer = await askGemini(history, lang);
+        incrementAiCount();
+      } catch (err) {
+        // Quota épuisé, réseau, clé invalide... : on retombe sur la FAQ statique
+        console.warn("[Chatbot] Gemini indisponible, réponse FAQ utilisée", err);
+        answer = findAnswer(msg);
+      }
+    } else {
+      await new Promise((resolve) => setTimeout(resolve, 600));
+      answer = findAnswer(msg);
+    }
+
+    setMessages((prev) => [...prev, { role: "bot", text: answer }]);
+    setCurrentSuggestions(getContextualSuggestions(msg, lang));
+    setIsTyping(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -598,7 +636,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                       : <User className="w-4 h-4 text-white" />
                     }
                   </div>
-                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm ${
+                  <div className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed shadow-sm whitespace-pre-line ${
                     msg.role === "bot" 
                       ? "bg-white text-gray-800 rounded-bl-sm border border-gray-200" 
                       : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm"
@@ -607,9 +645,27 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   </div>
                 </motion.div>
               ))}
-              
+
+              {/* Typing indicator */}
+              {isTyping && (
+                <div className="flex gap-2" aria-live="polite">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 shadow-md bg-gradient-to-br from-blue-500 to-indigo-500">
+                    <Bot className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="rounded-2xl rounded-bl-sm px-4 py-3 bg-white border border-gray-200 shadow-sm flex gap-1 items-center">
+                    {[0, 1, 2].map((d) => (
+                      <span
+                        key={d}
+                        className="w-2 h-2 rounded-full bg-blue-400 animate-bounce"
+                        style={{ animationDelay: `${d * 150}ms` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Suggestions */}
-              {currentSuggestions.length > 0 && (
+              {!isTyping && currentSuggestions.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -640,6 +696,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
+                  maxLength={MAX_INPUT_LENGTH}
                   placeholder={lang === "fr" ? "Écrivez votre message..." : lang === "en" ? "Type your message..." : lang === "ar" ? "اكتب رسالتك..." : "Escribe tu mensaje..."}
                   className="flex-1 resize-none rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all max-h-24 min-h-[40px]"
                   rows={1}
@@ -649,9 +706,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   onClick={() => handleSend()}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  disabled={!input.trim()}
+                  disabled={!input.trim() || isTyping}
                   className={`rounded-xl px-4 py-2 transition-all ${
-                    input.trim() 
+                    input.trim() && !isTyping
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md hover:shadow-lg" 
                       : "bg-gray-200 text-gray-400 cursor-not-allowed"
                   }`}
@@ -660,10 +717,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 </motion.button>
               </div>
               <p className="text-[10px] text-gray-400 mt-2 text-center">
-                {lang === "fr" ? "L'assistant répond aux questions sur nos services" : 
-                 lang === "en" ? "The assistant answers questions about our services" :
-                 lang === "ar" ? "المساعد يجيب على أسئلة حول خدماتنا" :
-                 "El asistente responde preguntas sobre nuestros servicios"}
+                {lang === "fr" ? "Assistant IA — ne partagez pas d'informations personnelles ou confidentielles." :
+                 lang === "en" ? "AI assistant — please don't share personal or confidential information." :
+                 lang === "ar" ? "مساعد ذكي — يرجى عدم مشاركة معلومات شخصية أو سرية." :
+                 "Asistente IA — no comparta información personal o confidencial."}
               </p>
             </div>
           </motion.div>
