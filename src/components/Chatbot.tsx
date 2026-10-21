@@ -30,6 +30,14 @@ const incrementAiCount = () => {
   }
 };
 
+// Message affiché quand l'assistant IA ne répond pas et que le chatbot passe aux questions/réponses fréquentes
+const AI_UPDATING_NOTICE = {
+  fr: "🔧 Notre assistant intelligent est en cours de mise à jour. En attendant, voici la réponse de nos questions fréquentes :",
+  en: "🔧 Our smart assistant is currently being updated. In the meantime, here is the answer from our frequently asked questions:",
+  ar: "🔧 مساعدنا الذكي قيد التحديث حالياً. في الأثناء، إليك الإجابة من الأسئلة الشائعة:",
+  es: "🔧 Nuestro asistente inteligente se está actualizando. Mientras tanto, aquí tiene la respuesta de nuestras preguntas frecuentes:",
+};
+
 // Formulaire de coordonnées : proposé une fois par session, après la 3e question
 const QUESTIONS_BEFORE_LEAD_FORM = 3;
 const LEAD_STATE_KEY = "cpa_chatbot_lead_state"; // "submitted" | "dismissed"
@@ -553,6 +561,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
 
     let answer: string;
     let departmentId: string | null = null;
+    let usedStaticFaq = false;
     if (getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
       try {
         ({ text: answer, departmentId } = await askAssistant(history, lang));
@@ -561,15 +570,20 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
       } catch {
         // Assistant indisponible (service saturé, réseau...) : on retombe sur la FAQ statique
         answer = findAnswer(msg);
-        setAiActive(false);
+        usedStaticFaq = true;
       }
     } else {
       await new Promise((resolve) => setTimeout(resolve, 600));
       answer = findAnswer(msg);
-      setAiActive(false);
+      usedStaticFaq = true;
     }
 
-    setMessages((prev) => [...prev, { role: "bot", text: answer, departmentId }]);
+    // Au passage en mode FAQ statique, on prévient une fois que l'assistant IA est en mise à jour
+    const notice: Message[] =
+      usedStaticFaq && aiActive ? [{ role: "bot", text: AI_UPDATING_NOTICE[lang as keyof typeof AI_UPDATING_NOTICE] || AI_UPDATING_NOTICE.fr }] : [];
+    if (usedStaticFaq) setAiActive(false);
+
+    setMessages((prev) => [...prev, ...notice, { role: "bot", text: answer, departmentId }]);
     if (departmentId) setLastDepartmentId(departmentId);
     setCurrentSuggestions(getContextualSuggestions(msg, lang));
     setIsTyping(false);
