@@ -1,26 +1,22 @@
-import { CPA_KNOWLEDGE, ADVISOR_ONLY_TOPICS } from "@/data/chatbotKnowledge";
-import { departments } from "@/data/departments";
+// Moteur du chatbot CPA — CÔTÉ SERVEUR UNIQUEMENT (fonction Netlify netlify/functions/chat.mts,
+// et serveur de dev Vite). Ne jamais importer ce fichier depuis le code du navigateur :
+// la clé Gemini, le prompt système, la base de connaissances et les modèles utilisés restent ici.
+import { CPA_KNOWLEDGE, ADVISOR_ONLY_TOPICS } from "../data/chatbotKnowledge";
+import { departments } from "../data/departments";
 
-// Clé Gemini (offre gratuite). Elle est visible côté navigateur :
-// la restreindre à cpa.ma dans Google Cloud et ne jamais activer la facturation.
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
 // Modèles essayés dans l'ordre : si l'un est saturé (503), limité (429) ou retiré (404), on passe au suivant.
-// Les alias "-latest" suivent automatiquement les nouvelles versions de Google.
-const MODELS = [
-  import.meta.env.VITE_GEMINI_MODEL as string | undefined,
-  "gemini-flash-lite-latest",
-  "gemini-flash-latest",
-].filter((m, i, all): m is string => Boolean(m) && all.indexOf(m) === i);
+const MODELS = ["gemini-flash-lite-latest", "gemini-flash-latest"];
 const endpointFor = (model: string) =>
   `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 const RETRYABLE_STATUS = new Set([404, 429, 500, 503]);
-const TIMEOUT_MS = 15000;
+// Budget total (tous modèles confondus) : les fonctions Netlify sont coupées à 10 s
+const TOTAL_BUDGET_MS = 9000;
 const MAX_HISTORY = 10;
-
-export const isGeminiEnabled = Boolean(API_KEY);
+const MAX_MESSAGES = 30;
+const MAX_MESSAGE_LENGTH = 1000;
 
 export type ChatTurn = { role: "user" | "bot"; text: string };
-export type GeminiAnswer = { text: string; departmentId: string | null };
+export type ChatAnswer = { text: string; departmentId: string | null };
 
 const LANG_NAMES: Record<string, string> = {
   fr: "français",
@@ -128,7 +124,7 @@ export const sanitizeAnswer = (text: string): string =>
     );
 
 /** Lit la réponse JSON du modèle ; si elle n'est pas du JSON valide, on garde le texte brut. */
-export const parseModelOutput = (raw: string): GeminiAnswer => {
+export const parseModelOutput = (raw: string): ChatAnswer => {
   try {
     const data = JSON.parse(raw);
     const departmentId = DEPARTMENT_IDS.includes(data?.department) ? data.department : null;
@@ -141,17 +137,15 @@ export const parseModelOutput = (raw: string): GeminiAnswer => {
   return { text: sanitizeAnswer(raw), departmentId: null };
 };
 
-export class GeminiError extends Error {
+class UpstreamError extends Error {
   constructor(message: string, public readonly status?: number) {
     super(message);
-    this.name = "GeminiError";
+    this.name = "UpstreamError";
   }
 }
 
 /** Envoie la conversation à Gemini et renvoie la réponse du bot et le service CPA concerné. */
-export async function askGemini(history: ChatTurn[], lang: string): Promise<GeminiAnswer> {
-  if (!API_KEY) throw new GeminiError("Gemini API key missing");
-
+export async function askGemini(history: ChatTurn[], lang: string, apiKey: string): Promise<ChatAnswer> {
   // Gemini exige que la conversation commence par un message utilisateur
   const recent = history.slice(-MAX_HISTORY);
   const firstUser = recent.findIndex((m) => m.role === "user");
@@ -159,7 +153,7 @@ export async function askGemini(history: ChatTurn[], lang: string): Promise<Gemi
     role: m.role === "user" ? "user" : "model",
     parts: [{ text: m.text }],
   }));
-  if (contents.length === 0) throw new GeminiError("Empty conversation");
+  if (contents.length === 0) throw new UpstreamError("Empty conversation");
   // Rappel de langue collé au dernier message : sinon le modèle « lite » suit le français de la base
   const last = contents[contents.length - 1];
   const lastText = last.parts[0].text;
@@ -176,38 +170,81 @@ export async function askGemini(history: ChatTurn[], lang: string): Promise<Gemi
     },
   });
 
-  let lastError: GeminiError = new GeminiError("No Gemini model available");
+  const deadline = Date.now() + TOTAL_BUDGET_MS;
+  let lastError = new UpstreamError("No model available");
   for (const model of MODELS) {
+    const remaining = deadline - Date.now();
+    if (remaining < 1000) break;
     try {
-      return await generate(model, body);
+      return await generate(model, body, apiKey, remaining);
     } catch (err) {
-      lastError = err instanceof GeminiError ? err : new GeminiError(String(err));
+      lastError = err instanceof UpstreamError ? err : new UpstreamError(String(err));
       if (lastError.status !== undefined && !RETRYABLE_STATUS.has(lastError.status)) break;
     }
   }
   throw lastError;
 }
 
-async function generate(model: string, body: string): Promise<GeminiAnswer> {
+async function generate(model: string, body: string, apiKey: string, timeoutMs: number): Promise<ChatAnswer> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const res = await fetch(endpointFor(model), {
       method: "POST",
-      headers: { "Content-Type": "application/json", "x-goog-api-key": API_KEY as string },
+      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
       body,
       signal: controller.signal,
     });
-    if (!res.ok) throw new GeminiError(`Gemini HTTP ${res.status} (${model})`, res.status);
+    if (!res.ok) throw new UpstreamError(`HTTP ${res.status} (${model})`, res.status);
 
     const data = await res.json();
     const raw: string = (data?.candidates?.[0]?.content?.parts ?? [])
       .map((p: { text?: string }) => p.text ?? "")
       .join("")
       .trim();
-    if (!raw) throw new GeminiError("Empty Gemini response");
+    if (!raw) throw new UpstreamError("Empty response");
     return parseModelOutput(raw);
   } finally {
     clearTimeout(timer);
   }
 }
+
+/** Valide le corps reçu du navigateur ; renvoie null s'il est invalide. */
+export const parseChatRequest = (body: unknown): { messages: ChatTurn[]; lang: string } | null => {
+  const data = body as { messages?: unknown; lang?: unknown } | null;
+  if (!data || !Array.isArray(data.messages) || data.messages.length === 0 || data.messages.length > MAX_MESSAGES) {
+    return null;
+  }
+  const messages: ChatTurn[] = [];
+  for (const m of data.messages as { role?: unknown; text?: unknown }[]) {
+    if ((m?.role !== "user" && m?.role !== "bot") || typeof m.text !== "string") return null;
+    messages.push({ role: m.role, text: m.text.slice(0, MAX_MESSAGE_LENGTH) });
+  }
+  if (messages[messages.length - 1].role !== "user") return null;
+  const lang = typeof data.lang === "string" && data.lang in LANG_NAMES ? data.lang : "fr";
+  return { messages, lang };
+};
+
+/**
+ * Traite une requête du chatbot. Le navigateur ne reçoit QUE la réponse texte et le service :
+ * aucun détail sur le modèle, le prompt ou les erreurs du fournisseur.
+ */
+export async function handleChatRequest(
+  body: unknown,
+  apiKey: string | undefined,
+): Promise<{ status: number; payload: { answer: string; department: string | null } | { error: string } }> {
+  const request = parseChatRequest(body);
+  if (!request) return { status: 400, payload: { error: "bad_request" } };
+  if (!apiKey) return { status: 503, payload: { error: "unavailable" } };
+  try {
+    const { text, departmentId } = await askGemini(request.messages, request.lang, apiKey);
+    return { status: 200, payload: { answer: text, department: departmentId } };
+  } catch (err) {
+    console.error("[chat] upstream error", err instanceof Error ? err.message : err);
+    return { status: 503, payload: { error: "unavailable" } };
+  }
+}
+
+// Origines autorisées à appeler la fonction (le site et le développement local)
+const ALLOWED_ORIGINS = [/^https:\/\/(www\.)?cpa\.ma$/, /^http:\/\/localhost(:\d+)?$/, /^http:\/\/127\.0\.0\.1(:\d+)?$/];
+export const isAllowedOrigin = (origin: string | null) => !!origin && ALLOWED_ORIGINS.some((re) => re.test(origin));

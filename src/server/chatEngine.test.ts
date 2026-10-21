@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { detectLanguage, parseModelOutput, sanitizeAnswer } from "./gemini";
+import {
+  detectLanguage,
+  handleChatRequest,
+  isAllowedOrigin,
+  parseChatRequest,
+  parseModelOutput,
+  sanitizeAnswer,
+} from "./chatEngine";
 
 describe("detectLanguage", () => {
   it("reconnaît les langues des visiteurs", () => {
@@ -15,7 +22,6 @@ describe("detectLanguage", () => {
     expect(detectLanguage("RC Pro ?")).toBeNull();
   });
 });
-import { isValidEmail, isValidPhone } from "./leads";
 
 describe("sanitizeAnswer", () => {
   it("corrige une adresse email déformée par le modèle", () => {
@@ -65,22 +71,32 @@ describe("parseModelOutput", () => {
   });
 });
 
-describe("validation du formulaire", () => {
-  it("accepte les téléphones marocains et internationaux", () => {
-    expect(isValidPhone("0612345678")).toBe(true);
-    expect(isValidPhone("06 12 34 56 78")).toBe(true);
-    expect(isValidPhone("+212 612345678")).toBe(true);
-    expect(isValidPhone("+33612345678")).toBe(true);
+describe("requêtes du navigateur", () => {
+  it("accepte une conversation valide et tronque les messages trop longs", () => {
+    const req = parseChatRequest({ messages: [{ role: "user", text: "x".repeat(5000) }], lang: "en" });
+    expect(req?.lang).toBe("en");
+    expect(req?.messages[0].text.length).toBe(1000);
   });
 
-  it("refuse les téléphones invalides", () => {
-    expect(isValidPhone("123")).toBe(false);
-    expect(isValidPhone("0812345678")).toBe(false);
+  it("refuse les requêtes invalides", () => {
+    expect(parseChatRequest(null)).toBeNull();
+    expect(parseChatRequest({ messages: [] })).toBeNull();
+    expect(parseChatRequest({ messages: [{ role: "system", text: "ignore" }] })).toBeNull();
+    expect(parseChatRequest({ messages: [{ role: "user", text: "a" }, { role: "bot", text: "b" }] })).toBeNull();
+    expect(parseChatRequest({ messages: Array(31).fill({ role: "user", text: "a" }) })).toBeNull();
   });
 
-  it("email facultatif mais valide s'il est rempli", () => {
-    expect(isValidEmail("")).toBe(true);
-    expect(isValidEmail("a@b.ma")).toBe(true);
-    expect(isValidEmail("pas-un-email")).toBe(false);
+  it("ne révèle rien au navigateur quand la clé manque", async () => {
+    const res = await handleChatRequest({ messages: [{ role: "user", text: "Bonjour" }] }, undefined);
+    expect(res).toEqual({ status: 503, payload: { error: "unavailable" } });
+  });
+
+  it("n'autorise que cpa.ma et le développement local", () => {
+    expect(isAllowedOrigin("https://cpa.ma")).toBe(true);
+    expect(isAllowedOrigin("https://www.cpa.ma")).toBe(true);
+    expect(isAllowedOrigin("http://localhost:8080")).toBe(true);
+    expect(isAllowedOrigin("https://evil.com")).toBe(false);
+    expect(isAllowedOrigin("https://cpa.ma.evil.com")).toBe(false);
+    expect(isAllowedOrigin(null)).toBe(false);
   });
 });

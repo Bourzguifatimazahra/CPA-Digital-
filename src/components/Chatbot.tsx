@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
-import { askGemini, isGeminiEnabled } from "@/lib/gemini";
+import { askAssistant } from "@/lib/assistant";
 import { isLeadCaptureEnabled } from "@/lib/leads";
 import DepartmentContactCard from "./DepartmentContactCard";
 import LeadForm, { leadThanksMessage } from "./LeadForm";
 
 const WHATSAPP_NUMBER = "212667558436";
-// Limites pour protéger le quota gratuit Gemini
+// Limites pour protéger le quota gratuit de l'assistant IA
 const MAX_INPUT_LENGTH = 500;
 const MAX_AI_MESSAGES_PER_SESSION = 30;
 const AI_COUNT_KEY = "cpa_chatbot_ai_count";
@@ -481,7 +481,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
-  const [aiActive, setAiActive] = useState(() => isGeminiEnabled && getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
+  const [aiActive, setAiActive] = useState(() => getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
   // Dernier service CPA détecté dans la conversation (sert au formulaire)
   const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
@@ -553,14 +553,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
 
     let answer: string;
     let departmentId: string | null = null;
-    if (isGeminiEnabled && getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
+    if (getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
       try {
-        ({ text: answer, departmentId } = await askGemini(history, lang));
+        ({ text: answer, departmentId } = await askAssistant(history, lang));
         incrementAiCount();
         setAiActive(getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
-      } catch (err) {
-        // Quota épuisé, réseau, clé invalide... : on retombe sur la FAQ statique
-        console.warn("[Chatbot] Gemini indisponible, réponse FAQ utilisée", err);
+      } catch {
+        // Assistant indisponible (service saturé, réseau...) : on retombe sur la FAQ statique
         answer = findAnswer(msg);
         setAiActive(false);
       }
