@@ -5,8 +5,29 @@ import {
   isAllowedOrigin,
   parseChatRequest,
   parseModelOutput,
+  redactPersonalData,
   sanitizeAnswer,
 } from "./chatEngine";
+
+describe("redactPersonalData (avant envoi à Google)", () => {
+  it("masque les coordonnées et identifiants", () => {
+    expect(redactPersonalData("mon mail est karim.b@gmail.com")).toBe("mon mail est [masqué]");
+    expect(redactPersonalData("appelez-moi au 06 12 34 56 78")).toBe("appelez-moi au [masqué]");
+    expect(redactPersonalData("whatsapp +212 661-234567")).toBe("whatsapp [masqué]");
+    expect(redactPersonalData("tel 0033612345678")).toBe("tel [masqué]");
+    expect(redactPersonalData("ma CIN est BE123456")).toBe("ma CIN est [masqué]");
+    expect(redactPersonalData("RIB 011 780 0000123456789012 34")).toBe("RIB [masqué]");
+    expect(redactPersonalData("IBAN MA64 0117 8000 0012 3456 7890 1234")).toBe("IBAN [masqué]");
+    expect(redactPersonalData("carte 4111 1111 1111 1111")).toBe("carte [masqué]");
+    expect(redactPersonalData("police n° 20231234567")).toBe("police n° [masqué]");
+  });
+
+  it("ne touche pas aux informations utiles à la question", () => {
+    const text =
+      "Accident le 19/10/2026 vers 8h30, voiture de 2019, immatriculation 12345-A-6, dégâts de 50 000 DH, déclaré sous 5 jours.";
+    expect(redactPersonalData(text)).toBe(text);
+  });
+});
 
 describe("detectLanguage", () => {
   it("reconnaît les langues des visiteurs", () => {

@@ -30,6 +30,26 @@ const incrementAiCount = () => {
   }
 };
 
+// Mention sous la zone de saisie : information des visiteurs (loi 09-08) et caractère indicatif des réponses
+const CHAT_NOTICE = {
+  fr: {
+    text: "Assistant IA : réponses indicatives qui ne remplacent pas l'avis d'un conseiller CPA. Vos messages sont traités par Google, hors du Maroc : n'y indiquez pas de données personnelles.",
+    link: "Confidentialité",
+  },
+  en: {
+    text: "AI assistant: answers are for information only and do not replace advice from a CPA advisor. Your messages are processed by Google, outside Morocco: do not include personal data.",
+    link: "Privacy",
+  },
+  ar: {
+    text: "مساعد ذكي: الإجابات للاستئناس فقط ولا تعوض رأي مستشار CPA. تتم معالجة رسائلك من طرف Google خارج المغرب: لا تكتب فيها معطيات شخصية.",
+    link: "الخصوصية",
+  },
+  es: {
+    text: "Asistente IA: respuestas orientativas que no sustituyen el consejo de un asesor de CPA. Sus mensajes son tratados por Google, fuera de Marruecos: no incluya datos personales.",
+    link: "Privacidad",
+  },
+};
+
 // Message affiché quand l'assistant IA ne répond pas et que le chatbot passe aux questions/réponses fréquentes
 const AI_UPDATING_NOTICE = {
   fr: "🔧 Notre assistant intelligent est en cours de mise à jour. En attendant, voici la réponse de nos questions fréquentes :",
@@ -792,11 +812,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   <Send className="w-4 h-4" />
                 </motion.button>
               </div>
-              <p className="text-[10px] text-gray-400 mt-2 text-center">
-                {lang === "fr" ? "Assistant IA — n'écrivez pas d'informations confidentielles (CIN, n° de contrat, santé) dans le chat." :
-                 lang === "en" ? "AI assistant — don't write confidential information (ID, policy number, health) in the chat." :
-                 lang === "ar" ? "مساعد ذكي — لا تكتب معلومات سرية (البطاقة الوطنية، رقم العقد، الصحة) في المحادثة." :
-                 "Asistente IA — no escriba información confidencial (DNI, n.º de póliza, salud) en el chat."}
+              <p className="text-[10px] leading-snug text-gray-400 mt-2 text-center">
+                {(CHAT_NOTICE[lang as keyof typeof CHAT_NOTICE] || CHAT_NOTICE.fr).text}{" "}
+                <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600">
+                  {(CHAT_NOTICE[lang as keyof typeof CHAT_NOTICE] || CHAT_NOTICE.fr).link}
+                </a>
               </p>
             </div>
           </motion.div>
