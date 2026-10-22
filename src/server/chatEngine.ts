@@ -261,7 +261,8 @@ export async function handleChatRequest(
     return { status: 503, payload: { error: "unavailable" }, diagnostic: "no_key" };
   }
   // Diagnostic temporaire : catégorie d'erreur + 4 derniers caractères de la clé (comme l'interface Netlify)
-  const keyHint = `key=…${apiKey.slice(-4)}/${apiKey.length}`;
+  // ASCII uniquement : un en-tête HTTP refuse les caractères comme « … »
+  const keyHint = `key=...${apiKey.slice(-4)}/${apiKey.length}`;
   try {
     const { text, departmentId } = await askGemini(request.messages, request.lang, apiKey);
     return { status: 200, payload: { answer: text, department: departmentId }, diagnostic: `ok ${keyHint}` };
