@@ -3,29 +3,40 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import imagemin from "vite-plugin-imagemin";
 
-// En développement, sert /api/chat comme la fonction Netlify (netlify/functions/chat.mts),
-// avec la clé lue dans .env.local côté serveur : elle n'est jamais envoyée au navigateur.
+// En développement, sert /api/chat-token et /api/chat comme les fonctions Netlify (netlify/functions),
+// avec la clé lue dans .env.local côté serveur (jamais envoyée au navigateur) et des compteurs en mémoire.
 const devChatApi = (mode: string): Plugin => ({
   name: "cpa-dev-chat-api",
   apply: "serve",
   configureServer(server) {
     const env = loadEnv(mode, process.cwd(), "");
-    const apiKey = env.GEMINI_API_KEY || env.VITE_GEMINI_API_KEY;
-    server.middlewares.use("/api/chat", async (req, res) => {
-      const chunks: Buffer[] = [];
-      for await (const chunk of req) chunks.push(chunk as Buffer);
-      const { handleChatRequest } = await server.ssrLoadModule("/src/server/chatEngine.ts");
-      let body: unknown = null;
-      try {
-        body = JSON.parse(Buffer.concat(chunks).toString("utf8"));
-      } catch {
-        // corps invalide : handleChatRequest renverra 400
-      }
-      const { status, payload } = await handleChatRequest(body, apiKey);
-      res.statusCode = status;
-      res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify(payload));
-    });
+    let store: unknown;
+    const route = (handlerName: "handleChatHttp" | "handleTokenHttp") =>
+      async (req: import("http").IncomingMessage, res: import("http").ServerResponse) => {
+        const chunks: Buffer[] = [];
+        for await (const chunk of req) chunks.push(chunk as Buffer);
+        const http = await server.ssrLoadModule("/src/server/chatHttp.ts");
+        const security = await server.ssrLoadModule("/src/server/chatSecurity.ts");
+        store ??= security.memoryStore();
+        const headers = new Headers();
+        for (const [k, v] of Object.entries(req.headers)) if (typeof v === "string") headers.set(k, v);
+        const request = new Request(`http://localhost${req.url ?? ""}`, {
+          method: req.method,
+          headers,
+          body: req.method === "GET" || req.method === "HEAD" ? undefined : Buffer.concat(chunks),
+        });
+        const response: Response = await http[handlerName](request, {
+          ip: req.socket.remoteAddress ?? "local",
+          store,
+          geminiKey: http.normalizeKey(env.GEMINI_API_KEY) || http.normalizeKey(env.VITE_GEMINI_API_KEY),
+          tokenSecretEnv: env.CHAT_TOKEN_SECRET,
+        });
+        res.statusCode = response.status;
+        response.headers.forEach((value, key) => res.setHeader(key, value));
+        res.end(await response.text());
+      };
+    server.middlewares.use("/api/chat-token", route("handleTokenHttp"));
+    server.middlewares.use("/api/chat", route("handleChatHttp"));
   },
 });
 

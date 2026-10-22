@@ -1,50 +1,15 @@
 // Fonction Netlify du chatbot CPA, servie sur https://cpa.ma/api/chat.
-// La clé Gemini est lue dans la variable d'environnement Netlify GEMINI_API_KEY (jamais envoyée au navigateur).
-import { handleChatRequest, isAllowedOrigin } from "../../src/server/chatEngine";
+// Exige un jeton d'accès (/api/chat-token) et applique les limites de messages côté serveur.
+// La clé Gemini est lue dans la variable Netlify GEMINI_API_KEY et n'est jamais envoyée au navigateur.
+import { handleChatHttp, normalizeKey } from "../../src/server/chatHttp";
+import { blobCounterStore } from "../shared/blobStore.mts";
 
-const MAX_BODY_BYTES = 40_000;
-
-// Tolère une valeur collée avec son nom ("GEMINI_API_KEY=..."), des guillemets ou des espaces.
-const normalizeKey = (raw: string | undefined) =>
-  raw
-    ?.trim()
-    .replace(/^(VITE_)?GEMINI_API_KEY\s*=\s*/i, "")
-    .replace(/^["']|["']$/g, "")
-    .trim() || undefined;
-
-export default async (req: Request): Promise<Response> => {
-  const origin = req.headers.get("origin");
-  const json = (status: number, payload: unknown, diagnostic?: string) =>
-    new Response(JSON.stringify(payload), {
-      status,
-      headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-store",
-        // Version de la fonction (diagnostic de déploiement ; aucune donnée sensible)
-        "X-Chat-Version": "2026-10-22.4",
-        // Diagnostic TEMPORAIRE (catégorie d'erreur, 4 derniers caractères de la clé) — à retirer une fois réparé
-        ...(diagnostic ? { "X-Chat-Diag": diagnostic } : {}),
-        ...(origin && isAllowedOrigin(origin) ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" } : {}),
-      },
-    });
-
-  if (req.method !== "POST") return json(405, { error: "method_not_allowed" });
-  if (!isAllowedOrigin(origin)) return json(403, { error: "forbidden" });
-
-  const raw = await req.text();
-  if (raw.length > MAX_BODY_BYTES) return json(413, { error: "too_large" });
-  let body: unknown;
-  try {
-    body = JSON.parse(raw);
-  } catch {
-    return json(400, { error: "bad_request" });
-  }
-
-  // Les deux noms sont acceptés pour la variable Netlify (côté serveur uniquement : le code du
-  // navigateur ne référence aucune de ces variables, elles ne sont donc jamais intégrées au site).
-  const apiKey = normalizeKey(process.env.GEMINI_API_KEY) || normalizeKey(process.env.VITE_GEMINI_API_KEY);
-  const { status, payload, diagnostic } = await handleChatRequest(body, apiKey);
-  return json(status, payload, diagnostic);
-};
+export default async (req: Request, context: { ip?: string }): Promise<Response> =>
+  handleChatHttp(req, {
+    ip: context?.ip || req.headers.get("x-nf-client-connection-ip") || "unknown",
+    store: blobCounterStore(),
+    geminiKey: normalizeKey(process.env.GEMINI_API_KEY) || normalizeKey(process.env.VITE_GEMINI_API_KEY),
+    tokenSecretEnv: process.env.CHAT_TOKEN_SECRET,
+  });
 
 export const config = { path: "/api/chat" };

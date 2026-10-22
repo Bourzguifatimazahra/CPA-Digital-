@@ -3,31 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
-import { askAssistant } from "@/lib/assistant";
+import { askAssistant, RateLimitError } from "@/lib/assistant";
 import { isLeadCaptureEnabled } from "@/lib/leads";
 import DepartmentContactCard from "./DepartmentContactCard";
 import LeadForm, { leadThanksMessage } from "./LeadForm";
 
 const WHATSAPP_NUMBER = "212667558436";
-// Limites pour protéger le quota gratuit de l'assistant IA
+// Longueur maximale d'un message (le nombre de messages est limité côté serveur)
 const MAX_INPUT_LENGTH = 500;
-const MAX_AI_MESSAGES_PER_SESSION = 30;
-const AI_COUNT_KEY = "cpa_chatbot_ai_count";
 
-const getAiCount = (): number => {
-  try {
-    return Number(sessionStorage.getItem(AI_COUNT_KEY)) || 0;
-  } catch {
-    return 0;
-  }
-};
-
-const incrementAiCount = () => {
-  try {
-    sessionStorage.setItem(AI_COUNT_KEY, String(getAiCount() + 1));
-  } catch {
-    // sessionStorage indisponible (navigation privée) : on ignore
-  }
+// Message affiché quand le visiteur a atteint la limite de messages fixée par le serveur
+const rateLimitNotice = (lang: string, retryAfter: number) => {
+  const minutes = Math.max(1, Math.ceil(retryAfter / 60));
+  const texts = {
+    fr: `⏳ Vous avez atteint le nombre maximal de questions à l'assistant IA pour le moment. Réessayez dans ${minutes} min, ou contactez directement le service concerné. En attendant, voici la réponse de nos questions fréquentes :`,
+    en: `⏳ You have reached the maximum number of questions to the AI assistant for now. Please try again in ${minutes} min, or contact the relevant department directly. Meanwhile, here is the answer from our frequently asked questions:`,
+    ar: `⏳ لقد بلغت الحد الأقصى لعدد الأسئلة للمساعد الذكي حالياً. حاول مرة أخرى بعد ${minutes} دقيقة، أو تواصل مباشرة مع المصلحة المعنية. في الأثناء، إليك الإجابة من الأسئلة الشائعة:`,
+    es: `⏳ Ha alcanzado el número máximo de preguntas al asistente IA por ahora. Inténtelo de nuevo en ${minutes} min o contacte directamente con el departamento. Mientras tanto, aquí tiene la respuesta de nuestras preguntas frecuentes:`,
+  };
+  return texts[lang as keyof typeof texts] || texts.fr;
 };
 
 // Mention sous la zone de saisie : information des visiteurs (loi 09-08) et caractère indicatif des réponses
@@ -509,7 +503,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
-  const [aiActive, setAiActive] = useState(() => getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
+  const [aiActive, setAiActive] = useState(true);
   // Dernier service CPA détecté dans la conversation (sert au formulaire)
   const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
@@ -582,25 +576,24 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     let answer: string;
     let departmentId: string | null = null;
     let usedStaticFaq = false;
-    if (getAiCount() < MAX_AI_MESSAGES_PER_SESSION) {
-      try {
-        ({ text: answer, departmentId } = await askAssistant(history, lang));
-        incrementAiCount();
-        setAiActive(getAiCount() < MAX_AI_MESSAGES_PER_SESSION);
-      } catch {
-        // Assistant indisponible (service saturé, réseau...) : on retombe sur la FAQ statique
-        answer = findAnswer(msg);
-        usedStaticFaq = true;
-      }
-    } else {
-      await new Promise((resolve) => setTimeout(resolve, 600));
+    let rateLimitedFor: number | null = null;
+    try {
+      ({ text: answer, departmentId } = await askAssistant(history, lang));
+      setAiActive(true);
+    } catch (err) {
+      // Limite atteinte ou assistant indisponible (service saturé, réseau...) : FAQ statique
+      if (err instanceof RateLimitError) rateLimitedFor = err.retryAfter;
       answer = findAnswer(msg);
       usedStaticFaq = true;
     }
 
-    // Au passage en mode FAQ statique, on prévient une fois que l'assistant IA est en mise à jour
+    // Limite atteinte : on l'explique à chaque fois. Assistant indisponible : on prévient une fois.
     const notice: Message[] =
-      usedStaticFaq && aiActive ? [{ role: "bot", text: AI_UPDATING_NOTICE[lang as keyof typeof AI_UPDATING_NOTICE] || AI_UPDATING_NOTICE.fr }] : [];
+      rateLimitedFor !== null
+        ? [{ role: "bot", text: rateLimitNotice(lang, rateLimitedFor) }]
+        : usedStaticFaq && aiActive
+          ? [{ role: "bot", text: AI_UPDATING_NOTICE[lang as keyof typeof AI_UPDATING_NOTICE] || AI_UPDATING_NOTICE.fr }]
+          : [];
     if (usedStaticFaq) setAiActive(false);
 
     setMessages((prev) => [...prev, ...notice, { role: "bot", text: answer, departmentId }]);
