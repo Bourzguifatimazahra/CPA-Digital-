@@ -28,7 +28,10 @@ export default async (req: Request): Promise<Response> => {
     return json(400, { error: "bad_request" });
   }
 
-  const { status, payload } = await handleChatRequest(body, process.env.GEMINI_API_KEY);
+  // Les deux noms sont acceptés pour la variable Netlify (côté serveur uniquement : le code du
+  // navigateur ne référence aucune de ces variables, elles ne sont donc jamais intégrées au site).
+  const apiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+  const { status, payload } = await handleChatRequest(body, apiKey);
   return json(status, payload);
 };
 
