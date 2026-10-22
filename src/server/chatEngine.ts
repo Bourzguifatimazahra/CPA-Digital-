@@ -252,7 +252,10 @@ export async function handleChatRequest(
 ): Promise<{ status: number; payload: { answer: string; department: string | null } | { error: string } }> {
   const request = parseChatRequest(body);
   if (!request) return { status: 400, payload: { error: "bad_request" } };
-  if (!apiKey) return { status: 503, payload: { error: "unavailable" } };
+  if (!apiKey) {
+    console.error("[chat] GEMINI_API_KEY manquante dans l'environnement du serveur");
+    return { status: 503, payload: { error: "unavailable" } };
+  }
   try {
     const { text, departmentId } = await askGemini(request.messages, request.lang, apiKey);
     return { status: 200, payload: { answer: text, department: departmentId } };
