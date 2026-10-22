@@ -249,19 +249,31 @@ export const parseChatRequest = (body: unknown): { messages: ChatTurn[]; lang: s
 export async function handleChatRequest(
   body: unknown,
   apiKey: string | undefined,
-): Promise<{ status: number; payload: { answer: string; department: string | null } | { error: string } }> {
+): Promise<{
+  status: number;
+  payload: { answer: string; department: string | null } | { error: string };
+  diagnostic?: string;
+}> {
   const request = parseChatRequest(body);
   if (!request) return { status: 400, payload: { error: "bad_request" } };
   if (!apiKey) {
     console.error("[chat] GEMINI_API_KEY manquante dans l'environnement du serveur");
-    return { status: 503, payload: { error: "unavailable" } };
+    return { status: 503, payload: { error: "unavailable" }, diagnostic: "no_key" };
   }
+  // Diagnostic temporaire : catégorie d'erreur + 4 derniers caractères de la clé (comme l'interface Netlify)
+  const keyHint = `key=…${apiKey.slice(-4)}/${apiKey.length}`;
   try {
     const { text, departmentId } = await askGemini(request.messages, request.lang, apiKey);
-    return { status: 200, payload: { answer: text, department: departmentId } };
+    return { status: 200, payload: { answer: text, department: departmentId }, diagnostic: `ok ${keyHint}` };
   } catch (err) {
     console.error("[chat] upstream error", err instanceof Error ? err.message : err);
-    return { status: 503, payload: { error: "unavailable" } };
+    const category =
+      err instanceof UpstreamError && err.status !== undefined
+        ? `google_${err.status}`
+        : /abort/i.test(String(err))
+          ? "timeout"
+          : "error";
+    return { status: 503, payload: { error: "unavailable" }, diagnostic: `${category} ${keyHint}` };
   }
 }
 

@@ -14,14 +14,16 @@ const normalizeKey = (raw: string | undefined) =>
 
 export default async (req: Request): Promise<Response> => {
   const origin = req.headers.get("origin");
-  const json = (status: number, payload: unknown) =>
+  const json = (status: number, payload: unknown, diagnostic?: string) =>
     new Response(JSON.stringify(payload), {
       status,
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
         // Version de la fonction (diagnostic de déploiement ; aucune donnée sensible)
-        "X-Chat-Version": "2026-10-22.2",
+        "X-Chat-Version": "2026-10-22.4",
+        // Diagnostic TEMPORAIRE (catégorie d'erreur, 4 derniers caractères de la clé) — à retirer une fois réparé
+        ...(diagnostic ? { "X-Chat-Diag": diagnostic } : {}),
         ...(origin && isAllowedOrigin(origin) ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" } : {}),
       },
     });
@@ -41,8 +43,8 @@ export default async (req: Request): Promise<Response> => {
   // Les deux noms sont acceptés pour la variable Netlify (côté serveur uniquement : le code du
   // navigateur ne référence aucune de ces variables, elles ne sont donc jamais intégrées au site).
   const apiKey = normalizeKey(process.env.GEMINI_API_KEY) || normalizeKey(process.env.VITE_GEMINI_API_KEY);
-  const { status, payload } = await handleChatRequest(body, apiKey);
-  return json(status, payload);
+  const { status, payload, diagnostic } = await handleChatRequest(body, apiKey);
+  return json(status, payload, diagnostic);
 };
 
 export const config = { path: "/api/chat" };

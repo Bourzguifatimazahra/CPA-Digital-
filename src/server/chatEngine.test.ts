@@ -109,7 +109,8 @@ describe("requêtes du navigateur", () => {
 
   it("ne révèle rien au navigateur quand la clé manque", async () => {
     const res = await handleChatRequest({ messages: [{ role: "user", text: "Bonjour" }] }, undefined);
-    expect(res).toEqual({ status: 503, payload: { error: "unavailable" } });
+    expect(res.status).toBe(503);
+    expect(res.payload).toEqual({ error: "unavailable" });
   });
 
   it("n'autorise que cpa.ma et le développement local", () => {
