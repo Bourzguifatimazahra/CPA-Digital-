@@ -4,6 +4,14 @@ import { handleChatRequest, isAllowedOrigin } from "../../src/server/chatEngine"
 
 const MAX_BODY_BYTES = 40_000;
 
+// Tolère une valeur collée avec son nom ("GEMINI_API_KEY=..."), des guillemets ou des espaces.
+const normalizeKey = (raw: string | undefined) =>
+  raw
+    ?.trim()
+    .replace(/^(VITE_)?GEMINI_API_KEY\s*=\s*/i, "")
+    .replace(/^["']|["']$/g, "")
+    .trim() || undefined;
+
 export default async (req: Request): Promise<Response> => {
   const origin = req.headers.get("origin");
   const json = (status: number, payload: unknown) =>
@@ -30,7 +38,7 @@ export default async (req: Request): Promise<Response> => {
 
   // Les deux noms sont acceptés pour la variable Netlify (côté serveur uniquement : le code du
   // navigateur ne référence aucune de ces variables, elles ne sont donc jamais intégrées au site).
-  const apiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
+  const apiKey = normalizeKey(process.env.GEMINI_API_KEY) || normalizeKey(process.env.VITE_GEMINI_API_KEY);
   const { status, payload } = await handleChatRequest(body, apiKey);
   return json(status, payload);
 };
