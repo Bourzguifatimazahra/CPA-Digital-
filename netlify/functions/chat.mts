@@ -20,6 +20,8 @@ export default async (req: Request): Promise<Response> => {
       headers: {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
+        // Version de la fonction (diagnostic de déploiement ; aucune donnée sensible)
+        "X-Chat-Version": "2026-10-22.2",
         ...(origin && isAllowedOrigin(origin) ? { "Access-Control-Allow-Origin": origin, Vary: "Origin" } : {}),
       },
     });
