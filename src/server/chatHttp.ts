@@ -3,6 +3,7 @@
 import { handleChatRequest, isAllowedOrigin } from "./chatEngine";
 import {
   CounterStore,
+  TOKEN_TTL_SECONDS,
   checkRateLimits,
   issueToken,
   messageRules,
@@ -47,11 +48,28 @@ export async function handleTokenHttp(req: Request, ctx: ChatHttpContext): Promi
   const limit = await checkRateLimits(ctx.store, tokenRules(ctx.ip));
   if (!limit.allowed) return rateLimited(req, limit.retryAfter);
 
+  // Le jeton est posé dans un cookie HttpOnly : le JavaScript de la page ne peut pas le lire
+  // (protection contre le vol par XSS) et le navigateur l'envoie seul, uniquement vers /api.
   const { token, expiresAt } = issueToken(secret, req.headers.get("user-agent") ?? "");
-  return jsonResponse(req, 200, { token, expiresAt });
+  return jsonResponse(req, 200, { expiresAt }, { "Set-Cookie": tokenCookie(token, TOKEN_TTL_SECONDS) });
 }
 
-/** POST /api/chat : exige un jeton valide, applique les limites, puis interroge l'assistant. */
+export const TOKEN_COOKIE = "cpa_chat";
+
+/** Cookie du jeton : Secure, HttpOnly, SameSite=Strict, limité au chemin /api, durée 1 heure. */
+export const tokenCookie = (token: string, maxAgeSeconds: number) =>
+  `${TOKEN_COOKIE}=${token}; Path=/api; Max-Age=${maxAgeSeconds}; HttpOnly; Secure; SameSite=Strict`;
+
+/** Lit le jeton dans l'en-tête Cookie de la requête. */
+export const readTokenCookie = (cookieHeader: string | null): string | null => {
+  for (const part of (cookieHeader ?? "").split(";")) {
+    const [name, ...rest] = part.trim().split("=");
+    if (name === TOKEN_COOKIE) return rest.join("=") || null;
+  }
+  return null;
+};
+
+/** POST /api/chat : exige le cookie de jeton valide, applique les limites, puis interroge l'assistant. */
 export async function handleChatHttp(req: Request, ctx: ChatHttpContext): Promise<Response> {
   if (req.method !== "POST") return jsonResponse(req, 405, { error: "method_not_allowed" });
   if (!isAllowedOrigin(req.headers.get("origin"))) return jsonResponse(req, 403, { error: "forbidden" });
@@ -59,8 +77,8 @@ export async function handleChatHttp(req: Request, ctx: ChatHttpContext): Promis
   const secret = tokenSecret({ CHAT_TOKEN_SECRET: ctx.tokenSecretEnv, geminiKey: ctx.geminiKey });
   if (!secret) return jsonResponse(req, 503, { error: "unavailable" });
 
-  const bearer = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
-  const check = verifyToken(bearer, secret, req.headers.get("user-agent") ?? "");
+  const token = readTokenCookie(req.headers.get("cookie"));
+  const check = verifyToken(token, secret, req.headers.get("user-agent") ?? "");
   if (!check.ok) return jsonResponse(req, 401, { error: check.error });
 
   const raw = await req.text();

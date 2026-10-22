@@ -1,10 +1,10 @@
-// Client du chatbot côté navigateur. Il obtient un jeton d'accès (valable 1 heure, renouvelé
-// automatiquement) puis envoie uniquement la conversation à /api/chat et reçoit le texte de la réponse
-// et le service concerné. Aucune clé, aucun prompt, aucun nom de modèle n'est présent dans le site.
+// Client du chatbot côté navigateur. Le jeton d'accès (valable 1 heure) est posé par le serveur dans un
+// cookie HttpOnly : ce code ne le voit jamais, le navigateur l'envoie seul à /api/chat. Le client garde
+// seulement l'heure d'expiration pour le renouveler à temps. Aucune clé, aucun prompt, aucun modèle ici.
 const CHAT_ENDPOINT = "/api/chat";
 const TOKEN_ENDPOINT = "/api/chat-token";
 const TIMEOUT_MS = 12000;
-const TOKEN_KEY = "cpa_chat_token";
+const EXPIRY_KEY = "cpa_chat_token_exp";
 const RENEW_MARGIN_MS = 60_000; // renouvelle le jeton 1 minute avant son expiration
 
 export type ChatTurn = { role: "user" | "bot"; text: string };
@@ -18,23 +18,19 @@ export class RateLimitError extends Error {
   }
 }
 
-type StoredToken = { token: string; expiresAt: number };
-
-const readToken = (): StoredToken | null => {
+const readExpiry = (): number => {
   try {
-    const t = JSON.parse(sessionStorage.getItem(TOKEN_KEY) || "null");
-    return t && typeof t.token === "string" && typeof t.expiresAt === "number" ? t : null;
+    return Number(sessionStorage.getItem(EXPIRY_KEY)) || 0;
   } catch {
-    return null;
+    return 0;
   }
 };
 
-const saveToken = (t: StoredToken | null) => {
+const saveExpiry = (expiresAt: number) => {
   try {
-    if (t) sessionStorage.setItem(TOKEN_KEY, JSON.stringify(t));
-    else sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.setItem(EXPIRY_KEY, String(expiresAt));
   } catch {
-    // sessionStorage indisponible : le jeton reste en mémoire pour cet appel
+    // sessionStorage indisponible : le jeton sera simplement redemandé si besoin
   }
 };
 
@@ -43,38 +39,36 @@ const retryAfterOf = async (res: Response) => {
   return Number(data?.retryAfter ?? res.headers.get("Retry-After")) || 60;
 };
 
-async function fetchToken(): Promise<StoredToken> {
-  const res = await fetch(TOKEN_ENDPOINT, { method: "POST", signal: AbortSignal.timeout(TIMEOUT_MS) });
+/** Demande un nouveau jeton : le serveur le dépose dans le cookie HttpOnly. */
+async function renewToken(): Promise<void> {
+  const res = await fetch(TOKEN_ENDPOINT, {
+    method: "POST",
+    credentials: "same-origin",
+    signal: AbortSignal.timeout(TIMEOUT_MS),
+  });
   if (res.status === 429) throw new RateLimitError(await retryAfterOf(res));
   if (!res.ok) throw new Error(`token ${res.status}`);
   const data = await res.json();
-  if (typeof data?.token !== "string" || typeof data?.expiresAt !== "number") throw new Error("token invalid");
-  const token = { token: data.token, expiresAt: data.expiresAt };
-  saveToken(token);
-  return token;
-}
-
-async function getToken(forceRenew = false): Promise<string> {
-  const current = forceRenew ? null : readToken();
-  if (current && current.expiresAt - RENEW_MARGIN_MS > Date.now()) return current.token;
-  return (await fetchToken()).token;
+  saveExpiry(typeof data?.expiresAt === "number" ? data.expiresAt : Date.now() + 55 * 60_000);
 }
 
 export async function askAssistant(history: ChatTurn[], lang: string): Promise<AssistantAnswer> {
   const body = JSON.stringify({ messages: history.map(({ role, text }) => ({ role, text })), lang });
-  const send = async (token: string) =>
+  const send = () =>
     fetch(CHAT_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
       body,
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
 
-  let res = await send(await getToken());
+  if (readExpiry() - RENEW_MARGIN_MS <= Date.now()) await renewToken();
+  let res = await send();
   if (res.status === 401) {
-    // Jeton expiré ou invalide : on en demande un nouveau et on réessaie une fois
-    saveToken(null);
-    res = await send(await getToken(true));
+    // Cookie absent, expiré ou invalide : on en demande un nouveau et on réessaie une fois
+    await renewToken();
+    res = await send();
   }
   if (res.status === 429) throw new RateLimitError(await retryAfterOf(res));
   if (!res.ok) throw new Error(`assistant ${res.status}`);

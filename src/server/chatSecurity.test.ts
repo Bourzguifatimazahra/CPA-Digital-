@@ -68,10 +68,33 @@ describe("routes HTTP", () => {
         Origin: init.origin ?? "https://cpa.ma",
         "User-Agent": UA,
         "Content-Type": "application/json",
-        ...(init.token ? { Authorization: `Bearer ${init.token}` } : {}),
+        ...(init.token ? { Cookie: `autre=1; cpa_chat=${init.token}` } : {}),
       },
       body: JSON.stringify(init.body ?? { messages: [{ role: "user", text: "Bonjour" }], lang: "fr" }),
     });
+  // Jeton lu dans le cookie posé par /api/chat-token
+  const tokenFrom = (res: Response) => /cpa_chat=([^;]+)/.exec(res.headers.get("set-cookie") ?? "")?.[1] ?? "";
+
+  it("pose le jeton dans un cookie HttpOnly sécurisé, jamais dans le corps de la réponse", async () => {
+    const res = await handleTokenHttp(post("/api/chat-token"), ctx());
+    const cookie = res.headers.get("set-cookie") ?? "";
+    expect(cookie).toMatch(/^cpa_chat=[\w-]+\.[\w-]+;/);
+    for (const attr of ["HttpOnly", "Secure", "SameSite=Strict", "Path=/api", "Max-Age=3600"]) expect(cookie).toContain(attr);
+    const body = await res.json();
+    expect(body.token).toBeUndefined();
+    expect(typeof body.expiresAt).toBe("number");
+  });
+
+  it("refuse un jeton envoyé en en-tête Authorization (seul le cookie est accepté)", async () => {
+    const c = ctx();
+    const token = tokenFrom(await handleTokenHttp(post("/api/chat-token"), c));
+    const req = new Request("https://cpa.ma/api/chat", {
+      method: "POST",
+      headers: { Origin: "https://cpa.ma", "User-Agent": UA, Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ messages: [{ role: "user", text: "Bonjour" }] }),
+    });
+    expect((await handleChatHttp(req, c)).status).toBe(401);
+  });
 
   it("refuse /api/chat sans jeton", async () => {
     const res = await handleChatHttp(post("/api/chat"), ctx());
@@ -87,7 +110,7 @@ describe("routes HTTP", () => {
     const c = ctx();
     const tokenRes = await handleTokenHttp(post("/api/chat-token"), c);
     expect(tokenRes.status).toBe(200);
-    const { token } = await tokenRes.json();
+    const token = tokenFrom(tokenRes);
     const res = await handleChatHttp(post("/api/chat", { token }), c);
     expect(res.status).toBe(503);
     expect(await res.json()).toEqual({ error: "unavailable" });
@@ -95,7 +118,7 @@ describe("routes HTTP", () => {
 
   it(`limite à ${LIMITS.messagesPerTokenPerHour} messages par jeton et par heure`, async () => {
     const c = ctx();
-    const { token } = await (await handleTokenHttp(post("/api/chat-token"), c)).json();
+    const token = tokenFrom(await handleTokenHttp(post("/api/chat-token"), c));
     for (let i = 0; i < LIMITS.messagesPerTokenPerHour; i++) {
       expect((await handleChatHttp(post("/api/chat", { token }), c)).status).not.toBe(429);
     }
