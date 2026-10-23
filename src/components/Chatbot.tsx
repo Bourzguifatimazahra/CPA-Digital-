@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
-import { ASSISTANT_ENABLED, askAssistant, RateLimitError } from "@/lib/assistant";
-import { isLeadCaptureEnabled } from "@/lib/leads";
-import DepartmentContactCard from "./DepartmentContactCard";
-import LeadForm, { leadThanksMessage } from "./LeadForm";
+// [IA désactivée] Assistant intelligent mis en commentaire — le chatbot répond uniquement avec la FAQ statique.
+// import { ASSISTANT_ENABLED, askAssistant, RateLimitError } from "@/lib/assistant";
+// import { isLeadCaptureEnabled } from "@/lib/leads";
+// import DepartmentContactCard from "./DepartmentContactCard";
+// import LeadForm, { leadThanksMessage } from "./LeadForm";
 
 const WHATSAPP_NUMBER = "212667558436";
-// Longueur maximale d'un message (le nombre de messages est limité côté serveur)
+// Longueur maximale d'un message
 const MAX_INPUT_LENGTH = 500;
 
+/* [IA désactivée] Messages de l'assistant intelligent
 // Message affiché quand le visiteur a atteint la limite de messages fixée par le serveur
 const rateLimitNotice = (lang: string, retryAfter: number) => {
   const minutes = Math.max(1, Math.ceil(retryAfter / 60));
@@ -51,8 +53,9 @@ const AI_PAUSED_NOTICE = {
   ar: "🔧 مساعدنا الذكي قيد التحديث حالياً. في الأثناء، اختر سؤالاً من الأسئلة الشائعة أدناه أو اكتب سؤالك.",
   es: "🔧 Nuestro asistente inteligente se está actualizando. Mientras tanto, elija una pregunta frecuente a continuación o escriba su pregunta.",
 };
+[IA désactivée] fin */
 
-// Mention sous la zone de saisie quand l'assistant intelligent est désactivé (aucun envoi à Google)
+// Mention sous la zone de saisie (réponses issues de la FAQ statique)
 const FAQ_MODE_NOTICE = {
   fr: { text: "Réponses issues de nos questions fréquentes, à titre indicatif. Pour un conseil personnalisé, contactez un conseiller CPA.", link: "Confidentialité" },
   en: { text: "Answers from our frequently asked questions, for information only. For personalised advice, contact a CPA advisor.", link: "Privacy" },
@@ -60,6 +63,7 @@ const FAQ_MODE_NOTICE = {
   es: { text: "Respuestas de nuestras preguntas frecuentes, a título orientativo. Para un consejo personalizado, contacte a un asesor de CPA.", link: "Privacidad" },
 };
 
+/* [IA désactivée] Messages et formulaire de l'assistant intelligent
 // Message affiché quand l'assistant IA ne répond pas et que le chatbot passe aux questions/réponses fréquentes
 const AI_UPDATING_NOTICE = {
   fr: "🔧 Notre assistant intelligent est en cours de mise à jour. En attendant, voici la réponse de nos questions fréquentes :",
@@ -87,6 +91,7 @@ const closeLeadForm = (state: "submitted" | "dismissed") => {
     // sessionStorage indisponible : le formulaire pourra réapparaître, sans gravité
   }
 };
+[IA désactivée] fin */
 const WHATSAPP_MESSAGE = "Bonjour, je souhaite avoir plus d'informations sur vos services.";
 
 // Page context types for page-specific ads
@@ -514,17 +519,19 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", text: getWelcomeMessage(lang) },
-    ...(ASSISTANT_ENABLED
-      ? []
-      : [{ role: "bot" as const, text: AI_PAUSED_NOTICE[lang as keyof typeof AI_PAUSED_NOTICE] || AI_PAUSED_NOTICE.fr }]),
+    // [IA désactivée]
+    // ...(ASSISTANT_ENABLED
+    //   ? []
+    //   : [{ role: "bot" as const, text: AI_PAUSED_NOTICE[lang as keyof typeof AI_PAUSED_NOTICE] || AI_PAUSED_NOTICE.fr }]),
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [showLeadForm, setShowLeadForm] = useState(false);
-  // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
-  const [aiActive, setAiActive] = useState(ASSISTANT_ENABLED);
-  // Dernier service CPA détecté dans la conversation (sert au formulaire)
-  const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
+  // [IA désactivée]
+  // const [showLeadForm, setShowLeadForm] = useState(false);
+  // // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
+  // const [aiActive, setAiActive] = useState(ASSISTANT_ENABLED);
+  // // Dernier service CPA détecté dans la conversation (sert au formulaire)
+  // const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [showAds, setShowAds] = useState(true);
@@ -592,6 +599,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     setInput("");
     setIsTyping(true);
 
+    // Réponse issue de la FAQ statique
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    setMessages((prev) => [...prev, { role: "bot", text: findAnswer(msg) }]);
+    setCurrentSuggestions(getContextualSuggestions(msg, lang));
+    setIsTyping(false);
+
+    /* [IA désactivée] Réponse de l'assistant intelligent, formulaire après 3 questions
     let answer: string;
     let departmentId: string | null = null;
     let usedStaticFaq = false;
@@ -624,8 +638,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     if (isLeadCaptureEnabled && questionCount >= QUESTIONS_BEFORE_LEAD_FORM && !isLeadFormClosed()) {
       setShowLeadForm(true);
     }
+    [IA désactivée] fin */
   };
 
+  /* [IA désactivée] Formulaire de coordonnées
   const handleLeadDone = () => {
     closeLeadForm("submitted");
     setShowLeadForm(false);
@@ -636,6 +652,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
     closeLeadForm("dismissed");
     setShowLeadForm(false);
   };
+  [IA désactivée] fin */
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -736,14 +753,16 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                       : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm"
                   }`}>
                     {msg.text}
+                    {/* [IA désactivée] Carte du service CPA concerné
                     {msg.role === "bot" && msg.departmentId && (
                       <DepartmentContactCard departmentId={msg.departmentId} />
                     )}
+                    */}
                   </div>
                 </motion.div>
               ))}
 
-              {/* Formulaire de coordonnées (après 3 questions) */}
+              {/* [IA désactivée] Formulaire de coordonnées (après 3 questions)
               {showLeadForm && !isTyping && (
                 <LeadForm
                   departmentId={lastDepartmentId}
@@ -753,6 +772,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                   onDismiss={handleLeadDismiss}
                 />
               )}
+              */}
 
               {/* Typing indicator */}
               {isTyping && (
@@ -773,7 +793,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
               )}
 
               {/* Suggestions */}
-              {!isTyping && !aiActive && currentSuggestions.length > 0 && (
+              {/* [IA désactivée] condition d'origine : !isTyping && !aiActive && ... */}
+              {!isTyping && currentSuggestions.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -826,7 +847,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
               </div>
               <p className="text-[10px] leading-snug text-gray-400 mt-2 text-center">
                 {(() => {
-                  const notices = ASSISTANT_ENABLED ? CHAT_NOTICE : FAQ_MODE_NOTICE;
+                  // [IA désactivée] d'origine : ASSISTANT_ENABLED ? CHAT_NOTICE : FAQ_MODE_NOTICE
+                  const notices = FAQ_MODE_NOTICE;
                   const n = notices[lang as keyof typeof notices] || notices.fr;
                   return (
                     <>

@@ -1,44 +1,46 @@
-import { defineConfig, loadEnv, type Plugin } from "vite";
+import { defineConfig } from "vite";
+// [IA désactivée] import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import imagemin from "vite-plugin-imagemin";
 
-// En développement, sert /api/chat-token et /api/chat comme les fonctions Netlify (netlify/functions),
-// avec la clé lue dans .env.local côté serveur (jamais envoyée au navigateur) et des compteurs en mémoire.
-const devChatApi = (mode: string): Plugin => ({
-  name: "cpa-dev-chat-api",
-  apply: "serve",
-  configureServer(server) {
-    const env = loadEnv(mode, process.cwd(), "");
-    let store: unknown;
-    const route = (handlerName: "handleChatHttp" | "handleTokenHttp") =>
-      async (req: import("http").IncomingMessage, res: import("http").ServerResponse) => {
-        const chunks: Buffer[] = [];
-        for await (const chunk of req) chunks.push(chunk as Buffer);
-        const http = await server.ssrLoadModule("/src/server/chatHttp.ts");
-        const security = await server.ssrLoadModule("/src/server/chatSecurity.ts");
-        store ??= security.memoryStore();
-        const headers = new Headers();
-        for (const [k, v] of Object.entries(req.headers)) if (typeof v === "string") headers.set(k, v);
-        const request = new Request(`http://localhost${req.url ?? ""}`, {
-          method: req.method,
-          headers,
-          body: req.method === "GET" || req.method === "HEAD" ? undefined : Buffer.concat(chunks),
-        });
-        const response: Response = await http[handlerName](request, {
-          ip: req.socket.remoteAddress ?? "local",
-          store,
-          geminiKey: http.normalizeKey(env.GEMINI_API_KEY) || http.normalizeKey(env.VITE_GEMINI_API_KEY),
-          tokenSecretEnv: env.CHAT_TOKEN_SECRET,
-        });
-        res.statusCode = response.status;
-        response.headers.forEach((value, key) => res.setHeader(key, value));
-        res.end(await response.text());
-      };
-    server.middlewares.use("/api/chat-token", route("handleTokenHttp"));
-    server.middlewares.use("/api/chat", route("handleChatHttp"));
-  },
-});
+// [IA désactivée] Route de développement /api/chat de l'assistant intelligent, mise en commentaire.
+// // En développement, sert /api/chat-token et /api/chat comme les fonctions Netlify (netlify/functions),
+// // avec la clé lue dans .env.local côté serveur (jamais envoyée au navigateur) et des compteurs en mémoire.
+// const devChatApi = (mode: string): Plugin => ({
+//   name: "cpa-dev-chat-api",
+//   apply: "serve",
+//   configureServer(server) {
+//     const env = loadEnv(mode, process.cwd(), "");
+//     let store: unknown;
+//     const route = (handlerName: "handleChatHttp" | "handleTokenHttp") =>
+//       async (req: import("http").IncomingMessage, res: import("http").ServerResponse) => {
+//         const chunks: Buffer[] = [];
+//         for await (const chunk of req) chunks.push(chunk as Buffer);
+//         const http = await server.ssrLoadModule("/src/server/chatHttp.ts");
+//         const security = await server.ssrLoadModule("/src/server/chatSecurity.ts");
+//         store ??= security.memoryStore();
+//         const headers = new Headers();
+//         for (const [k, v] of Object.entries(req.headers)) if (typeof v === "string") headers.set(k, v);
+//         const request = new Request(`http://localhost${req.url ?? ""}`, {
+//           method: req.method,
+//           headers,
+//           body: req.method === "GET" || req.method === "HEAD" ? undefined : Buffer.concat(chunks),
+//         });
+//         const response: Response = await http[handlerName](request, {
+//           ip: req.socket.remoteAddress ?? "local",
+//           store,
+//           geminiKey: http.normalizeKey(env.GEMINI_API_KEY) || http.normalizeKey(env.VITE_GEMINI_API_KEY),
+//           tokenSecretEnv: env.CHAT_TOKEN_SECRET,
+//         });
+//         res.statusCode = response.status;
+//         response.headers.forEach((value, key) => res.setHeader(key, value));
+//         res.end(await response.text());
+//       };
+//     server.middlewares.use("/api/chat-token", route("handleTokenHttp"));
+//     server.middlewares.use("/api/chat", route("handleChatHttp"));
+//   },
+// });
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -51,7 +53,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    devChatApi(mode),
+    // [IA désactivée] devChatApi(mode),
     imagemin({
       gifsicle: { optimizationLevel: 7 },
       optipng: { optimizationLevel: 7 },
