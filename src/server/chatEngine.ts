@@ -4,6 +4,10 @@
 import { CPA_KNOWLEDGE, ADVISOR_ONLY_TOPICS } from "../data/chatbotKnowledge";
 import { departments } from "../data/departments";
 
+// INTERRUPTEUR côté serveur. false = /api/chat refuse tout de suite, sans jamais contacter Google
+// (même si quelqu'un appelle l'API directement). À remettre à true avec ASSISTANT_ENABLED (src/lib/assistant.ts).
+export const AI_ENABLED = false;
+
 // Modèles essayés dans l'ordre : si l'un est saturé (503), limité (429) ou retiré (404), on passe au suivant.
 const MODELS = ["gemini-flash-lite-latest", "gemini-flash-latest"];
 const endpointFor = (model: string) =>
@@ -252,6 +256,7 @@ export async function handleChatRequest(
 ): Promise<{ status: number; payload: { answer: string; department: string | null } | { error: string } }> {
   const request = parseChatRequest(body);
   if (!request) return { status: 400, payload: { error: "bad_request" } };
+  if (!AI_ENABLED) return { status: 503, payload: { error: "unavailable" } };
   if (!apiKey) {
     console.error("[chat] GEMINI_API_KEY manquante dans l'environnement du serveur");
     return { status: 503, payload: { error: "unavailable" } };

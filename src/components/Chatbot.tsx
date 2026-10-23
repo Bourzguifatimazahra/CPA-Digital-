@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, MessageSquare, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import PromoBanner from "./PromoBanner";
-import { askAssistant, RateLimitError } from "@/lib/assistant";
+import { ASSISTANT_ENABLED, askAssistant, RateLimitError } from "@/lib/assistant";
 import { isLeadCaptureEnabled } from "@/lib/leads";
 import DepartmentContactCard from "./DepartmentContactCard";
 import LeadForm, { leadThanksMessage } from "./LeadForm";
@@ -42,6 +42,22 @@ const CHAT_NOTICE = {
     text: "Asistente IA: respuestas orientativas que no sustituyen el consejo de un asesor de CPA. Sus mensajes son tratados por Google, fuera de Marruecos: no incluya datos personales.",
     link: "Privacidad",
   },
+};
+
+// Message d'accueil quand l'assistant intelligent est désactivé (interrupteur ASSISTANT_ENABLED)
+const AI_PAUSED_NOTICE = {
+  fr: "🔧 Notre assistant intelligent est en cours de mise à jour. En attendant, choisissez une question fréquente ci-dessous ou posez votre question.",
+  en: "🔧 Our smart assistant is currently being updated. In the meantime, choose a frequently asked question below or type your question.",
+  ar: "🔧 مساعدنا الذكي قيد التحديث حالياً. في الأثناء، اختر سؤالاً من الأسئلة الشائعة أدناه أو اكتب سؤالك.",
+  es: "🔧 Nuestro asistente inteligente se está actualizando. Mientras tanto, elija una pregunta frecuente a continuación o escriba su pregunta.",
+};
+
+// Mention sous la zone de saisie quand l'assistant intelligent est désactivé (aucun envoi à Google)
+const FAQ_MODE_NOTICE = {
+  fr: { text: "Réponses issues de nos questions fréquentes, à titre indicatif. Pour un conseil personnalisé, contactez un conseiller CPA.", link: "Confidentialité" },
+  en: { text: "Answers from our frequently asked questions, for information only. For personalised advice, contact a CPA advisor.", link: "Privacy" },
+  ar: { text: "إجابات من الأسئلة الشائعة، للاستئناس فقط. للحصول على نصيحة شخصية، تواصل مع مستشار CPA.", link: "الخصوصية" },
+  es: { text: "Respuestas de nuestras preguntas frecuentes, a título orientativo. Para un consejo personalizado, contacte a un asesor de CPA.", link: "Privacidad" },
 };
 
 // Message affiché quand l'assistant IA ne répond pas et que le chatbot passe aux questions/réponses fréquentes
@@ -497,13 +513,16 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", text: getWelcomeMessage(lang) }
+    { role: "bot", text: getWelcomeMessage(lang) },
+    ...(ASSISTANT_ENABLED
+      ? []
+      : [{ role: "bot" as const, text: AI_PAUSED_NOTICE[lang as keyof typeof AI_PAUSED_NOTICE] || AI_PAUSED_NOTICE.fr }]),
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showLeadForm, setShowLeadForm] = useState(false);
   // Mode IA actif : les questions suggérées ne s'affichent qu'en mode FAQ statique (IA indisponible)
-  const [aiActive, setAiActive] = useState(true);
+  const [aiActive, setAiActive] = useState(ASSISTANT_ENABLED);
   // Dernier service CPA détecté dans la conversation (sert au formulaire)
   const [lastDepartmentId, setLastDepartmentId] = useState<string | null>(null);
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
@@ -806,10 +825,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ pageContext = 'home' }) => {
                 </motion.button>
               </div>
               <p className="text-[10px] leading-snug text-gray-400 mt-2 text-center">
-                {(CHAT_NOTICE[lang as keyof typeof CHAT_NOTICE] || CHAT_NOTICE.fr).text}{" "}
-                <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600">
-                  {(CHAT_NOTICE[lang as keyof typeof CHAT_NOTICE] || CHAT_NOTICE.fr).link}
-                </a>
+                {(() => {
+                  const notices = ASSISTANT_ENABLED ? CHAT_NOTICE : FAQ_MODE_NOTICE;
+                  const n = notices[lang as keyof typeof notices] || notices.fr;
+                  return (
+                    <>
+                      {n.text}{" "}
+                      <a href="/politique-confidentialite" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600">
+                        {n.link}
+                      </a>
+                    </>
+                  );
+                })()}
               </p>
             </div>
           </motion.div>

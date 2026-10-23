@@ -1,6 +1,10 @@
 // Client du chatbot côté navigateur. Le jeton d'accès (valable 1 heure) est posé par le serveur dans un
 // cookie HttpOnly : ce code ne le voit jamais, le navigateur l'envoie seul à /api/chat. Le client garde
 // seulement l'heure d'expiration pour le renouveler à temps. Aucune clé, aucun prompt, aucun modèle ici.
+// INTERRUPTEUR de l'assistant intelligent. false = le chatbot répond uniquement avec la FAQ statique
+// (aucun appel à /api/chat). Pour le réactiver : true ici ET AI_ENABLED = true dans src/server/chatEngine.ts.
+export const ASSISTANT_ENABLED = false;
+
 const CHAT_ENDPOINT = "/api/chat";
 const TOKEN_ENDPOINT = "/api/chat-token";
 const TIMEOUT_MS = 12000;
@@ -53,6 +57,7 @@ async function renewToken(): Promise<void> {
 }
 
 export async function askAssistant(history: ChatTurn[], lang: string): Promise<AssistantAnswer> {
+  if (!ASSISTANT_ENABLED) throw new Error("assistant disabled");
   const body = JSON.stringify({ messages: history.map(({ role, text }) => ({ role, text })), lang });
   const send = () =>
     fetch(CHAT_ENDPOINT, {
