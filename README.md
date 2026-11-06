@@ -1,4 +1,4 @@
-# 🏢 CPA Digital - Conseil et Placement d'Assurances
+## 🏢 CPA Digital - Conseil et Placement d'Assurances
 
 <div align="center">
   <img src="src/assets/cpa-logo.png" alt="CPA Logo" width="200"/>
