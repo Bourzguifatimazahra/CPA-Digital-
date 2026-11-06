@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import cpaLogo from "@/assets/cpa-logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Lang } from "@/i18n/translations";
+import MarcheVerteBanner from "./MarcheVerteBanner";
 
 interface NavChild {
   label: string;
@@ -143,6 +144,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
+      {/* Bandeau de la Marche Verte (affiché uniquement le 6 novembre) */}
+      <MarcheVerteBanner />
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <a href="/#hero" className="flex items-center gap-2">
           <img src={cpaLogo} alt="CPA - Conseil et Placement d'Assurances" className="h-10 w-auto" />
